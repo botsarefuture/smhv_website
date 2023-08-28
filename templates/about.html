@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="about-us">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>We are a passionate group of activists dedicated to bringing down the far-right government.</p>
+            <p>Our mission is to bring down the far-right government</p>
+            <p>Join us in making a positive change for our community and society as a whole.</p>
+        </div>
+        <div class="founders">
+            <h3>Founders</h3>
+            <ul>
+                <li>Founder 1</li>
+                <li>Founder 2</li>
+                <!-- Add more founders as needed -->
+            </ul>
+        </div>
+        <a href="{{ url_for('contact') }}" class="cta-button">Get Involved</a>
+    </section>
+{% endblock %}

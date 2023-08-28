@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Our Movement</h2>
+            <p>We're on a mission to create positive change in our community and beyond.</p>
+            <a href="{{ url_for('events') }}" class="cta-button">Discover Events</a>
+        </div>
+    </section>
+    <section class="about-us">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>We are a passionate group of activists committed to...</p>
+            <p>Our goal is to...</p>
+            <p>Join us to make a difference and be part of a movement that stands for justice and equality.</p>
+        </div>
+        <a href="{{ url_for('about') }}" class="cta-button">Learn More</a>
+    </section>
+    <section class="join-us">
+        <h2>Join Us Today</h2>
+        <p>Ready to take action and create a better future? Join us in our upcoming events and initiatives.</p>
+        <a href="{{ url_for('contact') }}" class="cta-button">Get Involved</a>
+    </section>
+{% endblock %}
