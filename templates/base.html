@@ -14,8 +14,10 @@
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('events') }}">Events</a></li>
-                <li><a href="{{ url_for('about') }}">About Us</a></li> <!-- New link for About Us -->
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
+                <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
             </ul>
         </nav>
     </header>

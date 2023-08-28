@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="about-us">
+        <h2>Tietoa Meistä</h2>
+        <div class="about-content">
+            <p>Olemme aktivistiryhmä joka on omistautunut sinimustan hallituksen kaatamiseen.</p>
+            <p>Tehtävämme on saada äärioikeistohallitus kaatumaan.</p>
+            <p>Liity joukkoomme luomaan positiivista muutosta yhteisöllemme ja yhteiskunnalle kokonaisuutena.</p>
+        </div>
+        <div class="founders">
+            <h3>Perustajat</h3>
+            <ul>
+                <li>Perustaja 1</li>
+                <li>Perustaja 2</li>
+                <!-- Lisää tarvittaessa lisää perustajia -->
+            </ul>
+        </div>
+        <a href="{{ url_for('contact') }}" class="cta-button">Ota Yhteyttä</a>
+    </section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Hallitusta vastaan, elämän puolesta!</h2>
+            <p>Tavoitteemme on yrittää saada hallitus kaatumaan.</p>
+            <a href="https://t.me/+OpSHLCqznS5hMThk" class="cta-button">Liity telegram ryhmäämme!</a>
+
+            <br><br>
+
+            <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>         
+
+        </div>
+    </section>
+    <section class="about-us">
+        <h2>Tietoa Meistä</h2>
+        <div class="about-content">
+            <p>Olemme aktivistiryhmä joka on omistautunut sinimustan hallituksen kaatamiseen.</p>
+            <p>Tehtävämme on saada äärioikeistohallitus kaatumaan.</p>
+            <p>Liity joukkoomme luomaan positiivista muutosta yhteisöllemme ja yhteiskunnalle kokonaisuutena.</p>
+        </div>
+        <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
+    </section>
+    <section class="join-us">
+        <h2>Tule mukaan jo tänään</h2>
+        <p>Oletko valmis toimimaan ja luomaan parempaa tulevaisuutta? Osallistu tuleviin tapahtumiimme tai liity telegram kanavallemme.</p>
+        <a href="{{ url_for('contact') }}" class="cta-button">Liity</a>
+    </section>
+{% endblock %}

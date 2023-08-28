@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="event-calendar">
+        <h2>Tule tapahtumiimme</h2>
+        <p>Tutustu tuleviin tapahtumiimme, joissa kokoontumme oppimaan, verkostoitumaan ja luomaan positiivista vaikutusta.</p>
+        {% for event in events %}
+            <div class="event">
+                <h3>{{ event.title }}</h3>
+                <p>Päivämäärä: {{ event.date }}</p>
+                <p>Paikka: {{ event.location }}</p>
+                <p>{{ event.description }}</p>
+            </div>
+        {% endfor %}
+        <a href="{{ url_for('contact') }}" class="cta-button">Ota yhteyttä</a>
+    </section>
+{% endblock %}

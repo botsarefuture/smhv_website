@@ -53,3 +53,13 @@
 .contact-form button:hover {
     background-color: #63146D;
 }
+
+.alternative-contact {
+    font-style: italic;
+    color: #888;
+    margin-top: 10px;
+}
+
+
+
+
