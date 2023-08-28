@@ -8,6 +8,10 @@
 @import url("css/join.css");
 @import url("css/footer.css");
 
+.hidden {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
 /* Reset default margin and padding */
 * {
