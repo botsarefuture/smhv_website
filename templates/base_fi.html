@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMHV | {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
+                <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
+                <li><a href="{{ url_for('about') }}">Meistä</a></li>
+                <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
+                <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
+                <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ current_year }} sinimustaa hallitusta vastaan</p>
+
+            <br><br>
+
+            <div class="social-media">
+                <a href="https://www.instagram.com/sinimustaa_hallitusta_vastaan" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ url_for('static', filename='ig.png') }}" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/sinimustaa_hallitusta_vastaan" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ url_for('static', filename='fb.png') }}" alt="Facebook">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
