@@ -10,6 +10,13 @@ db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
 
+def sort_events_by_date(events):
+    def get_event_date(event):
+        date_str = event['date']
+        return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
+    
+    return sorted(events, key=get_event_date)
+
 def get_template_folder(lang):
     if lang == 'fi':
         return 'fi'
@@ -39,7 +46,9 @@ def index():
 def events():
     # Fetch events from MongoDB
     events_data = events_collection.find()
-    return render_template(f'{template_folder}/events.html', title='Events', events=events_data, current_year=2023)
+    sorted_events = sort_events_by_date(events_data)
+
+    return render_template(f'{template_folder}/events.html', title='Events', events=sorted_events, current_year=2023)
 
 
 @app.route('/about')
