@@ -18,29 +18,10 @@ def sort_events_by_date(events):
 
     return sorted(events, key=get_event_date)
 
-
-def get_template_folder(lang):
-    if lang == 'en':
-        return 'en'
-
-    return 'fi'
-
-
-def set_language_cookie(lang):
-    response = make_response(redirect(request.referrer or '/'))
-    response.set_cookie('language', lang)
-    return response
-
-
 @app.before_request
 def set_template_folder():
-    lang = request.cookies.get(
-        'language', request.accept_languages.best_match(['fi', 'en']))
-    global template_folder
-    template_folder = get_template_folder(lang)
-
     visits_collection.insert_one({"ip": request.headers.get(
-        'X-Forwarded-For', request.remote_addr), "lang": lang, "time": datetime.now()})
+        'X-Forwarded-For', request.remote_addr), "lang": "unknown", "time": datetime.now()})
 
 
 @app.route("/<lang>/")
@@ -68,7 +49,7 @@ def about(lang="fi"):
 @app.route("/<lang>/contact")
 @app.route('/contact')
 def contact(lang="fi"):
-    return render_template(f'{template_folder}/contact.html', title="Contact Us", current_year=2023)
+    return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
 
 @app.route('/change_language/<lang>')
