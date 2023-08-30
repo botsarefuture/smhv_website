@@ -6,10 +6,10 @@
         <p>Explore our upcoming events where we come together to learn, connect, and make a positive impact.</p>
         {% for event in events %}
             <div class="event">
-                <h3>{{ event.title }}</h3>
+                <h3>{{ event.title_en }}</h3>
                 <p>Date: {{ event.date }}</p>
-                <p>Location: {{ event.location }}</p>
-                <p>{{ event.description }}</p>
+                <p>Location: {{ event.location_en }}</p>
+                <p>{{ event.description_en }}</p>
             </div>
         {% endfor %}
         <a href="{{ url_for('contact') }}" class="cta-button">Get Involved</a>

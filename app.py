@@ -28,11 +28,11 @@ def set_template_folder():
     global template_folder
     template_folder = get_template_folder(lang)
 
-    visits_collection.insert_one({"ip": request.remote_addr, "lang": lang, "time": datetime.now()})
+    visits_collection.insert_one({"ip": request.headers.get('X-Forwarded-For', request.remote_addr), "lang": lang, "time": datetime.now()})
 
 @app.route('/')
 def index():
-    return render_template(f'{template_folder}/index.html', title="Your Movement Name", current_year=2023)
+    return render_template(f'{template_folder}/index.html', title="Sinimustaa hallitusta vastaan", current_year=2023)
 
 
 @app.route('/events')
