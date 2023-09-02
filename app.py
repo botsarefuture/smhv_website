@@ -9,26 +9,6 @@ app = Flask(__name__)
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
 
-@sitemap.register
-def index():
-    return 'index', datetime.now()
-
-@sitemap.register
-def events():
-    return 'events', datetime.now()
-
-@sitemap.register
-def about():
-    return 'about', datetime.now()
-
-@sitemap.register
-def contact():
-    return 'contact', datetime.now()
-
-@sitemap.register
-def join():
-    return 'join', datetime.now()
-
 
 # Set up MongoDB connection
 if config["mongodb"]["username"] is not None:
@@ -122,10 +102,6 @@ def change_language(lang):
         path = request.referrer.replace("/en/", "/")
 
     return redirect(path)
-
-@app.route('/sitemap.xml')
-def sitemap_xml():
-    return sitemap.sitemap(), 200, {'Content-Type': 'application/xml'}
 
 
 if __name__ == '__main__':
