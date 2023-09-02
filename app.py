@@ -4,14 +4,18 @@ from flask import Flask, redirect, render_template, request
 from ipinfo import getHandler
 from pymongo import MongoClient
 
-config = {"mongodb": {"uri": 'mongodb://95.217.186.200:27017/'}}
+config = {"mongodb": {"uri": 'mongodb://95.217.186.200:27017/', 'username': "", 'password': ""}}
 app = Flask(__name__)
 
 # Set up MongoDB connection
+if config["mongodb"]["username"] is not None:
+    config["mongodb"]["uri"] = f'mongodb://{config["mongodb"]["username"]}:{config["mongodb"]["password"]}@{config["mongodb"]["uri"].replace("mongodb://", "")}'
+    
 client = MongoClient(config["mongodb"]["uri"])
 db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
+contactions_collection = db['contactions']
 
 def sort_events_by_date(events):
     def get_event_date(event):
@@ -29,7 +33,10 @@ def set_template_folder():
 
 @app.route("/<lang>/")
 @app.route('/')
-def index(lang="fi"):
+def index(lang="fi"):        
+    if lang == "favicon.ico":
+        lang = "fi"
+    
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
 
@@ -46,14 +53,23 @@ def events(lang="fi"):
 @app.route('/<lang>/about')
 @app.route('/about')
 def about(lang="fi"):
-    return render_template(f'{lang}/about.html', title='About Us')
+    return render_template(f'{lang}/about.html', title='About Us', current_year=2023)
 
 
-@app.route("/<lang>/contact")
-@app.route('/contact')
+@app.route("/<lang>/contact", methods=["GET", "POST"])
+@app.route('/contact', methods=["GET", "POST"])
 def contact(lang="fi"):
-    return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
-
+    if request.method == "GET":
+        return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
+    
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        phonenumber = request.form.get("phonenumber")
+        
+        contactions_collection.insert_one({"name": name, "email": email, "message": message, "phonenumber": phonenumber})
+        return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
 @app.route('/change_language/<lang>')
 def change_language(lang):
