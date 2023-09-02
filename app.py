@@ -3,8 +3,11 @@ from datetime import datetime
 from flask import Flask, redirect, render_template, request
 from pymongo import MongoClient
 from flask_sitemap import Sitemap
+import json
 
-config = {"mongodb": {"uri": 'mongodb://95.217.186.200:27017/', 'username': "", 'password': ""}}
+with open("config.json", "r") as f:
+    config = json.load(f)
+
 app = Flask(__name__)
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
