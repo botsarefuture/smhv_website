@@ -1,3 +1,4 @@
 Flask==2.3.3
 ipinfo==4.4.2
 pymongo==4.5.0
+Flask-Sitemap
