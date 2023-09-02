@@ -1,15 +1,17 @@
-from flask import Flask, render_template, request, redirect, make_response
-from pymongo import MongoClient
 from datetime import datetime
 
+from flask import Flask, redirect, render_template, request
+from ipinfo import getHandler
+from pymongo import MongoClient
+
+config = {"mongodb": {"uri": 'mongodb://95.217.186.200:27017/'}}
 app = Flask(__name__)
 
 # Set up MongoDB connection
-client = MongoClient('mongodb://95.217.186.200:27017/')
+client = MongoClient(config["mongodb"]["uri"])
 db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
-
 
 def sort_events_by_date(events):
     def get_event_date(event):
@@ -17,6 +19,7 @@ def sort_events_by_date(events):
         return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
 
     return sorted(events, key=get_event_date)
+
 
 @app.before_request
 def set_template_folder():
