@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, Response
 from pymongo import MongoClient
 from flask_sitemap import Sitemap
 import json
