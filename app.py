@@ -34,6 +34,12 @@ def set_template_folder():
     visits_collection.insert_one({"ip": request.headers.get(
         'X-Forwarded-For', request.remote_addr), "lang": "unknown", "time": datetime.now()})
 
+# Serve robots.txt
+@app.route('/robots.txt', methods=['GET'])
+def robots_txt():
+    content = "User-agent: *\nDisallow:"
+    response = Response(content, content_type='text/plain')
+    return response
 
 @app.route("/<lang>/")
 @app.route('/')
