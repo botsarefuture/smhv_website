@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from flask import Flask, redirect, render_template, request
-from ipinfo import getHandler
 from pymongo import MongoClient
 
 config = {"mongodb": {"uri": 'mongodb://95.217.186.200:27017/', 'username': "", 'password': ""}}

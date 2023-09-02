@@ -1,29 +1,32 @@
-{% extends 'base_en.html' %}
+{% extends 'base_fi.html' %}
 
 {% block content %}
     <section class="hero">
         <div class="hero-content">
             <h2>Against the Government, For Life!</h2>
-            <p>Our goal is to bring down the far-right government.</p>
-            <a href="https://t.me/+OpSHLCqznS5hMThk" class="cta-button">Join our Telegram group!</a>
+            <p>Our goal is to get the far-right government resign by 2024.</p>
+            <a href="{{ url_for('about') }}" class="cta-button">Read more our activities</a>         
+
 
             <br><br>
 
-            <a href="{{ url_for('about') }}" class="cta-button">Learn More</a>
+            <a href="{{ url_for('join') }}" class="cta-button">Join us!</a>
+
+
         </div>
     </section>
     <section class="about-us">
         <h2>About Us</h2>
         <div class="about-content">
-            <p>We are an activist group dedicated to bringing down the far-right government.</p>
-            <p>Our mission is to bring down the far-right government.</p>
-            <p>Join us in creating positive change for our community and society as a whole.</p>
+            <p>We are an activist group dedicated getting the far-right governmen to resign.</p>
+            <p>Our goal is to make the far-right government resign.</p>
+            <p>Join us in fighting against the government.</p>
         </div>
-        <a href="{{ url_for('about') }}" class="cta-button">Learn More</a>
+        <a href="{{ url_for('about') }}" class="cta-button">Read more</a>
     </section>
     <section class="join-us">
         <h2>Join Us Today</h2>
-        <p>Are you ready to take action and create a better future? Participate in our upcoming events or join our Telegram channel.</p>
-        <a href="{{ url_for('contact') }}" class="cta-button">Join</a>
+        <p>Are you ready to take action and create a better future? Join us!</p>
+        <a href="{{ url_for('join') }}" class="cta-button">Join us!</a>
     </section>
 {% endblock %}
