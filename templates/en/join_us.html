@@ -1,0 +1,81 @@
+{% extends 'base_en.html' %}
+
+{% block content %}
+    <section class="contact-form">
+        <h2>Join Us</h2>
+        <p>Do you want to participate in our activities? Join us using the form below.</p>
+        <form method="post" class="closed-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phonenumber">Your Phone Number</label>
+            <input type="tel" id="phonenumber" name="phonenumber" required>
+            
+            <label for="roles">My Area of Expertise / Occupation</label>
+            <div class="checkbox-group">
+                <input type="checkbox" name="roles" id="content-production" value="Sisällöntuotanto / tekstin tuottaminen" class="custom-checkbox">
+                <label for="content-production" class="checkbox-label">Content Production / Text Writing</label>
+
+                <input type="checkbox" name="roles" id="website-management" value="Nettisivujen tekeminen ja ylläpito" class="custom-checkbox">
+                <label for="website-management" class="checkbox-label">Website Development and Maintenance</label>
+
+                <input type="checkbox" name="roles" id="journalist-blogger-vlogger" value="Toimittaja / Bloggaaja / Vloggaaja" class="custom-checkbox">
+                <label for="journalist-blogger-vlogger" class="checkbox-label">Journalism / Blogging / Vlogging</label>
+
+                <input type="checkbox" name="roles" id="musician-singer-choir" value="Muusikko / Laulaja / Kuoro" class="custom-checkbox">
+                <label for="musician-singer-choir" class="checkbox-label">Musician / Singer / Choir</label>
+
+                <input type="checkbox" name="roles" id="sound-designer" value="Äänisuunnittelija" class="custom-checkbox">
+                <label for="sound-designer" class="checkbox-label">Sound Design</label>
+
+                <input type="checkbox" name="roles" id="director-screenwriter" value="Ohjaaja / Käsikirjoittaja" class="custom-checkbox">
+                <label for="director-screenwriter" class="checkbox-label">Director / Screenwriter</label>
+
+                <input type="checkbox" name="roles" id="actor-comedian-host" value="Näyttelijä / Koomikko / Juontaja" class="custom-checkbox">
+                <label for="actor-comedian-host" class="checkbox-label">Actor / Comedian / Host</label>
+
+                <input type="checkbox" name="roles" id="researcher-scientist" value="Tutkija / Tieteentekijä" class="custom-checkbox">
+                <label for="researcher-scientist" class="checkbox-label">Researcher / Scientist</label>
+
+                <input type="checkbox" name="roles" id="security-expert" value="Järjestyksenvalvoja / Poliisi / Turvallisuusalan osaaja" class="custom-checkbox">
+                <label for="security-expert" class="checkbox-label">Security Expert / Law Enforcement</label>
+
+                <input type="checkbox" name="roles" id="first-aid-healthcare" value="Ensiaputaidot / Sotealan ammattilainen" class="custom-checkbox">
+                <label for="first-aid-healthcare" class="checkbox-label">First Aid / Healthcare Professional</label>
+
+                <input type="checkbox" name="roles" id="photographer-videographer" value="Valokuvaaja / Videokuvaaja" class="custom-checkbox">
+                <label for="photographer-videographer" class="checkbox-label">Photographer / Videographer</label>
+
+                <input type="checkbox" name="roles" id="visual-artist-designer" value="Visuaalisen alan ammattilainen / Graafikko / Kuvataiteilija" class="custom-checkbox">
+                <label for="visual-artist-designer" class="checkbox-label">Visual Artist / Graphic Designer / Fine Artist</label>
+
+                <input type="checkbox" name="roles" id="financial-fundraising" value="Taloushallinto / Varainhankinta" class="custom-checkbox">
+                <label for="financial-fundraising" class="checkbox-label">Financial Management / Fundraising</label>
+
+                <input type="checkbox" name="roles" id="teacher-educator" value="Opettaja / Kasvatusalan ammattilainen" class="custom-checkbox">
+                <label for="teacher-educator" class="checkbox-label">Teacher / Education Professional</label>
+
+                <input type="checkbox" name="roles" id="social-media" value="Somettaja / Insta / Twitter / Snapchat / Tiktok" class="custom-checkbox">
+                <label for="social-media" class="checkbox-label">Social Media / Insta / Twitter / Snapchat / Tiktok</label>
+
+                <input type="checkbox" name="roles" id="social-media-moderator" value="Some moderointi" class="custom-checkbox">
+                <label for="social-media-moderator" class="checkbox-label">Social Media Moderation</label>
+
+                <input type="checkbox" name="roles" id="team-leader-manager" value="Tiiminvetäjä / Johtaja" class="custom-checkbox">
+                <label for="team-leader-manager" class="checkbox-label">Team Leader / Manager</label>
+
+                <input type="checkbox" name="roles" id="generalist" value="Yleishlö jantunen teen sen mitä pyydetään" class="custom-checkbox">
+                <label for="generalist" class="checkbox-label">Jack of All Trades, I do whatever is needed</label>
+            </div>
+
+            <label for="message">Additional Information</label>
+            <textarea id="message" name="message" rows="6"></textarea>
+
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+        <!--<p class="alternative-contact">You can contact us via email at <a href="mailto:sinimustaahallitustavastaan@gmail.com">sinimustaahallitustavastaan@gmail.com</a>.</p>-->
+    </section>
+{% endblock %}

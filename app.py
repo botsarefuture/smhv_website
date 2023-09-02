@@ -16,6 +16,7 @@ db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
 contactions_collection = db['contactions']
+joins_collection = db["joins"]
 
 def sort_events_by_date(events):
     def get_event_date(event):
@@ -70,6 +71,23 @@ def contact(lang="fi"):
         
         contactions_collection.insert_one({"name": name, "email": email, "message": message, "phonenumber": phonenumber})
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
+    
+@app.route("/<lang>/join", methods=["GET", "POST"])
+@app.route('/join', methods=["GET", "POST"])
+def join(lang="fi"):
+    if request.method == "GET":
+        return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
+    
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        phonenumber = request.form.get("phonenumber")
+        roles = request.form.getlist('roles')
+        
+        joins_collection.insert_one({"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
+        return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
+    
 
 @app.route('/change_language/<lang>')
 def change_language(lang):

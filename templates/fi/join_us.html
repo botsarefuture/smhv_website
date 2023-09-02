@@ -1,0 +1,81 @@
+{% extends 'base_fi.html' %}
+
+{% block content %}
+    <section class="contact-form">
+        <h2>Liity mukaan</h2>
+        <p>Haluatko sinä osallistua toimintaamme? Liity alla olevan lomakkeen avulla.</p>
+        <form method="post" class="closed-form">
+            <label for="name">Nimesi</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Sähköpostiosoitteesi</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phonenumber">Puhelinnumerosi</label>
+            <input type="tel" id="phonenumber" name="phonenumber" required>
+            
+            <label for="roles">Osaamisalueeni / työni </label>
+            <div class="checkbox-group">
+                <input type="checkbox" name="roles" id="sisallon-tuottaminen" value="Sisällöntuotanto / tekstin tuottaminen" class="custom-checkbox">
+                <label for="sisallon-tuottaminen" class="checkbox-label">Sisällöntuotanto / tekstin tuottaminen</label>
+
+                <input type="checkbox" name="roles" id="nettisivujen-yllapito" value="Nettisivujen tekeminen ja ylläpito" class="custom-checkbox">
+                <label for="nettisivujen-yllapito" class="checkbox-label">Nettisivujen tekeminen ja ylläpito</label>
+
+                <input type="checkbox" name="roles" id="toimittaja-bloggaaja-vloggaaja" value="Bloggaaminen  / Vloggaaminen" class="custom-checkbox">
+                <label for="toimittaja-bloggaaja-vloggaaja" class="checkbox-label">Bloggaaminen / Vloggaaminen</label>
+
+                <input type="checkbox" name="roles" id="muusikko-laulaja-kuoro" value="Musisointi / Laulaminen / Kuorolaulu" class="custom-checkbox">
+                <label for="muusikko-laulaja-kuoro" class="checkbox-label">Musisointi / Laulaminen / Kuorolaulu</label>
+
+                <input type="checkbox" name="roles" id="aansuunnittelija" value="Äänisuunnittelu" class="custom-checkbox">
+                <label for="aansuunnittelija" class="checkbox-label">Äänisuunnittelu</label>
+
+                <input type="checkbox" name="roles" id="ohjaaja-kasikirjoittaja" value="Ohjaaja / Käsikirjoittaja" class="custom-checkbox">
+                <label for="ohjaaja-kasikirjoittaja" class="checkbox-label">Ohjaaja / Käsikirjoittaja</label>
+
+                <input type="checkbox" name="roles" id="nayttelija-koomikko" value="Näyttelijä / Koomikko / Juontaja" class="custom-checkbox">
+                <label for="nayttelija-koomikko" class="checkbox-label">Näyttelijä / Koomikko / Juontaja</label>
+
+                <input type="checkbox" name="roles" id="tutkija-tieteentekija" value="Tutkija / Tieteentekijä" class="custom-checkbox">
+                <label for="tutkija-tieteentekija" class="checkbox-label">Tutkija / Tieteentekijä</label>
+
+                <input type="checkbox" name="roles" id="jarjestyksenvalvoja" value="Järjestyksenvalvoja / Turvallisuusalan osaaja" class="custom-checkbox">
+                <label for="jarjestyksenvalvoja" class="checkbox-label">Järjestyksenvalvoja / Turvallisuusalan osaaja</label>
+
+                <input type="checkbox" name="roles" id="ensiaputaidot-sote" value="Ensiaputaidot / Sotealan ammattilainen" class="custom-checkbox">
+                <label for="ensiaputaidot-sote" class="checkbox-label">Ensiaputaidot / Sotealan ammattilainen</label>
+
+                <input type="checkbox" name="roles" id="valokuvaaja-videokuvaaja" value="Valokuvaaja / Videokuvaaja" class="custom-checkbox">
+                <label for="valokuvaaja-videokuvaaja" class="checkbox-label">Valokuvaaja / Videokuvaaja</label>
+
+                <input type="checkbox" name="roles" id="visuaalisen-ala" value="Visuaalisen alan ammattilainen / Graafikko / Kuvataiteilija" class="custom-checkbox">
+                <label for="visuaalisen-ala" class="checkbox-label">Visuaalisen alan ammattilainen / Graafikko / Kuvataiteilija</label>
+
+                <input type="checkbox" name="roles" id="taloushallinto-varainhankinta" value="Taloushallinto / Varainhankinta" class="custom-checkbox">
+                <label for="taloushallinto-varainhankinta" class="checkbox-label">Taloushallinto / Varainhankinta</label>
+
+                <input type="checkbox" name="roles" id="opettaja-kasvatus" value="Opettaja / Kasvatusalan ammattilainen" class="custom-checkbox">
+                <label for="opettaja-kasvatus" class="checkbox-label">Opettaja / Kasvatusalan ammattilainen</label>
+
+                <input type="checkbox" name="roles" id="somettaja" value="Somettaja / Insta / Twitter / Snapchat / Tiktok" class="custom-checkbox">
+                <label for="somettaja" class="checkbox-label">Somettaja / Insta / Twitter / Snapchat / Tiktok</label>
+
+                <input type="checkbox" name="roles" id="some-moderointi" value="Some moderointi" class="custom-checkbox">
+                <label for="some-moderointi" class="checkbox-label">Some moderointi</label>
+
+                <input type="checkbox" name="roles" id="tiiminvetaja-johtaja" value="Tiiminvetäjä / Johtaja" class="custom-checkbox">
+                <label for="tiiminvetaja-johtaja" class="checkbox-label">Tiiminvetäjä / Johtaja</label>
+
+                <input type="checkbox" name="roles" id="yleishlo-jantunen" value="Yleishlö jantunen teen sen mitä pyydetään" class="custom-checkbox">
+                <label for="yleishlo-jantunen" class="checkbox-label">Yleishlö jantunen teen sen mitä pyydetään</label>
+            </div>
+
+            <label for="message">Lisätiedot</label>
+            <textarea id="message" name="message" rows="6"></textarea>
+
+            <button type="submit" class="cta-button">Lähetä</button>
+        </form>
+        <!--<p class="alternative-contact">Voit ottaa yhteyttä sähköpostitse osoitteeseen <a href="mailto:sinimustaahallitustavastaan@gmail.com">sinimustaahallitustavastaan@gmail.com</a>.</p>-->
+    </section>
+{% endblock %}
