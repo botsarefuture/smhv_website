@@ -1,0 +1,26 @@
+<!-- signup.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Event Signup</h2>
+<form method="POST" action="/signup/{{ event_id }}">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label for="roles">Select Roles:</label>
+    <select name="roles" multiple required>
+        <option value="Participant">Participant</option>
+        <option value="De-escalator">De-escalator</option>
+        <option value="Harassment Liaison">Harassment Liaison</option>
+        <option value="First Aid Personnel">First Aid Personnel</option>
+        <option value="Chant Leader">Chant Leader</option>
+        <option value="Banner Carrier">Banner Carrier</option>
+        <option value="Disruption Monitor">Disruption Monitor</option>
+    </select><br>
+
+    <button type="submit">Sign Up</button>
+</form>
+{% endblock %}

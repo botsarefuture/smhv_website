@@ -12,6 +12,9 @@
                 <p>Päivämäärä: {{ event.date }}</p>
                 <p>Paikka: {{ event.location_fi }}</p>
                 <p>{{ event.description_fi }}</p>
+
+                <!-- Add a link to the signup page for this event -->
+                <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu</a>
             </div>
         {% endfor %}
         <a href="{{ url_for('contact') }}" class="cta-button">Ota yhteyttä</a>

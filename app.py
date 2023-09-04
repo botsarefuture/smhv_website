@@ -2,6 +2,7 @@ from datetime import datetime
 
 from flask import Flask, redirect, render_template, request, Response
 from pymongo import MongoClient
+from bson import ObjectId  # Import ObjectId class
 from flask_sitemap import Sitemap
 import json
 
@@ -23,6 +24,7 @@ events_collection = db['events']
 visits_collection = db['visits']
 contactions_collection = db['contactions']
 joins_collection = db["joins"]
+signups_collection = db["signups"]
 
 def sort_events_by_date(events):
     def get_event_date(event):
@@ -111,6 +113,32 @@ def change_language(lang):
         path = request.referrer.replace("/en/", "/")
 
     return redirect(path)
+@app.route('/<lang>/signup/<event_id>')
+@app.route('/signup/<event_id>', methods=["GET", "POST"])
+def event_signup(event_id, lang="fi"):
+    event = events_collection.find_one({"_id": ObjectId(event_id)})
+    if not event:
+        # Handle event not found error
+        pass
+
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        roles = request.form.getlist("roles")
+
+        # Store signup information in MongoDB (event_signups collection).
+        signup_data = {
+            "event_id": event_id,
+            "name": name,
+            "email": email,
+            "roles": roles
+        }
+        # Insert signup_data into your MongoDB collection for signups.
+        signups_collection.insert_one(signup_data)
+        
+        return redirect('/<lang>/events')  # Redirect to events page after signup.
+
+    return render_template(f'{lang}/signup.html', event=event)
 
 
 if __name__ == '__main__':
