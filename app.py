@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, Response
+from flask import Flask, redirect, render_template, request, Response, flash
 from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId class
 from flask_sitemap import Sitemap
@@ -10,6 +10,7 @@ with open("config.json", "r") as f:
     config = json.load(f)
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
 
@@ -129,16 +130,20 @@ def event_signup(event_id, lang="fi"):
         # Store signup information in MongoDB (event_signups collection).
         signup_data = {
             "event_id": event_id,
+            "language": lang,
             "name": name,
             "email": email,
             "roles": roles
         }
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
-        
-        return redirect('/<lang>/events')  # Redirect to events page after signup.
+        if lang == "fi":
+            flash("Ilmoittautuminen onnistui!", "error")
+        else:
+            flash("Successfully registered!", "info")
+        return redirect(f'/{lang}/events')  # Redirect to events page after signup.
 
-    return render_template(f'{lang}/signup.html', event=event)
+    return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
 
 
 if __name__ == '__main__':
