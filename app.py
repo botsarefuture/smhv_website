@@ -27,12 +27,6 @@ contactions_collection = db['contactions']
 joins_collection = db["joins"]
 signups_collection = db["signups"]
 
-def sort_events_by_date(events):
-    def get_event_date(event):
-        date_str = event['date']
-        return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
-
-    return sorted(events, key=get_event_date)
 
 
 @app.before_request
@@ -56,13 +50,23 @@ def index(lang="fi"):
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
 
+def get_event_date(event):
+    date_str = event['date']
+    return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
+
+def sort_events_by_date(events):
+    return sorted(events, key=get_event_date)
+
 @app.route("/<lang>/events")
 @app.route('/events')
 def events(lang="fi"):
     # Fetch events from MongoDB
     events_data = events_collection.find()
-    sorted_events = sort_events_by_date(events_data)
-
+    
+    # Filter out events with past dates
+    current_datetime = datetime.now()
+    future_events = [event for event in events_data if get_event_date(event) >= current_datetime]
+    sorted_events = sort_events_by_date(future_events)
     return render_template(f'{lang}/events.html', title='Events', events=sorted_events, current_year=2023)
 
 
@@ -114,9 +118,10 @@ def change_language(lang):
         path = request.referrer.replace("/en/", "/")
 
     return redirect(path)
-@app.route('/<lang>/signup/<event_id>')
+
+@app.route('/<lang>/signup/<event_id>', methods=["GET", "POST"])
 @app.route('/signup/<event_id>', methods=["GET", "POST"])
-def event_signup(event_id, lang="fi"):
+def event_signup(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Handle event not found error

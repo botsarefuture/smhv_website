@@ -12,8 +12,13 @@
                 <p>Date: {{ event.date }}</p>
                 <p>Location: {{ event.location_en }}</p>
                 <p>{{ event.description_en }}</p>
+
+                <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role</a>
             </div>
+            {% if empty %}
+            <a href="{{ url_for('join_us', lang='en') }}" class="cta-button">Come to organize events!</a>
+            {% endif %}
         {% endfor %}
-        <a href="{{ url_for('contact') }}" class="cta-button">Get Involved</a>
+        
     </section>
 {% endblock %}
