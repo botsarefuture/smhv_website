@@ -16,9 +16,6 @@ sitemap = Sitemap(app=app)
 
 
 # Set up MongoDB connection
-if config["mongodb"]["username"] is not None:
-    config["mongodb"]["uri"] = f'mongodb://{config["mongodb"]["username"]}:{config["mongodb"]["password"]}@{config["mongodb"]["uri"].replace("mongodb://", "")}'
-    
 client = MongoClient(config["mongodb"]["uri"])
 db = client['website']
 events_collection = db['events']
