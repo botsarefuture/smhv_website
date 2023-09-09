@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="contact-form">
-        <h2>Signup for support role</h2>
+        <h2>Signup to {{event.title_en}}</h2>
 
         <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
             <label for="name">Full name:</label>
@@ -17,10 +17,7 @@
                 <input type="checkbox" name="roles" id="{{role.name}}" value="{{role.show_name}}" class="custom-checkbox">
                 <label for="{{role.name}}" class="checkbox-label">{{role.en_name}}</label>
                 {% endfor %}
-            </div>
-
-            <label for="message">Information</label>
-            <textarea id="message" name="message" rows="6"></textarea>
+            </div>    
 
             <button type="submit" class="cta-button">Submit</button>
         </form>

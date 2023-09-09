@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="contact-form">
-        <h2>Ilmoittaudu tukirooliin</h2>
+        <h2>Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
 
         <form method="POST" action="/signup/{{ event_id }}" class="closed-form">
             <label for="name">Nimi:</label>
@@ -18,9 +18,6 @@
                 <label for="{{role.name}}" class="checkbox-label">{{role.fi_name}}</label>
                 {% endfor %}
             </div>
-
-        <!--<label for="message">Lisätiedot</label>
-            <textarea id="message" name="message" rows="6"></textarea>-->
 
             <button type="submit" class="cta-button">Ilmoittaudu</button>
         </form>
