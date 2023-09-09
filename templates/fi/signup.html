@@ -13,33 +13,14 @@
 
             <label for="roles">Roolit:</label>
             <div class="checkbox-group">
-                <!--<input type="checkbox" name="roles" id="participant" value="Osallistuja" class="custom-checkbox">
-                <label for="participant" class="checkbox-label">Osallistuja</label>
-                <br><br>-->
-                <input type="checkbox" name="roles" id="de-escalator" value="De-eskaloija" class="custom-checkbox">
-                <label for="de-escalator" class="checkbox-label">De-eskaloija</label>
-
-                <input type="checkbox" name="roles" id="harassment-liaison" value="Häirintäyhdyshenkilö" class="custom-checkbox">
-                <label for="harassment-liaison" class="checkbox-label">Häirintäyhdyshenkilö</label>
-
-                <input type="checkbox" name="roles" id="first-aid-personnel" value="EA Henkilö" class="custom-checkbox">
-                <label for="first-aid-personnel" class="checkbox-label">EA Henkilö</label>
-
-                <input type="checkbox" name="roles" id="chant-leader" value="Huudattaja" class="custom-checkbox">
-                <label for="chant-leader" class="checkbox-label">Huudattaja</label>
-
-                <input type="checkbox" name="roles" id="banner-carrier" value="Banderollin kantaja" class="custom-checkbox">
-                <label for="banner-carrier" class="checkbox-label">Banderollin kantaja</label>
-
-                <input type="checkbox" name="roles" id="disruption-monitor" value="Kuvaushäiritsijä" class="custom-checkbox">
-                <label for="disruption-monitor" class="checkbox-label">Kuvaushäiritsijä</label>
-
-                <input type="checkbox" name="roles" id="jack-of-all-trades" value="Ei mikään ylläolevista (Kerro lisää taidoistasi lisätiedot kentäässä)" class="custom-checkbox">
-                <label for="jack-of-all-trades" class="checkbox-label">Ei mikään ylläolevista (Kerro lisää taidoistasi lisätiedot kentäässä)</label>
+                {% for role in event.roles %}
+                <input type="checkbox" name="roles" id="{{role.name}}" value="{{role.show_name}}" class="custom-checkbox">
+                <label for="{{role.name}}" class="checkbox-label">{{role.fi_name}}</label>
+                {% endfor %}
             </div>
 
-            <label for="message">Lisätiedot</label>
-            <textarea id="message" name="message" rows="6"></textarea>
+        <!--<label for="message">Lisätiedot</label>
+            <textarea id="message" name="message" rows="6"></textarea>-->
 
             <button type="submit" class="cta-button">Ilmoittaudu</button>
         </form>
