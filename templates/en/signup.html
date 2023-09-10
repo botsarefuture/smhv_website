@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="contact-form">
-        <h2>Signup for support role</h2>
+        <h2>Signup to {{event.title_en}}</h2>
 
         <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
             <label for="name">Full name:</label>
@@ -13,33 +13,11 @@
 
             <label for="roles">Roles:</label>
             <div class="checkbox-group">
-                <!--<input type="checkbox" name="roles" id="participant" value="Osallistuja" class="custom-checkbox">
-                <label for="participant" class="checkbox-label">Osallistuja</label>
-                <br><br>-->
-                <input type="checkbox" name="roles" id="de-escalator" value="De-eskaloija" class="custom-checkbox">
-                <label for="de-escalator" class="checkbox-label">De-escalator</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="harassment-liaison" value="Häirintäyhdyshenkilö" class="custom-checkbox">
-                <label for="harassment-liaison" class="checkbox-label">Harassment liason</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="first-aid-personnel" value="EA Henkilö" class="custom-checkbox">
-                <label for="first-aid-personnel" class="checkbox-label">First-aid personnel</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="chant-leader" value="Huudattaja" class="custom-checkbox">
-                <label for="chant-leader" class="checkbox-label">Shouter</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="banner-carrier" value="Banderollin kantaja" class="custom-checkbox">
-                <label for="banner-carrier" class="checkbox-label">Banner carrier</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="disruption-monitor" value="Kuvaushäiritsijä" class="custom-checkbox">
-                <label for="disruption-monitor" class="checkbox-label">Shooter harassment</label>
-                <br><br>
-                <input type="checkbox" name="roles" id="jack-of-all-trades" value="Ei mikään ylläolevista (Kerro lisää taidoistasi lisätiedot kentäässä)" class="custom-checkbox">
-                <label for="jack-of-all-trades" class="checkbox-label">Nothing of mentioned above (tell us more about your skills in the textarea below)</label>
-            </div>
-
-            <label for="message">Information</label>
-            <textarea id="message" name="message" rows="6"></textarea>
+                {% for role in event.roles %}
+                <input type="checkbox" name="roles" id="{{role.name}}" value="{{role.show_name}}" class="custom-checkbox">
+                <label for="{{role.name}}" class="checkbox-label">{{role.en_name}}</label>
+                {% endfor %}
+            </div>    
 
             <button type="submit" class="cta-button">Submit</button>
         </form>
