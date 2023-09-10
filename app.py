@@ -140,7 +140,7 @@ def event_signup(lang="fi", event_id=None):
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
         if lang == "fi":
-            flash("Ilmoittautuminen onnistui!", "error")
+            flash("Ilmoittautuminen onnistui!", "info")
         else:
             flash("Successfully registered!", "info")
         return redirect(f'/{lang}/events')  # Redirect to events page after signup.
