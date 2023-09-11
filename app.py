@@ -5,6 +5,17 @@ from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId class
 from flask_sitemap import Sitemap
 import json
+import smhv_mailer
+
+# Define your SMTP and event details
+smtp_config = {
+    "server": "your_smtp_server",
+    "port": 587,
+    "email": "your_email@example.com",
+    "password": "your_password"
+}
+
+
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -139,9 +150,31 @@ def event_signup(lang="fi", event_id=None):
         }
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
+
+        recipient_name = name
+        recipient_email = email
+
+        if lang == "fi":
+            event_info = {
+                "event_name": event.title_fi,
+                "event_date": event.date,
+                "event_location": event.location_fi,
+            }
+
+        if lang == "en":
+            event_info = {
+                "event_name": event.title_en,
+                "event_date": event.date,
+                "event_location": event.location_en,
+            }
+
+        # Call the send_custom_email function
+        smhv_mailer.send_custom_email(smtp_config, recipient_name, recipient_email, event_info, lang)
+
         if lang == "fi":
             flash("Ilmoittautuminen onnistui!", "info")
-        else:
+        
+        if lang == "en":
             flash("Successfully registered!", "info")
         return redirect(f'/{lang}/events')  # Redirect to events page after signup.
 
