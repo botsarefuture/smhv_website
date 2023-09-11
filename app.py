@@ -181,5 +181,6 @@ def event_signup(lang="fi", event_id=None):
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
 
 
+
 if __name__ == '__main__':
     app.run()

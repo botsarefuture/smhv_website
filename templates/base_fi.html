@@ -4,36 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinimustaa hallitusta vastaan | {{ title }}</title>
-    <meta charset="UTF-8">
     <meta name="description" content="Liity aktiivisesti taisteluun sinimustaa hallitusta vastaan. Osallistu aktivismiin ja vaikuta yhteiskunnallisiin asioihin.">
     <meta name="keywords" content="aktivismi, vastarinta, sinimustaa hallitus, liittyminen aktivismiin">
-    <!-- Lisää muita relevanteja meta-tageja tarvittaessa -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5254175970151613"
      crossorigin="anonymous"></script>
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C4L1ME98KL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Add CSS for the language menu animation -->
+    <style>
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-  gtag('config', 'G-C4L1ME98KL');
-</script>
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav li a:hover {
+            color: #007BFF;
+        }
+
+        /* Add animation for language menu */
+        .language-menu {
+            position: relative;
+        }
+
+        .language-menu ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .language-menu:hover ul {
+            display: block;
+        }
+
+        .language-menu ul li {
+            margin: 0;
+        }
+
+        .language-menu ul li a {
+            color: #333;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-menu ul li a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
                 <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
-                <li><a href="{{ url_for('about') }}">Meistä</a></li>
                 <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
+                <li><a href="{{ url_for('about') }}">Meistä</a></li>
                 <li><a href="{{ url_for('join') }}">Liity</a></li>
-                <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
-                <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
+                <!-- Add the language menu with animation -->
+                <li class="language-menu">
+                    <a href="#">FI</a>
+                    <ul>
+                        <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
+                        <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
