@@ -74,15 +74,10 @@
                 <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
                 <li><a href="{{ url_for('contact', lang='en') }}">Contact</a></li>
                 <li><a href="{{ url_for('about', lang='en') }}">About Us</a></li>
+                <li><a href="https://mesenaatti.me/3185/rahoita-taistelua-sinimustaa-hallitusta-vastaan/">Fund us</a></li>
                 <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
-                <!-- Add the language menu with animation -->
-                <li class="language-menu">
-                    <a href="#">EN</a>
-                    <ul>
-                        <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
-                        <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
+                <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
             </ul>
         </nav>
     </header>
