@@ -14,6 +14,8 @@
                 <p>{{ event.description_en }}</p>
 
                 <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role</a>
+                <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">Show details</a>
+
             </div>
             {% if empty %}
             <a href="{{ url_for('join_us', lang='en') }}" class="cta-button">Come to organize events!</a>
