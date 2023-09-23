@@ -2,8 +2,8 @@
 
 {% block content %}
     <section class="event-calendar">
-        <h2>Join Us for Exciting Events</h2>
-        <p>Explore our upcoming events where we come together to learn, connect, and make a positive impact.</p>
+        <h2>Come to Our Events</h2>
+        <p>Explore our upcoming events where we gather to learn, network, and create positive impact.</p>
         <br>
         <br>
         {% for event in events %}
@@ -13,15 +13,14 @@
                 <p>Location: {{ event.location_en }}</p>
                 <p>{{ event.description_en }}</p>
 
-                <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role</a>
-                <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">Show details</a>
+                <!-- Add a link to the signup page for this event -->
+                <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Sign Up for Support Role</a>
+                <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">View Details</a>
 
             </div>
-            {% if empty %}
-            <a href="{{ url_for('join_us', lang='en') }}" class="cta-button">Come to organize events!</a>
+            {% if  empty %}
+            <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join Us in Organizing!</a>
             {% endif %}
-
-            
         {% endfor %}
         
     </section>

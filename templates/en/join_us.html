@@ -1,51 +1,52 @@
 {% extends 'base_en.html' %}
 
 {% block content %}
+
     <section class="contact-form">
-        <h2>Join us</h2>
-        <p>Do you want to join us? Fill the form below and wait for us to contact you.</p>
+        <h2>Join Us</h2>
+        <p>Would you like to participate in our activities? Join using the form below.</p>
         <form method="post" class="closed-form">
-            <label for="name">Your name</label>
+            <label for="name">Your Name</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Your email</label>
+            <label for="email">Your Email Address</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="phonenumber">Your phonenumber</label>
+            <label for="phonenumber">Your Phone Number</label>
             <input type="tel" id="phonenumber" name="phonenumber" >
-            
-            <label for="roles">Your interests or interests (what you want to work on) / work</label>
+
+            <label for="roles">My Skills / Occupation</label>
             <div class="checkbox-group">
-                <input type="checkbox" name="roles" id="content-production" value="Tekstisisällön tuottaminen" class="custom-checkbox">
-                <label for="content-production" class="checkbox-label">Producing text</label>
+                <input type="checkbox" name="roles" id="content-production" value="Content Production" class="custom-checkbox">
+                <label for="content-production" class="checkbox-label">Content Production</label>
 
-                <input type="checkbox" name="roles" id="photo-management" value="Kuva- ja videotaidot" class="custom-checkbox">
-                <label for="photo-management" class="checkbox-label">Photo and video skills</label>
+                <input type="checkbox" name="roles" id="photo-management" value="Photo and Video Skills" class="custom-checkbox">
+                <label for="photo-management" class="checkbox-label">Photo and Video Skills</label>
 
-                <input type="checkbox" name="roles" id="fundraising" value="Varain- ja välineistönhankinta" class="custom-checkbox">
-                <label for="fundraising" class="checkbox-label">Fundraising</label>
+                <input type="checkbox" name="roles" id="fundraising" value="Fundraising and Equipment Procurement" class="custom-checkbox">
+                <label for="fundraising" class="checkbox-label">Fundraising and Equipment Procurement</label>
 
-                <input type="checkbox" name="roles" id="social-media" value="Someosaaminen (Julkaisu ja moderointi)" class="custom-checkbox">
-                <label for="social-media" class="checkbox-label">Social media (posting och moderation)</label>
+                <input type="checkbox" name="roles" id="social-media" value="Social Media Skills (Publishing and Moderation)" class="custom-checkbox">
+                <label for="social-media" class="checkbox-label">Social Media Skills (Publishing and Moderation)</label>
 
-                <input type="checkbox" name="roles" id="software-design" value="Ohjelmistosuunnittelu" class="custom-checkbox">
-                <label for="software-design" class="checkbox-label">Software designing or programming</label>
+                <input type="checkbox" name="roles" id="software-design" value="Software Design" class="custom-checkbox">
+                <label for="software-design" class="checkbox-label">Software Design</label>
 
-                <input type="checkbox" name="roles" id="talent-recruitment" value="Artistien ja puhujien rekrytointi" class="custom-checkbox">
-                <label for="talent-recruitment" class="checkbox-label">Talent recruitment</label>
+                <input type="checkbox" name="roles" id="talent-recruitment" value="Recruitment of Artists and Speakers" class="custom-checkbox">
+                <label for="talent-recruitment" class="checkbox-label">Recruitment of Artists and Speakers</label>
 
-                <input type="checkbox" name="roles" id="safety-first-aid" value="Turvallisuus ja ensiapu" class="custom-checkbox">
-                <label for="safety-first-aid" class="checkbox-label">Safety and first aid</label>
+                <input type="checkbox" name="roles" id="safety-first-aid" value="Safety and First Aid" class="custom-checkbox">
+                <label for="safety-first-aid" class="checkbox-label">Safety and First Aid</label>
 
-                <input type="checkbox" name="roles" id="jack-of-all-trades" value="Ei mikään ylläolevista (jokapaikan höylä)" class="custom-checkbox">
-                <label for="jack-of-all-trades" class="checkbox-label">Nothing thats listed here. (Add your skills on message box)</label>
+                <input type="checkbox" name="roles" id="jack-of-all-trades" value="None of the above (Jack of All Trades - Please provide more details in the additional information field)" class="custom-checkbox">
+                <label for="jack-of-all-trades" class="checkbox-label">None of the above (Please provide more details in the additional information field)</label>
             </div>
 
-            <label for="message">Message</label>
+            <label for="message">Additional Information</label>
             <textarea id="message" name="message" rows="6"></textarea>
 
             <button type="submit" class="cta-button">Submit</button>
         </form>
-        <!--<p class="alternative-contact">Voit ottaa yhteyttä sähköpostitse osoitteeseen <a href="mailto:sinimustaahallitustavastaan@gmail.com">sinimustaahallitustavastaan@gmail.com</a>.</p>-->
+        <!--<p class="alternative-contact">You can contact us via email at <a href="mailto:blueredgovernmentopposition@gmail.com">blueredgovernmentopposition@gmail.com</a>.</p>-->
     </section>
 {% endblock %}

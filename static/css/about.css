@@ -51,3 +51,136 @@
 .about-us .cta-button:hover {
     background-color: #1CB800;
 }
+
+/* Section title styles */
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3D1356; /* Purple color for section titles */
+}
+
+/* Container styles for content */
+.about-content {
+    background-color: #F9F9F9; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Subsection title styles */
+.subsection-title {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #3D1356; /* Purple color for subsection titles */
+}
+
+/* List styles */
+.values-list,
+.principles-list,
+.demands-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Button style for "Ota Yhteyttä" (Contact Us) */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D1356; /* Purple color for the button */
+    color: #FFFFFF; /* White text color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #63146D; /* Darker purple color on hover */
+}
+
+/* Contact info styles */
+.contact-info {
+    background-color: #F9F9F9; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Section title styles */
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3D1356; /* Purple color for section titles */
+}
+
+/* Container styles for content */
+.about-content {
+    background-color: #F9F9F9; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+/* Subsection title styles */
+.subsection-title {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #3D1356; /* Purple color for subsection titles */
+}
+
+/* List styles for Arvot, Periaatteet, and Vaatimukset */
+.values-list,
+.principles-list,
+.demands-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Font styles for Arvot (Values) section */
+.values-list {
+    font-size: 20px;
+    color: #16bb00; /* Green color for values */
+}
+
+/* Font styles for Periaatteet (Principles) section */
+.principles-list {
+    font-size: 20px;
+    color: #ff0d72; /* Pink color for principles */
+}
+
+/* Font styles for Vaatimukset (Demands) section */
+.demands-list {
+    font-size: 20px;
+    color: #710e8d; /* Violet color for demands */
+}
+
+/* Button style for "Ota Yhteyttä" (Contact Us) */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D1356; /* Purple color for the button */
+    color: #FFFFFF; /* White text color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #63146D; /* Darker purple color on hover */
+}
+
+
+/*
+
+/* Section title styles */
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3D1356; /* Purple color for section titles */
+}

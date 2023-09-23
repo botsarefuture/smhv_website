@@ -2,12 +2,32 @@
 
 {% block content %}
     <section class="about-us">
-        <h2>Tietoa Meistä</h2>
+        <h2 class="section-title">Tietoa Meistä</h2>
         <div class="about-content">
-            <p>Olemme aktivistiryhmä joka on omistautunut sinimustan hallituksen kaatamiseen.</p>
+            <p>Olemme aktivistiryhmä, joka on omistautunut sinimustan hallituksen kaatamiseen.</p>
             <p>Tehtävämme on saada äärioikeistohallitus kaatumaan.</p>
             <p>Liity joukkoomme luomaan positiivista muutosta yhteisöllemme ja yhteiskunnalle kokonaisuutena.</p>
         </div>
+        <div class="principles-container">
+            <h3 class="subsection-title">Periaatteemme</h3>
+            <ul class="principles-list">
+                <li>Väkivallattomuus</li>
+                <li>Avoin ja rehellinen viestintä</li>
+                <li>Rauhanomainen aktivismi</li>
+                <li>Yhteisöllisyys ja tasa-arvo</li>
+            </ul>
+        </div>
+        <div class="demands-container">
+            <h3 class="subsection-title">Vaatimuksemme</h3>
+            <ul class="demands-list">
+                <li>Sinimustan hallituksen ero</li>
+                <li>Ihmisoikeuksien kunnioittaminen</li>
+            </ul>
+        </div>
         <a href="{{ url_for('contact') }}" class="cta-button">Ota Yhteyttä</a>
+        <div class="contact-info">
+            <h3 class="subsection-title">Yhteystiedot</h3>
+            <p>Sähköposti: <a href="sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">sinimustaahallitustavastaan@sinimustaahallitustavastaan.org</a></p>
+        </div>
     </section>
 {% endblock %}

@@ -1,14 +1,16 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_en.html' %}
 
 {% block content %}
+
     <section class="event-details">
         <h2>{{ event.title_en }}</h2>
-        <p>Date: {{ event.date }}</p>
-        <p>Location: {{ event.location_en }}</p>
+        <p>Päivämäärä: {{ event.date }}</p>
+        <p>Paikka: {{ event.location_en }}</p>
         <p>{{ event.description_en }}</p>
-    
+
         <!-- Add any other event details you want to display -->
         
-        <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role</a>
+        <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role!</a>
+        <a href="{{ event.facebook_link }}" class="cta-button">Facebook event</a>
     </section>
 {% endblock %}

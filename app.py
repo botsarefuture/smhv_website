@@ -38,7 +38,6 @@ def robots_txt():
     response = Response(content, content_type='text/plain')
     return response
 
-
 @app.route("/<lang>/")
 @app.route('/')
 def index(lang="fi"):
@@ -95,7 +94,7 @@ def event_signup(lang="fi", event_id=None):
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
-        roles = request.form.getlist("roles")
+        roles = request.form.getlist("roles[]")  # Get selected roles
 
         # Store signup information in MongoDB (event_signups collection).
         signup_data = {
@@ -162,21 +161,23 @@ def join(lang="fi"):
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
-def lang_thing(lang, path):
+def lang_thing(lang, path, request):
     if lang == "fi":
-        path = path.replace("en", "fi")
+        path = path.replace("en/", "")
 
     if lang == "en":
-        path = path.split("/")
-
+        path = path.split("/")        
+        
         cont = False
-
+        
+        print(request.host_url)
+        
         def pop_unne(path, cont):
             for i in range(0, len(path)):
                 if cont:
                     continue
 
-                if ".org" in path[i]: # Our domain is sinimustaahallitustavastaan.ORG
+                if request.host in path[i]: # Our domain is sinimustaahallitustavastaan.ORG
                     cont = True
 
                 path.pop(i)
@@ -193,12 +194,14 @@ def lang_thing(lang, path):
             return text
 
         path = ("/en/" + list_to_str(path)).replace("//", "/")
+        
+        path = path.replace("/en/en/", "/en/")
 
     return path
 
 @app.route('/change_language/<lang>')
 def change_language(lang):
-    path = lang_thing(lang, request.referrer)
+    path = lang_thing(lang, request.referrer, request)
 
     return redirect(path)
 
