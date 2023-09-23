@@ -20,13 +20,13 @@
                         <div class="role-name">{{role.fi_name}}</div>
                         <div class="role-description fade">{{role.fi_description}}</div>
                         {% if role.fi_description %}
-                        <button class="view-more-button">
+                        <button type="button" class="view-more-button">
                             Näytä lisää ▼
                         </button>
                         {% endif %}
                     </label>
                     {% if role.need_training and role.training_url %}
-                    <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a> <!-- TODO: add the real link!-->
+                    <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a> 
                     {% endif %}
                 </div>
 
