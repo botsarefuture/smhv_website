@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="contact-form">
-        <h2>Ilmoittaudu tapahtumaan "{{event.title_en}}"</h2>
+        <h2>Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
 
         <form method="POST" action="/signup/{{ event_id }}" class="closed-form">
             <label for="name">Nimesi:</label>
@@ -25,11 +25,11 @@
                         </button>
                         {% endif %}
                     </label>
-                    {% if role.need_training %}
+                    {% if role.need_training and role.training_url %}
                     <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a> <!-- TODO: add the real link!-->
                     {% endif %}
                 </div>
-                
+
                 {% endfor %}
             <button type="submit" class="cta-button">Ilmoittaudu</button>
         </form>

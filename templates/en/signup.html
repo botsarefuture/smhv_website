@@ -25,7 +25,7 @@
                         </button>
                         {% endif %}
                     </label>
-                    {% if role.need_training %}
+                    {% if role.need_training and role.training_url %}
                     <a href="{{role.training_url}}" class="cta-button">Sign up for support role training</a> <!-- TODO: add the real link!-->
                     {% endif %}
                 </div>
