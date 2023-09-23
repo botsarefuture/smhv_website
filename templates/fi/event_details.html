@@ -1,6 +1,7 @@
 {% extends 'base_fi.html' %}
 
 {% block content %}
+
     <section class="event-details">
         <h2>{{ event.title_fi }}</h2>
         <p>Päivämäärä: {{ event.date }}</p>
@@ -10,5 +11,6 @@
         <!-- Add any other event details you want to display -->
         
         <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
+        <a href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</a>
     </section>
 {% endblock %}
