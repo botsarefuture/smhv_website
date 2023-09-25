@@ -62,7 +62,7 @@ def sort_events_by_date(events):
 @app.route('/events')
 def events(lang="fi"):
     # Fetch events from MongoDB
-    events_data = events_collection.find()
+    events_data = events_collection.find({"hidden": False}) # If hidden, don't show it!
 
     # Filter out events with past dates
     current_datetime = datetime.now()
@@ -78,7 +78,8 @@ def event_details(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Handle event not found error
-        pass
+        return render_template(f"{lang}/event_not_found.html", current_year=2023)
+
 
     return render_template(f'{lang}/event_details.html', event=event, current_year=2023)
 
@@ -89,7 +90,7 @@ def event_signup(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Handle event not found error
-        pass
+        return render_template(f"{lang}/event_not_found.html", current_year=2023)
 
     if request.method == "POST":
         name = request.form.get("name")
