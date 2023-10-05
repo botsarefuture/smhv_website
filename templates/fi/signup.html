@@ -1,6 +1,14 @@
-{% extends 'base_fi.html' %}
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilmoittaudu tapahtumaan</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
 
-{% block content %}
+
+</head>
+<body>
     <section class="contact-form">
         <h2>Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
 
@@ -15,7 +23,8 @@
             <div class="role-list">
                 {% for role in event.roles %}
                 <div class="role-box">
-                    <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
+                    <!-- Toista tämä lohko jokaiselle roolille -->
+                    <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}">
                     <label for="{{role.name}}">
                         <div class="role-name">{{role.fi_name}}</div>
                         <div class="role-description fade">{{role.fi_description}}</div>
@@ -26,53 +35,46 @@
                         {% endif %}
                     </label>
                     {% if role.need_training and role.training_url %}
-                    <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a> 
+                    <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a>
                     {% endif %}
                 </div>
-
+                <!-- Toista lohko päättyy tähän -->
                 {% endfor %}
+            </div>
             <button type="submit" class="cta-button">Ilmoittaudu</button>
         </form>
     </section>
     <script>
-        // Add a click event listener to each role box
-document.querySelectorAll('.role-box').forEach(function (box) {
-    // When a role box is clicked, toggle the checkbox and apply styles
-    box.addEventListener('click', function () {
-        const checkbox = box.querySelector('.custom-checkbox');
-        checkbox.checked = !checkbox.checked;
-        box.classList.toggle('selected', checkbox.checked);
-    });
-});
+        // JavaScript-koodi roolilaatikoiden klikkausten ja "näytä lisää" -painikkeiden käsittelyyn
+        // ...
 
-document.addEventListener('DOMContentLoaded', function () {
-    var buttons = document.querySelectorAll('.view-more-button');
-
-    buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            var roleBox = this.closest('.role-box');
-            var description = roleBox.querySelector('.role-description');
-            var arrow = roleBox.querySelector('.arrow-down');
-
-            if (roleBox.classList.contains('expanded')) {
-                description.style.maxHeight = '40px'; // Adjust the height as needed
-                roleBox.classList.remove('expanded');
-                //arrow.style.transform = 'rotate(0deg)';
-                button.textContent = 'Näytä lisää ▼';
-            } else {
-                description.style.maxHeight = 'none';
-                roleBox.classList.add('expanded');
-                //arrow.style.transform = 'rotate(180deg)';
-                button.textContent = 'Piilota ▲';
-            }
+        // Esimerkkikoodi roolilaatikoiden klikkauksen käsittelyyn
+        document.querySelectorAll('.role-box').forEach(function (box) {
+            box.addEventListener('click', function () {
+                const checkbox = box.querySelector('.custom-checkbox');
+                checkbox.checked = !checkbox.checked;
+                box.classList.toggle('selected', checkbox.checked);
+            });
         });
-    });
-});
 
+        // Esimerkkikoodi "näytä lisää" -painikkeiden käsittelyyn
+        document.querySelectorAll('.view-more-button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var roleBox = this.closest('.role-box');
+                var description = roleBox.querySelector('.role-description');
+                var arrow = roleBox.querySelector('.arrow-down');
 
-
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-{% endblock %}
+                if (roleBox.classList.contains('expanded')) {
+                    description.style.maxHeight = '40px'; // Säädä korkeus tarpeen mukaan
+                    roleBox.classList.remove('expanded');
+                    button.textContent = 'Näytä lisää ▼';
+                } else {
+                    description.style.maxHeight = 'none';
+                    roleBox.classList.add('expanded');
+                    button.textContent = 'Piilota ▲';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
