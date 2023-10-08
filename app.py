@@ -91,11 +91,13 @@ def event_signup(lang="fi", event_id=None):
         # Handle event not found error
         pass
 
+    from mail import email as send_mail
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
         roles = request.form.getlist("roles[]")  # Get selected roles
 
+        roles1 = roles
         # Store signup information in MongoDB (event_signups collection).
         signup_data = {
             "event_id": event_id,
@@ -104,6 +106,19 @@ def event_signup(lang="fi", event_id=None):
             "email": email,
             "roles": roles
         }
+        
+        roles = event.get('roles')
+        
+        introductions = list()
+        
+        for role in roles:
+            if role.get("show_name") in roles1:
+                if not role.get('introductions') in introductions:
+                    introductions += role.get('introductions')
+                
+
+        event["introductions"] = introductions
+        send_mail(event, {"name": name, "email": email, "roles": roles1}, lang)
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
 
