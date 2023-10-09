@@ -8,8 +8,6 @@
         <p>Paikka: {{ event.location_en }}</p>
         <p>{{ event.description_en }}</p>
 
-        <!-- Add any other event details you want to display -->
-        
         <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Signup for support role!</a>
         <a href="{{ event.facebook_link }}" class="cta-button">Facebook event</a>
     </section>

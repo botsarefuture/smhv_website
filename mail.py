@@ -22,6 +22,7 @@ def email(event, recipient, language):
         
         You have signed up for event called "{event.get('name_en')}" on our website sinimustaahallitustavastaan.org. Below are the details of your registration and event.
         """
+        
     introductions = event.get("introductions")
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'

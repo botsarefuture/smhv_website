@@ -7,8 +7,6 @@
         <p>Päivämäärä: {{ event.date }}</p>
         <p>Paikka: {{ event.location_fi }}</p>
         <p>{{ event.description_fi }}</p>
-
-        <!-- Add any other event details you want to display -->
         
         <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
         <a href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</a>
