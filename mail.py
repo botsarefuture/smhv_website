@@ -75,7 +75,7 @@ def email(event, recipient, language):
     msg['From'] = config.get('email').get('address')
     msg['To'] = recipient.get("email")
     msg['Subject'] = subject
-    msg.attach(MIMEText(content, 'html', 'utf-8'))  # Käytetään HTML-muotoilua
+    msg.attach(MIMEText(content, 'html', 'utf-8'))  # We use HTML-formatting
     
     try:
         mail = smtplib.SMTP(config.get('email').get('server'), config.get('email').get('port'))
