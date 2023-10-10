@@ -1,8 +1,28 @@
 from flask import Blueprint, jsonify, request
 from bson import ObjectId
+from pymongo import MongoClient
+import json
 
 # Create an API blueprint
 api_bp = Blueprint('api', __name__)
+
+
+
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+
+
+# Set up MongoDB connection
+client = MongoClient(config["mongodb"]["uri"])
+db = client['website']
+events_collection = db['events']
+visits_collection = db['visits']
+contactions_collection = db['contactions']
+joins_collection = db["joins"]
+signups_collection = db["signups"]
+
+
 
 # Admin API for creating a signup
 @api_bp.route('/signups', methods=['POST'])
@@ -45,15 +65,79 @@ def admin_api_delete_signup(signup_id):
 # Admin API for getting all signups
 @api_bp.route('/signups', methods=['GET'])
 def admin_api_get_signups():
-    signups_data = signups_collection.find()
+    data = request.get_json()
+    thing = {}
+
+    email = data.get("email")
+    if email:
+        thing["email"] = email
+    
+    name = data.get("name")
+    if name:
+        thing["name"] = name
+        
+    role = data.get("role")
+    if role:
+        if type(role) == str:
+            thing["roles"] = {'$in': [role]}
+        
+        if type(role) == list:
+            thing["roles"] = {'$in': role}
+        
+        
+    signups_data = signups_collection.find(thing)
+    
     signup_list = []
 
     for signup in signups_data:
         signup_list.append({
-            'signup_id': str(signup['_id']),
-            'name': signup['name'],
-            'email': signup['email'],
-            # Add other signup fields as needed
+            "_id": str(signup["_id"]),
+            "event_id": signup["event_id"],
+            "language": signup["language"],
+            "name": signup["name"],
+            "email": signup["email"],
+            "roles": signup["roles"]          
+        })
+
+    return jsonify(signup_list)
+
+# Admin API for getting all signups
+@api_bp.route('/signups/<event_id>', methods=['GET'])
+def admin_api_get_signups_event(event_id):
+    data = request.get_json()
+    thing = {"event_id": event_id}
+
+    email = data.get("email")
+    if email:
+        thing["email"] = email
+    
+    name = data.get("name")
+    if name:
+        thing["name"] = name
+        
+    role = data.get("role")
+    if role:
+        if type(role) == str:
+            thing["roles"] = {'$in': [role]}
+        
+        if type(role) == list:
+            thing["roles"] = {'$in': role}
+        
+        
+    signups_data = signups_collection.find(thing)
+    
+
+        
+    signup_list = []
+
+    for signup in signups_data:
+        signup_list.append({
+            "_id": str(signup["_id"]),
+            "event_id": signup["event_id"],
+            "language": signup["language"],
+            "name": signup["name"],
+            "email": signup["email"],
+            "roles": signup["roles"]          
         })
 
     return jsonify(signup_list)
@@ -105,7 +189,7 @@ def admin_api_get_events():
     for event in events_data:
         event_list.append({
             'event_id': str(event['_id']),
-            'name': event['name'],
+            'name': event['title_fi'],
             'date': event['date'],
             # Add other event fields as needed
         })

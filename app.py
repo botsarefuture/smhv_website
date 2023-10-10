@@ -228,4 +228,4 @@ def change_language(lang):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
