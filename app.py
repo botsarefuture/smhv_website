@@ -2,9 +2,10 @@ from datetime import datetime
 
 from flask import Flask, redirect, render_template, request, Response, flash
 from pymongo import MongoClient
-from bson import ObjectId  # Import ObjectId class
+from bson import ObjectId
 from flask_sitemap import Sitemap
 import json
+from api import api_bp  # Import the API blueprint
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -23,6 +24,10 @@ contactions_collection = db['contactions']
 joins_collection = db["joins"]
 signups_collection = db["signups"]
 
+# Register the API blueprint
+app.register_blueprint(api_bp, url_prefix='/admin/api')
+
+# ... (the rest of your code)
 
 @app.before_request
 def set_template_folder():
@@ -133,6 +138,7 @@ def event_signup(lang="fi", event_id=None):
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
 
 # EVENTS END
+
 
 
 @app.route('/<lang>/about')
