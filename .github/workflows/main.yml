@@ -1,3 +1,6 @@
+
+     
+
 name: Deployment
 
 on:
@@ -7,25 +10,20 @@ on:
 
 jobs:
   deployment:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: 
       name: development
       url: https://github.com
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: SSH into Dev Server
+      - name: Run Deployment Script
         run: |
-          # Replace with your SSH connection details
-          ssh -i ${{ secrets.SSH_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd /path/to/your/repo && git pull"
-          # Add commands to start your application here if needed
-
-        env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-
+          # Add your Git pull and service start commands here
+          cd /path/to/your/repo
+          git pull
+          systemctl start your-service-name  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to development environment completed."
-
