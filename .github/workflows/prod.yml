@@ -7,7 +7,7 @@ on:
 
 jobs:
   deployment:
-    runs-on: self-hosted
+    runs-on: ubuntu-2gb-hel1-2
     environment: 
       name: production
       url: https://sinimustaahallitustavastaan.org/
@@ -19,9 +19,8 @@ jobs:
       - name: Run Deployment Script
         run: |
           # Add your Git pull and service start commands here
-          cd /root/smhv_website/
-          git pull
-          git checkout pr-branch
+          sudo cd /root/smhv_website/
+          sudo git pull
           sudo systemctl restart website  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to production environment completed."
