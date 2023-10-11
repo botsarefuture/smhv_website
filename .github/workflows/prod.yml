@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: 
+      name: production
+      url: https://sinimustaahallitustavastaan.org/
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Deployment Script
+        run: |
+          # Add your Git pull and service start commands here
+          cd /root/smhv_website/
+          git pull
+          git checkout pr-branch
+          sudo systemctl restart website  # Replace with your service start command
+      - name: Deployment Complete
+        run: echo "Deployment to production environment completed."
