@@ -4,7 +4,7 @@
 name: Deployment
 
 on:
-  push:
+  pull-request:
     branches:
       - main
 
