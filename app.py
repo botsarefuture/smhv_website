@@ -6,6 +6,7 @@ from bson import ObjectId
 from flask_sitemap import Sitemap
 import json
 from api import api_bp  # Import the API blueprint
+from mail import signup_email, join_email
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -96,7 +97,6 @@ def event_signup(lang="fi", event_id=None):
         # Handle event not found error
         pass
 
-    from mail import email as send_mail
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
@@ -123,7 +123,7 @@ def event_signup(lang="fi", event_id=None):
                 
 
         event["introductions"] = introductions
-        send_mail(event, {"name": name, "email": email, "roles": roles1}, lang)
+        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang)
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
 
@@ -176,6 +176,7 @@ def join(lang="fi"):
         message = request.form.get("message")
         phonenumber = request.form.get("phonenumber")
         roles = request.form.getlist('roles')
+        join_email({"name": name, "email": email, "roles": roles}, lang)
 
         joins_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
