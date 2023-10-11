@@ -25,6 +25,6 @@ jobs:
           cd
           cd /home/vuoreol/smhv_website/
           git pull
-          systemctl restart development  # Replace with your service start command
+          sudo systemctl restart development  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to development environment completed."
