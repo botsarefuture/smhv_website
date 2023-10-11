@@ -1,0 +1,29 @@
+
+     
+
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: 
+      name: development
+      url: https://github.com
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Deployment Script
+        run: |
+          # Add your Git pull and service start commands here
+          cd /path/to/your/repo
+          git pull
+          systemctl start your-service-name  # Replace with your service start command
+      - name: Deployment Complete
+        run: echo "Deployment to development environment completed."
