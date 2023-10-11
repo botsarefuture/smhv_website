@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     environment: 
       name: development
-      url: https://github.com
+      url: http://sinimustaahallitustavastaan.org:8080/
 
     steps:
       - name: Checkout code
