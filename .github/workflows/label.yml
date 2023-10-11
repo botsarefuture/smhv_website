@@ -20,19 +20,5 @@ jobs:
     - uses: actions/labeler@v4
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        backend: |
-          - *.py
-          - *.json
-          
-        frontend: |
-          - *.html
-          - /templates/*
-          - /static/css/*
-          - /static/*.css
-          - *.css
-          - *.js
-
-        css: |
-          - *.css
-
+        
         
