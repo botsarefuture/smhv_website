@@ -22,8 +22,9 @@ jobs:
       - name: Run Deployment Script
         run: |
           # Add your Git pull and service start commands here
-          cd /path/to/your/repo
+          cd
+          cd /home/vuoreol/smhv_website/
           git pull
-          systemctl start your-service-name  # Replace with your service start command
+          systemctl restart development  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to development environment completed."
