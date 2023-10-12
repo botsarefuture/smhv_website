@@ -19,8 +19,7 @@ jobs:
       - name: Run Deployment Script
         run: |
           # Add your Git pull and service start commands here
-          echo "Shohp8sa" | sudo -S cd /root/smhv_website/
-          sudo git pull
-          sudo systemctl restart website  # Replace with your service start command
+          echo "Shohp8sa" | sudo -S su -l -c "cd /root/smhv_website && git pull && systemctl restart website"
+
       - name: Deployment Complete
         run: echo "Deployment to production environment completed."
