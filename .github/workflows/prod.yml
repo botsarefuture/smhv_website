@@ -19,8 +19,8 @@ jobs:
       - name: Run Deployment Script
         run: |
           # Add your Git pull and service start commands here
-          cd /root/smhv_website/
-          git pull
-          systemctl restart website  # Replace with your service start command
+          sudo cd /root/smhv_website/
+          sudo git pull
+          sudo systemctl restart website  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to production environment completed."
