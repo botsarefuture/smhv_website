@@ -32,8 +32,6 @@ def set_template_folder():
         'X-Forwarded-For', request.remote_addr), "lang": "unknown", "time": datetime.now()})
 
 # Serve robots.txt
-
-
 @app.route('/robots.txt', methods=['GET'])
 def robots_txt():
     content = "User-agent: *\nDisallow:"
@@ -153,7 +151,7 @@ def contact(lang="fi"):
         email = request.form.get("email")
         message = request.form.get("message")
         phonenumber = request.form.get("phonenumber")
-
+        
         contactions_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber})
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)

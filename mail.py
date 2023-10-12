@@ -5,8 +5,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import json
 
-
-global config
 with open("config.json", "r") as f:
     config = json.load(f)
 
@@ -70,10 +68,12 @@ def signup_email(event, recipient, language):
         
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
-        
+    send_email(config.get('email').get('address'), recipient.get("email"), context, subject, config)
+
+def send_email(sender, recipient, context, subject, config):
     msg = MIMEMultipart()
-    msg['From'] = config.get('email').get('address')
-    msg['To'] = recipient.get("email")
+    msg['From'] = sender
+    msg['To'] = recipient
     msg['Subject'] = subject
     msg.attach(MIMEText(content, 'html', 'utf-8'))  # Käytetään HTML-muotoilua
     
@@ -84,13 +84,13 @@ def signup_email(event, recipient, language):
         mail.login(config.get('email').get('address'), config.get('email').get('password'))
         mail.sendmail(msg['From'], msg['To'], msg.as_string())
         mail.close()
-        print("Sähköposti lähetetty onnistuneesti.")
+        print("Email sent successfully.")
     except Exception as e:
-        print(f"Virhe sähköpostia lähettäessä: {str(e)}")
+        print(f"Error occupied while sending email: {str(e)}")
 
 def join_email(recipient, language):
     if language == 'en':        
-        subject = f'Thanks for joinings us!'
+        subject = f'Thanks for joining us!'
         content = f"""Hi {recipient.get('name')},
         
         Thank you very much for joining us!
@@ -156,3 +156,5 @@ def join_email(recipient, language):
         print("Sähköposti lähetetty onnistuneesti.")
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
+
+def 
