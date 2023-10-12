@@ -20,8 +20,9 @@ jobs:
         run: |
           # Add your Git pull and service start commands here
           cd /home/vuoreol/smhv_website/
-          git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-branch
-          git checkout pr-branch
+          PR_BRANCH="pr-branch-${{ github.event.pull_request.number }}"
+          git fetch origin pull/${{ github.event.pull_request.number }}/head:${PR_BRANCH}
+          git checkout ${PR_BRANCH}
           sudo systemctl restart development  # Replace with your service start command
       - name: Deployment Complete
         run: echo "Deployment to development environment completed."
