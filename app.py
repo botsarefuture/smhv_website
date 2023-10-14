@@ -175,6 +175,12 @@ def join(lang="fi"):
 
         joins_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
+        
+        if lang == "fi":
+            flash("Liittyminen onnistui!", "info")
+
+        if lang == "en":
+            flash("Successfully joined!", "info")
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
