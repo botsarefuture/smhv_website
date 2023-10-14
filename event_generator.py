@@ -28,6 +28,14 @@ while True:  # This loop runs indefinitely until manually stopped
     data["location_en"] = input("The location of the event in English: ")
     data["description_fi"] = input("The description of the event in Finnish: ")
     data["description_en"] = input("The description of the event in English: ")
+    data["role_signup"] = input("The status of signing up for the event? (Y/N)")
+
+    if data["role_signup"].lower() == "y":
+      data["role_signup"] = True
+      
+    else:
+      data["role_signup"] = False
+
     data["roles"] = []
 
     to_continue = True

@@ -5,13 +5,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import json
 
+
+global config
 with open("config.json", "r") as f:
     config = json.load(f)
 
 def signup_email(event, recipient, language):
-    if language == 'en': #TODO Make English version
+    if language == 'en': #TODO #49 Make English version of signup message
         language = 'fi' # Make sure something is sent
-        
+
         subject = f'Thanks for signing up for "{event.get("name_en")}"'
         content = f"""Hi {recipient.get('firstname')}. 
         Thank you very much for signing up for "{event.get('name_en')} on our website.
@@ -20,6 +22,7 @@ def signup_email(event, recipient, language):
         
         You have signed up for event called "{event.get('name_en')}" on our website sinimustaahallitustavastaan.org. Below are the details of your registration and event.
         """
+        
     introductions = event.get("introductions")
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
@@ -45,7 +48,7 @@ def signup_email(event, recipient, language):
         <ul>
         """
         for role in recipient.get('roles'):
-            content += f"<li>{role}</li>"  # Kukin rooli on oma listan kohteensa
+            content += f"<li>{role}</li>"  # Every role is part of list
             
         content += f"""
         </ul>
@@ -68,12 +71,10 @@ def signup_email(event, recipient, language):
         
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
-    send_email(config.get('email').get('address'), recipient.get("email"), context, subject, config)
-
-def send_email(sender, recipient, context, subject, config):
+        
     msg = MIMEMultipart()
-    msg['From'] = sender
-    msg['To'] = recipient
+    msg['From'] = config.get('email').get('address')
+    msg['To'] = recipient.get("email")
     msg['Subject'] = subject
     msg.attach(MIMEText(content, 'html', 'utf-8'))  # Käytetään HTML-muotoilua
     
@@ -84,13 +85,13 @@ def send_email(sender, recipient, context, subject, config):
         mail.login(config.get('email').get('address'), config.get('email').get('password'))
         mail.sendmail(msg['From'], msg['To'], msg.as_string())
         mail.close()
-        print("Email sent successfully.")
+        print("Sähköposti lähetetty onnistuneesti.")
     except Exception as e:
-        print(f"Error occupied while sending email: {str(e)}")
+        print(f"Virhe sähköpostia lähettäessä: {str(e)}")
 
 def join_email(recipient, language):
     if language == 'en':        
-        subject = f'Thanks for joining us!'
+        subject = f'Thanks for joinings us!'
         content = f"""Hi {recipient.get('name')},
         
         Thank you very much for joining us!
@@ -156,5 +157,3 @@ def join_email(recipient, language):
         print("Sähköposti lähetetty onnistuneesti.")
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
-
-def 

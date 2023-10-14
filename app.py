@@ -89,6 +89,10 @@ def event_signup(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Handle event not found error
+        # TODO: #47 Add event not found page!
+        pass
+
+    if not event.signup_role:
         pass
 
     if request.method == "POST":
