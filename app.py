@@ -156,6 +156,7 @@ def contact(lang="fi"):
 
         contactions_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber})
+        #TODO: #51 Flash information about successfully sent form
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
 
@@ -175,6 +176,8 @@ def join(lang="fi"):
 
         joins_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
+        
+        #TODO: #50 Flash information about successfully sent form
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
