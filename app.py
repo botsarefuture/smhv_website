@@ -32,11 +32,14 @@ def set_template_folder():
         'X-Forwarded-For', request.remote_addr), "lang": "unknown", "time": datetime.now()})
 
 # Serve robots.txt
+
+
 @app.route('/robots.txt', methods=['GET'])
 def robots_txt():
     content = "User-agent: *\nDisallow:"
     response = Response(content, content_type='text/plain')
     return response
+
 
 @app.route("/<lang>/")
 @app.route('/')
@@ -109,19 +112,20 @@ def event_signup(lang="fi", event_id=None):
             "email": email,
             "roles": roles
         }
-        
+
         roles = event.get('roles')
-        
+
         introductions = list()
-        
+
         for role in roles:
             if role.get("show_name") in roles1:
                 if not role.get('introductions') in introductions:
                     introductions += role.get('introductions')
-                
 
         event["introductions"] = introductions
-        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang)
+        signup_email(
+            event, {"name": name, "email": email, "roles": roles1}, lang)
+
         # Insert signup_data into your MongoDB collection for signups.
         signups_collection.insert_one(signup_data)
 
@@ -155,7 +159,7 @@ def contact(lang="fi"):
         email = request.form.get("email")
         message = request.form.get("message")
         phonenumber = request.form.get("phonenumber")
-        
+
         contactions_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber})
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
@@ -180,23 +184,26 @@ def join(lang="fi"):
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
-def lang_thing(lang, path, request):
+
+
+def lang_thing(lang, path, request): # DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
     if lang == "fi":
         path = path.replace("en/", "")
 
     if lang == "en":
-        path = path.split("/")        
-        
+        path = path.split("/")
+
         cont = False
-        
+
         print(request.host_url)
-        
+
         def pop_unne(path, cont):
             for i in range(0, len(path)):
                 if cont:
                     continue
 
-                if request.host in path[i]: # Our domain is sinimustaahallitustavastaan.ORG
+                # Our domain is sinimustaahallitustavastaan.ORG
+                if request.host in path[i]:
                     cont = True
 
                 path.pop(i)
@@ -213,10 +220,11 @@ def lang_thing(lang, path, request):
             return text
 
         path = ("/en/" + list_to_str(path)).replace("//", "/")
-        
+
         path = path.replace("/en/en/", "/en/")
 
     return path
+
 
 @app.route('/change_language/<lang>')
 def change_language(lang):
