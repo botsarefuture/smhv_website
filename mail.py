@@ -108,10 +108,7 @@ def join_email(recipient, language):
         
         content += """Is the information correct? If not, you can inform us about that, by answering this email.
         
-        Cant wait to see you!
         
-        Verso Vuorenmaa,
-        General coordinator
         """
             
     if language == "fi":
@@ -133,18 +130,17 @@ def join_email(recipient, language):
             content += role + "," + "\n"
         
         content += """Ovatko tiedot oikein? Mikäli eivät, voit saattaa asian tietoomme vastaamalla sähköpostiin.
+    
         
-        En malta odottaa yhteistyötä kanssasi!
-        
-        Verso Vuorenmaa,
-        Yleiskoordinaattori
+        Ystävällisin terveisin,
+        SMHV Bot
         """
         
     msg = MIMEMultipart()
     msg['From'] = config.get('email').get('address')
     msg['To'] = recipient.get("email")
     msg['Subject'] = subject
-    msg.attach(MIMEText(content.replace("\n", "<br>"), 'html', 'utf-8'))  # Käytetään HTML-muotoilua
+    msg.attach(MIMEText(content.replace("\n", "<br>"), 'html', 'utf-8'))  # We use utf-8 formatting
     
     try:
         mail = smtplib.SMTP(config.get('email').get('server'), config.get('email').get('port'))
@@ -154,5 +150,6 @@ def join_email(recipient, language):
         mail.sendmail(msg['From'], msg['To'], msg.as_string())
         mail.close()
         print("Sähköposti lähetetty onnistuneesti.")
+        
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
