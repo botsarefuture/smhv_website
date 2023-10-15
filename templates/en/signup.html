@@ -5,13 +5,13 @@
         <h2>Signup for event "{{event.title_en}}"</h2>
 
         <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
-            <label for="name">Name:</label>
+            <label for="name">Your name:</label>
             <input type="text" id="name" name="name" required><br>
 
-            <label for="email">Email address:</label>
+            <label for="email">Your email:</label>
             <input type="email" id="email" name="email" required><br>
 
-            <label for="roles">Roles:</label>
+            <label for="roles">Your roles:</label>
             <div class="role-list">
                 {% for role in event.roles %}
                 <div class="role-box">
@@ -26,19 +26,20 @@
                         </button>
                         {% endif %}
                         
-                        <!-- Add meter and color -->
-                        {% if role.count %}
+                        <!-- Lisää mittari ja väripalkki tähän -->
+                        {% if role.get('count', none) != none %}
                         <div class="role-status">
                             <div class="role-count">
-                                At the moment: {{ role.count }} / Needed: {{ role.min_count }}
+                                ATM: {{ role.count }} / Needed: {{ role.min_count }}
                             </div>
+
                             {% if role.get('count') > role.get('min_count') %}
 
                             <div class="progress-bar" max=100 style="width: 100%;">
 
                             {% else %}
 
-                            <div class="progress-bar" max=100 style="width: {{ (role.get('count', 0) / role.get('min_count', 1)) * 100 }}%;">
+                            <div class="progress-bar" max=100 style="width: {{ (role.get('count') / role.get('min_count', 1)) * 100 }}%;">
 
                             {% endif %}
                             </div>
@@ -54,11 +55,53 @@
                 {% endfor %}
             </div>
             
-            <button type="submit" class="cta-button">Sign up</button>
+            <button type="submit" id="submit-button" class="cta-button">Submit</button>
         </form>
     </section>
+    
 
     <script>
+        // Add a click event listener to the submit button
+    document.getElementById('submit-button').addEventListener('click', function (e) {
+        // Prevent the default form submission to handle it manually
+        e.preventDefault();
+
+        // Disable the submit button to prevent multiple submissions
+        this.disabled = true;
+        this.style = 'color: grey;'
+
+        // Get the form element
+        const form = document.querySelector('form');
+
+        // Perform the form submission using JavaScript (you can adjust this part)
+        // For example, you can use fetch to submit the form data to your server
+        // and then re-enable the button upon a successful response
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Form submission was successful, you can re-enable the button
+                this.disabled = true;
+                return response.text();
+            } else {
+                // Handle errors if needed
+                console.error('Form submission failed.');
+            }
+        })
+        .then(data => {
+            // Handle the response data as needed
+            console.log(data);
+
+            window.location.href = '/en/events';
+
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+    });
+
         // Lisää klikkitapahtuman kuuntelija jokaiseen roolilaatikkoon
         document.querySelectorAll('.role-box').forEach(function (box) {
             // Kun roolilaatikkoa klikataan, vaihda valintaruutu ja sovella tyylejä
