@@ -60,7 +60,8 @@ def signup_email(event, recipient, language):
         
         if not len(introductions) == 0:
             content += f"""<br><br>Valitsemillesi rooleille järjestetään briiffejä, tiedot alla: <br><br>"""
-            introductions = list(dict.fromkeys(introductions))
+            
+        introductions = set(introductions)
 
         for introduction in introductions:
             content += f"""
