@@ -95,7 +95,7 @@ def event_signup(lang="fi", event_id=None):
         # TODO: #47 Add event not found page!
         pass
 
-    if not event.signup_role:
+    if not event.get("signup_role", False):
         pass
 
     if request.method == "POST":
