@@ -1,9 +1,9 @@
 /* Hero section styles */
 .hero {
-    background-image: url('../kuva1.jpg');
+    background-image: url('../kuva.jpg');
     background-size: cover;
     background-position: center;
-    color: #ffffff;
+    color: black;
     text-align: center;
     padding: 200px 0;
 }
@@ -30,4 +30,12 @@
 
 .hero .cta-button:hover {
     background-color: #63146d;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .hero {
+        background-image: url('../kuva1.jpg');
+        color: white;
+    }
 }
