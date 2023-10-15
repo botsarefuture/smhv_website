@@ -121,12 +121,6 @@ section {
     font-size: 16px;
     font-weight: bold;
 }
-/* Reset default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 /* Body styles */
 body {
@@ -229,78 +223,6 @@ section {
     font-weight: bold;
 }
 
-/* Style for the role boxes */
-.role-box {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer; /* Make the box cursor clickable */
-}
-
-.role-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Style for the role description */
-.role-box p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-/* Style for the sign-up button */
-.role-box .cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3D1356;
-    color: #FFFFFF;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-.role-box .cta-button:hover {
-    background-color: #63146d;
-}
-
-/* Style for selected role boxes */
-.role-box.selected {
-    background-color: #007bff; /* Change the background color when selected */
-    color: #ffffff; /* Change the text color when selected */
-}
-
-
-
-
-/* Role name styles */
-.role-name {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-/* Style for the role description */
-.role-description {
-    font-family: 'Signika Negative', sans-serif;
-    font-size: 16px; /* Adjust the font size as needed */
-    max-height: 40px; /* Set the initial height */
-    overflow: hidden;
-    transition: max-height 0.5s ease-out; /* Add a smooth transition */
-}
-
-
-
-/* Add a class to override the max-height and show full text */
-.role-box.expanded .role-description {
-    max-height: none;
-    opacity: 1;
-}
-
 /* CSS for the "fade" class */
 .fade {
     opacity: 0.6; /* Adjust the opacity as needed (0.6 for 60% opacity, for example) */
@@ -310,16 +232,6 @@ section {
 /* Hover effect for the "fade" class (optional) */
 .fade:hover {
     opacity: 1; /* Change the opacity to fully visible on hover */
-}
-
-/* CSS for the "Show More" button */
-.view-more-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px; /* Adjust the font size as needed */
-    color: #007bff; /* Set the color to your preferred color */
-    transition: color 0.3s, transform 0.3s; /* Add a transition for the transform property */
 }
 
 /* CSS class for the arrow-down symbol */
