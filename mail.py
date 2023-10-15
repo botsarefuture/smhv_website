@@ -10,7 +10,15 @@ global config
 with open("config.json", "r") as f:
     config = json.load(f)
 
-def signup_email(event, recipient, language):
+def signup_email(event: dict, recipient: dict, language: str):
+    """true
+
+    Args:
+        event (dict): the dict of the event
+        recipient (dict): the dict of the recipient
+        language (str): the language
+    """    
+    
     if language == 'en': #TODO #49 Make English version of signup message
         language = 'fi' # Make sure something is sent
 
@@ -56,19 +64,28 @@ def signup_email(event, recipient, language):
         <h2>Tapahtuman tiedot</h2>
         
         
-        Päivämäärä: {event.get('date')}       
+        Päivämäärä: {event.get('date')}
+        Sijainti: {event.get('location_fi')}
+        Telegram ryhmä (kannattaa liittyä): {event.get('telegram_group')}       
         """
         
         if not len(introductions) == 0:
             content += f"""<br><br>Valitsemillesi rooleille järjestetään briiffejä, tiedot alla: <br><br>"""
         
         for introduction in introductions:
-            content += f"""
+            text = f"""
         Päiväys ja aika: {introduction.get('date')} {introduction.get('time')} <br>
         Osoite: {introduction.get('location')}<br>
         <br>
         """
         
+            if not text in content: #HACK to make sure that we don't send same brief multiple times...
+                content += text
+            
+            else:
+                continue
+            
+            
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
         
