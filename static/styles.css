@@ -8,17 +8,33 @@
 @import url("css/join.css");
 @import url("css/footer.css");
 
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Hidden class for transparent text with shadow */
 .hidden {
     color: transparent;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Reset default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D1356; /* Purple color for the button */
+    color: #FFFFFF; /* White text color */
+    text-decoration: none;
+    text-shadow: 0px 0px 7px black;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #63146D; /* Darker purple color on hover */
 }
 
 /* Body styles */
@@ -262,6 +278,7 @@ section {
     border-radius: 5px;
     transition: background-color 0.3s;
     margin-top: 10px;
+    text-shadow: 0px 0px 7px black;
 }
 
 .role-box .cta-button:hover {

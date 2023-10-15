@@ -37,21 +37,6 @@
     font-size: 18px;
 }
 
-/* CTA button styles */
-.about-us .cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #63146d;
-    color: #FFFFFF;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.about-us .cta-button:hover {
-    background-color: #1CB800;
-}
-
 /* Section title styles */
 .section-title {
     font-size: 36px;
@@ -75,22 +60,6 @@
     list-style-type: disc;
     padding-left: 20px;
     margin-bottom: 20px;
-}
-
-/* Button style for "Ota Yhteyttä" (Contact Us) */
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3D1356; /* Purple color for the button */
-    color: #FFFFFF; /* White text color */
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
-
-.cta-button:hover {
-    background-color: #63146D; /* Darker purple color on hover */
 }
 
 /* Contact info styles */
@@ -152,24 +121,6 @@
     color: #710e8d; /* Violet color for demands */
 }
 
-/* Button style for "Ota Yhteyttä" (Contact Us) */
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3D1356; /* Purple color for the button */
-    color: #FFFFFF; /* White text color */
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
-
-.cta-button:hover {
-    background-color: #63146D; /* Darker purple color on hover */
-}
-
-
-/*
 
 /* Section title styles */
 .section-title {
