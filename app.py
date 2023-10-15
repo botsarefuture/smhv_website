@@ -91,20 +91,19 @@ def event_details(lang="fi", event_id=None):
 def event_signup(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
-        # Handle event not found error
-        # TODO: #47 Add event not found page!
+        # Käsittele tapahtuman puuttumista
         pass
 
-    if not event.get("signup_role", False):
+    if not event.get("role_signup", False):
         pass
 
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
-        roles = request.form.getlist("roles[]")  # Get selected roles
+        roles = request.form.getlist("roles[]")  # Haetaan valitut roolit
 
         roles1 = roles
-        # Store signup information in MongoDB (event_signups collection).
+        # Tallenna ilmoittautumistiedot MongoDB:hen (event_signups-kokoelmaan).
         signup_data = {
             "event_id": event_id,
             "language": lang,
@@ -113,7 +112,18 @@ def event_signup(lang="fi", event_id=None):
             "roles": roles
         }
 
-        roles = event.get('roles')
+        roles = event.get('roles', [])  # Haetaan roolit
+
+        for role in roles: # ÄLÄ KOSKE
+            if role.get("show_name") in roles1: # ÄLÄ KOSKE! 
+                role.setdefault('count', 0)  # Alusta 'count' rooliin, jos sitä ei ole
+                role['count'] += 1  # Kasvata roolin 'count' kunkin ilmoittautumisen yhteydessä
+
+                # Päivitä roolin tiedot tietokantaan käyttäen $inc operaattoria
+                events_collection.update_one(
+                    {"_id": ObjectId(event_id), "roles.show_name": role["show_name"]},
+                    {"$inc": {"roles.$.count": 1}}
+                )
 
         introductions = list()
 
@@ -126,7 +136,7 @@ def event_signup(lang="fi", event_id=None):
         signup_email(
             event, {"name": name, "email": email, "roles": roles1}, lang)
 
-        # Insert signup_data into your MongoDB collection for signups.
+        # Lisää signup_data MongoDB-kokoelmaan ilmoittautumisia varten.
         signups_collection.insert_one(signup_data)
 
         if lang == "fi":
@@ -134,7 +144,7 @@ def event_signup(lang="fi", event_id=None):
 
         if lang == "en":
             flash("Successfully registered!", "info")
-        # Redirect to events page after signup.
+        # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
         return redirect(f'/{lang}/events')
 
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)

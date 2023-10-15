@@ -27,7 +27,7 @@
                         {% endif %}
                         
                         <!-- Lisää mittari ja väripalkki tähän -->
-                        {% if role.count %}
+                        {% if role.get('count', none) != none %}
                         <div class="role-status">
                             <div class="role-count">
                                 Tällä hetkellä: {{ role.count }} / Tarvitaan: {{ role.min_count }}
@@ -39,7 +39,7 @@
 
                             {% else %}
 
-                            <div class="progress-bar" max=100 style="width: {{ (role.get('count', 0) / role.get('min_count', 1)) * 100 }}%;">
+                            <div class="progress-bar" max=100 style="width: {{ (role.get('count') / role.get('min_count', 1)) * 100 }}%;">
 
                             {% endif %}
                             </div>
