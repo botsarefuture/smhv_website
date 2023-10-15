@@ -39,23 +39,19 @@
     resize: vertical;
 }
 
-.contact-form button {
-    background-color: #3D1356;
-    color: #FFFFFF;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.contact-form button:hover {
-    background-color: #63146D;
-}
-
 .alternative-contact {
     font-style: italic;
     color: #888;
     margin-top: 10px;
+}
+
+
+/* CSS for the "Show More" button */
+.view-more-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #007bff; /* Set the color to your preferred color */
+    transition: color 0.3s, transform 0.3s; /* Add a transition for the transform property */
 }
