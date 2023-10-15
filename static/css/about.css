@@ -41,7 +41,7 @@
 .section-title {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #3D1356; /* Purple color for section titles */
+    color: var(--darker-violet); /* Purple color for section titles */
 }
 
 /* Container styles for content */
@@ -106,19 +106,19 @@
 /* Font styles for Arvot (Values) section */
 .values-list {
     font-size: 20px;
-    color: #16bb00; /* Green color for values */
+    color: var(--neon-green) ; /* Green color for values */
 }
 
 /* Font styles for Periaatteet (Principles) section */
 .principles-list {
     font-size: 20px;
-    color: #ff0d72; /* Pink color for principles */
+    color: var(--neon-pink); /* Pink color for principles */
 }
 
 /* Font styles for Vaatimukset (Demands) section */
 .demands-list {
     font-size: 20px;
-    color: #710e8d; /* Violet color for demands */
+    color: var(--violet); /* Violet color for demands */
 }
 
 

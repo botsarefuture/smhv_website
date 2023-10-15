@@ -15,6 +15,23 @@
     box-sizing: border-box;
 }
 
+:root{
+    --neon-green: #38f205;
+    --green: #16bb00;
+    --darker-green: #0f7d00;
+    --dark-green: #083e00;
+
+    --neon-pink: #ff0D72;
+    --pink: #bf0a56;
+    --darker-pink: #800639;
+    --dark-pink: #40031d;
+
+    --light-violet: #710e8d;
+    --violet: #550b6a;
+    --darker-violet: #390747;
+    --dark-violet: #1c0423;
+}
+
 /* Hidden class for transparent text with shadow */
 .hidden {
     color: transparent;
@@ -24,7 +41,7 @@
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #3D1356; /* Purple color for the button */
+    background-color: var(--violet); /* Purple color for the button */
     color: #FFFFFF; /* White text color */
     text-decoration: none;
     text-shadow: 0px 0px 7px black;
@@ -34,7 +51,11 @@
 }
 
 .cta-button:hover {
-    background-color: #63146D; /* Darker purple color on hover */
+    background-color: var(--light-violet); /* Lighter purple color on hover */
+}
+
+.cta-button:active {
+    background-color: var(--darker-violet); 
 }
 
 /* Body styles */
