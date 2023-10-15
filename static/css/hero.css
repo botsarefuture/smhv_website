@@ -11,11 +11,13 @@
 .hero h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    text-shadow: 0px 0px 7px white;
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 30px;
+    text-shadow: 0px 0px 7px white;
 }
 
 .hero .cta-button {
@@ -37,5 +39,11 @@
     .hero {
         background-image: url('../kuva1.jpg');
         color: white;
+    }
+    .hero h2 {
+        text-shadow: 0px 0px 7px black;
+    }
+    .hero p {
+        text-shadow: 0px 0px 7px black;
     }
 }
