@@ -1,0 +1,31 @@
+name: deploy to development
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - dev
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: 
+      name: development
+      url: http://sinimustaahallitustavastaan.org:8080/
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Deployment Script
+        run: |
+          # Add your Git pull and service start commands here
+          cd /home/vuoreol/smhv_website/
+          PR_BRANCH="pr-branch-${{ github.event.pull_request.number }}"
+          git fetch origin pull/${{ github.event.pull_request.number }}/head:${PR_BRANCH}
+          git checkout ${PR_BRANCH}
+          echo "${{ secrets.password }}" | sudo -S systemctl restart development  # Replace with your service start command
+      - name: Deployment Complete
+        run: echo "Deployment to development environment completed."
