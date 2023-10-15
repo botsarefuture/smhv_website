@@ -68,13 +68,6 @@
     margin-bottom: 20px;
 }
 
-/* Subsection title styles */
-.subsection-title {
-    font-size: 24px;
-    margin-top: 20px;
-    color: #3D1356; /* Purple color for subsection titles */
-}
-
 /* List styles */
 .values-list,
 .principles-list,
@@ -128,7 +121,7 @@
 /* Subsection title styles */
 .subsection-title {
     font-size: 24px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     color: #3D1356; /* Purple color for subsection titles */
 }
 
@@ -138,7 +131,7 @@
 .demands-list {
     list-style-type: disc;
     padding-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 55px;
 }
 
 /* Font styles for Arvot (Values) section */

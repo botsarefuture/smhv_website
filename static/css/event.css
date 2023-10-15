@@ -3,7 +3,7 @@
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     padding: 30px;
-    margin-bottom: 30px;
+    margin: 20px 0px;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -12,6 +12,10 @@
 .event h3 {
     font-size: 24px;
     margin-bottom: 30px;
+}
+
+.event-calendar h2{
+    margin: 35px 0px 20px 0px;
 }
 
 .event p {
@@ -26,4 +30,19 @@
 
 .event .cta-button{
     margin: 20px 20px 0px 0px;
+}
+
+
+/* Event details */
+
+.event-details h2{
+    margin: 40px 0px 30px;
+}
+
+.event-details p{
+    margin-bottom: 15px;
+}
+
+.event-details .cta-button{
+    margin: 35px 20px 0px 0px;
 }
