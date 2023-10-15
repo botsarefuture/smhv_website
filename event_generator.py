@@ -48,6 +48,8 @@ while True:  # This loop runs indefinitely until manually stopped
         role["en_name"] = input("The name of the role in English: ")
         role["fi_description"] = input("The description of the role in Finnish: ")
         role["en_description"] = input("The description of the role in English: ")
+        role["min_count"] = int(input(f"The minimum number of people in {role['show_name']}"))
+        role["count"] = 0
         
         introductions = []
         intro_continue = True

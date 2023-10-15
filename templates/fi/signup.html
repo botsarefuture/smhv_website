@@ -32,12 +32,16 @@
                             <div class="role-count">
                                 Tällä hetkellä: {{ role.count }} / Tarvitaan: {{ role.min_count }}
                             </div>
-                            {% if role.get('count') > role.get('min_count') %}
-                            <div class="progress-bar" max=100 style="width: 100%;">
-                            {% else %}
-                            <div class="progress-bar" max=100 style="width: {{ (role.get('count', 0) / role.get('min_count', 1)) * 100 }}%;">
-                            {%endif%}
 
+                            {% if role.get('count') > role.get('min_count') %}
+
+                            <div class="progress-bar" max=100 style="width: 100%;">
+
+                            {% else %}
+
+                            <div class="progress-bar" max=100 style="width: {{ (role.get('count', 0) / role.get('min_count', 1)) * 100 }}%;">
+
+                            {% endif %}
                             </div>
                         </div>
                         {% endif %}
@@ -55,12 +59,6 @@
         </form>
     </section>
     
-    <style>
-        .progress-bar {
-            height: 10px;
-            background-color: green; /* Vaihda väriä tarpeen mukaan */
-        }
-    </style>
 
     <script>
         // Lisää klikkitapahtuman kuuntelija jokaiseen roolilaatikkoon
