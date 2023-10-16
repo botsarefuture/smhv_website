@@ -21,9 +21,10 @@
                         <div class="role-description fade">{{role.fi_description}}</div>
                         
                         {% if role.fi_description %}
-                        <button type="button" class="view-more-button">
+                        <a type="button" class="view-more-button">
+                            {% if role.get('count', none) != none %}
                             Näytä lisää ▼
-                        </button>
+                        </a>
                         {% endif %}
                         
                         <!-- Lisää mittari ja väripalkki tähän -->

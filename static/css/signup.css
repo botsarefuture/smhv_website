@@ -36,6 +36,7 @@
     font-size: 16px; /* Adjust the font size as needed */
     max-height: 40px; /* Set the initial height */
     overflow: hidden;
+    margin-bottom: 5px ;
     transition: max-height 0.5s ease-out; /* Add a smooth transition */
 }
 
@@ -80,10 +81,14 @@
     margin-top: 10px;
 }
 
+.role-count{
+    margin: 25px 0 0 0;
+}
+
 .view-more-button {
     background: none;
+    width: 100%;
     border: none;
-    margin: 5px 0px 25px 0px;
     cursor: pointer;
     font-family: "Bricolage Grotesque", sans-serif;
 }
