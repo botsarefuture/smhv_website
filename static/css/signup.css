@@ -41,7 +41,7 @@
 }
 
 /* Add a class to override the max-height and show full text */
-.role-box.expanded .role-description {
+.expanded {
     max-height: none;
     opacity: 1;
 }

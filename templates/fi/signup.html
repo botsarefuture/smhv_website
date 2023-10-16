@@ -22,7 +22,6 @@
                         
                         {% if role.fi_description %}
                         <a type="button" class="view-more-button">
-                            {% if role.get('count', none) != none %}
                             Näytä lisää ▼
                         </a>
                         {% endif %}
@@ -107,6 +106,7 @@
         });
     });
 
+
         // Lisää klikkitapahtuman kuuntelija jokaiseen roolilaatikkoon
         document.querySelectorAll('.role-box').forEach(function (box) {
             // Kun roolilaatikkoa klikataan, vaihda valintaruutu ja sovella tyylejä
@@ -117,29 +117,27 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var buttons = document.querySelectorAll('.view-more-button');
+        document.querySelectorAll('.view-more-button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var roleBox = this.closest('.role-box');
+                var description = roleBox.querySelector('.role-description');
 
-            buttons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    var roleBox = this.closest('.role-box');
-                    var description = roleBox.querySelector('.role-description');
-                    var arrow = roleBox.querySelector('.arrow-down');
+                const checkbox = roleBox.querySelector('.custom-checkbox');
+                checkbox.checked = !checkbox.checked;
+                roleBox.classList.toggle('selected', checkbox.checked);
 
-                    if (roleBox.classList.contains('expanded')) {
-                        description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
-                        roleBox.classList.remove('expanded');
-                        arrow.style.transform = 'rotate(0deg)';
-                        button.textContent = 'Näytä lisää ▼';
-                    } else {
-                        description.style.maxHeight = 'none';
-                        roleBox.classList.add('expanded');
-                        arrow.style.transform = 'rotate(180deg)';
-                        button.textContent = 'Piilota ▲';
-                    }
-                });
-            });
+                if (roleBox.classList.contains('expanded')) {
+                            description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
+                            roleBox.classList.remove('expanded');
+                            button.innerHTML = 'Näytä lisää ⏷';
+                } else {
+                            description.style.maxHeight = 'none';
+                            roleBox.classList.add('expanded');
+                            button.innerHTML = 'Piilota ⏶';
+                        }
+            })
         });
+        
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
