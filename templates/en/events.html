@@ -11,7 +11,7 @@
                 <h3>{{ event.title_en }}</h3>
                 <p>Date: {{ event.date }}</p>
                 <p>Location: {{ event.location_en }}</p>
-                <p>{{ event.description_en }}</p>
+                <p>{{ event.description_en|replace('\n', '<br>')|safe }}</p>
 
                 <!-- Add a link to the signup page for this event -->
                 {% if event.signup_role %}
@@ -20,7 +20,7 @@
                 <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">View Details</a>
 
             </div>
-            {% if  empty %}
+            {% if empty %}
             <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join Us in Organizing!</a>
             {% endif %}
         {% endfor %}
