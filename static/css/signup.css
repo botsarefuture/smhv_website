@@ -1,25 +1,12 @@
 /* sign-up form */
 
-.progress-bar {
-    height: 15px;
-    background-color: #38f205; /* Change color if needed */
-    border-radius: 4px 0px 0px 4px;
-}
-
-.progress-bar-outer{
-    border: 1px solid rgba(0, 0, 0, 0.675);
-    margin: 5px 0px 20px 0px;
-    border-radius: 5px;
-    width: 100%;
-}
-
 .role-box .cta-button:hover {
     background-color: #63146d;
 }
 
 /* Style for selected role boxes */
 .role-box.selected {
-    background-color: #007bff; /* Change the background color when selected */
+    background-color: #710e8da3; /* Change the background color when selected */
     color: #ffffff; /* Change the text color when selected */
 }
 
@@ -38,12 +25,6 @@
     overflow: hidden;
     margin-bottom: 5px ;
     transition: max-height 0.5s ease-out; /* Add a smooth transition */
-}
-
-/* Add a class to override the max-height and show full text */
-.expanded {
-    max-height: none;
-    opacity: 1;
 }
 
 /* Style for the role boxes */
@@ -96,4 +77,18 @@
 .view-more-button:hover {
     background: none;
     border: none;
+}
+
+.progress-bar {
+    height: 15px;
+    background-color: var(--neon-green); /* Change color if needed */
+    border-radius: 4px 0px 0px 4px;
+    opacity: 100%;
+}
+
+.progress-bar-outer{
+    border: 1px solid rgba(0, 0, 0, 0.675);
+    margin: 5px 0px 20px 0px;
+    border-radius: 5px;
+    width: 100%;
 }
