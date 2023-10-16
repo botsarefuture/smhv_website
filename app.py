@@ -40,6 +40,7 @@ def robots_txt():
     response = Response(content, content_type='text/plain')
     return response
 
+
 @app.route("/<lang>/")
 @app.route('/')
 def index(lang="fi"):
@@ -90,16 +91,19 @@ def event_details(lang="fi", event_id=None):
 def event_signup(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
-        # Handle event not found error
+        # Käsittele tapahtuman puuttumista
+        pass
+
+    if not event.get("role_signup", False):
         pass
 
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
-        roles = request.form.getlist("roles[]")  # Get selected roles
+        roles = request.form.getlist("roles[]")  # Haetaan valitut roolit
 
         roles1 = roles
-        # Store signup information in MongoDB (event_signups collection).
+        # Tallenna ilmoittautumistiedot MongoDB:hen (event_signups-kokoelmaan).
         signup_data = {
             "event_id": event_id,
             "language": lang,
@@ -107,20 +111,32 @@ def event_signup(lang="fi", event_id=None):
             "email": email,
             "roles": roles
         }
-        
-        roles = event.get('roles')
-        
+
+        roles = event.get('roles', [])  # Haetaan roolit
+
+        for role in roles: # ÄLÄ KOSKE
+            if role.get("show_name") in roles1: # ÄLÄ KOSKE! 
+                role.setdefault('count', 0)  # Alusta 'count' rooliin, jos sitä ei ole
+                role['count'] += 1  # Kasvata roolin 'count' kunkin ilmoittautumisen yhteydessä
+
+                # Päivitä roolin tiedot tietokantaan käyttäen $inc operaattoria
+                events_collection.update_one(
+                    {"_id": ObjectId(event_id), "roles.show_name": role["show_name"]},
+                    {"$inc": {"roles.$.count": 1}}
+                )
+
         introductions = list()
-        
+
         for role in roles:
             if role.get("show_name") in roles1:
                 if not role.get('introductions') in introductions:
                     introductions += role.get('introductions')
-                
 
         event["introductions"] = introductions
-        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang)
-        # Insert signup_data into your MongoDB collection for signups.
+        signup_email(
+            event, {"name": name, "email": email, "roles": roles1}, lang)
+
+        # Lisää signup_data MongoDB-kokoelmaan ilmoittautumisia varten.
         signups_collection.insert_one(signup_data)
 
         if lang == "fi":
@@ -128,7 +144,7 @@ def event_signup(lang="fi", event_id=None):
 
         if lang == "en":
             flash("Successfully registered!", "info")
-        # Redirect to events page after signup.
+        # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
         return redirect(f'/{lang}/events')
 
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
@@ -181,23 +197,26 @@ def join(lang="fi"):
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
-def lang_thing(lang, path, request):
+
+
+def lang_thing(lang, path, request): # DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
     if lang == "fi":
         path = path.replace("en/", "")
 
     if lang == "en":
-        path = path.split("/")        
-        
+        path = path.split("/")
+
         cont = False
-        
+
         print(request.host_url)
-        
+
         def pop_unne(path, cont):
             for i in range(0, len(path)):
                 if cont:
                     continue
 
-                if request.host in path[i]: # Our domain is sinimustaahallitustavastaan.ORG
+                # Our domain is sinimustaahallitustavastaan.ORG
+                if request.host in path[i]:
                     cont = True
 
                 path.pop(i)
@@ -214,10 +233,11 @@ def lang_thing(lang, path, request):
             return text
 
         path = ("/en/" + list_to_str(path)).replace("//", "/")
-        
+
         path = path.replace("/en/en/", "/en/")
 
     return path
+
 
 @app.route('/change_language/<lang>')
 def change_language(lang):

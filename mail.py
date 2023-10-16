@@ -10,10 +10,18 @@ global config
 with open("config.json", "r") as f:
     config = json.load(f)
 
-def signup_email(event, recipient, language):
-    if language == 'en': #TODO Make English version
+def signup_email(event: dict, recipient: dict, language: str):
+    """true
+
+    Args:
+        event (dict): the dict of the event
+        recipient (dict): the dict of the recipient
+        language (str): the language
+    """    
+    
+    if language == 'en': #TODO #49 Make English version of signup message
         language = 'fi' # Make sure something is sent
-        
+
         subject = f'Thanks for signing up for "{event.get("name_en")}"'
         content = f"""Hi {recipient.get('firstname')}. 
         Thank you very much for signing up for "{event.get('name_en')} on our website.
@@ -22,6 +30,7 @@ def signup_email(event, recipient, language):
         
         You have signed up for event called "{event.get('name_en')}" on our website sinimustaahallitustavastaan.org. Below are the details of your registration and event.
         """
+        
     introductions = event.get("introductions")
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
@@ -47,7 +56,7 @@ def signup_email(event, recipient, language):
         <ul>
         """
         for role in recipient.get('roles'):
-            content += f"<li>{role}</li>"  # Kukin rooli on oma listan kohteensa
+            content += f"<li>{role}</li>"  # Every role is part of list
             
         content += f"""
         </ul>
@@ -55,19 +64,28 @@ def signup_email(event, recipient, language):
         <h2>Tapahtuman tiedot</h2>
         
         
-        Päivämäärä: {event.get('date')}       
+        Päivämäärä: {event.get('date')}
+        Sijainti: {event.get('location_fi')}
+        Telegram ryhmä (kannattaa liittyä): {event.get('telegram_group')}       
         """
         
         if not len(introductions) == 0:
             content += f"""<br><br>Valitsemillesi rooleille järjestetään briiffejä, tiedot alla: <br><br>"""
         
         for introduction in introductions:
-            content += f"""
+            text = f"""
         Päiväys ja aika: {introduction.get('date')} {introduction.get('time')} <br>
         Osoite: {introduction.get('location')}<br>
         <br>
         """
         
+            if not text in content: #HACK to make sure that we don't send same brief multiple times...
+                content += text
+            
+            else:
+                continue
+            
+            
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
         

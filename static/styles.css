@@ -34,340 +34,335 @@
 
 /* Hidden class for transparent text with shadow */
 .hidden {
-    color: transparent;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--violet); /* Purple color for the button */
-    color: #FFFFFF; /* White text color */
-    text-decoration: none;
-    text-shadow: 0px 0px 7px black;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--violet); /* Purple color for the button */
+  color: #ffffff; /* White text color */
+  text-decoration: none;
+  text-shadow: 0px 0px 7px black;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
 }
 
 .cta-button:hover {
-    background-color: var(--light-violet); /* Lighter purple color on hover */
+  background-color: var(--light-violet); /* Lighter purple color on hover */
 }
 
 .cta-button:active {
-    background-color: var(--darker-violet); 
+  background-color: var(--darker-violet);
 }
 
 /* Body styles */
 body {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background-color: #f9f9f9;
-    color: #333333;
+  font-family: "Bricolage Grotesque", sans-serif;
+  background-color: #f9f9f9;
+  color: #333333;
 }
 
 /* Main content styles */
 main {
-    padding: 40px;
+  padding: 40px;
 }
 
 /* Section styles */
 section {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 /* Custom checkbox styles */
 .custom-checkbox {
-    display: none; /* Hide the default checkboxes */
+  display: none; /* Hide the default checkboxes */
 }
 
 .checkbox-label {
-    position: relative;
-    padding-left: 30px; /* Add some space for the custom checkbox */
-    cursor: pointer;
+  position: relative;
+  padding-left: 30px; /* Add some space for the custom checkbox */
+  cursor: pointer;
 }
 
 /* Define the appearance of the custom checkbox */
 .checkbox-label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007bff; /* Color for the checkbox border */
-    background-color: #fff; /* Background color for the checkbox */
-    border-radius: 5px; /* Rounded corners for the checkbox */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* Color for the checkbox border */
+  background-color: #fff; /* Background color for the checkbox */
+  border-radius: 5px; /* Rounded corners for the checkbox */
 }
 
 /* Style for the custom checkbox when checked */
 .custom-checkbox:checked + .checkbox-label::before {
-    background-color: #007bff; /* Color when checked */
+  background-color: #007bff; /* Color when checked */
 }
 
 /* Style for the checkmark inside the custom checkbox when checked */
 .custom-checkbox:checked + .checkbox-label::before::after {
-    content: "\2713"; /* Unicode checkmark character */
-    display: block;
-    position: absolute;
-    top: 1px;
-    left: 5px;
-    color: #fff; /* Color of the checkmark when checked */
-    font-size: 16px;
+  content: "\2713"; /* Unicode checkmark character */
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  color: #fff; /* Color of the checkmark when checked */
+  font-size: 16px;
 }
 
 /* Hover effect for the labels */
 .checkbox-label:hover {
-    background-color: #f0f0f0; /* Background color on hover */
+  background-color: #f0f0f0; /* Background color on hover */
 }
 
 /* Flash message classes */
 .success {
-    background-color: #4CAF50; /* Green */
-    color: white;
+  background-color: #4caf50; /* Green */
+  color: white;
 }
 
 .error {
-    background-color: #f44336; /* Red */
-    color: white;
+  background-color: #f44336; /* Red */
+  color: white;
 }
 
 .info {
-    background-color: #2196F3; /* Blue */
-    color: white;
+  background-color: #2196f3; /* Blue */
+  color: white;
 }
 
 .warning {
-    background-color: #ff9800; /* Orange */
-    color: white;
+  background-color: #ff9800; /* Orange */
+  color: white;
 }
 
 /* Styling for the flashes container */
 .flashes {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .flashes li {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 4px;
-    display: inline-block;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 }
 /* Reset default margin and padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Body styles */
 body {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background-color: #f9f9f9;
-    color: #333333;
+  font-family: "Bricolage Grotesque", sans-serif;
+  background-color: #f9f9f9;
+  color: #333333;
 }
 
 /* Main content styles */
 main {
-    padding: 40px;
+  padding: 40px;
 }
 
 /* Section styles */
 section {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 /* Custom checkbox styles */
 .custom-checkbox {
-    display: none; /* Hide the default checkboxes */
+  display: none; /* Hide the default checkboxes */
 }
 
 .checkbox-label {
-    position: relative;
-    padding-left: 30px; /* Add some space for the custom checkbox */
-    cursor: pointer;
+  position: relative;
+  padding-left: 30px; /* Add some space for the custom checkbox */
+  cursor: pointer;
 }
 
 /* Define the appearance of the custom checkbox */
 .checkbox-label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007bff; /* Color for the checkbox border */
-    background-color: #fff; /* Background color for the checkbox */
-    border-radius: 5px; /* Rounded corners for the checkbox */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* Color for the checkbox border */
+  background-color: #fff; /* Background color for the checkbox */
+  border-radius: 5px; /* Rounded corners for the checkbox */
 }
 
 /* Style for the custom checkbox when checked */
 .custom-checkbox:checked + .checkbox-label::before {
-    background-color: #007bff; /* Color when checked */
+  background-color: #007bff; /* Color when checked */
 }
 
 /* Style for the checkmark inside the custom checkbox when checked */
 .custom-checkbox:checked + .checkbox-label::before::after {
-    content: "\2713"; /* Unicode checkmark character */
-    display: block;
-    position: absolute;
-    top: 1px;
-    left: 5px;
-    color: #fff; /* Color of the checkmark when checked */
-    font-size: 16px;
+  content: "\2713"; /* Unicode checkmark character */
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  color: #fff; /* Color of the checkmark when checked */
+  font-size: 16px;
 }
 
 /* Hover effect for the labels */
 .checkbox-label:hover {
-    background-color: #f0f0f0; /* Background color on hover */
+  background-color: #f0f0f0; /* Background color on hover */
 }
 
 /* Flash message classes */
 .success {
-    background-color: #4CAF50; /* Green */
-    color: white;
+  background-color: #4caf50; /* Green */
+  color: white;
 }
 
 .error {
-    background-color: #f44336; /* Red */
-    color: white;
+  background-color: #f44336; /* Red */
+  color: white;
 }
 
 .info {
-    background-color: #2196F3; /* Blue */
-    color: white;
+  background-color: #2196f3; /* Blue */
+  color: white;
 }
 
 .warning {
-    background-color: #ff9800; /* Orange */
-    color: white;
+  background-color: #ff9800; /* Orange */
+  color: white;
 }
 
 /* Styling for the flashes container */
 .flashes {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .flashes li {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 4px;
-    display: inline-block;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* Style for the role boxes */
 .role-box {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer; /* Make the box cursor clickable */
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer; /* Make the box cursor clickable */
 }
 
 .role-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for the role description */
 .role-box p {
-    font-size: 16px;
-    margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 /* Style for the sign-up button */
 .role-box .cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3D1356;
-    color: #FFFFFF;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-    text-shadow: 0px 0px 7px black;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3d1356;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  text-shadow: 0px 0px 7px black;
 }
 
 .role-box .cta-button:hover {
-    background-color: #63146d;
+  background-color: #63146d;
 }
 
 /* Style for selected role boxes */
 .role-box.selected {
-    background-color: #007bff; /* Change the background color when selected */
-    color: #ffffff; /* Change the text color when selected */
+  background-color: #007bff; /* Change the background color when selected */
+  color: #ffffff; /* Change the text color when selected */
 }
-
-
-
 
 /* Role name styles */
 .role-name {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 /* Style for the role description */
 .role-description {
-    font-family: 'Signika Negative', sans-serif;
-    font-size: 16px; /* Adjust the font size as needed */
-    max-height: 40px; /* Set the initial height */
-    overflow: hidden;
-    transition: max-height 0.5s ease-out; /* Add a smooth transition */
+  font-family: "Signika Negative", sans-serif;
+  font-size: 16px; /* Adjust the font size as needed */
+  max-height: 40px; /* Set the initial height */
+  overflow: hidden;
+  transition: max-height 0.5s ease-out; /* Add a smooth transition */
 }
-
-
 
 /* Add a class to override the max-height and show full text */
 .role-box.expanded .role-description {
-    max-height: none;
-    opacity: 1;
+  max-height: none;
+  opacity: 1;
 }
 
 /* CSS for the "fade" class */
 .fade {
-    opacity: 0.6; /* Adjust the opacity as needed (0.6 for 60% opacity, for example) */
-    transition: opacity 0.5s ease-in-out; /* Add a smooth transition for opacity changes */
+  opacity: 0.6; /* Adjust the opacity as needed (0.6 for 60% opacity, for example) */
+  transition: opacity 0.5s ease-in-out; /* Add a smooth transition for opacity changes */
 }
 
 /* Hover effect for the "fade" class (optional) */
 .fade:hover {
-    opacity: 1; /* Change the opacity to fully visible on hover */
+  opacity: 1; /* Change the opacity to fully visible on hover */
 }
 
 /* CSS for the "Show More" button */
 .view-more-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px; /* Adjust the font size as needed */
-    color: #007bff; /* Set the color to your preferred color */
-    transition: color 0.3s, transform 0.3s; /* Add a transition for the transform property */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #007bff; /* Set the color to your preferred color */
+  transition: color 0.3s, transform 0.3s; /* Add a transition for the transform property */
 }
 
 /* CSS class for the arrow-down symbol */
 .arrow-down {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid #ffffff; /* Change the color as needed */
-    vertical-align: middle;
-    transition: transform 0.3s; /* Add a transition for smooth rotation */
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #ffffff; /* Change the color as needed */
+  vertical-align: middle;
+  transition: transform 0.3s; /* Add a transition for smooth rotation */
 }
