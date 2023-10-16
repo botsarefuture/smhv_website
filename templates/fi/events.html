@@ -20,7 +20,7 @@
                 <a href="{{ url_for('event_details', event_id=event._id) }}" class="cta-button">Näytä tiedot</a>
             </div>
         
-            {% if empty %}
+            {% if  empty %}
             <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan järjestämään!</a>
             {% endif %}
         {% endfor %}
