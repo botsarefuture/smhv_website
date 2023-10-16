@@ -1,13 +1,16 @@
 /* Header styles */
 header {
     background-color: #1c1c1c;
-    padding: 20px 0;
     color: #ffffff;
 }
 
 header h1 {
     font-size: 28px;
     margin-bottom: 10px;
+}
+
+nav{
+    padding: 10px 30px;
 }
 
 nav ul {
@@ -17,7 +20,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-right: 30px;
+    margin: 10px 15px;
 }
 
 nav ul li:last-child {
