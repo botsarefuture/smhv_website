@@ -115,29 +115,34 @@
                 checkbox.checked = !checkbox.checked;
                 box.classList.toggle('selected', checkbox.checked);
             });
-        });
 
-        document.querySelectorAll('.view-more-button').forEach(function (button) {
-            button.addEventListener('click', function () {
-                var roleBox = this.closest('.role-box');
-                var description = roleBox.querySelector('.role-description');
+            var open = false
 
-                const checkbox = roleBox.querySelector('.custom-checkbox');
+                box.querySelector(".view-more-button").addEventListener('click', toggleText)
+                box.querySelector(".role-description").addEventListener('click', toggleText)
+
+                function toggleText(){
+                var description = box.querySelector('.role-description');
+                var button = box.querySelector('.view-more-button');
+
+                const checkbox = box.querySelector('.custom-checkbox');
                 checkbox.checked = !checkbox.checked;
-                roleBox.classList.toggle('selected', checkbox.checked);
+                box.classList.toggle('selected', checkbox.checked);
 
-                if (roleBox.classList.contains('expanded')) {
+                if (open === true) {
                             description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
-                            roleBox.classList.remove('expanded');
+                            description.classList.add("fade")
+                            open = !open
                             button.innerHTML = 'Näytä lisää ⏷';
                 } else {
                             description.style.maxHeight = 'none';
-                            roleBox.classList.add('expanded');
+                            description.classList.remove("fade")
+                            open = !open
                             button.innerHTML = 'Piilota ⏶';
                         }
-            })
+                };
         });
-        
+
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
