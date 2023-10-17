@@ -8,6 +8,9 @@
 @import url("css/join.css");
 @import url("css/footer.css");
 @import url("css/signup.css");
+@import url("css/blog_post.css");
+@import url("css/blog_create.css");
+@import url("css/blog.css");
 
 /* Reset default margin and padding */
 * {

@@ -1,0 +1,32 @@
+{% extends 'base_fi.html' %}
+{%block title %} Create a Blog Post {%endblock%}
+
+{% block content %}
+    <div class="container">
+        <h1>Luo blogipostaus</h1>
+        <form class="blog-form" method="POST" action="{{ url_for('create_post') }}">
+            <div class="form-group">
+                <label for="title">Otsikko</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Tekijä</label>
+                <input type="text" name="author" id="author" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Sisältö</label>
+                <textarea name="content" id="content" rows="6" required></textarea>
+            </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-primary">Create Post</button>
+        </form>
+        <a href="{{ url_for('blog') }}">Back to Blog</a>
+    </div>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
+    
+{% endblock %}

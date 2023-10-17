@@ -1,0 +1,53 @@
+/* blog_post.css */
+
+/* Main container styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto; /* Center the container horizontally */
+    max-width: 800px;
+}
+
+/* Title styling */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Meta information (author and date) styling */
+p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Content styling for the blog section */
+.blog-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Back to Blog link styling */
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    display: block; /* Place the link below the content */
+    margin-top: 20px;
+    width: max-content;
+    margin-left: 0; /* Keep it left-aligned */
+}

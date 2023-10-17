@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from flask import Flask, redirect, render_template, request, Response, flash
+from flask_ckeditor import CKEditor
+
 from pymongo import MongoClient
 from bson import ObjectId  # Import ObjectId class
 from flask_sitemap import Sitemap
@@ -15,6 +17,7 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
+ckeditor = CKEditor(app)
 
 # Set up MongoDB connection
 client = MongoClient(config["mongodb"]["uri"])
@@ -244,6 +247,39 @@ def change_language(lang):
     path = lang_thing(lang, request.referrer, request)
 
     return redirect(path)
+
+# BLOG
+blog_collection = db['blog_posts']
+
+@app.route('/<lang>/blog/')
+@app.route('/blog')
+def blog(lang="fi"):
+    posts = list(blog_collection.find({"lang": lang}))
+    return render_template(f'blog/{lang}/blog.html', posts=posts)
+
+@app.route('/<lang>/blog/<post_id>')
+@app.route('/blog/<post_id>')
+def blog_post(lang="fi", post_id=None):
+    post = blog_collection.find_one({"_id": ObjectId(post_id)})
+    return render_template(f'blog/{lang}/blog_post.html', post=post)
+
+@app.route('/<lang>/create_post', methods=['GET', 'POST'])
+@app.route('/create_post', methods=['GET', 'POST'])
+def create_post(lang="fi"):
+    if request.method == 'POST':
+        title = request.form['title']
+        author = request.form['author']
+        content = request.form['content']
+        post_data = {
+            'title': title,
+            'author': author,
+            'content': content,
+            'lang': lang,
+            'date_posted': datetime.now()
+        }
+        blog_collection.insert_one(post_data)
+        return redirect('/blog')
+    return render_template(f'blog/{lang}/create_post.html')
 
 
 if __name__ == '__main__':
