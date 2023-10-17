@@ -15,13 +15,13 @@
                 
                 <!-- Add a link to the signup page for this event -->
                 {% if event.role_signup %}
-                    <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
+                    <button href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</button>
                 {% endif %}
-                <a href="{{ url_for('event_details', event_id=event._id) }}" class="cta-button">Näytä tiedot</a>
+                <button href="{{ url_for('event_details', event_id=event._id) }}"  class="cta-button">Näytä tiedot</button>
             </div>
         
             {% if  empty %}
-            <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan järjestämään!</a>
+            <button href="{{ url_for('join') }}">Tule mukaan järjestämään!</button>
             {% endif %}
         {% endfor %}
 </section>
