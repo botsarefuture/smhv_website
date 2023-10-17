@@ -15,7 +15,7 @@
                 
                 <!-- Add a link to the signup page for this event -->
                 {% if event.role_signup %}
-                    <button href="{{ url_for('event_signup', event_id=event._id) }}" >Ilmoittaudu tukirooliin</button>
+                    <button href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</button>
                 {% endif %}
                 <button href="{{ url_for('event_details', event_id=event._id) }}"  class="cta-button">Näytä tiedot</button>
             </div>
