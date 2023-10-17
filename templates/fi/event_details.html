@@ -11,8 +11,8 @@
         <!-- Add any other event details you want to display -->
         
         {% if event.role_signup %}
-        <button href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</button>
+        <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
         {% endif %}
-        <button href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</button>
+        <a href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</a>
     </section>
 {% endblock %}

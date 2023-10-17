@@ -8,12 +8,12 @@
 
             <h2>Hallitusta vastaan, elämän puolesta!</h2>
             <p>Tavoitteemme on kaataa hallitus vuoteen 2024 mennessä.</p>
-            <button href="{{ url_for('about') }}"  >Lue lisää toiminnastamme</button>         
+            <a href="{{ url_for('about') }}" class="cta-button">Lue lisää toiminnastamme</a>         
             
 
             <br><br>
 
-            <button href="{{ url_for('join') }}"  >Tule mukaan!</button>
+            <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan!</a>
 
 
         </div>
@@ -25,11 +25,11 @@
             <p>Tavoitteemme on saada sinimusta hallitus kaatumaan.</p>
             <p>Liity joukkoomme kaatamaan hallitusta.</p>
         </div>
-        <button href="{{ url_for('about') }}"  >Lue lisää</button>
+        <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
     </section>
     <section class="join-us">
         <h2>Tule mukaan jo tänään!</h2>
         <p>Oletko valmis toimimaan ja luomaan parempaa tulevaisuutta? Liity mukaan!</p>
-        <a href="{{ url_for('join') }}"  >Tule mukaan!</a>
+        <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan!</a>
     </section>
 {% endblock %}
