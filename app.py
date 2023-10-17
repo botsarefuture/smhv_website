@@ -105,6 +105,10 @@ def event_signup(lang="fi", event_id=None):
         email = request.form.get("email")
         roles = request.form.getlist("roles[]")  # Haetaan valitut roolit
 
+        if name == "" or email == "":
+            flash("KYS!", "error") # Friendly reminder of the fact yu have to provide thights to see
+            return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
+        
         roles1 = roles
         # Tallenna ilmoittautumistiedot MongoDB:hen (event_signups-kokoelmaan).
         signup_data = {
