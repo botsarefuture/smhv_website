@@ -52,14 +52,14 @@
                     </label>
                     
                     {% if role.need_training and role.training_url %}
-                    <a href="{{role.training_url}}" class="cta-button">Ilmoittaudu tukiroolikoulutukseen</a> 
+                    <a href="{{role.training_url}}"  >Ilmoittaudu tukiroolikoulutukseen</a> 
                     {% endif %}
                 </div>
 
                 {% endfor %}
             </div>
             
-            <button type="submit" id="submit-button" class="cta-button">Ilmoittaudu</button>
+            <button type="submit" id="submit-button"  >Ilmoittaudu</button>
         </form>
     </section>
     
@@ -132,11 +132,13 @@
                 if (open === true) {
                             description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
                             description.classList.add("fade")
+                            box.classList.remove("open")
                             open = !open
                             button.innerHTML = 'Näytä lisää ⏷';
                 } else {
                             description.style.maxHeight = 'none';
                             description.classList.remove("fade")
+                            box.classList.add("open")
                             open = !open
                             button.innerHTML = 'Piilota ⏶';
                         }

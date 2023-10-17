@@ -38,3 +38,7 @@ nav ul li a {
 nav ul li a:hover {
     color: #c2c2c2;
 }
+
+nav ul li a:active {
+    color: #6d6d6d;
+}
