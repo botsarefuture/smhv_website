@@ -1,0 +1,12 @@
+{% extends 'base_fi.html' %}
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %}
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>Tekijä: {{ post.author }} </p>
+    <p>{{ post.date_posted.strftime('%d.%m.%y %H:%M') }}</p>
+    <p>{{ post.content | safe }}</p>
+    <a href="{{ url_for('blog') }}">Takaisin blogiin</a>
+</body>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base_en.html' %}
+{% block title %} Blog Posts {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <div class="blog-posts">
+            {% for post in posts %}
+                <div class="blog-post">
+                    <h2>{{ post.title }}</h2>
+                    <p>By {{ post.author }} on {{ post.date_posted.strftime('%d.%m.%y %H:%M') }}</p>
+                    <div class="blog-content">{{ (post.content | safe)[:100] }}</div>
+                    <div class="button-container">
+                        <a href="{{ url_for('blog_post', lang='en', post_id=post._id) }}" class="read-more-button">Read More</a>
+                    </div>    
+                </div>
+                            <!-- Container for the "Read More" button -->
+                
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
