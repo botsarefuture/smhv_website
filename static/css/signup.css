@@ -114,7 +114,7 @@
 .progress-bar {
     height: 15px;
     background-color: var(--neon-green); /* Change color if needed */
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px;
     opacity: 100%;
 }
 
