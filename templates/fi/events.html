@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="event-calendar">
-        <h2>Tule tapahtumiimme</h2>
+        <h2>Tulevat tapahtumat</h2>
         <p>Tutustu tuleviin tapahtumiimme, joissa kokoontumme oppimaan, verkostoitumaan ja luomaan positiivista vaikutusta.</p>
         <br>
         <br>
@@ -11,17 +11,18 @@
                 <h3>{{ event.title_fi }}</h3>
                 <p>Päivämäärä: {{ event.date }}</p>
                 <p>Paikka: {{ event.location_fi }}</p>
-                <p>{{ event.description_fi }}</p>
-
+                <p>{{ event.description_fi|replace('\n', '<br>')|safe }}</p>
+                
                 <!-- Add a link to the signup page for this event -->
-                <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
+                {% if event.role_signup %}
+                    <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
+                {% endif %}
                 <a href="{{ url_for('event_details', event_id=event._id) }}" class="cta-button">Näytä tiedot</a>
-
             </div>
+        
             {% if  empty %}
             <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan järjestämään!</a>
             {% endif %}
         {% endfor %}
-        
-    </section>
+</section>
 {% endblock %}

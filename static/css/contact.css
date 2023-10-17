@@ -11,7 +11,7 @@
 
 .contact-form p {
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .contact-form form {
@@ -39,19 +39,8 @@
     resize: vertical;
 }
 
-.contact-form button {
-    background-color: #3D1356;
-    color: #FFFFFF;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
 .contact-form button:hover {
-    background-color: #63146D;
+    background-color: var(--light-violet);
 }
 
 .alternative-contact {

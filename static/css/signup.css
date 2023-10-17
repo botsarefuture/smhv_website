@@ -1,0 +1,94 @@
+/* sign-up form */
+
+.role-box .cta-button:hover {
+    background-color: #63146d;
+}
+
+/* Style for selected role boxes */
+.role-box.selected {
+    background-color: #710e8da3; /* Change the background color when selected */
+    color: #ffffff; /* Change the text color when selected */
+}
+
+/* Role name styles */
+.role-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0px;
+}
+
+/* Style for the role description */
+.role-description {
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 16px; /* Adjust the font size as needed */
+    max-height: 40px; /* Set the initial height */
+    overflow: hidden;
+    margin-bottom: 5px ;
+    transition: max-height 0.5s ease-out; /* Add a smooth transition */
+}
+
+/* Style for the role boxes */
+.role-box {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Make the box cursor clickable */
+}
+
+.role-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the role description */
+.role-box p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Style for the sign-up button */
+.role-box .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3D1356;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.role-count{
+    margin: 25px 0 0 0;
+}
+
+.view-more-button {
+    background: none;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.view-more-button:hover {
+    background: none;
+    border: none;
+}
+
+.progress-bar {
+    height: 15px;
+    background-color: var(--neon-green); /* Change color if needed */
+    border-radius: 4px 0px 0px 4px;
+    opacity: 100%;
+}
+
+.progress-bar-outer{
+    border: 1px solid rgba(0, 0, 0, 0.675);
+    margin: 5px 0px 20px 0px;
+    border-radius: 5px;
+    width: 100%;
+}

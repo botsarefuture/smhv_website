@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  deployment:
+    runs-on: server1
+    environment: 
+      name: production
+      url: https://sinimustaahallitustavastaan.org/
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Deployment Script
+        run: |
+          # Add your Git pull and service start commands here
+          echo "${{ secrets.password }}" | sudo -S su -l -c "cd /root/smhv_website && ./download.sh"
+
+      - name: Deployment Complete
+        run: echo "Deployment to production environment completed."

@@ -19,6 +19,7 @@ footer {
 
 .footer-content p {
     margin: 0;
+    font-size: 0.9rem;
 }
 
 /* Social media styles */
@@ -36,7 +37,9 @@ footer {
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    transition: background-color 0.3s;
+    transition: 0.3s;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.243);
 }
 
 .social-media img {
@@ -46,7 +49,8 @@ footer {
 }
 
 .social-media a:hover {
-    background-color: #333333;
+    background-color: rgba(255, 255, 255, 0.469);
+    box-shadow: 0px 0px 15px rgb(255, 255, 255);
 }
 
 /* Media query for mobile devices */
