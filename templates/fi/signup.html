@@ -132,13 +132,13 @@
                 if (open === true) {
                             description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
                             description.classList.add("fade")
-                            description.classList.remove("open")
+                            box.classList.remove("open")
                             open = !open
                             button.innerHTML = 'Näytä lisää ⏷';
                 } else {
                             description.style.maxHeight = 'none';
                             description.classList.remove("fade")
-                            description.classList.add("open")
+                            box.classList.add("open")
                             open = !open
                             button.innerHTML = 'Piilota ⏶';
                         }
