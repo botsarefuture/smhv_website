@@ -69,10 +69,15 @@ def sort_events_by_date(events):
 def events(lang="fi"):
     # Fetch events from MongoDB
     events_data = events_collection.find()
-
+    events = []
+    for event in events_data:
+        is_public = event.get("is_public", True)
+        if is_public:
+            events.append(event)
+    
     # Filter out events with past dates
     current_datetime = datetime.now()
-    future_events = [event for event in events_data if get_event_date(
+    future_events = [event for event in events if get_event_date(
         event) >= current_datetime]
     sorted_events = sort_events_by_date(future_events)
     return render_template(f'{lang}/events.html', title='Events', events=sorted_events, current_year=2023)
