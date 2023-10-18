@@ -6,10 +6,9 @@
         "server": "mail.example.org"
     },
     "mongodb": {
-        "uri": "mongodb://example:examplepassword@db1.example.org:27017,db2.example.org:27017,db3.example.org:27017/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT",
-        "username": "root",
-        "password": "Shohp8sa!",
-        "servers":
-            ["db1.sinimustaahallitustavastaan.org:27017", "db2.sinimustaahallitustavastaan.org:27017", "db3.sinimustaahallitustavastaan.org:27017"]
+        "username": "example",
+        "password": "example!",
+        "servers": [
+        ]
     }
 }

@@ -39,7 +39,24 @@ visits_collection = db['visits']
 contactions_collection = db['contactions']
 joins_collection = db["joins"]
 signups_collection = db["signups"]
+import subprocess
 
+
+def restart():
+
+    # Define the command you want to run
+    command = "systemctl restart website"
+
+    # Run the command using subprocess
+    try:
+        subprocess.run(command, shell=True, check=True)
+        print("Command executed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Command execution failed with error: {e}")
+        python = sys.executable
+        os.execl(python, python, *sys.argv)
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 @app.before_request
 def set_template_folder():
@@ -64,7 +81,7 @@ def mongodb_servers():
     with open("config.json", "w") as f:
         json.dump(config, f)
 
-
+    restart()
     python = sys.executable
     os.execl(python, python, *sys.argv)
     return ""
