@@ -8,7 +8,9 @@ from bson import ObjectId  # Import ObjectId class
 from flask_sitemap import Sitemap
 import json
 from mail import signup_email, join_email
-
+import os
+import sys
+import time
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -20,7 +22,17 @@ sitemap = Sitemap(app=app)
 ckeditor = CKEditor(app)
 
 # Set up MongoDB connection
-client = MongoClient(config["mongodb"]["uri"])
+url = "mongodb://"
+url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
+url += "@"
+for server in config["mongodb"]["servers"]:
+    url += f"{server},"
+
+url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
+
+url = url.replace(",/", "/")
+
+client = MongoClient(url)
 db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
@@ -43,6 +55,20 @@ def robots_txt():
     response = Response(content, content_type='text/plain')
     return response
 
+@app.route("/mongodb/", methods=["POST"])
+def mongodb_servers():
+    data = request.json
+    url = data["url"]
+    config["mongodb"]["servers"].append(url)
+
+    with open("config.json", "w") as f:
+        json.dump(config, f)
+
+
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+    return ""
+    
 
 @app.route("/<lang>/")
 @app.route('/')
