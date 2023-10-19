@@ -1,0 +1,12 @@
+{% extends 'base_en.html' %}
+{% block title %} {{ release.title }} {% endblock %}
+
+{% block content %}
+<body>
+    <h1>{{ release.title }}</h1>
+    <p>From {{ release.author }} </p>
+    <p>{{ release.date_released.strftime('%d.%m.%y %H:%M') }}</p>
+    <p>{{ release.content | safe }}</p>
+    <a href="{{ url_for('press', lang='en') }}">Back to press releases</a>
+</body>
+{% endblock %}

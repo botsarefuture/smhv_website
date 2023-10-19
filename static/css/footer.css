@@ -10,9 +10,8 @@ footer {
 /* Footer content styles */
 .footer-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; /* Center align the content */
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -56,6 +55,7 @@ footer {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
     .social-media {
+        flex-direction: row; /* Display icons in a row on mobile */
         justify-content: center;
     }
 }
