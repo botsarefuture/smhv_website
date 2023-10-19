@@ -1,6 +1,7 @@
+import subprocess
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, Response, flash
+from flask import Flask, redirect, render_template, request, Response, flash, make_response
 from flask_ckeditor import CKEditor
 
 from pymongo import MongoClient
@@ -10,7 +11,9 @@ import json
 from mail import signup_email, join_email
 import os
 import sys
-import time
+from datetime import datetime
+from dateutil import tz
+
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -39,7 +42,6 @@ visits_collection = db['visits']
 contactions_collection = db['contactions']
 joins_collection = db["joins"]
 signups_collection = db["signups"]
-import subprocess
 
 
 def restart():
@@ -58,6 +60,7 @@ def restart():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
 @app.before_request
 def set_template_folder():
     visits_collection.insert_one({"ip": request.headers.get(
@@ -72,6 +75,7 @@ def robots_txt():
     response = Response(content, content_type='text/plain')
     return response
 
+
 @app.route("/mongodb/", methods=["POST"])
 def mongodb_servers():
     data = request.json
@@ -85,7 +89,7 @@ def mongodb_servers():
     python = sys.executable
     os.execl(python, python, *sys.argv)
     return ""
-    
+
 
 @app.route("/<lang>/")
 @app.route('/')
@@ -149,9 +153,10 @@ def event_signup(lang="fi", event_id=None):
         roles = request.form.getlist("roles[]")  # Haetaan valitut roolit
 
         if name == "" or email == "":
-            flash("KYS!", "error") # Friendly reminder of the fact yu have to provide thights to see
+            # Friendly reminder of the fact yu have to provide thights to see
+            flash("KYS!", "error")
             return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
-        
+
         roles1 = roles
         # Tallenna ilmoittautumistiedot MongoDB:hen (event_signups-kokoelmaan).
         signup_data = {
@@ -164,14 +169,17 @@ def event_signup(lang="fi", event_id=None):
 
         roles = event.get('roles', [])  # Haetaan roolit
 
-        for role in roles: # ÄLÄ KOSKE
-            if role.get("show_name") in roles1: # ÄLÄ KOSKE! 
-                role.setdefault('count', 0)  # Alusta 'count' rooliin, jos sitä ei ole
-                role['count'] += 1  # Kasvata roolin 'count' kunkin ilmoittautumisen yhteydessä
+        for role in roles:  # ÄLÄ KOSKE
+            if role.get("show_name") in roles1:  # ÄLÄ KOSKE!
+                # Alusta 'count' rooliin, jos sitä ei ole
+                role.setdefault('count', 0)
+                # Kasvata roolin 'count' kunkin ilmoittautumisen yhteydessä
+                role['count'] += 1
 
                 # Päivitä roolin tiedot tietokantaan käyttäen $inc operaattoria
                 events_collection.update_one(
-                    {"_id": ObjectId(event_id), "roles.show_name": role["show_name"]},
+                    {"_id": ObjectId(event_id),
+                     "roles.show_name": role["show_name"]},
                     {"$inc": {"roles.$.count": 1}}
                 )
 
@@ -222,7 +230,7 @@ def contact(lang="fi"):
 
         contactions_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber})
-        #TODO: #51 Flash information about successfully sent form
+        # TODO: #51 Flash information about successfully sent form
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
 
@@ -242,14 +250,15 @@ def join(lang="fi"):
 
         joins_collection.insert_one(
             {"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
-        
-        #TODO: #50 Flash information about successfully sent form
+
+        # TODO: #50 Flash information about successfully sent form
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
 # TODO: #8 Clean this function
 
 
-def lang_thing(lang, path, request): # DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
+# DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
+def lang_thing(lang, path, request):
     if lang == "fi":
         path = path.replace("en/", "")
 
@@ -295,8 +304,10 @@ def change_language(lang):
 
     return redirect(path)
 
+
 # BLOG
 blog_collection = db['blog_posts']
+
 
 @app.route('/<lang>/blog/')
 @app.route('/blog')
@@ -304,11 +315,13 @@ def blog(lang="fi"):
     posts = list(blog_collection.find({"lang": lang}))
     return render_template(f'blog/{lang}/blog.html', posts=posts)
 
+
 @app.route('/<lang>/blog/<post_id>')
 @app.route('/blog/<post_id>')
 def blog_post(lang="fi", post_id=None):
     post = blog_collection.find_one({"_id": ObjectId(post_id)})
     return render_template(f'blog/{lang}/blog_post.html', post=post)
+
 
 @app.route('/<lang>/create_post', methods=['GET', 'POST'])
 @app.route('/create_post', methods=['GET', 'POST'])
@@ -328,10 +341,71 @@ def create_post(lang="fi"):
         return redirect('/blog')
     return render_template(f'blog/{lang}/create_post.html')
 
+def convert(mongo_db_date):
+    
+
+
+    # Convert the MongoDB date string to a datetime object
+    mongo_date = mongo_db_date #datetime.fromisoformat(mongo_db_date)
+
+    # Define a function to convert to RFC822 format
+    def mongo_to_rfc822(mongo_date):
+        # Convert the MongoDB date to UTC timezone
+        mongo_date_utc = mongo_date.replace(tzinfo=tz.tzutc())
+        
+        # Format it as RFC822 date-time
+        rfc822_date = mongo_date_utc.astimezone(tz.tzlocal()).strftime('%a, %d %b %Y %H:%M:%S %z')
+        
+        return rfc822_date
+
+    # Call the function to get the RFC822 formatted date
+    rfc822_date = mongo_to_rfc822(mongo_date)
+
+    return rfc822_date
+
+
+@app.route('/rss', methods=['GET'])
+def rss_feed():
+    # Replace this with your actual blog posts data
+    
+    blog_posts = list(blog_collection.find())
+    
+    # Create an RSS feed
+    rss = f'''<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0">
+        <channel>
+            <title>Your Blog RSS Feed</title>
+            <link>{request.url_root}</link>
+            <description>Latest blog posts</description>
+            <language>en-us</language>
+            <pubDate>{convert(datetime.now())}</pubDate>
+            <lastBuildDate>{convert(datetime.now())}</lastBuildDate>
+            <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+
+            {"".join([
+                f"""
+                <item>
+                    <title>{post['title']}</title>
+                    <link>{request.url_root}/blog</link>
+                    <pubDate>{convert(post['date_posted'])}</pubDate>
+                </item>
+                """
+                for post in blog_posts
+            ])}
+        </channel>
+    </rss>
+    '''
+
+    response = make_response(rss)
+    response.headers["Content-Type"] = "application/rss+xml"
+    return response
+
 # END BLOG
+
 
 # press releases
 press_collection = db['press_releases']
+
 
 @app.route('/<lang>/press/')
 @app.route('/press')
@@ -341,12 +415,14 @@ def press(lang="fi"):
 
     return render_template(f'press/{lang}/press.html', releases=releases)
 
+
 @app.route('/<lang>/press/<slug>/')
 @app.route('/press/<slug>/')
 def press_release(lang="fi", slug=0):
     release = press_collection.find_one({'slug': int(slug)})
     print(release)
     return render_template(f'press/{lang}/press_release.html', release=release)
+
 
 @app.route('/<lang>/create_release', methods=['GET', 'POST'])
 @app.route('/create_release', methods=['GET', 'POST'])
@@ -367,6 +443,7 @@ def create_release(lang="fi"):
         press_collection.insert_one(post_data)
         return redirect('/press')
     return render_template(f'press/{lang}/create_release.html')
+
 
 release = press_collection.find_one({'slug': 0})
 print(release)
