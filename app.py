@@ -20,7 +20,17 @@ sitemap = Sitemap(app=app)
 ckeditor = CKEditor(app)
 
 # Set up MongoDB connection
-client = MongoClient(config["mongodb"]["uri"])
+url = "mongodb://"
+url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
+url += "@"
+for server in config["mongodb"]["servers"]:
+    url += f"{server},"
+
+url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
+
+url = url.replace(",/", "/")
+
+client = MongoClient(url)
 db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
@@ -285,6 +295,48 @@ def create_post(lang="fi"):
         return redirect('/blog')
     return render_template(f'blog/{lang}/create_post.html')
 
+# END BLOG
+
+# press releases
+press_collection = db['press_releases']
+
+@app.route('/<lang>/press/')
+@app.route('/press')
+def press(lang="fi"):
+    releases = list(press_collection.find())
+    print(releases)
+
+    return render_template(f'press/{lang}/press.html', releases=releases)
+
+@app.route('/<lang>/press/<slug>/')
+@app.route('/press/<slug>/')
+def press_release(lang="fi", slug=0):
+    release = press_collection.find_one({'slug': int(slug)})
+    print(release)
+    return render_template(f'press/{lang}/press_release.html', release=release)
+
+@app.route('/<lang>/create_release', methods=['GET', 'POST'])
+@app.route('/create_release', methods=['GET', 'POST'])
+def create_release(lang="fi"):
+    if request.method == 'POST':
+        title = request.form['title']
+        author = request.form['author']
+        content = request.form['content']
+        post_data = {
+            'title': title,
+            'slug': config["mongodb"]["latest_release"],
+            'author': author,
+            'content': content,
+            'lang': lang,
+            'date_released': datetime.now()
+        }
+        config["mongodb"]["latest_release"] += 1
+        press_collection.insert_one(post_data)
+        return redirect('/press')
+    return render_template(f'press/{lang}/create_release.html')
+
+release = press_collection.find_one({'slug': 0})
+print(release)
 
 if __name__ == '__main__':
     app.run()

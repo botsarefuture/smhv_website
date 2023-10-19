@@ -1,0 +1,23 @@
+{% extends 'base_en.html' %}
+{% block title %} Press releases {% endblock %}
+
+{% block content %}
+        <div class="press-container">
+        <h1 class="press-title">Press releases</h1>
+        <div class="press-releases">
+            {% for release in releases %}
+                <div class="press-release">
+                    <h2 class="release-title">{{ release.title }}</h2>
+                    <!--<p>Tekijä: {{ release.author }} </p>-->
+                    <p>{{ release.date_released.strftime('%d.%m.%y %H:%M') }}</p>
+                    <div class="press-release-content">{{ (release.content | safe)[:100] }}</div>
+                    <div class="press-button-container">
+                        <a href="{{ url_for('press_release', lang='en', slug=release.slug) }}" class="press-read-more-button">Read more</a>
+                    </div>    
+                </div>
+                            <!-- Container for the "Read More" button -->
+                
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
