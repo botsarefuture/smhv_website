@@ -310,7 +310,7 @@ blog_collection = db['blog_posts']
 
 
 @app.route('/<lang>/blog/')
-@app.route('/blog')
+@app.route('/blog/')
 def blog(lang="fi"):
     posts = list(blog_collection.find({"lang": lang}))
     return render_template(f'blog/{lang}/blog.html', posts=posts)
