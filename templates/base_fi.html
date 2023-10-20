@@ -11,9 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5254175970151613"
      crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/mobilemenu.js') }}"></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4L1ME98KL"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -22,20 +24,59 @@
   gtag('config', 'G-C4L1ME98KL');
 </script>
 <body>
+
+    
     <header>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
-                <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
-                <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
-                <li><a href="{{ url_for('about') }}">Meistä</a></li>
-                <li><a href="{{ url_for('join') }}">Liity</a></li>
-                <li><a href="{{ url_for('blog') }}">Blogi</a></li>
-                <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
-                <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
-            </ul>
-        </nav>
+        <div class="left">
+                
+                    <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='logo_Läpinäkyvä_Valkoinen.png') }}" alt="Logo">
+            </a>
+            <div class="language-dropdown">
+                <a href="{{ url_for('change_language', lang='en')}}">EN</a>
+                <a href="{{ url_for('change_language', lang='fi')}}" class="active">FI</a>
+            </div>
+        </div>
+        <div class="right">
+            <!-- Computer menu -->
+            <nav class="computer-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
+                    <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
+                    <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
+                    <li><a href="{{ url_for('about') }}">Meistä</a></li>
+                    <li><a href="{{ url_for('join') }}">Liity</a></li>
+                    <li><a href="{{ url_for('blog') }}">Blogi</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile menu -->
+            <nav id="mobile-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
+                    <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
+                    <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
+                    <li><a href="{{ url_for('about') }}">Meistä</a></li>
+                    <li><a href="{{ url_for('join') }}">Liity</a></li>
+                    <li><a href="{{ url_for('blog') }}">Blogi</a></li>
+                    <li class="dropdown">
+                        <a href="#">Language</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('change_language', lang='en')}}">EN</a>
+                            <a href="{{ url_for('change_language', lang='fi')}}">FI</a>
+                        </div>
+                    </li>
+                    <br><br>
+                    <li><div class="menu-toggle" onclick="toggleMobileMenu()">☰</div></li>
+                </ul>
+                <br>
+
+            </nav>
+            <div id="menu1" class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
+            
+        </div>
     </header>
+    
+    
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <ul class=flashes>
