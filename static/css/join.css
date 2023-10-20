@@ -19,7 +19,7 @@
 .join-us .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--neon-green);
+    background-color: var(--violet);
     color: #FFFFFF;
     text-decoration: none;
     border-radius: 5px;
@@ -27,9 +27,9 @@
 }
 
 .join-us .cta-button:hover {
-    background-color: var(--green);
+    background-color: var(--light-violet);
 }
 
 .join-us .cta-button:active {
-    background-color: var(--darker-green);
+    background-color: var(--darker-violet);
 }

@@ -28,7 +28,7 @@ h1 {
 }
 
 /* Meta information (author and date) styling */
-p {
+.blog p {
     font-size: 14px;
     color: #666;
     margin: 5px 0;

@@ -3,12 +3,13 @@
 
 {% block content %}
     <div class="blog-container">
-        <h1 class="blog-title">Blogi postaukset</h1>
+        <h1 class="blog-title">Blogipostaukset</h1>
+
         <div class="blog-posts">
             {% for post in posts %}
                 <div class="blog-post">
                     <h2>{{ post.title }}</h2>
-                    <p>Tekijä: {{ post.author }} </p>
+                    <p class="blog">Tekijä: {{ post.author }} </p>
                     <p>{{ post.date_posted.strftime('%d.%m.%y %H:%M') }}</p>
                     <div class="blog-content">{{ (post.content | safe)[:100] }}</div>
                     <div class="button-container">
