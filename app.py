@@ -342,9 +342,6 @@ def create_post(lang="fi"):
     return render_template(f'blog/{lang}/create_post.html')
 
 def convert(mongo_db_date):
-    
-
-
     # Convert the MongoDB date string to a datetime object
     mongo_date = mongo_db_date #datetime.fromisoformat(mongo_db_date)
 
@@ -406,7 +403,6 @@ def rss_feed():
 # press releases
 press_collection = db['press_releases']
 
-
 @app.route('/<lang>/press/')
 @app.route('/press')
 def press(lang="fi"):
@@ -415,14 +411,12 @@ def press(lang="fi"):
 
     return render_template(f'press/{lang}/press.html', releases=releases)
 
-
 @app.route('/<lang>/press/<slug>/')
 @app.route('/press/<slug>/')
 def press_release(lang="fi", slug=0):
     release = press_collection.find_one({'slug': int(slug)})
     print(release)
     return render_template(f'press/{lang}/press_release.html', release=release)
-
 
 @app.route('/<lang>/create_release', methods=['GET', 'POST'])
 @app.route('/create_release', methods=['GET', 'POST'])
