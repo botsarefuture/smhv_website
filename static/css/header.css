@@ -7,14 +7,12 @@ header {
     flex-direction: row; /* Change to column layout on mobile */
     align-items: center; /* Center align on mobile */
     padding: 10px 30px;
-  }
+}
   
 header .left {
 display: flex;
 align-items: center;
 }
-
-
 
 header .left img {
   width: 50px; /* Adjust the logo size as needed */
@@ -116,7 +114,6 @@ nav ul li a:hover {
 
   header .left ul li {
     align-items: center;
-    
   }
 
   header .left {
@@ -205,12 +202,5 @@ nav ul li a:hover {
   .computer-menu {
     display: none;
     /* Hide computer menu on mobile */
-  }
-
-  .language-dropdown {
-    display: none;
-    visibility: hidden;
-
-    /* Hide language dropdown on mobile */
   }
 }
