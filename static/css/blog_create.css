@@ -54,7 +54,7 @@ textarea {
     background-color: #0056b3;
 }
 
-a {
+.container a {
     text-decoration: none;
     color: #007BFF;
     font-weight: bold;

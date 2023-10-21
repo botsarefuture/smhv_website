@@ -164,13 +164,6 @@ section {
   font-weight: bold;
 }
 
-/* Body styles */
-body {
-  font-family: "Bricolage Grotesque", sans-serif;
-  background-color: #f9f9f9;
-  color: #333333;
-}
-
 /* Main content styles */
 main {
   padding: 40px;

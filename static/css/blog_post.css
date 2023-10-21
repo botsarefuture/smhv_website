@@ -27,13 +27,6 @@ h1 {
     padding: 0;
 }
 
-/* Meta information (author and date) styling */
-.blog p {
-    font-size: 14px;
-    color: #666;
-    margin: 5px 0;
-}
-
 /* Content styling for the blog section */
 .blog-content {
     font-size: 16px;
@@ -42,7 +35,7 @@ h1 {
 }
 
 /* Back to Blog link styling */
-a {
+.blog-link{
     text-decoration: none;
     color: #007BFF;
     font-weight: bold;
