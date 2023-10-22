@@ -1,4 +1,21 @@
 {"roles": [
+    {
+        "name": "Osallistuja",
+        "show_name": "Osallistuja",
+        "fi_name": "Osallistuja",
+        "en_name": "Participant",
+        "fi_description": "(Valitse tämä vaikka valitsisit tämän lisäksi muita rooleja) Osallistuja osallistuu hitaaseen marssiin",
+        "en_description": "(Select this even tho you would also select other roles!) Participant participants on slow march",
+        "min_count": 10,
+        "count": 0,
+        "introductions": [
+            {
+              "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+              "time": "Will be told by email later",
+              "location": ""
+            }
+          ]
+    },
       {
         "name": "De-eskaloija",
         "show_name": "Deeskaloija",
@@ -108,7 +125,7 @@
         "en_name": "Police Liaison",
         "fi_description": "Poliisikontaktien tehtävänä on neuvotella ja keskustella poliisin kanssa mielenosoituksen aikana. Poliisikontaktit toimivat mahdollisimman neutraalisti ja asiallisesti mielenosoituksen ja poliisin välittäjinä.",
         "en_description": "The role of police liaisons is to negotiate and communicate with the police during the protest. Police liaisons act as neutral and professional intermediaries between the protest and the police.",
-        "min_count": 2,
+        "min_count": 1,
         "count": 0,
         "introductions": [
           {

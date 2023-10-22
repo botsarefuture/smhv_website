@@ -202,22 +202,5 @@
             "location": ""
           }
         ]
-      },
-      {
-        "name": "Liikenteenohjaaja",
-        "show_name": "Liikenteenohjaaja",
-        "fi_name": "Liikenteenohjaaja",
-        "en_name": "Traffic Controller",
-        "fi_description": "Liikenteenohjaajien tehtävänä on ohjata liikennettä tarvittaessa, mikäli poliisi ei sitä tee. Liikenteenohjaajilla on käytössään käsikäyttöinen pysäytysmerkki.",
-        "en_description": "Traffic controllers are responsible for directing traffic when necessary, if the police are not doing it. Traffic controllers have a handheld stop sign.",
-        "min_count": 2,
-        "count": 0,
-        "introductions": [
-          {
-            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
-            "time": "Will be told by email later",
-            "location": ""
-          }
-        ]
-      }      
+      }
     ]}

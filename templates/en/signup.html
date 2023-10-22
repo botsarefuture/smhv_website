@@ -3,9 +3,9 @@
 {% block content %}
 <div class="roles-container">
     <section class="signup-form">
-        <h2 class="signup-heading">Sign up for the event "{{event.title_en}}"</h2>
+        <h2 class="signup-heading">Sign Up for the "{{event.title_en}}" Event</h2>
 
-        <form method="POST" action="/signup/{{ event_id }}" class="closed-form">
+        <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required><br>
 
@@ -15,7 +15,7 @@
             <label for="roles">Roles:</label>
             <div class="roles">
                 {% for role in event.roles %}
-                <div class="role">
+                <div class="role"  data-role="{{ role }}">
                     <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
                     <label for="{{role.name}}">
                         <div class="role-name">{{role.en_name}}</div>
@@ -23,15 +23,15 @@
                         
                         {% if role.en_description %}
                         <a type="button" class="view-more-button">
-                            Show more ⏷
+                            Show More ⏷
                         </a>
                         {% endif %}
                         
-                        <!-- Add a gauge and color bar here -->
+                        <!-- Add meter and color bar here -->
                         {% if role.get('count', none) != none %}
                         <div class="role-status">
-                            <div class="role-count">
-                                Current: {{ role.count }} / Needed: {{ role.min_count }}
+                            <div class="role-count" data-current-count="{{ role.count }}">
+                                Currently: {{ role.count }} / Required: {{ role.min_count }}
                             </div>
 
                             {% if role.get('count') > role.get('min_count') %}
@@ -53,7 +53,7 @@
                     </label>
                     
                     {% if role.need_training and role.training_url %}
-                    <a href="{{role.training_url}}" class="cta-button">Sign up for training</a> 
+                    <a href="{{role.training_url}}" class="cta-button">Sign Up for Training</a> 
                     {% endif %}
                 </div>
 
@@ -66,6 +66,7 @@
 </div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='js/role_signup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/role_signup_en.js') }}"></script>
+
 
 {% endblock %}
