@@ -65,7 +65,7 @@ while True:  # This loop runs indefinitely until manually stopped
 
     if support_role_data:
       data["roles"] = support_role_data["roles"]
-
+      
     if not test:
         # Insert the event data into the MongoDB collection
         events_collection.insert_one(data)
