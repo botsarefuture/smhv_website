@@ -34,7 +34,7 @@ def fetch_support_role_data(demo_type):
     file_path = os.path.join(support_role_folder, filename)
 
     if os.path.exists(file_path):
-        with open(file_path, "r") as role_file:
+        with open(file_path, "r", encoding="utf-8") as role_file:
             support_role_data = json.load(role_file)
             return support_role_data
     else:
@@ -64,7 +64,7 @@ while True:  # This loop runs indefinitely until manually stopped
     support_role_data = fetch_support_role_data(demo_type)
 
     if support_role_data:
-      data["roles"] = support_role_data
+      data["roles"] = support_role_data["roles"]
 
     if not test:
         # Insert the event data into the MongoDB collection
