@@ -3,7 +3,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 20px auto; /* Center the container horizontally */
+    margin: 20px auto;
     max-width: 800px;
 }
 
@@ -11,6 +11,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    text-align: center; /* Added text-align to center content */
+    align-items: center; /* Added align-items to center content vertically */
+    align-content: center; /* Added align-content to center content */
 }
 
 .press-release {
@@ -19,6 +22,8 @@
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
+    max-width: 100%;
+    align-self: center; /* Center the content within the grid cell */
 }
 
 .press-release:hover {
@@ -26,24 +31,17 @@
 }
 
 .press-release h2 {
-    text-align: center;
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .press-release p {
-    text-align: center;
     color: #777;
     margin-bottom: 10px;
 }
 
-.press-release .blog-content {
-    /* Add additional styling for the content here */
-}
-
 .press-title {
     align-self: center;
-    text-align: center;
     padding-bottom: 50px;
     font-size: 34px;
 }
@@ -55,15 +53,15 @@
     color: #333;
 }
 
-
 /* CSS for devices with a minimum width of 768px (non-mobile devices) */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .press-container {
-        background-color: transparent; /* Make the background transparent */
-        box-shadow: none; /* Remove the box shadow */
-        padding: 0; /* Remove padding */
-        margin: 0; /* Remove margin */
-        max-width: 100%; /* Make it full-width */    }
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+    }
 }
 
 /* Add any other animations or styling you prefer */
@@ -93,39 +91,16 @@
     background-color: var(--darker-violet);
 }
 
-
-.press-releases {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
-}
-
 @media (max-width: 768px) {
     .press-release {
-        border: 1px solid #ccc;
-        padding: 20px;
-        align-self: center;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s;
-        max-width: 100%;
-        align-items: center;
-        max-block-size: 100%;
         font-size: 100%; /* Reset the font size */
         word-wrap: break-word; /* Allow text to break and continue on the next line */
         white-space: normal; /* Allow line breaks */
     }
-    
+
     .press-releases {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
         gap: 20px;
-        max-block-size: 100%;
-        align-items: center;
-        align-content: center;
     }
 }

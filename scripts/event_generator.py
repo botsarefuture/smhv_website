@@ -1,23 +1,45 @@
 from pymongo import MongoClient
 import json
+import os
 
 # Read the MongoDB URI from the config file
 with open("config.json", "r") as f:
     config = json.load(f)
 
 global test
-test = True
+test = False
 
 if not test:
-  # Set up MongoDB connection
-  client = MongoClient(config["mongodb"]["uri"])
-  db = client['website']
-  events_collection = db['events']
+    url = "mongodb://"
+    url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
+    url += "@"
+    for server in config["mongodb"]["servers"]:
+        url += f"{server},"
 
+    url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
+
+    url = url.replace(",/", "/")
+
+    client = MongoClient(url)
+    db = client['website']
+    events_collection = db['events']
 
 def cont_input(doing) -> bool:
     cont = input(f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
     return cont
+
+def fetch_support_role_data(demo_type):
+    support_role_folder = "scripts/support role"  # Replace with your folder path
+    filename = f"{demo_type}.json"
+    file_path = os.path.join(support_role_folder, filename)
+
+    if os.path.exists(file_path):
+        with open(file_path, "r") as role_file:
+            support_role_data = json.load(role_file)
+            return support_role_data
+    else:
+        print(f"No support role data found for {demo_type}.")
+        return None
 
 while True:  # This loop runs indefinitely until manually stopped
     data = {}
@@ -32,48 +54,24 @@ while True:  # This loop runs indefinitely until manually stopped
     data["role_signup"] = input("The status of signing up for the event? (Y/N)")
 
     if data["role_signup"].lower() == "y":
-      data["role_signup"] = True
-      
+        data["role_signup"] = True
     else:
-      data["role_signup"] = False
+        data["role_signup"] = False
 
-    data["roles"] = []
 
-    to_continue = True
+    # Prompt for demonstration type and fetch support role data
+    demo_type = input("Enter the type of demonstration [march, roadblock, slow_march, stay_still]: ").lower()
+    support_role_data = fetch_support_role_data(demo_type)
 
-    while to_continue:
-        role = {}
-        role["name"] = input("The name of the role: ").replace(" ", "")
-        role["show_name"] = input("The show name of the role: ")
-        role["fi_name"] = input("The name of the role in Finnish: ")
-        role["en_name"] = input("The name of the role in English: ")
-        role["fi_description"] = input("The description of the role in Finnish: ")
-        role["en_description"] = input("The description of the role in English: ")
-        role["min_count"] = int(input(f"The minimum number of people in {role['show_name']}"))
-        role["count"] = 0
-        
-        introductions = []
-        intro_continue = True
-
-        while intro_continue:
-            introduction = {
-                "date": input("The date of introduction (DD.MM.YYYY): "),
-                "time": input("Time of introduction (hh.mm): "),
-                "location": input("The location of introduction: ")
-            }
-            introductions.append(introduction)
-            intro_continue = cont_input("creating introductions")
-        
-        role["introductions"] = introductions
-        data["roles"].append(role)
-        to_continue = cont_input("creating roles")
+    if support_role_data:
+      data["roles"] = support_role_data
 
     if not test:
-      # Insert the event data into the MongoDB collection
-      events_collection.insert_one(data)
-    
+        # Insert the event data into the MongoDB collection
+        events_collection.insert_one(data)
+
     if test:
-      print(data)
+        print(data)
 
     if not cont_input("adding another event"):
         break  # Exit the loop if the user does not want to add another event

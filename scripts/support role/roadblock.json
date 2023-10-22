@@ -1,0 +1,223 @@
+{"roles": [
+      {
+        "name": "De-eskaloija",
+        "show_name": "Deeskaloija",
+        "fi_name": "De-eskaloija",
+        "en_name": "De-escalator",
+        "fi_description": "De-eskaloijien tehtävänä on tarkkailla tilannetta. Lisäksi de-eskaloijat rauhoittelevat uhkaavalta tai huomiota herättävältä vaikuttavia tilanteita. De-eskaloijat liikkuvat pareissa, ja heillä on aina huomioliivit päällään.",
+        "en_description": "De-escalators are there to monitor the situation. In addition, de-escalators try to calm down situations that might appear threatening or attention-grabbing. De-escalators move in pairs and always wear attention vests.",
+        "min_count": 6,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Häirintäyhdyshenkilö",
+        "show_name": "Häirintäyhdyshenkilö",
+        "fi_name": "Häirintäyhdyshenkilö",
+        "en_name": "Harassment Liaison",
+        "fi_description": "Häirintäyhdyshenkilöiden tehtävänä on toimia tukena henkilöille, jotka ovat kokeneet/kohdanneet häirintää, rasismia, syrjintää, kiusaamista tai muuta epätasa-arvoista kohtelua.",
+        "en_description": "The role of harassment liaison is to provide support to people who have experienced/encountered harassment, racism, discrimination, bullying, or other unequal treatment.",
+        "min_count": 1,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Ensiapuhenkilö",
+        "show_name": "Ensiapuhenkilö",
+        "fi_name": "Ensiapuhenkilö",
+        "en_name": "First-Aider",
+        "fi_description": "Ensiapuhenkilöiden tehtävänä on antaa tarvittaessa ensiapua loukkaantuneille tai sairastuneille. Vaatimuksena voimassaoleva vähintään HätäEA-kurssin tasoiselta kurssilta saatu sertifikaatti.",
+        "en_description": "First-aiders are responsible for giving first aid to injured or sick people, if necessary. A valid certificate from a course of at least the level of the HEA course is required.",
+        "min_count": 1,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Hyvinvointihenkilö",
+        "show_name": "Hyvinvointihenkilö",
+        "fi_name": "Hyvinvointihenkilö",
+        "en_name": "Welfare Officer",
+        "fi_description": "Hyvinvointihenkilöiden tehtävänä on tarkkailla osallistujien hyvinvointia ja pitää siitä huolta. Heillä on varalla ylimääräisiä virvokkeita ja snackseja. Hyvinvointihenkilöt ovat valmiina antamaan myös henkistä ja tarvittaessa tukea ensiapuhenkilöä terveydellisen tuen antamisessa.",
+        "en_description": "The welfare officers are responsible for monitoring and looking after the welfare of the participants. They will have extra refreshments and snacks on hand. Welfare officers are also on hand to provide emotional support and, if necessary, to support the first-aider in providing health support.",
+        "min_count": 2,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Putkatukihenkilö",
+        "show_name": "Putkatukihenkilö",
+        "fi_name": "Putkatukihenkilö",
+        "en_name": "Detention Support",
+        "fi_description": "Putkatukihenkilöiden tehtävänä on olla poliisiasemalla vastassa vapautuvia kiinniotettuja, kunnes he vapautuvat, ja antaa vapautetuille heidän arvotavaransa, henkistä tukea.",
+        "en_description": "Detention support personnel are tasked with being at the police station to welcome released detainees until their release and to provide released individuals with their valuables and emotional support.",
+        "min_count": 6,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Banderollin kantaja",
+        "show_name": "Banderollinkantaja",
+        "fi_name": "Banderollin kantaja",
+        "en_name": "Banner Carrier",
+        "fi_description": "Banderollin kantajien tehtävänä on kantaa banderollia mielenosoituksen aikana. Tarvittaessa banderollin kantaja voi hoitaa toisen henkilön tehtävää, mikäli hän ei itse kykene siihen.",
+        "en_description": "Banner carriers are responsible for carrying banners during the protest. If necessary, a banner carrier can take over another person's task if they are unable to do it themselves.",
+        "min_count": 10,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Poliisikontakti",
+        "show_name": "Poliisikontakti",
+        "fi_name": "Poliisikontakti",
+        "en_name": "Police Liaison",
+        "fi_description": "Poliisikontaktien tehtävänä on neuvotella ja keskustella poliisin kanssa mielenosoituksen aikana. Poliisikontaktit toimivat mahdollisimman neutraalisti ja asiallisesti mielenosoituksen ja poliisin välittäjinä.",
+        "en_description": "The role of police liaisons is to negotiate and communicate with the police during the protest. Police liaisons act as neutral and professional intermediaries between the protest and the police.",
+        "min_count": 2,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Huudattaja",
+        "show_name": "Huudattaja",
+        "fi_name": "Huudattaja",
+        "en_name": "Chant Leader",
+        "fi_description": "Huudattajien tehtävänä on huudattaa mielenosoitukseen osallistuvia ihmisiä käyttäen megafonia. Huudattaa voi monista eri paikoista, mm. sporapysäkin katolta tai mielenosoittajien seasta.",
+        "en_description": "The task of chant leaders is to lead chants for the participants of the protest using a megaphone. Chant leaders can lead chants from various locations, such as from the roof of a bus stop or among the demonstrators.",
+        "min_count": 3,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Outreach",
+        "show_name": "Outreach",
+        "fi_name": "Outreach",
+        "en_name": "Outreach Personnel",
+        "fi_description": "Outreach-henkilöiden tehtävänä on jakaa flaikkuja ohikulkijoille sekä antaa pyydettäessä tietoa mielenosoituksesta.",
+        "en_description": "The task of outreach personnel is to distribute flyers to passersby and provide information about the protest when requested.",
+        "min_count": 4,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Roudaaja",
+        "show_name": "Roudaaja",
+        "fi_name": "Roudaaja",
+        "en_name": "Driver",
+        "fi_description": "Roudaajien tehtävänä on auton kanssa roudata tavaroita. Vaatii ajokortin.",
+        "en_description": "Drivers are responsible for transporting goods with a car. Requires a driver's license.",
+        "min_count": 1,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Roudaajan apulainen",
+        "show_name": "Roudaajanapulainen",
+        "fi_name": "Roudaajan apulainen",
+        "en_name": "Driver's Assistant",
+        "fi_description": "Roudaajien apulaisten tehtävänä on auttaa roudaajia kantamaan tavaroita (sisältää autossa olemista). Ei vaadi ajokorttia.",
+        "en_description": "Driver's assistants help drivers transport goods (including being in the car). Does not require a driver's license.",
+        "min_count": 2,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Esiblokkaaja",
+        "show_name": "Esiblokkaaja",
+        "fi_name": "Esiblokkaaja",
+        "en_name": "Front Blocker",
+        "fi_description": "Esiblokkaajien tehtävänä on banderollin avulla esiblokata liikenne.",
+        "en_description": "Front blockers use a banner to front block traffic.",
+        "min_count": 10,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      },
+      {
+        "name": "Liikenteenohjaaja",
+        "show_name": "Liikenteenohjaaja",
+        "fi_name": "Liikenteenohjaaja",
+        "en_name": "Traffic Controller",
+        "fi_description": "Liikenteenohjaajien tehtävänä on ohjata liikennettä tarvittaessa, mikäli poliisi ei sitä tee. Liikenteenohjaajilla on käytössään käsikäyttöinen pysäytysmerkki.",
+        "en_description": "Traffic controllers are responsible for directing traffic when necessary, if the police are not doing it. Traffic controllers have a handheld stop sign.",
+        "min_count": 2,
+        "count": 0,
+        "introductions": [
+          {
+            "date": "Ilmoitetaan myöhemmin, sähköpostilla",
+            "time": "Will be told by email later",
+            "location": ""
+          }
+        ]
+      }      
+    ]}
