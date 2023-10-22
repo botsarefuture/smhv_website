@@ -1,8 +1,9 @@
 {% extends 'base_fi.html' %}
 
 {% block content %}
-    <section class="contact-form">
-        <h2>Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
+<div class="roles-container">
+    <section class="signup-form">
+        <h2 class="signup-heading">Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
 
         <form method="POST" action="/signup/{{ event_id }}" class="closed-form">
             <label for="name">Nimesi:</label>
@@ -12,9 +13,9 @@
             <input type="email" id="email" name="email" required><br>
 
             <label for="roles">Roolit:</label>
-            <div class="role-list">
+            <div class="roles">
                 {% for role in event.roles %}
-                <div class="role-box">
+                <div class="role">
                     <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
                     <label for="{{role.name}}">
                         <div class="role-name">{{role.fi_name}}</div>
@@ -62,89 +63,9 @@
             <button type="submit" id="submit-button" class="cta-button">Ilmoittaudu</button>
         </form>
     </section>
+</div>
     
-
-    <script>
-        // Add a click event listener to the submit button
-    document.getElementById('submit-button').addEventListener('click', function (e) {
-        // Prevent the default form submission to handle it manually
-        e.preventDefault();
-
-        // Disable the submit button to prevent multiple submissions
-        this.disabled = true;
-        this.style = 'color: grey;'
-
-        // Get the form element
-        const form = document.querySelector('form');
-
-        // Perform the form submission using JavaScript (you can adjust this part)
-        // For example, you can use fetch to submit the form data to your server
-        // and then re-enable the button upon a successful response
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(response => {
-            if (response.ok) {
-                // Form submission was successful, you can re-enable the button
-                this.disabled = true;
-                return response.text();
-            } else {
-                // Handle errors if needed
-                console.error('Form submission failed.');
-            }
-        })
-        .then(data => {
-            // Handle the response data as needed
-            console.log(data);
-
-            window.location.href = '/events';
-
-        })
-        .catch(error => {
-            console.error('An error occurred:', error);
-        });
-    });
-
-
-        // Lisää klikkitapahtuman kuuntelija jokaiseen roolilaatikkoon
-        document.querySelectorAll('.role-box').forEach(function (box) {
-            // Kun roolilaatikkoa klikataan, vaihda valintaruutu ja sovella tyylejä
-            box.addEventListener('click', function () {
-                const checkbox = box.querySelector('.custom-checkbox');
-                checkbox.checked = !checkbox.checked;
-                box.classList.toggle('selected', checkbox.checked);
-            });
-
-            var open = false
-
-                box.querySelector(".view-more-button").addEventListener('click', toggleText)
-                box.querySelector(".role-description").addEventListener('click', toggleText)
-
-                function toggleText(){
-                var description = box.querySelector('.role-description');
-                var button = box.querySelector('.view-more-button');
-
-                const checkbox = box.querySelector('.custom-checkbox');
-                checkbox.checked = !checkbox.checked;
-                box.classList.toggle('selected', checkbox.checked);
-
-                if (open === true) {
-                            description.style.maxHeight = '40px'; // Säädä korkeutta tarpeen mukaan
-                            description.classList.add("fade")
-                            open = !open
-                            button.innerHTML = 'Näytä lisää ⏷';
-                } else {
-                            description.style.maxHeight = 'none';
-                            description.classList.remove("fade")
-                            open = !open
-                            button.innerHTML = 'Piilota ⏶';
-                        }
-                };
-        });
-
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/role_signup.js') }}"></script>
 
 {% endblock %}

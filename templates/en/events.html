@@ -14,7 +14,7 @@
                 <p>{{ event.description_en|replace('\n', '<br>')|safe }}</p>
 
                 <!-- Add a link to the signup page for this event -->
-                {% if event.signup_role %}
+                {% if event.role_signup %}
                 <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Sign Up for Support Role</a>
                 {% endif %}
                 <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">View Details</a>

@@ -17,7 +17,17 @@ def log_alert(message):
 with open("config.json", "r") as f:
     config = json.load(f)
 
-client = MongoClient(config["mongodb"]["uri"])
+url = "mongodb://"
+url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
+url += "@"
+for server in config["mongodb"]["servers"]:
+    url += f"{server},"
+
+url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
+
+url = url.replace(",/", "/")
+
+client = MongoClient(url)
 db = client['website']
 
 event_role = {}
