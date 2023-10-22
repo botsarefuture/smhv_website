@@ -4,18 +4,10 @@ Welcome to the repository for the website of SMHV! This website is built using H
 
 ## Table of Contents
 
-- [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-
-## Features
-
-- **Home:** Learn about our movement's mission and goals, and discover upcoming events.
-- **Events:** Explore our event calendar and stay informed about upcoming events.
-- **About Us:** Learn more about our movement, its founders, and our values.
-- **Contact:** Get in touch with us through a user-friendly contact form.
 
 ## Getting Started
 
