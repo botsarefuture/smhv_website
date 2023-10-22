@@ -48,20 +48,12 @@
   </script>
   <body>
     <header>
-      <div class="left">
-        <a href="{{ url_for('index') }}">
+        <a class="SMHV-logo" href="{{ url_for('index') }}">
           <img
             src="{{ url_for('static', filename='logo_Läpinäkyvä_Valkoinen.png') }}"
             alt="Logo"
           />
         </a>
-        <div class="language-dropdown">
-          <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-          <a href="{{ url_for('change_language', lang='fi')}}" class="active"
-            >FI</a
-          >
-        </div>
-      </div>
       <div class="right">
         <!-- Computer menu -->
         <nav class="computer-menu">
@@ -72,6 +64,10 @@
             <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
             <li><a href="{{ url_for('about') }}">Meistä</a></li>
             <li><a href="{{ url_for('join') }}">Liity</a></li>
+            <li class="language-dropdown"><a href="{{ url_for('change_language', lang='en')}}">EN</a><p> | </p>
+              <a href="{{ url_for('change_language', lang='fi')}}" class="active"
+                >FI</a
+              ></li>
           </ul>
         </nav>
         <!-- Mobile menu -->
