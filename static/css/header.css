@@ -138,7 +138,6 @@ header .left .language-dropdown a:hover {
     position: static;
     left: 0;
     width: 100%;
-    padding-top: 15px;
   }
   #mobile-menu ul {
     list-style: none;
@@ -163,6 +162,7 @@ header .left .language-dropdown a:hover {
     display: block;
     cursor: pointer;
     align-self: center;
+    padding-bottom: 5px;
   }
 
   .menu-opened #menu-toggle {
