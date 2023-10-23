@@ -13,6 +13,15 @@
     <!-- Add CSS for the language menu animation -->
 
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C4L1ME98KL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C4L1ME98KL');
+</script>
 <body>
     <header>
         <nav>
@@ -21,7 +30,6 @@
                 <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
                 <li><a href="{{ url_for('contact', lang='en') }}">Contact</a></li>
                 <li><a href="{{ url_for('about', lang='en') }}">About Us</a></li>
-                <li><a href="https://mesenaatti.me/3185/rahoita-taistelua-sinimustaa-hallitusta-vastaan/">Fund us</a></li>
                 <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
                 <li><a href="{{ url_for('change_language', lang='en') }}">EN</a></li>
                 <li><a href="{{ url_for('change_language', lang='fi') }}">FI</a></li>
