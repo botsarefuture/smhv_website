@@ -238,6 +238,9 @@ def api_event(event_id=None):
         
         return events
 
+@app.route("/event_watch/")
+def event_watch():
+    return render_template("thig.html")
 
 # EVENTS END
 
