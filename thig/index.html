@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Events</title>
+</head>
+<body>
+    <div class="event-container" id="event-container">
+        <!-- Events will be dynamically generated here -->
+        
+        </div>
+        <div id="total-info" class="total-info">
+            <h2>Total Roles Needed:</h2>
+            <div class="total-progress-container">
+                <div class="total-progress-bar">
+                    <div class="total-progress-fill"></div>
+                </div>
+                <p class="total-progress-numbers">(0/0)</p>
+            </div>
+    </div>
+    
+<!-- Event Details Modal -->
+<div id="event-details-modal" class="event-details-modal">
+    <div class="modal-content">
+        <span class="close-button" id="close-button">&times;</span>
+        <h3 id="event-details-title"></h3>
+        <div id="event-details-content">
+            <!-- Event details will be displayed here -->
+        </div>
+    </div>
+</div>
+<!-- Add an error message element -->
+<!-- Cool box for error message -->
+<div class="error-box">
+    <p id="error-message" class="error-message"></p>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

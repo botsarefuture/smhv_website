@@ -1,0 +1,282 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+
+
+/* CSS for the error message */
+.error-message {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: red;
+  font-size: 14px;
+  display: none; /* Initially hide the error message */
+}
+
+/* CSS for the error message and the cool box */
+.error-box {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #ff6b6b; /* Background color for the cool box */
+  border: 1px solid #ff0000; /* Border color for the cool box */
+  color: #fff; /* Text color for the error message */
+  border-radius: 5px; /* Rounded corners for the cool box */
+  padding: 10px;
+  font-size: 14px;
+  display: none; /* Initially hide the error box */
+  opacity: 0; /* Make the box transparent */
+  transition: opacity 0.5s, transform 0.5s; /* Smooth transition for opacity and transform */
+  transform: translateX(-100%); /* Move the box to the left */
+}
+
+
+/* Add styles for the custom class "show-details-button" */
+.show-details-button {
+  background-color: #007bff; /* Change the button background color as needed */
+  color: #fff; /* Change the button text color as needed */
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Add spacing between the button and event card content */
+}
+
+.show-details-button:hover {
+  background-color: #0056b3; /* Change the button hover background color as needed */
+}
+
+/* ROLE */
+.roles-container {
+  margin-top: 20px;
+}
+
+.role {
+  margin-bottom: 10px;
+}
+
+.role p {
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Style for the role cards */
+.role-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.role-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+
+.role-card p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #666;
+}
+.role-count {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 5px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333; /* Color of the counts */
+}
+
+/* STATUS BARS */
+.status-bar {
+  background-color: #4caf50; /* Green color for status bar */
+  height: 10px; /* Set the height of the status bar */
+  width: 0; /* Initial width is 0, will be updated dynamically */
+  margin-top: 5px;
+  border-radius: 5px;
+  transition: width 0.5s; /* Add a transition for smooth width change */
+}
+
+.status-fill {
+  background-color: #4caf50; /* Green color for fill */
+  height: 100%;
+  transition: width 1s; /* Add a transition for smooth filling animation */
+}
+
+/* EVENTS */
+.event-container {
+  display: grid; /* Use CSS Grid for the event cards */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create a responsive grid */
+  grid-gap: 20px; /* Add some spacing between cards */
+  justify-items: center; /* Center the cards horizontally in the grid */
+}
+
+.event-card {
+    width: 250px; /* Set a fixed width for each event card */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+
+.event-card h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.event-card p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* TOTAL INFO */
+
+.total-info {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  width: 200px; /* Adjust the width to create a square box */
+}
+
+.total-info h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+
+/* TOTAL PROGRESS */
+.total-progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.total-progress-bar {
+  background-color: #eee;
+  height: 10px;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.total-progress-fill {
+  width: 0;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+  transition: width 0.5s;
+}
+
+.total-progress-numbers {
+    font-size: 18px; /* Increase font size for impact */
+    margin: 0;
+    font-weight: 700; /* Use a bolder font weight for emphasis */
+    color: #4CAF50; /* Apply a green color for a positive effect */
+  }
+  
+
+/* TOTAL ROLES */
+.total-roles {
+  font-size: 20px;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* MODAL */
+.event-details-modal {
+  display: none; /* Hide the modal by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  z-index: 1;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe; /* White background for the modal */
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 60%; /* Adjust the width as needed */
+}
+
+.close-button {
+  color: #888;
+  float: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+/* Center the modal content */
+.modal-content {
+  text-align: center;
+}
+
+/* PROGRESS */
+.progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center; /* Center numbers vertically */
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.progress-container p {
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #eee;
+  height: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  flex: 1; /* Expand to fill available space */
+  margin-right: 10px; /* Add spacing between progress bar and numbers */
+  position: relative;
+  bottom: 0;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+  transition: width 0.5s; /* Add transition for smoother progress bar updates */
+}
+
+.progress-numbers {
+    font-size: 18px; /* Increase font size for impact */
+    margin: 0;
+    font-weight: 700; /* Use a bolder font weight for emphasis */
+    color: #4CAF50; /* Apply a green color for a positive effect */
+  }

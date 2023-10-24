@@ -12,7 +12,7 @@
             <label for="email">Sähköpostiosoitteesi:</label>
             <input type="email" id="email" name="email" required><br>
 
-            <label for="roles">Roolit:</label>
+            <label for="roles">Roolit <span style="color: var(--neon-pink);"> (voit valita useampia, klikkaa jokaista roolia, jonka haluat valita)</span>:</label>
             <div class="roles">
                 {% for role in event.roles %}
                 <div class="role"  data-role="{{ role }}">
