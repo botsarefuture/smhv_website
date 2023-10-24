@@ -28,7 +28,7 @@ document.querySelectorAll(".custom-checkbox").forEach(function (checkbox) {
 
     // Update the role count and progress bar
     roleCount.textContent = `Tällä hetkellä: ${roleData.count} / Tarvitaan vähintään: ${roleData.min_count}`;
-    progressBar.style.width = `${(roleData.count / roleData.min_count) * 100}%`;
+    progressBar.style.width = `${Math.min((roleData.count / roleData.min_count) * 100, 100)}%`;
 
       function fix_role() {
           const roleDataString = roleContainer.getAttribute("data-role");
