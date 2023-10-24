@@ -13,7 +13,7 @@ import os
 import sys
 from datetime import datetime
 from dateutil import tz
-
+from flask_cors import CORS
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -23,6 +23,7 @@ app.secret_key = 'your_secret_key_here'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
 ckeditor = CKEditor(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Set up MongoDB connection
 url = "mongodb://"
@@ -206,6 +207,40 @@ def event_signup(lang="fi", event_id=None):
         return redirect(f'/{lang}/events')
 
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
+
+@app.route('/signup1/<event_id>', methods=["GET"])
+def event_signup_1(lang="fi", event_id=None):
+    event = events_collection.find_one({"_id": ObjectId(event_id)})
+    if not event:
+        return "not"
+        pass
+    
+    return render_template(f'{lang}/signup1.html', event_id=event_id, event=event)
+
+@app.route("/api/events/")
+@app.route("/api/events/<event_id>")
+def api_event(event_id=None):
+    if event_id != None:
+        search = {"_id": ObjectId(event_id)}
+        event = db.events.find_one(search)
+        
+        event = event
+        event["_id"] = str(event["_id"])
+        return event
+    
+    if event_id == None:
+        event = db.events.find()
+        events = []
+        
+        for item in event:
+            item["_id"] = str(item["_id"])
+            events.append(item)
+        
+        return events
+
+@app.route("/event_watch/")
+def event_watch():
+    return render_template("thig.html")
 
 # EVENTS END
 
@@ -442,5 +477,7 @@ def create_release(lang="fi"):
 release = press_collection.find_one({'slug': 0})
 print(release)
 
+app.config["host"] = "sinimustaahallitustavastaan.local"
+app.config["port"] = 80
 if __name__ == '__main__':
-    app.run()
+    app.run(port=80)
