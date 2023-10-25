@@ -473,6 +473,13 @@ def create_release(lang="fi"):
         return redirect('/press')
     return render_template(f'press/{lang}/create_release.html')
 
+@app.route("/toimintaviikko/")
+def tv():
+    return render_template("/toimintaviikko/index.html")
+
+@app.route("/toimintaviikko/info")
+def tv_info():
+    return render_template("/toimintaviikko/info.html")
 
 release = press_collection.find_one({'slug': 0})
 print(release)
@@ -480,4 +487,4 @@ print(release)
 app.config["host"] = "sinimustaahallitustavastaan.local"
 app.config["port"] = 80
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(port=80, debug=True)

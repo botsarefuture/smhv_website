@@ -1,0 +1,67 @@
+{% extends 'base_fi.html' %}
+
+{% block content %}
+<h1 class="toimintaviikko-heading">TOIMINTAVIIKKO 27.11.-3.12.</h1>    
+
+    <section class="toimintaviikko-info">
+        <h1 class="toimintaviikko-heading">Tietoa toimintaviikosta</h1>
+        <p>
+            Toimintaviikko on kampanja, jonka aikana taistellaan sinimustan hallituksen politiikkaa vastaan.
+            ja vastustamme kurjistuspolitiikkaa. Tässä viikossa on paljon tapahtumia ja mahdollisuuksia osallistua
+            aktivismiin yhteiskunnallisten asioiden puolesta.
+        </p>
+
+        <br>
+        <a class='cta-button' style="align-items: center;" href='/tv/info'>LISÄTIETOA</a>
+    </section>
+    <section class="events">
+        <h2>Tapahtumat</h2>
+        <div id="events-list" class="events-list">
+            <!-- Events will be fetched and displayed here -->
+        </div>
+    </section>
+    <script>
+        // Fetch events from the API and populate the events list
+        fetch('/api/events/')
+            .then(response => response.json())
+            .then(data => {
+                const eventsList = document.getElementById('events-list');
+
+                // Sort events by date
+                data.sort((a, b) => {
+                    const dateA = new Date(a.date);
+                    const dateB = new Date(b.date);
+                    return dateA - dateB;
+                });
+
+                data.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+
+                    const eventTitle = document.createElement('div'); // Changed from h3
+                    eventTitle.textContent = event.title_fi;
+                    eventTitle.className = 'event-title'; // Add a class for styling
+
+                    const eventDate = document.createElement('p');
+                    eventDate.textContent = event.date;
+                    eventDate.className = 'date';
+
+                    const eventDescription = document.createElement('p');
+                    eventDescription.textContent = event.description_fi;
+
+                    const signupButton = document.createElement('a');
+                    signupButton.href = `/signup/${event._id}`;
+                    signupButton.textContent = 'Ilmoittaudu';
+                    signupButton.className = 'cta-button';
+
+                    eventDiv.appendChild(eventTitle);
+                    eventDiv.appendChild(eventDate);
+                    eventDiv.appendChild(signupButton);
+                    eventsList.appendChild(eventDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching events:', error);
+            });
+    </script>
+{% endblock %}
