@@ -106,6 +106,8 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
+
+
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   header .left ul {
@@ -166,9 +168,7 @@ nav ul li a:hover {
     align-self: center;
   }
 
-  .menu-opened #menu-toggle {
-    display: none;
-  }
+
   /* Show the mobile menu when the menu toggle is clicked */
   .menu-opened #mobile-menu {
     display: block;
@@ -211,5 +211,25 @@ nav ul li a:hover {
     visibility: hidden;
 
     /* Hide language dropdown on mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  /* Mobile Menu Styles */
+  #mobile-menu {
+    display: none;
+    background-color: #1c1c1c;
+    position: static;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-opened #mobile-menu {
+    display: none;
   }
 }
