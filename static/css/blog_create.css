@@ -1,5 +1,6 @@
 /* Custom CSS for the Create Blog Post page */
 
+/* CONTAINER */
 .container {
   background-color: #fff;
   border-radius: 8px;
@@ -9,14 +10,7 @@
   max-width: 800px;
 }
 
-h1 {
-  color: #333;
-  font-size: 24px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
+/* FORM */
 
 label {
   font-weight: bold;
@@ -33,13 +27,15 @@ textarea {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-textarea {
   height: 120px;
   resize: vertical;
 }
 
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* BTN */
 .btn {
   background-color: #007bff;
   color: #fff;
@@ -54,6 +50,7 @@ textarea {
   background-color: #0056b3;
 }
 
+/* TEXT STYLES */
 a {
   text-decoration: none;
   color: #007bff;
@@ -63,4 +60,7 @@ a {
   width: max-content;
 }
 
-/* Additional styles can be added as needed */
+h1 {
+  color: #333;
+  font-size: 24px;
+}

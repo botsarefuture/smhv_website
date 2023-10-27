@@ -89,7 +89,7 @@
       margin: 10px 0;
       color: #666;
     }
-    .role-count {
+    .count {
       font-size: 0.9rem;
       color: #333;
       margin-top: 5px;
@@ -412,7 +412,7 @@
         statusBar.appendChild(statusFill);
 
         const roleCount = document.createElement("p");
-        roleCount.classList.add("role-count");
+        roleCount.classList.add("count");
         roleCount.textContent = `(${role.count}/${role.min_count})`;
 
         roleCard.appendChild(roleName);

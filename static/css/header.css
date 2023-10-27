@@ -1,3 +1,5 @@
+@import url("header-left.css");
+
 /* Header styles */
 header {
   background-color: #1c1c1c;
@@ -9,39 +11,6 @@ header {
   padding: 10px 30px;
 }
 
-header .left {
-  align-items: center;
-}
-
-header .left img {
-  width: 50px; /* Adjust the logo size as needed */
-  margin-right: 20px;
-}
-
-header .left .language-dropdown {
-  display: flex;
-  align-items: center;
-  margin-right: 20px; /* Adjust the spacing as needed */
-}
-
-header .left .language-dropdown a {
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  transition: color 0.3s;
-  margin-right: 10px; /* Adjust the spacing as needed */
-}
-
-/* Add a class "active" to the active language option and apply neon green color */
-header .left .language-dropdown a.active {
-  color: var(--neon-green);
-  text-decoration: underline;
-}
-
-header .left .language-dropdown a:hover {
-  color: #c2c2c2;
-}
 
 header .right {
   display: flex;
@@ -105,28 +74,6 @@ nav ul li a:hover {
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
-  header .left ul {
-    display: flex; /* Change back to flex layout on mobile */
-    justify-content: center;
-  }
-
-  header .left ul li {
-    align-items: center;
-  }
-
-  header .left {
-    flex-direction: row; /* Change to column layout on mobile */
-    align-items: center; /* Center align on mobile */
-  }
-
-  header .left img {
-    width: 50px; /* Adjust the logo size as needed */
-    align-self: center; /* Center the logo on mobile */
-    position: sticky;
-    margin: 0 auto;
-    height: 100%; /* Make the header take up the full viewport height */
-  }
-
   /* Mobile Menu Styles */
   #mobile-menu {
     display: none;

@@ -1,32 +1,31 @@
-/* Contact form styles */
-.contact-form {
+/* SIGNUP-FORM */
+.signup-form {
   padding: 40px;
   text-align: center;
 }
 
-.contact-form h2 {
+.signup-form h2 {
   font-size: 36px;
   margin-bottom: 20px;
 }
 
-.contact-form p {
+.signup-form p {
   font-size: 18px;
   margin-bottom: 50px;
 }
 
-.contact-form form {
-  max-width: 400px;
+.signup-form form {
   margin: 0 auto;
 }
 
-.contact-form label {
+.signup-form label {
   display: block;
   margin-bottom: 10px;
   font-weight: 600;
 }
 
-.contact-form input,
-.contact-form textarea {
+.signup-form input,
+.signup-form textarea {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -35,10 +34,10 @@
   font-size: 16px;
 }
 
-.contact-form textarea {
+.signup-form textarea {
   resize: vertical;
 }
 
-.contact-form button:hover {
+.signup-form button:hover {
   background-color: var(--light-violet);
 }

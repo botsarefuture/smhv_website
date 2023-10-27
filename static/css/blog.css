@@ -1,5 +1,4 @@
-/* CSS for improved blog posts */
-
+/* BLOG-CONTAINER */
 .blog-container {
   background-color: #fff;
   border-radius: 8px;
@@ -28,6 +27,7 @@
   }
 }
 
+/* BLOG-POSTS */
 .blog-posts {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -39,21 +39,6 @@
 }
 
 @media (max-width: 768px) {
-  .blog-post {
-    border: 1px solid #ccc;
-    padding: 20px;
-    align-self: center;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    max-width: 100%;
-    align-items: center;
-    max-block-size: 100%;
-    font-size: 100%; /* Reset the font size */
-    word-wrap: break-word; /* Allow text to break and continue on the next line */
-    white-space: normal; /* Allow line breaks */
-  }
-
   .blog-posts {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
@@ -88,24 +73,31 @@
   margin-bottom: 10px;
 }
 
-.blog-post .blog-content {
-  /* Add additional styling for the content here */
+@media (max-width: 768px) {
+  .blog-post {
+    border: 1px solid #ccc;
+    padding: 20px;
+    align-self: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    max-width: 100%;
+    align-items: center;
+    max-block-size: 100%;
+    font-size: 100%; /* Reset the font size */
+    word-wrap: break-word; /* Allow text to break and continue on the next line */
+    white-space: normal; /* Allow line breaks */
+  }
 }
 
-/* Add any other animations or styling you prefer */
-/* Center the "Read More" button */
+/* BUTTONS */
+
 .button-container {
   display: flex;
   justify-content: center;
 }
 
-.blog-title {
-  align-self: center;
-  text-align: center;
-  padding-bottom: 50px;
-  font-size: 34px;
-}
-
+/* READ-MORE-BUTTON */
 .read-more-button {
   background-color: var(--violet);
   color: #ffffff;
@@ -124,4 +116,12 @@
 
 .read-more-button:active {
   background-color: var(--darker-violet);
+}
+
+/* BLOG-TITLE */
+.blog-title {
+  align-self: center;
+  text-align: center;
+  padding-bottom: 50px;
+  font-size: 34px;
 }

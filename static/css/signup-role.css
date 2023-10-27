@@ -1,0 +1,89 @@
+/* ROLE */
+.role {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  max-width: 100%;
+  align-self: center; /* Center the content within the grid cell */
+}
+
+@media (max-width: 768px) {
+  .role {
+    font-size: 100%; /* Reset the font size */
+    word-wrap: break-word; /* Allow text to break and continue on the next line */
+    white-space: normal; /* Allow line breaks */
+  }
+}
+
+.role:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for selected role boxes */
+.role.selected {
+  background-color: #710e8da3; /* Change the background color when selected */
+  color: #ffffff; /* Change the text color when selected */
+}
+
+.role h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.role p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* Style for the sign-up button */
+.role .cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3d1356;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.role .cta-button:hover {
+  background-color: #63146d;
+}
+
+.role .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 20px 0px;
+}
+
+.role .count {
+  margin: 25px 0 0 0;
+}
+
+.role .title {
+  align-self: center;
+  padding-bottom: 50px;
+  font-size: 34px;
+}
+
+/* ROLE-DESCRIPTION */
+.role-description {
+  font-family: "Signika Negative", sans-serif;
+  font-size: 16px; /* Adjust the font size as needed */
+  max-height: 40px; /* Set the initial height */
+  overflow: hidden;
+  margin-bottom: 5px;
+  transition: max-height 0.5s ease-out; /* Add a smooth transition */
+}
+
+/* Content styling for the blog section */
+.role-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}

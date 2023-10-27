@@ -1,19 +1,23 @@
 /* Import CSS files */
 @import url("css/header.css");
-@import url("css/event.css");
 @import url("css/contact.css");
 @import url("css/intro.css");
 @import url("css/about.css");
 @import url("css/hero.css");
 @import url("css/join.css");
 @import url("css/footer.css");
+
 @import url("css/signup.css");
-@import url("css/blog_post.css");
-@import url("css/blog_create.css");
+
 @import url("css/blog.css");
+@import url("css/blog_create.css");
+@import url("css/blog_post.css");
+
 @import url("css/press.css");
 @import url("css/tv.css");
 
+@import url("css/event.css");
+@import url("css/event-details.css");
 /* Reset default margin and padding */
 * {
   margin: 0;
