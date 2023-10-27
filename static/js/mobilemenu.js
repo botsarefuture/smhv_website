@@ -13,7 +13,7 @@ function toggleMobileMenu() {
   }
 }
 
-function reportWindowSize() {
+function hideMenus() {
   var menu = document.getElementById("mobile-menu");
   var menu1 = document.getElementById("menu1");
   var toggle = document.querySelector(".menu-toggle");
@@ -29,4 +29,4 @@ function reportWindowSize() {
   }
 }
 
-window.onresize = reportWindowSize;
+window.onresize = hideMenus;
