@@ -1,137 +1,142 @@
 @font-face {
-    font-family: 'ST Accent';
-    src: url('../ST ACCENT.TTF') format('truetype');
-    /* You can add other font properties, like font-weight and font-style if needed. */
+  font-family: "ST Accent";
+  src: url("../ST ACCENT.TTF") format("truetype");
+  /* You can add other font properties, like font-weight and font-style if needed. */
 }
 
 /* Add the necessary styles for the 'toimintaviikko.html' page here */
 .toimintaviikko-info {
-    background-color: var(--dark-violet);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px;
-    text-align: center; /* Center text within .toimintaviikko-info */
+  background-color: var(--dark-violet);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center; /* Center text within .toimintaviikko-info */
 }
 
 .toimintaviikko-info h1 {
-    color: var(--light-violet);
+  color: var(--light-violet);
 }
 
 .toimintaviikko-heading {
-    color: var(--light-violet);
-    font-family: 'ST Accent', sans-serif;
-    text-align: center;
-    font-size: 2rem; /* Set a responsive font size */
+  color: var(--light-violet);
+  font-family: "ST Accent", sans-serif;
+  text-align: center;
+  font-size: 2rem; /* Set a responsive font size */
 }
 
 .toimintaviikko-info p {
-    font-size: 18px;
-    text-align: center; /* Center text within paragraphs */
+  font-size: 18px;
+  text-align: center; /* Center text within paragraphs */
 }
 
 .events-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
 .events {
-    background-color: var(--dark-pink);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px;
-    text-align: center; /* Center text within .events */
+  background-color: var(--dark-pink);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center; /* Center text within .events */
 }
 
 .events h2 {
-    color: var(--pink);
-    font-family: 'ST Accent', sans-serif;
-    text-align: center; /* Center text within h2 headings */
+  color: var(--pink);
+  font-family: "ST Accent", sans-serif;
+  text-align: center; /* Center text within h2 headings */
 }
 
 .event {
-    border: 2px solid var(--neon-pink);
-    padding: 10px;
-    margin: 10px 0;
-    max-height: 200px;
-    min-height: 200px;
-    border-radius: 5px;
-    display: flex;
-    background-color: white;
-    flex-direction: column;
-    align-items: center; /* Keskittää elementit vaakasuunnassa  */
-    text-overflow: break-word;
+  border: 2px solid var(--neon-pink);
+  padding: 10px;
+  margin: 10px 0;
+  max-height: 200px;
+  min-height: 200px;
+  border-radius: 5px;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  align-items: center; /* Keskittää elementit vaakasuunnassa  */
+  text-overflow: break-word;
 }
 
 .event-title {
-    font-family: 'Signika Negative', sans-serif; /* Use Signika Negative font */
-    text-transform: uppercase; /* Transform the text to uppercase */
-    color: var(--pink);
-    text-align: center;
-    font-size: 16px; /* Adjusted font size for titles on mobile */
-    font-weight: normal;
-    margin-bottom: 10px;
-    text-overflow: break-word;
-    white-space: normal;
-    overflow: hidden;
+  font-family: "Signika Negative", sans-serif; /* Use Signika Negative font */
+  text-transform: uppercase; /* Transform the text to uppercase */
+  color: var(--pink);
+  text-align: center;
+  font-size: 16px; /* Adjusted font size for titles on mobile */
+  font-weight: normal;
+  margin-bottom: 10px;
+  text-overflow: break-word;
+  white-space: normal;
+  overflow: hidden;
 }
 
 .event h3 {
-    color: var(--pink);
-    text-align: center;
-    margin-bottom: 10px; /* Lisää väliä otsikon ja kuvauksen välille */
-    text-overflow: break-word;
+  color: var(--pink);
+  text-align: center;
+  margin-bottom: 10px; /* Lisää väliä otsikon ja kuvauksen välille */
+  text-overflow: break-word;
 }
 
 .event p {
-    font-size: 14px; /* Adjusted font size for descriptions on mobile */
-    margin-bottom: 10px; /* Lisää väliä kuvauksen ja painikkeen välille */
-    text-align: center; /* Center text within paragraphs */
+  font-size: 14px; /* Adjusted font size for descriptions on mobile */
+  margin-bottom: 10px; /* Lisää väliä kuvauksen ja painikkeen välille */
+  text-align: center; /* Center text within paragraphs */
 }
 
 .event .cta-button {
-    background-color: var(--green);
-    color: var(--dark-green);
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px; /* Adjusted font size for buttons on mobile */
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-    margin-bottom: 10px;
-    text-shadow: none;
+  background-color: var(--green);
+  color: var(--dark-green);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px; /* Adjusted font size for buttons on mobile */
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+  text-shadow: none;
 }
 
 .event .date {
-    color: var(--green); /* Vaihda väri haluamaksesi */
-    font-size: 12px; /* Adjusted font size for date on mobile */
-    font-weight: bold;
-    margin-top: 10px;
+  color: var(--green); /* Vaihda väri haluamaksesi */
+  font-size: 12px; /* Adjusted font size for date on mobile */
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .event .cta-button:hover {
-    background-color: var(--dark-green); /* Vaihda väri haluamaksesi hover-tilassa */
+  background-color: var(
+    --dark-green
+  ); /* Vaihda väri haluamaksesi hover-tilassa */
 }
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
-    .toimintaviikko-heading {
-        font-size: 1.5rem; /* Adjust the font size for mobile */
-    }
+  .toimintaviikko-heading {
+    font-size: 1.5rem; /* Adjust the font size for mobile */
+  }
 
-    .events-list {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Full-width columns for mobile */
-    }
+  .events-list {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(100%, 1fr)
+    ); /* Full-width columns for mobile */
+  }
 }
 
 /* Add more styles as needed for the 'toimintaviikko.html' content */
 
 body {
-    background-color: var(--darker-pink);
+  background-color: var(--darker-pink);
 }

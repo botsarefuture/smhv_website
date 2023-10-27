@@ -1,106 +1,106 @@
 .press-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
 }
 
 .press-releases {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    text-align: center; /* Added text-align to center content */
-    align-items: center; /* Added align-items to center content vertically */
-    align-content: center; /* Added align-content to center content */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  text-align: center; /* Added text-align to center content */
+  align-items: center; /* Added align-items to center content vertically */
+  align-content: center; /* Added align-content to center content */
 }
 
 .press-release {
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    max-width: 100%;
-    align-self: center; /* Center the content within the grid cell */
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  max-width: 100%;
+  align-self: center; /* Center the content within the grid cell */
 }
 
 .press-release:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .press-release h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .press-release p {
-    color: #777;
-    margin-bottom: 10px;
+  color: #777;
+  margin-bottom: 10px;
 }
 
 .press-title {
-    align-self: center;
-    padding-bottom: 50px;
-    font-size: 34px;
+  align-self: center;
+  padding-bottom: 50px;
+  font-size: 34px;
 }
 
 /* Content styling for the blog section */
 .press-release-content {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
 }
 
 /* CSS for devices with a minimum width of 768px (non-mobile devices) */
 @media (min-width: 769px) {
-    .press-container {
-        background-color: transparent;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        max-width: 100%;
-    }
+  .press-container {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
 }
 
 /* Add any other animations or styling you prefer */
 /* Center the "Read More" button */
 .press-button-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .press-read-more-button {
-    background-color: var(--neon-pink);
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 0px 0px 7px black;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    padding: 10px 20px;
-    display: inline-block;
+  background-color: var(--neon-pink);
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0px 0px 7px black;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  padding: 10px 20px;
+  display: inline-block;
 }
 
 .press-read-more-button:hover {
-    background-color: var(--light-violet);
+  background-color: var(--light-violet);
 }
 
 .press-read-more-button:active {
-    background-color: var(--darker-violet);
+  background-color: var(--darker-violet);
 }
 
 @media (max-width: 768px) {
-    .press-release {
-        font-size: 100%; /* Reset the font size */
-        word-wrap: break-word; /* Allow text to break and continue on the next line */
-        white-space: normal; /* Allow line breaks */
-    }
+  .press-release {
+    font-size: 100%; /* Reset the font size */
+    word-wrap: break-word; /* Allow text to break and continue on the next line */
+    white-space: normal; /* Allow line breaks */
+  }
 
-    .press-releases {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-        gap: 20px;
-    }
+  .press-releases {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 20px;
+  }
 }

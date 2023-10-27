@@ -24,9 +24,12 @@ if not test:
     db = client['website']
     events_collection = db['events']
 
+
 def cont_input(doing) -> bool:
-    cont = input(f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
+    cont = input(
+        f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
     return cont
+
 
 def fetch_support_role_data(demo_type):
     support_role_folder = "scripts/support role"  # Replace with your folder path
@@ -41,6 +44,7 @@ def fetch_support_role_data(demo_type):
         print(f"No support role data found for {demo_type}.")
         return None
 
+
 while True:  # This loop runs indefinitely until manually stopped
     data = {}
     data["title_fi"] = input("The title of the event in Finnish: ")
@@ -50,22 +54,24 @@ while True:  # This loop runs indefinitely until manually stopped
     data["location_en"] = input("The location of the event in English: ")
     data["description_fi"] = input("The description of the event in Finnish: ")
     data["description_en"] = input("The description of the event in English: ")
-    data["telegram_group"] = input("The link of the telegram group for the support roles: ")
-    data["role_signup"] = input("The status of signing up for the event? (Y/N)")
+    data["telegram_group"] = input(
+        "The link of the telegram group for the support roles: ")
+    data["role_signup"] = input(
+        "The status of signing up for the event? (Y/N)")
 
     if data["role_signup"].lower() == "y":
         data["role_signup"] = True
     else:
         data["role_signup"] = False
 
-
     # Prompt for demonstration type and fetch support role data
-    demo_type = input("Enter the type of demonstration [march, roadblock, slow_march, stay_still]: ").lower()
+    demo_type = input(
+        "Enter the type of demonstration [march, roadblock, slow_march, stay_still]: ").lower()
     support_role_data = fetch_support_role_data(demo_type)
 
     if support_role_data:
-      data["roles"] = support_role_data["roles"]
-      
+        data["roles"] = support_role_data["roles"]
+
     if not test:
         # Insert the event data into the MongoDB collection
         events_collection.insert_one(data)

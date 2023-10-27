@@ -1,24 +1,26 @@
-{% extends 'base_fi.html' %}
-{% block title %} Blog Posts {% endblock %}
+{% extends 'base_fi.html' %} {% block title %} Blog Posts {% endblock %} {%
+block content %}
+<div class="blog-container">
+  <h1 class="blog-title">Blogipostaukset</h1>
 
-{% block content %}
-    <div class="blog-container">
-        <h1 class="blog-title">Blogipostaukset</h1>
-
-        <div class="blog-posts">
-            {% for post in posts %}
-                <div class="blog-post">
-                    <h2>{{ post.title }}</h2>
-                    <p class="blog">Tekijä: {{ post.author }} </p>
-                    <p>{{ post.date_posted.strftime('%d.%m.%y %H:%M') }}</p>
-                    <div class="blog-content">{{ (post.content | safe)[:100] }}</div>
-                    <div class="button-container">
-                        <a href="{{ url_for('blog_post', post_id=post._id) }}" class="read-more-button">Lue lisää</a>
-                    </div>    
-                </div>
-                            <!-- Container for the "Read More" button -->
-                
-            {% endfor %}
-        </div>
+  <div class="blog-posts">
+    {% for post in posts %}
+    <div class="blog-post">
+      <h2>{{ post.title }}</h2>
+      <p class="blog">Tekijä: {{ post.author }}</p>
+      <p>{{ post.date_posted.strftime('%d.%m.%y %H:%M') }}</p>
+      <div class="blog-content">{{ (post.content | safe)[:100] }}</div>
+      <div class="button-container">
+        <a
+          href="{{ url_for('blog_post', post_id=post._id) }}"
+          class="read-more-button"
+          >Lue lisää</a
+        >
+      </div>
     </div>
+    <!-- Container for the "Read More" button -->
+
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

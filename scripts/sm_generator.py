@@ -24,9 +24,12 @@ if not test:
     db = client['website']
     events_collection = db['events']
 
+
 def cont_input(doing) -> bool:
-    cont = input(f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
+    cont = input(
+        f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
     return cont
+
 
 def fetch_support_role_data(demo_type):
     support_role_folder = "scripts/support role"  # Replace with your folder path
@@ -41,7 +44,9 @@ def fetch_support_role_data(demo_type):
         print(f"No support role data found for {demo_type}.")
         return None
 
-dates = ["27.11.2023 16.00", "28.11.2023 18.00", "29.11.2023 18.00", "30.11.2023 18.00", "1.12.2023 16.00", "2.12.2023 12.00", "3.12.2023 13.30"]
+
+dates = ["27.11.2023 16.00", "28.11.2023 18.00", "29.11.2023 18.00",
+         "30.11.2023 18.00", "1.12.2023 16.00", "2.12.2023 12.00", "3.12.2023 13.30"]
 
 for date in dates:
     data = {}
@@ -60,14 +65,13 @@ for date in dates:
     else:
         data["role_signup"] = False
 
-
     # Prompt for demonstration type and fetch support role data
     demo_type = "slow_march"
     support_role_data = fetch_support_role_data(demo_type)
 
     if support_role_data:
-      data["roles"] = support_role_data["roles"]
-      
+        data["roles"] = support_role_data["roles"]
+
     if not test:
         # Insert the event data into the MongoDB collection
         events_collection.insert_one(data)

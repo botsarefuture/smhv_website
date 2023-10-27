@@ -1,35 +1,34 @@
-{% extends 'base_en.html' %}
+{% extends 'base_en.html' %} {% block content %}
+<h1 style="font-size: 0px">Against the Government, For Life!</h1>
 
-{% block content %}
-<h1 style="font-size: 0px;">Against the Government, For Life!</h1>
+<section class="hero">
+  <div class="hero-content">
+    <h2>Against the Government, For Life!</h2>
+    <p>Our goal is to overthrow the government by 2024.</p>
+    <a href="{{ url_for('about', lang='en') }}" class="cta-button"
+      >Read more about our activities</a
+    >
 
-    <section class="hero">
-        <div class="hero-content">
+    <br /><br />
 
-            <h2>Against the Government, For Life!</h2>
-            <p>Our goal is to overthrow the government by 2024.</p>
-            <a href="{{ url_for('about', lang='en') }}" class="cta-button">Read more about our activities</a>         
-            
-
-            <br><br>
-
-            <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
-
-
-        </div>
-    </section>
-    <section class="about-us">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <p>We are an activist group dedicated to overthrowing the blue-black government.</p>
-            <p>Our goal is to bring down the blue-black government.</p>
-            <p>Join our ranks to help overthrow the government.</p>
-        </div>
-        <a href="{{ url_for('about', lang='en') }}" class="cta-button">Read more</a>
-    </section>
-    <section class="join-us">
-        <h2>Join Us Today</h2>
-        <p>Are you ready to take action and create a better future? Join us!</p>
-        <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
-    </section>
+    <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
+  </div>
+</section>
+<section class="about-us">
+  <h2>About Us</h2>
+  <div class="about-content">
+    <p>
+      We are an activist group dedicated to overthrowing the blue-black
+      government.
+    </p>
+    <p>Our goal is to bring down the blue-black government.</p>
+    <p>Join our ranks to help overthrow the government.</p>
+  </div>
+  <a href="{{ url_for('about', lang='en') }}" class="cta-button">Read more</a>
+</section>
+<section class="join-us">
+  <h2>Join Us Today</h2>
+  <p>Are you ready to take action and create a better future? Join us!</p>
+  <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
+</section>
 {% endblock %}

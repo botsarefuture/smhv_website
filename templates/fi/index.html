@@ -1,35 +1,41 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_fi.html' %} {% block content %}
+<h1 style="font-size: 0px">Hallitusta vastaan, elämän puolesta!</h1>
 
-{% block content %}
-<h1 style="font-size: 0px;">Hallitusta vastaan, elämän puolesta!</h1>
+<section class="hero">
+  <div class="hero-content">
+    <h2>Hallitusta vastaan, elämän puolesta!</h2>
+    <p>Tavoitteemme on kaataa hallitus vuoteen 2024 mennessä.</p>
+    <a href="{{ url_for('about') }}" class="cta-button"
+      >Lue lisää toiminnastamme</a
+    >
 
-    <section class="hero">
-        <div class="hero-content">
+    <br /><br />
 
-            <h2>Hallitusta vastaan, elämän puolesta!</h2>
-            <p>Tavoitteemme on kaataa hallitus vuoteen 2024 mennessä.</p>
-            <a href="{{ url_for('about') }}" class="cta-button">Lue lisää toiminnastamme</a>         
-            
-
-            <br><br>
-
-            <a href="{{ url_for('tv') }}" style="background-color: var(--neon-pink);" class="cta-button">Tule toimintaviikolle!</a>
-
-
-        </div>
-    </section>
-    <section class="about-us">
-        <h2>Tietoa Meistä</h2>
-        <div class="about-content">
-            <p>Olemme aktivistiryhmä, joka on omistautunut sinimustan hallituksen kaatamiseen.</p>
-            <p>Tavoitteemme on saada sinimusta hallitus kaatumaan.</p>
-            <p>Liity joukkoomme kaatamaan hallitusta.</p>
-        </div>
-        <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
-    </section>
-    <section class="join-us">
-        <h2>Tule mukaan jo tänään!</h2>
-        <p>Oletko valmis toimimaan ja luomaan parempaa tulevaisuutta? Liity mukaan!</p>
-        <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan!</a>
-    </section>
-    {% endblock %}
+    <a
+      href="{{ url_for('tv') }}"
+      style="background-color: var(--neon-pink)"
+      class="cta-button"
+      >Tule toimintaviikolle!</a
+    >
+  </div>
+</section>
+<section class="about-us">
+  <h2>Tietoa Meistä</h2>
+  <div class="about-content">
+    <p>
+      Olemme aktivistiryhmä, joka on omistautunut sinimustan hallituksen
+      kaatamiseen.
+    </p>
+    <p>Tavoitteemme on saada sinimusta hallitus kaatumaan.</p>
+    <p>Liity joukkoomme kaatamaan hallitusta.</p>
+  </div>
+  <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
+</section>
+<section class="join-us">
+  <h2>Tule mukaan jo tänään!</h2>
+  <p>
+    Oletko valmis toimimaan ja luomaan parempaa tulevaisuutta? Liity mukaan!
+  </p>
+  <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan!</a>
+</section>
+{% endblock %}

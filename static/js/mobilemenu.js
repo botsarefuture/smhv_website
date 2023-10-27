@@ -13,6 +13,7 @@ function toggleMobileMenu() {
   }
 }
 
+// If this is removed, the mobile menu will be shown again in computer in case of phone turning into computer.
 function hideMenus() {
   var menu = document.getElementById("mobile-menu");
   var menu1 = document.getElementById("menu1");

@@ -1,130 +1,129 @@
 /* About Us styles */
 .about-us {
-    padding: 40px;
+  padding: 40px;
 }
 
 .about-us h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
 .about-content {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .about-content p {
-    margin-bottom: 15px;
-    font-size: 18px;
-    line-height: 1.5;
+  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .founders {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .founders h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 
 .founders ul {
-    list-style: disc;
-    padding-left: 20px;
+  list-style: disc;
+  padding-left: 20px;
 }
 
 .founders ul li {
-    margin-bottom: 10px;
-    font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 /* Section title styles */
 .section-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: var(--darker-violet); /* Purple color for section titles */
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--darker-violet); /* Purple color for section titles */
 }
 
 /* Container styles for content */
 .about-content {
-    background-color: #F9F9F9; /* Light gray background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 /* List styles */
 .values-list,
 .principles-list,
 .demands-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 20px;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 /* Contact info styles */
 .contact-info {
-    background-color: #F9F9F9; /* Light gray background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 /* Section title styles */
 .section-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #3D1356; /* Purple color for section titles */
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #3d1356; /* Purple color for section titles */
 }
 
 /* Container styles for content */
 .about-content {
-    background-color: #F9F9F9; /* Light gray background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 /* Subsection title styles */
 .subsection-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #3D1356; /* Purple color for subsection titles */
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #3d1356; /* Purple color for subsection titles */
 }
 
 /* List styles for Arvot, Periaatteet, and Vaatimukset */
 .values-list,
 .principles-list,
 .demands-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 55px;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 55px;
 }
 
 /* Font styles for Arvot (Values) section */
 .values-list {
-    font-size: 20px;
-    color: var(--neon-green) ; /* Green color for values */
+  font-size: 20px;
+  color: var(--neon-green); /* Green color for values */
 }
 
 /* Font styles for Periaatteet (Principles) section */
 .principles-list {
-    font-size: 20px;
-    color: var(--neon-pink); /* Pink color for principles */
+  font-size: 20px;
+  color: var(--neon-pink); /* Pink color for principles */
 }
 
 /* Font styles for Vaatimukset (Demands) section */
 .demands-list {
-    font-size: 20px;
-    color: var(--violet); /* Violet color for demands */
+  font-size: 20px;
+  color: var(--violet); /* Violet color for demands */
 }
-
 
 /* Section title styles */
 .section-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #3D1356; /* Purple color for section titles */
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #3d1356; /* Purple color for section titles */
 }

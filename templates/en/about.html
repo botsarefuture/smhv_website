@@ -1,33 +1,44 @@
-{% extends 'base_en.html' %}
-
-{% block content %}
-    <section class="about-us">
-        <h2 class="section-title">About Us</h2>
-        <div class="about-content">
-            <p>We are an activist group dedicated to overthrowing the blue-black government.</p>
-            <p>Our mission is to bring down the far-right government.</p>
-            <p>Join us in creating positive change for our community and society as a whole.</p>
-        </div>
-        <div class="principles-container">
-            <h3 class="subsection-title">Our Principles</h3>
-            <ul class="principles-list">
-                <li>Nonviolence</li>
-                <li>Open and honest communication</li>
-                <li>Peaceful activism</li>
-                <li>Community and equality</li>
-            </ul>
-        </div>
-        <div class="demands-container">
-            <h3 class="subsection-title">Our Demands</h3>
-            <ul class="demands-list">
-                <li>Resignation of the blue-black government</li>
-                <li>Respect for human rights</li>
-            </ul>
-        </div>
-        <a href="{{ url_for('contact', lang='en') }}" class="cta-button">Contact Us</a>
-        <div class="contact-info">
-            <h3 class="subsection-title">Contact Information</h3>
-            <p>Email: <a href="sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">sinimustaahallitustavastaan@sinimustaahallitustavastaan.org</a></p>
-        </div>
-    </section>
+{% extends 'base_en.html' %} {% block content %}
+<section class="about-us">
+  <h2 class="section-title">About Us</h2>
+  <div class="about-content">
+    <p>
+      We are an activist group dedicated to overthrowing the blue-black
+      government.
+    </p>
+    <p>Our mission is to bring down the far-right government.</p>
+    <p>
+      Join us in creating positive change for our community and society as a
+      whole.
+    </p>
+  </div>
+  <div class="principles-container">
+    <h3 class="subsection-title">Our Principles</h3>
+    <ul class="principles-list">
+      <li>Nonviolence</li>
+      <li>Open and honest communication</li>
+      <li>Peaceful activism</li>
+      <li>Community and equality</li>
+    </ul>
+  </div>
+  <div class="demands-container">
+    <h3 class="subsection-title">Our Demands</h3>
+    <ul class="demands-list">
+      <li>Resignation of the blue-black government</li>
+      <li>Respect for human rights</li>
+    </ul>
+  </div>
+  <a href="{{ url_for('contact', lang='en') }}" class="cta-button"
+    >Contact Us</a
+  >
+  <div class="contact-info">
+    <h3 class="subsection-title">Contact Information</h3>
+    <p>
+      Email:
+      <a href="sinimustaahallitustavastaan@sinimustaahallitustavastaan.org"
+        >sinimustaahallitustavastaan@sinimustaahallitustavastaan.org</a
+      >
+    </p>
+  </div>
+</section>
 {% endblock %}
