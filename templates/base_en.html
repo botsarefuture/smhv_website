@@ -83,6 +83,7 @@
         </nav>
         <!-- Mobile menu -->
         <nav id="mobile-menu">
+          <div class="menu-toggle" onclick="toggleMobileMenu()">✕</div>
           <ul>
             <li><a href="{{ url_for('index', lang='en') }}">Home</a></li>
             <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
@@ -100,11 +101,7 @@
               </div>
             </li>
             <br /><br />
-            <li>
-              <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
-            </li>
           </ul>
-          <br />
         </nav>
         <div id="menu1" class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
       </div>

@@ -8,7 +8,7 @@ header {
   justify-content: space-between; /* Align content to the left and right */
   flex-direction: row; /* Change to column layout on mobile */
   align-items: center; /* Center align on mobile */
-  padding: 10px 30px;
+  padding: 10px 30px 10px 40px;
 }
 
 
@@ -21,6 +21,7 @@ nav ul {
   list-style: none;
   text-align: center;
   display: flex;
+  margin-top: 5px;
   justify-content: center; /* Center the items */
 }
 
@@ -51,15 +52,14 @@ nav ul li a:hover {
   display: none;
   position: absolute;
   background-color: #1c1c1c;
-  min-width: 160px;
+  width: 100%;
   z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
-  top: 100%;
-  left: 0;
 }
 
 /* Mobile Menu Styles */
@@ -81,7 +81,7 @@ nav ul li a:hover {
     position: static;
     left: 0;
     width: 100%;
-    padding: 10px 0;
+    height: max-content;
   }
   #mobile-menu ul {
     list-style: none;
@@ -101,11 +101,6 @@ nav ul li a:hover {
   }
   #mobile-menu a:hover {
     color: #c2c2c2;
-  }
-  .menu-toggle {
-    display: block;
-    cursor: pointer;
-    align-self: center;
   }
 
   /* Show the mobile menu when the menu toggle is clicked */
@@ -135,6 +130,8 @@ nav ul li a:hover {
 
   .menu-toggle {
     display: block;
+    display: flex;
+    justify-content: center;
     cursor: pointer;
     align-self: center;
     align-content: center;
@@ -161,7 +158,6 @@ nav ul li a:hover {
     position: static;
     left: 0;
     width: 100%;
-    padding: 10px 0;
   }
 
   .menu-toggle {

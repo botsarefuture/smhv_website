@@ -51,14 +51,7 @@ textarea {
 }
 
 /* TEXT STYLES */
-a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-  display: block;
-  margin-top: 20px;
-  width: max-content;
-}
+
 
 h1 {
   color: #333;

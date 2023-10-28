@@ -13,7 +13,6 @@ a {
   color: #007bff;
   font-weight: bold;
   display: block; /* Place the link below the content */
-  margin-top: 20px;
   width: max-content;
   margin-left: 0; /* Keep it left-aligned */
 }

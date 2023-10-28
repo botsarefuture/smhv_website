@@ -3,23 +3,24 @@ header .left {
 }
 
 header .left img {
-  width: 50px; /* Adjust the logo size as needed */
-  margin-right: 20px;
+  width: 70px; /* Adjust the logo size as needed */
 }
 
 header .left .language-dropdown {
   display: flex;
+  justify-content: space-between;
+  width: 64px;
   align-items: center;
-  margin-right: 20px; /* Adjust the spacing as needed */
+  margin-left: 3px;
 }
 
 header .left .language-dropdown a {
   text-decoration: none;
+  display: flex;
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
   transition: color 0.3s;
-  margin-right: 10px; /* Adjust the spacing as needed */
 }
 
 /* Add a class "active" to the active language option and apply neon green color */
@@ -35,8 +36,8 @@ header .left .language-dropdown a:hover {
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   header .left {
-    flex-direction: row; /* Change to column layout on mobile */
-    align-items: center; /* Center align on mobile */
+    width: 70px;
+    max-height: 60px;
   }
   
   header .left ul {
@@ -49,7 +50,7 @@ header .left .language-dropdown a:hover {
   }
 
   header .left img {
-    width: 50px; /* Adjust the logo size as needed */
+    width: 70px; /* Adjust the logo size as needed */
     align-self: center; /* Center the logo on mobile */
     position: sticky;
     margin: 0 auto;
