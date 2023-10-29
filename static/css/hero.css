@@ -1,37 +1,35 @@
 /* Hero section styles */
 .hero {
-    background-image: url('../kuva.jpg');
-    background-size: cover;
-    background-position: center;
-    color: black;
-    text-align: center;
-    padding: 200px 0;
+  background-image: url("../kuva.jpg");
+  background-size: cover;
+  background-position: center;
+  color: black;
+  text-align: center;
+  padding: 200px 0;
 }
 
 .hero h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-shadow: 0px 0px 7px white;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 0px 0px 7px white;
 }
 
 .hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    text-shadow: 0px 0px 7px white;
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-shadow: 0px 0px 7px white;
 }
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-    .hero {
-        background-image: url('../kuva1.jpg');
-        color: white;
-    }
-    .hero h2 {
-        text-shadow: 0px 0px 7px black;
-    }
-    .hero p {
-        text-shadow: 0px 0px 7px black;
-    }
-
-
+  .hero {
+    background-image: url("../kuva1.jpg");
+    color: white;
+  }
+  .hero h2 {
+    text-shadow: 0px 0px 7px black;
+  }
+  .hero p {
+    text-shadow: 0px 0px 7px black;
+  }
 }

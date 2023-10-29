@@ -208,14 +208,16 @@ def event_signup(lang="fi", event_id=None):
 
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
 
+
 @app.route('/signup1/<event_id>', methods=["GET"])
 def event_signup_1(lang="fi", event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         return "not"
         pass
-    
+
     return render_template(f'{lang}/signup1.html', event_id=event_id, event=event)
+
 
 @app.route("/api/events/")
 @app.route("/api/events/<event_id>")
@@ -223,20 +225,21 @@ def api_event(event_id=None):
     if event_id != None:
         search = {"_id": ObjectId(event_id)}
         event = db.events.find_one(search)
-        
+
         event = event
         event["_id"] = str(event["_id"])
         return event
-    
+
     if event_id == None:
         event = db.events.find()
         events = []
-        
+
         for item in event:
             item["_id"] = str(item["_id"])
             events.append(item)
-        
+
         return events
+
 
 @app.route("/event_watch/")
 def event_watch():
@@ -376,18 +379,20 @@ def create_post(lang="fi"):
         return redirect('/blog')
     return render_template(f'blog/{lang}/create_post.html')
 
+
 def convert(mongo_db_date):
     # Convert the MongoDB date string to a datetime object
-    mongo_date = mongo_db_date #datetime.fromisoformat(mongo_db_date)
+    mongo_date = mongo_db_date  # datetime.fromisoformat(mongo_db_date)
 
     # Define a function to convert to RFC822 format
     def mongo_to_rfc822(mongo_date):
         # Convert the MongoDB date to UTC timezone
         mongo_date_utc = mongo_date.replace(tzinfo=tz.tzutc())
-        
+
         # Format it as RFC822 date-time
-        rfc822_date = mongo_date_utc.astimezone(tz.tzlocal()).strftime('%a, %d %b %Y %H:%M:%S %z')
-        
+        rfc822_date = mongo_date_utc.astimezone(
+            tz.tzlocal()).strftime('%a, %d %b %Y %H:%M:%S %z')
+
         return rfc822_date
 
     # Call the function to get the RFC822 formatted date
@@ -399,9 +404,9 @@ def convert(mongo_db_date):
 @app.route('/rss', methods=['GET'])
 def rss_feed():
     # Replace this with your actual blog posts data
-    
+
     blog_posts = list(blog_collection.find())
-    
+
     # Create an RSS feed
     rss = f'''<?xml version="1.0" encoding="UTF-8" ?>
     <rss version="2.0">
@@ -438,6 +443,7 @@ def rss_feed():
 # press releases
 press_collection = db['press_releases']
 
+
 @app.route('/<lang>/press/')
 @app.route('/press')
 def press(lang="fi"):
@@ -446,12 +452,14 @@ def press(lang="fi"):
 
     return render_template(f'press/{lang}/press.html', releases=releases)
 
+
 @app.route('/<lang>/press/<slug>/')
 @app.route('/press/<slug>/')
 def press_release(lang="fi", slug=0):
     release = press_collection.find_one({'slug': int(slug)})
     print(release)
     return render_template(f'press/{lang}/press_release.html', release=release)
+
 
 @app.route('/<lang>/create_release', methods=['GET', 'POST'])
 @app.route('/create_release', methods=['GET', 'POST'])
@@ -474,10 +482,54 @@ def create_release(lang="fi"):
     return render_template(f'press/{lang}/create_release.html')
 
 
+@app.route("/toimintaviikko/")
+def tv():
+    return render_template("/toimintaviikko/index.html")
+
+
+@app.route("/toimintaviikko/info")
+def tv_info():
+    return render_template("/toimintaviikko/info.html")
+
+@app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
+def reasons():
+    reasons_db = db["reasons"]
+    if request.method == "POST":
+        content = request.json
+        data = {}
+        if content.get("name") != None:
+            data["name"] = content.get("name")
+        
+        else:
+            data["name"] = "Unknown"
+        
+        data["reason"] = content.get("reason")
+        
+        if len(data["reason"].split(",")) > 1:
+            for reason in data["reason"].split(","):
+                reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
+        
+        else:
+            reason = data
+            reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
+            
+        return reasons_db.find()
+
+    else:
+        reason_s = reasons_db.find()
+        reasons_1 = list()
+        for reason in reason_s:
+            reason["_id"] = ""
+            reasons_1.append(reason)
+        
+        return reasons_1
+            
+    
+    
 release = press_collection.find_one({'slug': 0})
 print(release)
 
 app.config["host"] = "sinimustaahallitustavastaan.local"
 app.config["port"] = 80
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(port=8000, debug=True)

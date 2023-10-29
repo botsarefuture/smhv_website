@@ -1,18 +1,18 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_fi.html' %} {% block content %}
 
-{% block content %}
+<section class="event-details">
+  <h2>{{ event.title_fi }}</h2>
+  <p>Päivämäärä: {{ event.date }}</p>
+  <p>Paikka: {{ event.location_fi }}</p>
+  <p>{{ event.description_fi }}</p>
 
-    <section class="event-details">
-        <h2>{{ event.title_fi }}</h2>
-        <p>Päivämäärä: {{ event.date }}</p>
-        <p>Paikka: {{ event.location_fi }}</p>
-        <p>{{ event.description_fi }}</p>
+  <!-- Add any other event details you want to display -->
 
-        <!-- Add any other event details you want to display -->
-        
-        {% if event.role_signup %}
-        <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button">Ilmoittaudu tukirooliin</a>
-        {% endif %}
-        <a href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</a>
-    </section>
+  {% if event.role_signup %}
+  <a href="{{ url_for('event_signup', event_id=event._id) }}" class="cta-button"
+    >Ilmoittaudu tukirooliin</a
+  >
+  {% endif %}
+  <a href="{{ event.facebook_link }}" class="cta-button">Facebook tapahtuma</a>
+</section>
 {% endblock %}

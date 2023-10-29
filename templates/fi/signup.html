@@ -18,7 +18,7 @@
                 <div class="role"  data-role="{{ role }}">
                     <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
                     <label for="{{role.name}}">
-                        <div class="role-name">{{role.fi_name}}</div>
+                        <div class="name">{{role.fi_name}}</div>
                         <div class="role-description fade">{{role.fi_description}}</div>
                         
                         {% if role.fi_description %}
@@ -30,7 +30,7 @@
                         <!-- Lisää mittari ja väripalkki tähän -->
                         {% if role.get('count', none) != none %}
                         <div class="role-status">
-                            <div class="role-count" data-current-count="{{ role.count }}">
+                            <div class="count" data-current-count="{{ role.count }}">
                                 Tällä hetkellä: {{ role.count }} / Tarvitaan vähintään: {{ role.min_count }}
                             </div>
 

@@ -1,24 +1,24 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_fi.html' %} {% block content %}
+<section class="contact-form">
+  <h2>Ota Yhteyttä</h2>
+  <p>
+    Onko sinulla kysyttävää tai haluatko osallistua toimintaamme? Ota yhteyttä
+    alla olevan lomakkeen avulla.
+  </p>
+  <form method="post" class="closed-form">
+    <label for="name">Nimesi</label>
+    <input type="text" id="name" name="name" required />
 
-{% block content %}
-    <section class="contact-form">
-        <h2>Ota Yhteyttä</h2>
-        <p>Onko sinulla kysyttävää tai haluatko osallistua toimintaamme? Ota yhteyttä alla olevan lomakkeen avulla.</p>
-        <form method="post" class="closed-form">
-            <label for="name">Nimesi</label>
-            <input type="text" id="name" name="name" required>
+    <label for="email">Sähköpostiosoitteesi</label>
+    <input type="email" id="email" name="email" required />
 
-            <label for="email">Sähköpostiosoitteesi</label>
-            <input type="email" id="email" name="email" required>
+    <label for="phonenumber">Puhelinnumerosi</label>
+    <input type="tel" id="phonenumber" name="phonenumber" required />
 
-            <label for="phonenumber">Puhelinnumerosi</label>
-            <input type="tel" id="phonenumber" name="phonenumber" required>
+    <label for="message">Viestisi</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
 
-            <label for="message">Viestisi</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-            
-            <button type="submit" class="cta-button">Lähetä</button>
-        </form>
-        <!--<p class="alternative-contact">Voit ottaa yhteyttä sähköpostitse osoitteeseen <a href="mailto:sinimustaahallitustavastaan@gmail.com">sinimustaahallitustavastaan@gmail.com</a>.</p>-->
-    </section>
+    <button type="submit" class="cta-button">Lähetä</button>
+  </form>
+</section>
 {% endblock %}

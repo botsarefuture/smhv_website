@@ -1,29 +1,37 @@
-{% extends 'base_en.html' %}
+{% extends 'base_en.html' %} {% block content %}
+<section class="event-calendar">
+  <h2>Come to Our Events</h2>
+  <p>
+    Explore our upcoming events where we gather to learn, network, and create
+    positive impact.
+  </p>
+  <br />
+  <br />
+  {% for event in events %}
+  <div class="event">
+    <h3>{{ event.title_en }}</h3>
+    <p>Date: {{ event.date }}</p>
+    <p>Location: {{ event.location_en }}</p>
+    <p>{{ event.description_en|replace('\n', '<br />')|safe }}</p>
 
-{% block content %}
-    <section class="event-calendar">
-        <h2>Come to Our Events</h2>
-        <p>Explore our upcoming events where we gather to learn, network, and create positive impact.</p>
-        <br>
-        <br>
-        {% for event in events %}
-            <div class="event">
-                <h3>{{ event.title_en }}</h3>
-                <p>Date: {{ event.date }}</p>
-                <p>Location: {{ event.location_en }}</p>
-                <p>{{ event.description_en|replace('\n', '<br>')|safe }}</p>
-
-                <!-- Add a link to the signup page for this event -->
-                {% if event.role_signup %}
-                <a href="{{ url_for('event_signup', event_id=event._id, lang='en') }}" class="cta-button">Sign Up for Support Role</a>
-                {% endif %}
-                <a href="{{ url_for('event_details', event_id=event._id, lang='en') }}" class="cta-button">View Details</a>
-
-            </div>
-            {% if empty %}
-            <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join Us in Organizing!</a>
-            {% endif %}
-        {% endfor %}
-        
-    </section>
+    <!-- Add a link to the signup page for this event -->
+    {% if event.role_signup %}
+    <a
+      href="{{ url_for('event_signup', event_id=event._id, lang='en') }}"
+      class="cta-button"
+      >Sign Up for Support Role</a
+    >
+    {% endif %}
+    <a
+      href="{{ url_for('event_details', event_id=event._id, lang='en') }}"
+      class="cta-button"
+      >View Details</a
+    >
+  </div>
+  {% if empty %}
+  <a href="{{ url_for('join', lang='en') }}" class="cta-button"
+    >Join Us in Organizing!</a
+  >
+  {% endif %} {% endfor %}
+</section>
 {% endblock %}

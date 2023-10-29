@@ -1,40 +1,46 @@
 /* Import CSS files */
 @import url("css/header.css");
-@import url("css/event.css");
+
 @import url("css/contact.css");
 @import url("css/intro.css");
 @import url("css/about.css");
 @import url("css/hero.css");
 @import url("css/join.css");
 @import url("css/footer.css");
-@import url("css/signup.css");
-@import url("css/blog_post.css");
-@import url("css/blog_create.css");
-@import url("css/blog.css");
-@import url("css/press.css");
 
+@import url("css/signup.css");
+
+@import url("css/blog.css");
+
+
+@import url("css/press.css");
+@import url("css/tv.css");
+
+@import url("css/event.css");
+@import url("css/event-details.css");
+@import url("css/event-shower.css");
 /* Reset default margin and padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root{
-    --neon-green: #38f205;
-    --green: #16bb00;
-    --darker-green: #0f7d00;
-    --dark-green: #083e00;
+:root {
+  --neon-green: #38f205;
+  --green: #16bb00;
+  --darker-green: #0f7d00;
+  --dark-green: #083e00;
 
-    --neon-pink: #ff0D72;
-    --pink: #bf0a56;
-    --darker-pink: #800639;
-    --dark-pink: #40031d;
+  --neon-pink: #ff0d72;
+  --pink: #bf0a56;
+  --darker-pink: #800639;
+  --dark-pink: #40031d;
 
-    --light-violet: #710e8d;
-    --violet: #550b6a;
-    --darker-violet: #390747;
-    --dark-violet: #1c0423;
+  --light-violet: #710e8d;
+  --violet: #550b6a;
+  --darker-violet: #390747;
+  --dark-violet: #1c0423;
 }
 
 /* Hidden class for transparent text with shadow */

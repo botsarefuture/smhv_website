@@ -30,8 +30,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="{{ url_for('static', filename='js/mobilemenu.js') }}"></script>
-    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/d96cd1d2e5521e86d7dcc139b3a14bcc.js"></script>
-    </head>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="//cdn.cookie-script.com/s/d96cd1d2e5521e86d7dcc139b3a14bcc.js"
+    ></script>
+  </head>
   <!-- Google tag (gtag.js) -->
   <script
     async
@@ -56,7 +60,7 @@
             alt="Logo"
           />
         </a>
-        <div class="language-dropdown">
+        <div class="language-dropdown not-mobile">
           <a href="{{ url_for('change_language', lang='en')}}">EN</a>
           <a href="{{ url_for('change_language', lang='fi')}}" class="active"
             >FI</a
@@ -84,19 +88,19 @@
             <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
             <li><a href="{{ url_for('about') }}">Meistä</a></li>
             <li><a href="{{ url_for('join') }}">Liity</a></li>
-            <li class="dropdown">
-              <a href="#">Language</a>
-              <div class="dropdown-content">
+            <li>
+              <div class="language">
                 <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-                <a href="{{ url_for('change_language', lang='fi')}}">FI</a>
+                <a class="active" 
+                  href="{{ url_for('change_language', lang='fi')}}"
+                  >FI</a
+                >
               </div>
             </li>
-            <br /><br />
             <li>
-              <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
+              <div class="menu-toggle" onclick="toggleMobileMenu()">✕</div>
             </li>
           </ul>
-          <br />
         </nav>
         <div id="menu1" class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
       </div>

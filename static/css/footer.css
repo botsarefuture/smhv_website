@@ -1,61 +1,61 @@
 /* Footer styles */
 footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #1c1c1c;
-    color: #ffffff;
-    font-weight: 600;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Footer content styles */
 .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align the content */
-    margin-left: 20px;
-    margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the content */
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .footer-content p {
-    margin: 0;
-    font-size: 0.9rem;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* Social media styles */
 .social-media {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    align-self: center;
-    align-content: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  align-self: center;
+  align-content: center;
 }
 
 .social-media a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    transition: 0.3s;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.243);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.243);
 }
 
 .social-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .social-media a:hover {
-    background-color: rgba(255, 255, 255, 0.469);
-    box-shadow: 0px 0px 15px rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.469);
+  box-shadow: 0px 0px 15px rgb(255, 255, 255);
 }
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-    .social-media {
-        flex-direction: row; /* Display icons in a row on mobile */
-        justify-content: center;
-    }
+  .social-media {
+    flex-direction: row; /* Display icons in a row on mobile */
+    justify-content: center;
+  }
 }

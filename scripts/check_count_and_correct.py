@@ -12,8 +12,10 @@ logger = logging.getLogger(__name__)
 RED_TEXT = "\033[91m"
 RESET_COLOR = "\033[0m"  # Reset color to default
 
+
 def log_alert(message):
     return RED_TEXT + message + RESET_COLOR
+
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -48,8 +50,9 @@ for event in events:
         logger.debug(f"Current count: {count}")
 
         # Get all signups for this event and role
-        signups = db.signups.find({"event_id": str(event.get("_id")), "roles": {"$elemMatch": {"$in": [role.get("name"), role.get("show_name")]}}})
-                                    
+        signups = db.signups.find({"event_id": str(event.get("_id")), "roles": {
+                                  "$elemMatch": {"$in": [role.get("name"), role.get("show_name")]}}})
+
         for signup in signups:
             # Check if the email already exists in the mapping
             email = signup.get("email")
@@ -64,7 +67,8 @@ for event in events:
                     existing_signup["roles"].append(role.get("name"))
 
                 # Update the existing signup in the database
-                db.signups.update_one({"_id": existing_signup["_id"], "$set": {"roles": existing_signup["roles"]}})
+                db.signups.update_one({"_id": existing_signup["_id"], "$set": {
+                                      "roles": existing_signup["roles"]}})
                 # Notify of the update
                 logger.info("Updated existing signup in the database.")
 
@@ -79,11 +83,13 @@ for event in events:
         logger.info(f"Role name: {role.get('name')}")
         count = role.get("count")
         logger.debug(f"Current count: {count}")
-        db_count = db.signups.count_documents({"event_id": str(event.get("_id")), "roles": {"$elemMatch": {"$in": [role.get("name"), role.get("show_name")]}}})
+        db_count = db.signups.count_documents({"event_id": str(event.get("_id")), "roles": {
+                                              "$elemMatch": {"$in": [role.get("name"), role.get("show_name")]}}})
         logger.debug(f"Database count: {db_count}")
         if count != db_count:
             logger.error(log_alert("Database count and count differ!"))
-            db.events.update_one({"_id": event.get("_id"), "roles.name": role.get("name")}, {"$set": {"roles.$.count": db_count}})
+            db.events.update_one({"_id": event.get("_id"), "roles.name": role.get("name")}, {
+                                 "$set": {"roles.$.count": db_count}})
             # Notify of the update
             logger.info("Updated count in the database.")
         if db_count != 0:

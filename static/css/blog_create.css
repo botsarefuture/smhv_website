@@ -1,66 +1,64 @@
 /* Custom CSS for the Create Blog Post page */
 
+/* CONTAINER */
 .container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto; /* Center the container horizontally */
-    max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto; /* Center the container horizontally */
+  max-width: 800px;
 }
 
-h1 {
-    color: #333;
-    font-size: 24px;
+/* FORM */
+
+.blog-create section {
+  display: flex;
+}
+
+.blog-create label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.blog-create input[type="text"],
+.blog-create textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 120px;
+  resize: vertical;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: #333;
+/* BTN */
+.blog-create .btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: center;
 }
 
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.blog-create .btn:hover {
+  background-color: #0056b3;
 }
 
-textarea {
-    height: 120px;
-    resize: vertical;
-}
+/* TEXT STYLES */
 
-.btn {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
 
-.btn:hover {
-    background-color: #0056b3;
+.blog-create h1 {
+  color: #333;
+  font-size: 24px;
 }
-
-a {
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
-    display: block;
-    margin-top: 20px;
-    width: max-content;
-}
-
-/* Additional styles can be added as needed */

@@ -1,0 +1,59 @@
+header .left {
+  align-items: center;
+}
+
+header .left img {
+  width: 70px; /* Adjust the logo size as needed */
+}
+
+header .left .language-dropdown {
+  display: flex;
+  justify-content: space-between;
+  width: 64px;
+  align-items: center;
+  margin-left: 3px;
+}
+
+header .left .language-dropdown a {
+  text-decoration: none;
+  display: flex;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+/* Add a class "active" to the active language option and apply neon green color */
+header .left .language-dropdown a.active {
+  color: var(--neon-green);
+  text-decoration: underline;
+}
+
+header .left .language-dropdown a:hover {
+  color: #c2c2c2;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  header .left {
+    width: 70px;
+    max-height: 60px;
+  }
+  
+  header .left ul {
+    display: flex; /* Change back to flex layout on mobile */
+    justify-content: center;
+  }
+
+  header .left ul li {
+    align-items: center;
+  }
+
+  header .left img {
+    width: 70px; /* Adjust the logo size as needed */
+    align-self: center; /* Center the logo on mobile */
+    position: sticky;
+    margin: 0 auto;
+    height: 100%; /* Make the header take up the full viewport height */
+  }
+}

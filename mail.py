@@ -10,6 +10,7 @@ global config
 with open("config.json", "r") as f:
     config = json.load(f)
 
+
 def signup_email(event: dict, recipient: dict, language: str):
     """true
 
@@ -17,10 +18,10 @@ def signup_email(event: dict, recipient: dict, language: str):
         event (dict): the dict of the event
         recipient (dict): the dict of the recipient
         language (str): the language
-    """    
-    
-    if language == 'en': #TODO #49 Make English version of signup message
-        language = 'fi' # Make sure something is sent
+    """
+
+    if language == 'en':  # TODO #49 Make English version of signup message
+        language = 'fi'  # Make sure something is sent
 
         subject = f'Thanks for signing up for "{event.get("name_en")}"'
         content = f"""Hi {recipient.get('firstname')}. 
@@ -30,11 +31,11 @@ def signup_email(event: dict, recipient: dict, language: str):
         
         You have signed up for event called "{event.get('name_en')}" on our website sinimustaahallitustavastaan.org. Below are the details of your registration and event.
         """
-        
+
     introductions = event.get("introductions")
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
-        
+
         content = f"""<h2>Kiitos ilmoittautumisestasi!</h2>
         
         Hei {recipient.get('name')},
@@ -57,7 +58,7 @@ def signup_email(event: dict, recipient: dict, language: str):
         """
         for role in recipient.get('roles'):
             content += f"<li>{role}</li>"  # Every role is part of list
-            
+
         content += f"""
         </ul>
                         
@@ -68,46 +69,49 @@ def signup_email(event: dict, recipient: dict, language: str):
         Sijainti: {event.get('location_fi')}
         Telegram ryhmä (kannattaa liittyä): {event.get('telegram_group')}       
         """
-        
+
         if not len(introductions) == 0:
             content += f"""<br><br>Valitsemillesi rooleille järjestetään briiffejä, tiedot alla: <br><br>"""
-        
+
         for introduction in introductions:
             text = f"""
         Päiväys ja aika: {introduction.get('date')} {introduction.get('time')} <br>
         Osoite: {introduction.get('location')}<br>
         <br>
         """
-        
-            if not text in content: #HACK to make sure that we don't send same brief multiple times...
+
+            # HACK to make sure that we don't send same brief multiple times...
+            if not text in content:
                 content += text
-            
+
             else:
                 continue
-            
-            
+
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
-        
+
     msg = MIMEMultipart()
     msg['From'] = config.get('email').get('address')
     msg['To'] = recipient.get("email")
     msg['Subject'] = subject
     msg.attach(MIMEText(content, 'html', 'utf-8'))  # Käytetään HTML-muotoilua
-    
+
     try:
-        mail = smtplib.SMTP(config.get('email').get('server'), config.get('email').get('port'))
+        mail = smtplib.SMTP(config.get('email').get(
+            'server'), config.get('email').get('port'))
         mail.ehlo()
         mail.starttls()
-        mail.login(config.get('email').get('address'), config.get('email').get('password'))
+        mail.login(config.get('email').get('address'),
+                   config.get('email').get('password'))
         mail.sendmail(msg['From'], msg['To'], msg.as_string())
         mail.close()
         print("Sähköposti lähetetty onnistuneesti.")
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
 
+
 def join_email(recipient, language):
-    if language == 'en':        
+    if language == 'en':
         subject = f'Thanks for joinings us!'
         content = f"""Hi {recipient.get('name')},
         
@@ -120,18 +124,18 @@ def join_email(recipient, language):
         
         When you joined us on our website, you said that your skills are:
         """
-        
+
         for role in recipient.get("roles"):
             content += role + "," + "\n"
-        
+
         content += """Is the information correct? If not, you can inform us about that, by answering this email.
         
         
         """
-            
+
     if language == "fi":
         subject = f'Kiitos kun liityit meihin!'
-        
+
         content = f"""Hei {recipient.get('name')},
         
         Kiitos kun liityit meihin!
@@ -143,31 +147,34 @@ def join_email(recipient, language):
 
         Ilmoittautuessasi mukaan, ilmoitit että taitojasi ovat:
         """.replace("\n", "<br>")
-        
+
         for role in recipient.get("roles"):
             content += role + "," + "\n"
-        
+
         content += """Ovatko tiedot oikein? Mikäli eivät, voit saattaa asian tietoomme vastaamalla sähköpostiin.
     
         
         Ystävällisin terveisin,
         SMHV Bot
         """
-        
+
     msg = MIMEMultipart()
     msg['From'] = config.get('email').get('address')
     msg['To'] = recipient.get("email")
     msg['Subject'] = subject
-    msg.attach(MIMEText(content.replace("\n", "<br>"), 'html', 'utf-8'))  # We use utf-8 formatting
-    
+    # We use utf-8 formatting
+    msg.attach(MIMEText(content.replace("\n", "<br>"), 'html', 'utf-8'))
+
     try:
-        mail = smtplib.SMTP(config.get('email').get('server'), config.get('email').get('port'))
+        mail = smtplib.SMTP(config.get('email').get(
+            'server'), config.get('email').get('port'))
         mail.ehlo()
         mail.starttls()
-        mail.login(config.get('email').get('address'), config.get('email').get('password'))
+        mail.login(config.get('email').get('address'),
+                   config.get('email').get('password'))
         mail.sendmail(msg['From'], msg['To'], msg.as_string())
         mail.close()
         print("Sähköposti lähetetty onnistuneesti.")
-        
+
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")

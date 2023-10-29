@@ -1,52 +1,114 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_fi.html' %} {% block content %}
 
-{% block content %}
+<section class="contact-form">
+  <h2>Liity</h2>
+  <p>Haluatko osallistua toimintaamme? Liity alla olevan lomakkeen avulla.</p>
+  <form method="post" class="closed-form">
+    <label for="name">Nimesi</label>
+    <input type="text" id="name" name="name" required />
 
-    <section class="contact-form">
-        <h2>Liity</h2>
-        <p>Haluatko osallistua toimintaamme? Liity alla olevan lomakkeen avulla.</p>
-        <form method="post" class="closed-form">
-            <label for="name">Nimesi</label>
-            <input type="text" id="name" name="name" required>
+    <label for="email">Sähköpostiosoitteesi</label>
+    <input type="email" id="email" name="email" required />
 
-            <label for="email">Sähköpostiosoitteesi</label>
-            <input type="email" id="email" name="email" required>
+    <label for="phonenumber">Puhelinnumerosi</label>
+    <input type="tel" id="phonenumber" name="phonenumber" />
 
-            <label for="phonenumber">Puhelinnumerosi</label>
-            <input type="tel" id="phonenumber" name="phonenumber" >
-            
-            <label for="roles">Osaamisalueeni / työni</label>
-            <div class="checkbox-group">
-                <input type="checkbox" name="roles" id="content-production" value="Tekstisisällön tuottaminen" class="custom-checkbox">
-                <label for="content-production" class="checkbox-label">Tekstisisällön tuottaminen</label>
+    <label for="roles">Osaamisalueeni / työni</label>
+    <div class="checkbox-group">
+      <input
+        type="checkbox"
+        name="roles"
+        id="content-production"
+        value="Tekstisisällön tuottaminen"
+        class="custom-checkbox"
+      />
+      <label for="content-production" class="checkbox-label"
+        >Tekstisisällön tuottaminen</label
+      >
 
-                <input type="checkbox" name="roles" id="photo-management" value="Kuva- ja videotaidot" class="custom-checkbox">
-                <label for="photo-management" class="checkbox-label">Kuva- ja videotaidot</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="photo-management"
+        value="Kuva- ja videotaidot"
+        class="custom-checkbox"
+      />
+      <label for="photo-management" class="checkbox-label"
+        >Kuva- ja videotaidot</label
+      >
 
-                <input type="checkbox" name="roles" id="fundraising" value="Varain- ja välineistönhankinta" class="custom-checkbox">
-                <label for="fundraising" class="checkbox-label">Varain- ja välineistönhankinta</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="fundraising"
+        value="Varain- ja välineistönhankinta"
+        class="custom-checkbox"
+      />
+      <label for="fundraising" class="checkbox-label"
+        >Varain- ja välineistönhankinta</label
+      >
 
-                <input type="checkbox" name="roles" id="social-media" value="Someosaaminen (Julkaisu ja moderointi)" class="custom-checkbox">
-                <label for="social-media" class="checkbox-label">Someosaaminen (Julkaisu ja moderointi)</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="social-media"
+        value="Someosaaminen (Julkaisu ja moderointi)"
+        class="custom-checkbox"
+      />
+      <label for="social-media" class="checkbox-label"
+        >Someosaaminen (Julkaisu ja moderointi)</label
+      >
 
-                <input type="checkbox" name="roles" id="software-design" value="Ohjelmistosuunnittelu" class="custom-checkbox">
-                <label for="software-design" class="checkbox-label">Ohjelmistosuunnittelu</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="software-design"
+        value="Ohjelmistosuunnittelu"
+        class="custom-checkbox"
+      />
+      <label for="software-design" class="checkbox-label"
+        >Ohjelmistosuunnittelu</label
+      >
 
-                <input type="checkbox" name="roles" id="talent-recruitment" value="Artistien ja puhujien rekrytointi" class="custom-checkbox">
-                <label for="talent-recruitment" class="checkbox-label">Artistien ja puhujien rekrytointi</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="talent-recruitment"
+        value="Artistien ja puhujien rekrytointi"
+        class="custom-checkbox"
+      />
+      <label for="talent-recruitment" class="checkbox-label"
+        >Artistien ja puhujien rekrytointi</label
+      >
 
-                <input type="checkbox" name="roles" id="safety-first-aid" value="Turvallisuus ja ensiapu" class="custom-checkbox">
-                <label for="safety-first-aid" class="checkbox-label">Turvallisuus ja ensiapu</label>
+      <input
+        type="checkbox"
+        name="roles"
+        id="safety-first-aid"
+        value="Turvallisuus ja ensiapu"
+        class="custom-checkbox"
+      />
+      <label for="safety-first-aid" class="checkbox-label"
+        >Turvallisuus ja ensiapu</label
+      >
 
-                <input type="checkbox" name="roles" id="jack-of-all-trades" value="Ei mikään ylläolevista (jokapaikan höylä)" class="custom-checkbox">
-                <label for="jack-of-all-trades" class="checkbox-label">Ei mikään ylläolevista (Kerro lisää taidoistasi lisätiedot kentäässä)</label>
-            </div>
+      <input
+        type="checkbox"
+        name="roles"
+        id="jack-of-all-trades"
+        value="Ei mikään ylläolevista (jokapaikan höylä)"
+        class="custom-checkbox"
+      />
+      <label for="jack-of-all-trades" class="checkbox-label"
+        >Ei mikään ylläolevista (Kerro lisää taidoistasi lisätiedot
+        kentäässä)</label
+      >
+    </div>
 
-            <label for="message">Lisätiedot</label>
-            <textarea id="message" name="message" rows="6"></textarea>
+    <label for="message">Lisätiedot</label>
+    <textarea id="message" name="message" rows="6"></textarea>
 
-            <button type="submit" class="cta-button">Lähetä</button>
-        </form>
-        <!--<p class="alternative-contact">Voit ottaa yhteyttä sähköpostitse osoitteeseen <a href="mailto:sinimustaahallitustavastaan@gmail.com">sinimustaahallitustavastaan@gmail.com</a>.</p>-->
-    </section>
+    <button type="submit" class="cta-button">Lähetä</button>
+  </form>
+</section>
 {% endblock %}

@@ -18,7 +18,7 @@
                 <div class="role"  data-role="{{ role }}">
                     <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
                     <label for="{{role.name}}">
-                        <div class="role-name">{{role.en_name}}</div>
+                        <div class="name">{{role.en_name}}</div>
                         <div class="role-description fade">{{role.en_description}}</div>
                         
                         {% if role.en_description %}
@@ -30,7 +30,7 @@
                         <!-- Add meter and color bar here -->
                         {% if role.get('count', none) != none %}
                         <div class="role-status">
-                            <div class="role-count" data-current-count="{{ role.count }}">
+                            <div class="count" data-current-count="{{ role.count }}">
                                 Currently: {{ role.count }} / Required: {{ role.min_count }}
                             </div>
 

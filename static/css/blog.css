@@ -1,130 +1,130 @@
-/* CSS for improved blog posts */
+@import url("blog_create.css");
+@import url("blog_post.css");
 
+/* BLOG-CONTAINER */
 .blog-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto; /* Center the container horizontally */
-    max-width: 800px;
-    overflow: hidden; /* Hide content that overflows the container */
-    white-space: nowrap; /* Prevent line breaks inside the container */
-    text-overflow: ellipsis; /* Add an ellipsis (...) to indicate content cutoff */
-    align-items: center;
-    align-content: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto; /* Center the container horizontally */
+  max-width: 800px;
+  overflow: hidden; /* Hide content that overflows the container */
+  white-space: nowrap; /* Prevent line breaks inside the container */
+  text-overflow: ellipsis; /* Add an ellipsis (...) to indicate content cutoff */
+  align-items: center;
+  align-content: center;
 }
 
 /* CSS for devices with a minimum width of 768px (non-mobile devices) */
 @media (min-width: 768px) {
-    .blog-container {
-        background-color: transparent; /* Make the background transparent */
-        box-shadow: none; /* Remove the box shadow */
-        padding: 0; /* Remove padding */
-        margin: 0; /* Remove margin */
-        max-width: 100%; /* Make it full-width */
-        overflow: visible; /* Show content that overflows the container */
-        white-space: normal; /* Allow line breaks inside the container */
-        text-overflow: clip; /* Display the entire content without an ellipsis */
-    }
+  .blog-container {
+    background-color: transparent; /* Make the background transparent */
+    box-shadow: none; /* Remove the box shadow */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    max-width: 100%; /* Make it full-width */
+    overflow: visible; /* Show content that overflows the container */
+    white-space: normal; /* Allow line breaks inside the container */
+    text-overflow: clip; /* Display the entire content without an ellipsis */
+  }
 }
 
-
+/* BLOG-POSTS */
 .blog-posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-    .blog-post {
-        border: 1px solid #ccc;
-        padding: 20px;
-        align-self: center;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s;
-        max-width: 100%;
-        align-items: center;
-        max-block-size: 100%;
-        font-size: 100%; /* Reset the font size */
-        word-wrap: break-word; /* Allow text to break and continue on the next line */
-        white-space: normal; /* Allow line breaks */
-    }
-    
-    .blog-posts {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-        gap: 20px;
-        max-block-size: 100%;
-        align-items: center;
-        align-content: center;
-    }
+  .blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 20px;
+    max-block-size: 100%;
+    align-items: center;
+    align-content: center;
+  }
 }
 
-
 .blog-post {
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
 }
 
 .blog-post:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .blog-post h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .blog-post p {
-    text-align: center;
-    color: #777;
-    margin-bottom: 10px;
+  text-align: center;
+  color: #777;
+  margin-bottom: 10px;
 }
 
-.blog-post .blog-content {
-    /* Add additional styling for the content here */
-}
-
-/* Add any other animations or styling you prefer */
-/* Center the "Read More" button */
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.blog-title {
+@media (max-width: 768px) {
+  .blog-post {
+    border: 1px solid #ccc;
+    padding: 20px;
     align-self: center;
-    text-align: center;
-    padding-bottom: 50px;
-    font-size: 34px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    max-width: 100%;
+    align-items: center;
+    max-block-size: 100%;
+    font-size: 100%; /* Reset the font size */
+    word-wrap: break-word; /* Allow text to break and continue on the next line */
+    white-space: normal; /* Allow line breaks */
+  }
 }
 
+/* BUTTONS */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* READ-MORE-BUTTON */
 .read-more-button {
-    background-color: var(--violet);
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 0px 0px 7px black;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    padding: 10px 20px;
-    display: inline-block;
+  background-color: var(--violet);
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0px 0px 7px black;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  padding: 10px 20px;
+  display: inline-block;
 }
 
 .read-more-button:hover {
-    background-color: var(--light-violet);
+  background-color: var(--light-violet);
 }
 
 .read-more-button:active {
-    background-color: var(--darker-violet);
+  background-color: var(--darker-violet);
 }
 
+/* BLOG-TITLE */
+.blog-title {
+  align-self: center;
+  text-align: center;
+  padding-bottom: 50px;
+  font-size: 34px;
+}
