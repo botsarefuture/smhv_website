@@ -2,6 +2,7 @@
 {%block title %} Create a Blog Post {%endblock%}
 
 {% block content %}
+<section class="blog-create">
     <div class="container">
         <h1>Luo blogipostaus</h1>
         <form class="blog-form" method="POST" action="{{ url_for('create_post') }}">
@@ -28,5 +29,5 @@
     <script>
         CKEDITOR.replace('content');
     </script>
-    
+</section>
 {% endblock %}

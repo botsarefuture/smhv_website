@@ -2,7 +2,7 @@
 {%block title %} Create a Blog Post {%endblock%}
 
 {% block content %}
-    <div class="container">
+    <div class="container create-blog">
         <h1>Create a Blog Post</h1>
         <form class="blog-form" method="POST" action="{{ url_for('create_post') }}">
             <div class="form-group">
@@ -20,7 +20,7 @@
 
 
             </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="create-blog btn btn-primary">Create Post</button>
         </form>
         <a href="{{ url_for('blog', lang='fi') }}">Back to Blog</a>
     </div>

@@ -12,7 +12,11 @@
 
 /* FORM */
 
-label {
+.blog-create section {
+  display: flex;
+}
+
+.blog-create label {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
@@ -20,8 +24,8 @@ label {
   color: #333;
 }
 
-input[type="text"],
-textarea {
+.blog-create input[type="text"],
+.blog-create textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -36,7 +40,7 @@ textarea {
 }
 
 /* BTN */
-.btn {
+.blog-create .btn {
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
@@ -44,16 +48,17 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  align-self: center;
 }
 
-.btn:hover {
+.blog-create .btn:hover {
   background-color: #0056b3;
 }
 
 /* TEXT STYLES */
 
 
-h1 {
+.blog-create h1 {
   color: #333;
   font-size: 24px;
 }

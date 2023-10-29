@@ -1,10 +1,17 @@
-@import url("css/signup-form.css");
-@import url("css/signup-role.css");
-@import url("css/signup-roles.css");
+@import url("signup-form.css");
+@import url("signup-role.css");
+@import url("signup-roles.css");
+
 
 /* SIGNUP-HEADING */
 .signup-heading {
   padding-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  .signup-heading h2{
+    text-overflow: break-word;
+  }
 }
 
 .view-more-button {

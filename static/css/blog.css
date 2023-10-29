@@ -1,3 +1,6 @@
+@import url("blog_create.css");
+@import url("blog_post.css");
+
 /* BLOG-CONTAINER */
 .blog-container {
   background-color: #fff;

@@ -60,7 +60,7 @@
             alt="Logo"
           />
         </a>
-        <div class="language-dropdown">
+        <div class="language-dropdown not-mobile">
           <a href="{{ url_for('change_language', lang='en')}}">EN</a>
           <a href="{{ url_for('change_language', lang='fi')}}" class="active"
             >FI</a
@@ -81,7 +81,6 @@
         </nav>
         <!-- Mobile menu -->
         <nav id="mobile-menu">
-          <div class="menu-toggle" onclick="toggleMobileMenu()">✕</div>
           <ul>
             <li><a href="{{ url_for('index') }}">Kotisivu</a></li>
             <li><a href="{{ url_for('events') }}">Tapahtumat</a></li>
@@ -89,14 +88,21 @@
             <li><a href="{{ url_for('contact') }}">Ota yhteyttä</a></li>
             <li><a href="{{ url_for('about') }}">Meistä</a></li>
             <li><a href="{{ url_for('join') }}">Liity</a></li>
-            <li class="dropdown">
-              <a href="#">Kieli</a>
-              <div class="dropdown-content">
+            <br/>
+
+            <li>
+              <div class="language">
                 <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-                <a href="{{ url_for('change_language', lang='fi')}}">FI</a>
+                <a class="active" 
+                  href="{{ url_for('change_language', lang='fi')}}"
+                  >FI</a
+                >
               </div>
             </li>
-            <br /><br />
+            <br/>
+            <li>
+              <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
+            </li>
           </ul>
         </nav>
         <div id="menu1" class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
