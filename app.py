@@ -491,7 +491,41 @@ def tv():
 def tv_info():
     return render_template("/toimintaviikko/info.html")
 
+@app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
+def reasons():
+    reasons_db = db["reasons"]
+    if request.method == "POST":
+        content = request.json
+        data = {}
+        if content.get("name") != None:
+            data["name"] = content.get("name")
+        
+        else:
+            data["name"] = "Unknown"
+        
+        data["reason"] = content.get("reason")
+        
+        if len(data["reason"].split(",")) > 1:
+            for reason in data["reason"].split(","):
+                reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
+        
+        else:
+            reason = data
+            reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
+            
+        return reasons_db.find()
 
+    else:
+        reason_s = reasons_db.find()
+        reasons_1 = list()
+        for reason in reason_s:
+            reason["_id"] = ""
+            reasons_1.append(reason)
+        
+        return reasons_1
+            
+    
+    
 release = press_collection.find_one({'slug': 0})
 print(release)
 
