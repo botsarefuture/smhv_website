@@ -7,12 +7,13 @@
   </p>
   <br />
   <br />
+  <div class="events-list">
   {% for event in events %}
   <div class="event">
     <h3>{{ event.title_fi }}</h3>
     <p>Päivämäärä: {{ event.date }}</p>
     <p>Paikka: {{ event.location_fi }}</p>
-    <p>{{ event.description_fi|replace('\n', '<br />')|safe }}</p>
+    <p>{{ (event.description_fi|replace('\n', '<br />')|safe)[:100] }}</p>
 
     <!-- Add a link to the signup page for this event -->
     {% if event.role_signup %}
@@ -34,5 +35,6 @@
     >Tule mukaan järjestämään!</a
   >
   {% endif %} {% endfor %}
+</div>
 </section>
 {% endblock %}
