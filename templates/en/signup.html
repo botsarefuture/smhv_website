@@ -7,15 +7,15 @@ href="{{ url_for('static', filename='css/event-info.css') }}"
 />
 <div class="roles-container">
     <section class="signup-form">
-        <h2 class="signup-heading">Sign Up for the "{{event.title_en}}" Event</h2>
+        <h2 class="signup-heading">Signup for the "{{ event.title_en }}"-event</h2>
 
         <!-- Add a box to display event information here -->
         <div class="event-info-box">
-            <h3>Info of event:</h3>
-            <p>Name: {{ event.title_en }}</p>
-            <p>Date and time: {{ event.date }}</p>
-            <p>Location: {{ event.location_en }}</p>
-            <p>Description: {{ event.description_en|replace('\n', '<br />')|safe }}</p>
+            <h3>Event information:</h3>
+            <p><b>Name:</b> {{ event.title_en }}</p>
+            <p><b>Date and time:</b> {{ event.date }}</p>
+            <p><b>Location:</b> {{ event.location_en }}</p>
+            <p><b>Description:</b> {{ event.description_en|replace('\n', '<br />')|safe }}</p>
             <!-- Add more event details as needed -->
         </div>
 

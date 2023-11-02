@@ -16,3 +16,7 @@
     color: #555; /* Paragraph text color */
     margin: 5px 0; /* Spacing between paragraphs */
 }
+
+.event-info-box b {
+    color: var(--neon-pink);
+}

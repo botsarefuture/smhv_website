@@ -7,12 +7,13 @@
   </p>
   <br />
   <br />
+  <div class="events-list">
   {% for event in events %}
   <div class="event">
     <h3>{{ event.title_en }}</h3>
     <p>Date: {{ event.date }}</p>
     <p>Location: {{ event.location_en }}</p>
-    <p>{{ event.description_en|replace('\n', '<br />')|safe }}</p>
+    <p>{{ (event.description_en|replace('\n', '<br />')|safe)[:100] }}</p>
 
     <!-- Add a link to the signup page for this event -->
     {% if event.role_signup %}
@@ -33,5 +34,6 @@
     >Join Us in Organizing!</a
   >
   {% endif %} {% endfor %}
+  <div>
 </section>
 {% endblock %}
