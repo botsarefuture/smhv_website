@@ -436,7 +436,7 @@
       if (event.target.classList.contains("show-details-button")) {
         const eventId = event.target.getAttribute("data-event-id");
         // Fetch event data from /api/events/event_id (replace with your actual URL)
-        fetch(`https://sinimustaahallitustavastaan.org/api/events/${eventId}`)
+        fetch(`/api/events/${eventId}`)
           .then((response) => response.json())
           .then((data) => {
             // Display event details in the modal
@@ -469,7 +469,7 @@
     function updateEventData() {
       errorBox.style.display = "none";
 
-      fetch("https://sinimustaahallitustavastaan.org/api/events/")
+      fetch("/api/events/")
         .then((response) => response.json())
         .then((data) => {
           const eventData = data;
@@ -493,7 +493,7 @@
       if (event.target.classList.contains("event-details-button")) {
         const eventId = event.target.getAttribute("data-event-id");
         // Fetch details for the specific event using `/api/events/<event_id>`
-        fetch(`https://sinimustaahallitustavastaan.org/api/events/${eventId}`)
+        fetch(`/api/events/${eventId}`)
           .then((response) => response.json())
           .then((eventDetails) => {
             // Process and display the event details (e.g., role statistics or participants)
@@ -542,7 +542,7 @@
     // Function to fetch and update event data
     function updateEventData() {
       // Fetch event data from the API
-      fetch("https://sinimustaahallitustavastaan.org/api/events/")
+      fetch("/api/events/")
         .then((response) => response.json())
         .then((data) => {
           const eventData = data; // Assuming the API response is an array of events

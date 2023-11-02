@@ -2,9 +2,9 @@
 document.querySelectorAll(".custom-checkbox").forEach(function (checkbox) {
   checkbox.addEventListener("change", function () {
     const roleContainer = checkbox.closest(".role");
-    const progressBar = roleContainer.querySelector(".progress-bar");
-    const roleCount = roleContainer.querySelector(".role-count");
-
+    const status = roleContainer.querySelector(".role-status");
+    const progressBar = status.querySelector(".progress-bar");
+    const roleCount = status.querySelector(".count");
     const roleData = fix_role();
 
     // Check if the checkbox was checked or unchecked
