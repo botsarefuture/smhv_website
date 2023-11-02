@@ -19,6 +19,16 @@ href="{{ url_for('static', filename='css/event-info.css') }}"
             <!-- Add more event details as needed -->
         </div>
 
+        <!-- Add a box to display event information here -->
+        <div class="event-info-box">
+            <h3>Info of event:</h3>
+            <p>Name: {{ event.title_en }}</p>
+            <p>Date and time: {{ event.date }}</p>
+            <p>Location: {{ event.location_en }}</p>
+            <p>Description: {{ event.description_en|replace('\n', '<br />')|safe }}</p>
+            <!-- Add more event details as needed -->
+        </div>
+
         <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required><br>
