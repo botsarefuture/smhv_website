@@ -232,9 +232,17 @@ def api_event(event_id=None):
 
     if event_id == None:
         event = db.events.find()
+        # Fetch events from MongoDB
+        events_data = events_collection.find()
+
+        # Filter out events with past dates
+        current_datetime = datetime.now()
+        future_events = [event for event in events_data if get_event_date(
+            event) >= current_datetime]
+        sorted_events = sort_events_by_date(future_events)
         events = []
 
-        for item in event:
+        for item in sorted_events:
             item["_id"] = str(item["_id"])
             events.append(item)
 

@@ -1,9 +1,24 @@
 {% extends 'base_fi.html' %}
 
 {% block content %}
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/event-info.css') }}"
+/>
 <div class="roles-container">
     <section class="signup-form">
         <h2 class="signup-heading">Ilmoittaudu tapahtumaan "{{event.title_fi}}"</h2>
+        
+        <!-- Add a box to display event information here -->
+        <div class="event-info-box">
+            <h3>Tapahtuman tiedot:</h3>
+            <p>Nimi: {{ event.title_fi }}</p>
+            <p>Päivämäärä ja aika: {{ event.date }}</p>
+            <p>Paikka: {{ event.location_fi }}</p>
+            <p>Kuvaus: {{ event.description_fi|replace('\n', '<br />')|safe }}</p>
+
+            <!-- Add more event details as needed -->
+        </div>
 
         <form method="POST" action="/signup/{{ event_id }}" class="closed-form">
             <label for="name">Nimesi:</label>
@@ -13,7 +28,7 @@
             <input type="email" id="email" name="email" required><br>
 
             <label for="roles">Roolit <span style="color: var(--neon-pink);"> (voit valita useampia, klikkaa jokaista roolia, jonka haluat valita)</span>:</label>
-            <div class="roles">
+            <div id="roles" class="roles">
                 {% for role in event.roles %}
                 <div class="role"  data-role="{{ role }}">
                     <input type="checkbox" class="custom-checkbox" name="roles[]" id="{{role.name}}" value="{{role.show_name}}" >
