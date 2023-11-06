@@ -1,107 +1,132 @@
 {% extends 'base_fi.html' %}
 {% block content %}
 <style>
-  /* Define styles for name, email, and title */
-  .name {
+  /* Custom CSS */
+  .custom-name {
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 18px;
   }
 
-  .email {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .email a {
+  .custom-email {
     text-decoration: none;
     color: #0078d4;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: break-word;
   }
 
-  .email a:hover {
+  .custom-email:hover {
     text-decoration: underline;
   }
 
-  .title {
+  .custom-title {
     font-style: italic;
     color: #555;
+    font-size: 14px;
   }
 
-  /* Define styles for the send email button */
-
-  .send-email-button {
+  .custom-send-email-button {
     background-color: #0078d4;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    text-decoration: none; /* Remove underlines from links */
-    bottom: 0;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 16px;
   }
 
-  .send-email-button:hover {
+  .custom-send-email-button:hover {
     background-color: #005a9e;
   }
 
-  /* Define styles for contact groups */
-  .contact-group {
+  .custom-contact-group {
     margin-top: 20px;
     border-top: 1px solid #ccc;
     padding-top: 20px;
   }
 
-  .email {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  .custom-heading {
+    font-size: 24px;
+    color: #0078d4;
+  }
 
+  .custom-event {
+    margin-bottom: 10px;
+      /* Event styles */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
 
-}
+    margin: 10px 0px;
+
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .custom-event:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
 
 </style>
 <section class="contact-us">
   <h2>Yhteystiedot</h2>
-  <div class="contact-group">
-    <h3>Johtoryhmä</h3>
+  <div class="custom-contact-group">
+    <h3 class="custom-heading">Johtoryhmä</h3>
     <div class="events-list">
-      <div class="event">
-        <div class="name">Verso Vuorenmaa</div>
-        <div class="email">
-          <a href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">verso.vuorenmaa@sinimustaahallitustavastaan.org</a>
+      <div class="custom-event">
+        <div class="custom-name">Verso Vuorenmaa</div>
+        <div class="custom-email">
+          <a href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">verso.vuorenmaa</a>
         </div>
-        <div class="title">IT Manager</div>
-        <a class="send-email-button" href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+        <div class="custom-title">IT Manager</div>
+        <a class="custom-send-email-button" href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
       </div>
-      <!-- Add more members of the Johtoryhmä here -->
+      <div class="custom-event">
+        <div class="custom-name">Taru Maukonen</div>
+        <div class="custom-email">
+          <a href="mailto:taru.maukonen@sinimustaahallitustavastaan.org">taru.maukonen</a>
+        </div>
+        <div class="custom-title">Coordinator</div>
+        <a class="custom-send-email-button" href="mailto:taru.maukonen@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+      </div>
     </div>
   </div>
-  <div class="contact-group">
-    <h3>Muut Jäsenet</h3>
+  <div class="custom-contact-group">
+    <h3 class="custom-heading">Muut Jäsenet</h3>
     <div class="events-list">
-      <div class="event">
-        <div class="name">Nimi: Jäsen 2</div>
-        <div class="email">
+      <div class="custom-event">
+        <div class="custom-name">Nimi: Jäsen 2</div>
+        <div class="custom-email">
           <a href="mailto:member2@example.com">member2@example.com</a>
         </div>
-        <div class="title">Titteli 2</div>
-        <a class="send-email-button" href="mailto:member2@example.com">Lähetä sähköposti</a>
+        <div class="custom-title">Titteli 2</div>
+        <a class="custom-send-email-button" href="mailto:member2@example.com">Lähetä sähköposti</a>
       </div>
-      <div class="event">
-        <div class="name">Nimi: Jäsen 3</div>
-        <div class="email">
+      <div class="custom-event">
+        <div class="custom-name">Nimi: Jäsen 3</div>
+        <div class="custom-email">
           <a href="mailto:member3@example.com">member3@example.com</a>
         </div>
-        <div class="title">Titteli 3</div>
-        <a class="send-email-button" href="mailto:member3@example.com">Lähetä sähköposti</a>
+        <div class="custom-title">Titteli 3</div>
+        <a class="custom-send-email-button" href="mailto:member3@example.com">Lähetä sähköposti</a>
       </div>
-      <div class="event">
-        <div class="name">Nimi: Jäsen 4</div>
-        <div class="email">
+      <div class="custom-event">
+        <div class="custom-name">Nimi: Jäsen 4</div>
+        <div class="custom-email">
           <a href="mailto:member4@example.com">member4@example.com</a>
         </div>
-        <div class="title">Titteli 4</div>
-        <a class="send-email-button" href="mailto:member4@example.com">Lähetä sähköposti</a>
+        <div class="custom-title">Titteli 4</div>
+        <a class="custom-send-email-button" href="mailto:member4@example.com">Lähetä sähköposti</a>
       </div>
       <!-- Add more members of Muut Jäsenet here -->
     </div>

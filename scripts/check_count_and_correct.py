@@ -17,7 +17,7 @@ def log_alert(message):
     return RED_TEXT + message + RESET_COLOR
 
 
-with open("config.json", "r") as f:
+with open("../config.json", "r") as f:
     config = json.load(f)
 
 url = "mongodb://"
@@ -67,7 +67,7 @@ for event in events:
                     existing_signup["roles"].append(role.get("name"))
 
                 # Update the existing signup in the database
-                db.signups.update_one({"_id": existing_signup["_id"], "$set": {
+                db.signups.update_one({"_id": existing_signup["_id"]}, {"$set": {
                                       "roles": existing_signup["roles"]}})
                 # Notify of the update
                 logger.info("Updated existing signup in the database.")
