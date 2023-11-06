@@ -532,12 +532,15 @@ def reasons():
         
         return reasons_1
             
-    
+
     
 release = press_collection.find_one({'slug': 0})
 print(release)
 
-app.config["host"] = "sinimustaahallitustavastaan.local"
-app.config["port"] = 80
+@app.route("/contacts")
+def contacts():
+    return render_template("fi/contacts.html")
+
+
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
