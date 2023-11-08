@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Well-Being Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #f6eec7;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6b6b;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #ff8e3c;
+            flex-direction: column;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #ff8e3c;
+            border-radius: 5px;
+        }
+
+        .input-group {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+        }
+
+        .light-group {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .traffic-light {
+            font-size: 20px;
+            margin-left: 10px;
+            horizontal-align: center;
+        }
+
+        button {
+            background-color: #48dbfb;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0abde3;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ff6b6b;
+        }
+
+        #wellBeingScore {
+            font-weight: bold;
+            color: #ff8e3c;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Well-Being Calculator</h1>
+    <form id="wellBeingForm">
+        <div class="input-group">
+            <label for="anger">Anger (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="anger" name="anger" min="0" max="10" value="{{data.answers.anger}}" disabled="disabled" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="angerLight" style="color: #ffcc00;"></i> <!-- Red light -->
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="anxiety">Anxiety (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="anxiety" name="anxiety" min="0" max="10" value="{{data.answers.anxiety}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="anxietyLight" style="color: #ffcc00;"></i> <!-- Yellow light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="self_harming">Self Harming (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="self_harming" name="self_harming" min="0" max="10" value="{{data.answers.self_harming}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="selfHarmingLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="suicidality">Suicidality (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="suicidality" name="suicidality" min="0" max="10" value="{{data.answers.suicidality}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="suicidalityLight" style="color: #ffcc00;"></i> <!-- Yellow light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="tiredness">Tiredness (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="tiredness" name="tiredness" min="0" max="10" value="{{data.answers.tiredness}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="tirednessLight" style="color: #ffcc00;"></i> <!-- Yellow light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="sadness">Sadness (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="sadness" name="sadness" min="0" max="10" value="{{data.answers.sadness}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="sadnessLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="happiness">Happiness (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="happiness" name="happiness" min="0" max="10" value="{{data.answers.happiness}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="happinessLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="joy">Joy (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="joy" name="joy" min="0" max="10" value="{{data.answers.joy}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="joyLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="love">Love (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="love" name="love" min="0" max="10" value="{{data.answers.love}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="loveLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+        <div class="input-group">
+            <label for="crush">Crush (0-10):</label>
+            <div class="light-group">
+            <input type="number" id="crush" name="crush" min="0" max="10" value="{{data.answers.crush}}" disabled="disabled" required>
+            <i class="fas fa-circle traffic-light" id="crushLight" style="color: #ffcc00;"></i> <!-- Green light -->
+        </div></div>
+
+    </form>
+
+    <p>Your well-being score: <span id="wellBeingScore">{{data.well_being_score}}</span></p>
+
+
+    <script>
+        // Function to change traffic light color based on input value
+        function changeTrafficLightColor(inputId, lightId, type) {
+            const input = document.getElementById(inputId);
+            const light = document.getElementById(lightId);
+            
+            if (type == "good") {
+
+            if (input.value <= 3) {
+                light.style.color = '#ff0000'; // Red
+            } else if (input.value <= 7) {
+                light.style.color = '#ffcc00'; // Yellow
+            } else {
+                light.style.color = '#00ff00'; // Green
+            }
+        }
+        if (type == "bad") {
+
+            if (input.value >= 8) {
+                light.style.color = '#ff0000'; // Red
+            } else if (input.value >= 5) {
+                light.style.color = '#ffcc00'; // Yellow
+            } else {
+                light.style.color = '#00ff00'; // Green
+            }
+        }}
+        
+        // Add event listeners for input fields
+        document.getElementById("anger").addEventListener("input", function() {
+            changeTrafficLightColor("anger", "angerLight", "bad");
+        });
+
+        changeTrafficLightColor("anger", "angerLight", "bad");
+
+        document.getElementById("anxiety").addEventListener("input", function() {
+            changeTrafficLightColor("anxiety", "anxietyLight", "bad");
+        });
+
+        changeTrafficLightColor("anxiety", "anxietyLight", "bad");
+
+
+        document.getElementById("self_harming").addEventListener("input", function() {
+            changeTrafficLightColor("self_harming", "selfHarmingLight", "bad");
+        });
+
+        changeTrafficLightColor("self_harming", "selfHarmingLight", "bad");
+
+
+        document.getElementById("suicidality").addEventListener("input", function() {
+            changeTrafficLightColor("suicidality", "suicidalityLight", "bad");
+        });
+        changeTrafficLightColor("suicidality", "suicidalityLight", "bad");
+
+        document.getElementById("tiredness").addEventListener("input", function() {
+            changeTrafficLightColor("tiredness", "tirednessLight", "bad");
+        });
+        changeTrafficLightColor("tiredness", "tirednessLight", "bad");
+
+        document.getElementById("sadness").addEventListener("input", function() {
+            changeTrafficLightColor("sadness", "sadnessLight", "bad");
+        });
+        changeTrafficLightColor("sadness", "sadnessLight", "bad");
+
+
+        document.getElementById("happiness").addEventListener("input", function() {
+            changeTrafficLightColor("happiness", "happinessLight", "good");
+        });
+        changeTrafficLightColor("happiness", "happinessLight", "good");
+
+        document.getElementById("joy").addEventListener("input", function() {
+            changeTrafficLightColor("joy", "joyLight", "good");
+        });
+        changeTrafficLightColor("joy", "joyLight", "good");
+
+        document.getElementById("love").addEventListener("input", function() {
+            changeTrafficLightColor("love", "loveLight", "good");
+        });
+        changeTrafficLightColor("love", "loveLight", "good");
+
+        document.getElementById("crush").addEventListener("input", function() {
+            changeTrafficLightColor("crush", "crushLight", "good");
+        });
+        changeTrafficLightColor("crush", "crushLight", "good");
+
+        // Form submission handler (you can add your own code here)
+        document.getElementById("wellBeingForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("/calculate_well_being", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(Object.fromEntries(formData)),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    document.getElementById("wellBeingScore").textContent = data.well_being_score.toFixed(2);
+                    document.getElementById("shareable-link").textContent = window.location.origin + data.shareable_link;
+                    document.getElementById("shareable-link").href = window.location.origin + data.shareable_link;
+                    document.getElementById("result").style.display = "block";
+                });
+        });
+    </script>
+</body>
+</html>

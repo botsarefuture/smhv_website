@@ -1,7 +1,7 @@
 import subprocess
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, Response, flash, make_response
+from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify
 from flask_ckeditor import CKEditor
 
 from pymongo import MongoClient
@@ -69,6 +69,100 @@ def set_template_folder():
 
 # Serve robots.txt
 
+def muunna_tulos(luku):
+    if luku <= -60:
+        return 0
+    elif luku <= 0:
+        return (luku + 60) / 12
+    elif luku <= 60:
+        return (luku / 12) + 5
+    else:
+        return 10
+
+def calculate_well_being(answers):
+    ans1 = []
+    for item in answers:
+        item = int(item)
+        print(item, type(item))
+        ans1.append(item)
+
+    anger, anxiety, self_harming, suicidality, tiredness, sadness, happiness, joy, love, crush = ans1
+
+    total_negative = int(anger + suicidality + self_harming + anxiety + sadness + tiredness)
+    total_positive = int(happiness + joy + love + crush)*1.5
+
+    if int(suicidality) > 5:
+        total_negative = 60
+
+    print(total_positive)
+    print(total_negative)
+    
+    if total_negative >= total_positive:
+        well_being = 10 - total_negative
+    else:
+        well_being = total_positive 
+
+    well_being = total_positive - total_negative
+    well_being = muunna_tulos(well_being)
+    
+    print(well_being)
+
+    return well_being
+
+# Function to save answers and well-being score to MongoDB
+def save_data(answers, well_being):
+    collection = db["well_being_data"]
+    data = {
+        'answers': answers,
+        'well_being_score': well_being
+    }
+    result = collection.insert_one(data)
+    return result.inserted_id
+
+@app.route('/calculate_well_being', methods=['POST'])
+def calculate_well_being_api():
+    data = request.get_json()
+    answers = {
+        'anger': data['anger'],
+        'anxiety': data['anxiety'],
+        'self_harming': data['self_harming'],
+        'suicidality': data['suicidality'],
+        'tiredness': data['tiredness'],
+        'sadness': data['sadness'],
+        'happiness': data['happiness'],
+        'joy': data['joy'],
+        'love': data['love'],
+        'crush': data['crush']
+    }
+
+    # Calculate well-being score
+    well_being = calculate_well_being(list(answers.values()))
+
+    # Save answers and well-being score to MongoDB
+    inserted_id = save_data(answers, well_being)
+
+    response = {
+        'well_being_score': well_being,
+        'shareable_link': f'/share/{inserted_id}'  # Generate a link with the inserted MongoDB document ID
+    }
+    return jsonify(response)
+
+# Define a route to share the well-being data
+@app.route('/share/<string:document_id>')
+def share_well_being(document_id):
+    # Retrieve data from MongoDB using the document ID
+    collection = db["well_being_data"]
+    print(document_id)
+    data = collection.find_one({"_id": ObjectId(document_id)})
+    data["_id"] = ""
+    print(data)
+    return render_template("show.html", data=data)
+
+
+
+@app.route('/mental')
+def mental():
+    return render_template('well_being.html')
 
 @app.route('/robots.txt', methods=['GET'])
 def robots_txt():
