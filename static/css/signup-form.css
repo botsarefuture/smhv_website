@@ -24,6 +24,10 @@
   font-weight: 600;
 }
 
+.submit-button{
+  all: unset;
+}
+
 .signup-form input,
 .signup-form textarea {
   width: 100%;
