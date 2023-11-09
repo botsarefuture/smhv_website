@@ -87,6 +87,11 @@ section {
   margin-bottom: 40px;
 }
 
+a p h1 h2 h3 h4 h5 h6 {
+  overflow: hidden;
+  text-overflow: break-word;
+}
+
 /* Custom checkbox styles */
 .custom-checkbox {
   display: none; /* Hide the default checkboxes */

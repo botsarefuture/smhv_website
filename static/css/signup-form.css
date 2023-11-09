@@ -48,9 +48,6 @@
 
 @media (max-width: 480px) {
   .signup-form{
-    padding: 5px;
-  }
-  .signup-form h2{
-    font-size: 25px;
+    padding:5px;
   }
 }
