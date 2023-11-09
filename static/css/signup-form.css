@@ -2,6 +2,10 @@
 .signup-form {
   padding: 40px;
   text-align: center;
+  overflow: hidden;
+  text-overflow: break-word;
+  overflow-wrap: anywhere;
+
 }
 
 .signup-form h2 {
