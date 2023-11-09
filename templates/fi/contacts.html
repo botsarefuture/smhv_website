@@ -13,11 +13,13 @@
     color: #0078d4;
     font-size: 16px;
     display: block;
-    text-align: center;
     overflow: hidden;
-    white-space: nowrap;
+    text-align: center;
     text-overflow: break-word;
+    overflow-wrap: anywhere;
   }
+
+
 
   .custom-email:hover {
     text-decoration: underline;
@@ -78,19 +80,50 @@
   <h2>Yhteystiedot</h2>
   <div class="custom-contact-group">
     
-    <h3 class="custom-heading">Johtoryhmä</h3>
+    <h3 class="custom-heading">Yleiset yhteystiedot</h3>
 
     <div class="events-list">
       <div class="custom-contact">
         <div class="custom-name">Yleinen sähköposti</div>
 
         <div class="custom-email">
-          <a href="mailto:johtoryhma@sinimustaahallitustavastaan.org">Johtoryhmä</a>
+          <a href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Sinimustaa Hallitusta Vastaan</a>
         </div>
 
-        <div class="custom-title">Yleinen sähköposti</div>
+        <div class="custom-title">Luemme sähköpostisi yleensä päivässä</div>
+        <a class="custom-send-email-button" href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+      </div>
+
+      <div class="custom-contact">
+        <div class="custom-name">Johtoryhmä</div>
+
+        
+        <div class="custom-email"><a href="mailto:johtoryhma@sinimustaahallitustavastaan.org">Johtoryhmä</a></div>
+        
+
+        <div class="custom-title">Ota yhteyttä johtoryhmään</div>
         <a class="custom-send-email-button" href="mailto:johtoryhma@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
       </div>
+
+      <div class="custom-contact">
+        <div class="custom-name">Media työryhmä</div>
+
+        
+        <div class="custom-email"><a href="mailto:media@sinimustaahallitustavastaan.org">Media</a></div>
+        
+
+        <div class="custom-title">Haastattelupyynnöt, kuvapyynnöt, ja muut media-asiat!</div>
+        <a class="custom-send-email-button" href="mailto:media@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-contact-group">
+    
+    <h3 class="custom-heading">Johtoryhmä</h3>
+
+    <div class="events-list">
+      
 
       <div class="custom-contact">
         <div class="custom-name">Verso Vuorenmaa</div>
@@ -200,23 +233,6 @@
       </div>-->
     </div>
   </div>
-  <div class="custom-contact-group">
-    
-    <h3 class="custom-heading">Yleiset yhteystiedot</h3>
-
-    <div class="events-list">
-      <div class="custom-contact">
-        <div class="custom-name">Yleinen sähköposti</div>
-
-        <div class="custom-email">
-          <a href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Sinimustaa Hallitusta Vastaan</a>
-        </div>
-
-        <div class="custom-title">Luemme sähköpostisi yleensä päivässä</div>
-        <a class="custom-send-email-button" href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
-      </div>
-    </div>
-  </div>
-
+  
 </section>
 {% endblock %}
