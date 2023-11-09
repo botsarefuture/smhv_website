@@ -158,8 +158,6 @@ def share_well_being(document_id):
     print(data)
     return render_template("show.html", data=data)
 
-
-
 @app.route('/mental')
 def mental():
     return render_template('well_being.html')
@@ -191,6 +189,10 @@ def mongodb_servers():
 def index(lang="fi"):
     if lang == "favicon.ico":
         lang = "fi"
+
+    if lang == "mental":
+        return render_template('well_being.html')
+
 
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
