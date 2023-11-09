@@ -24,6 +24,10 @@
   font-weight: 600;
 }
 
+.submit-button{
+  all: unset;
+}
+
 .signup-form input,
 .signup-form textarea {
   width: 100%;
@@ -40,4 +44,10 @@
 
 .signup-form button:hover {
   background-color: var(--light-violet);
+}
+
+@media (max-width: 480px) {
+  .signup-form{
+    padding:5px;
+  }
 }
