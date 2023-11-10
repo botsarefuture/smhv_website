@@ -31,7 +31,7 @@
 .progress-bar {
   height: 15px;
   background-color: var(--green); /* Change color if needed */
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px;
   opacity: 100%;
 }
 
@@ -39,5 +39,6 @@
   border: 1px solid rgba(0, 0, 0, 0.675);
   margin: 5px 0px 20px 0px;
   border-radius: 5px;
+  background-color: white;
   width: 100%;
 }

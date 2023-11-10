@@ -19,15 +19,6 @@ href="{{ url_for('static', filename='css/event-info.css') }}"
             <!-- Add more event details as needed -->
         </div>
 
-        <!-- Add a box to display event information here -->
-        <div class="event-info-box">
-            <h3>Info of event:</h3>
-            <p>Name: {{ event.title_en }}</p>
-            <p>Date and time: {{ event.date }}</p>
-            <p>Location: {{ event.location_en }}</p>
-            <p>Description: {{ event.description_en|replace('\n', '<br />')|safe }}</p>
-            <!-- Add more event details as needed -->
-        </div>
 
         <form method="POST" action="/en/signup/{{ event_id }}" class="closed-form">
             <label for="name">Your Name:</label>
@@ -35,8 +26,8 @@ href="{{ url_for('static', filename='css/event-info.css') }}"
 
             <label for="email">Your Email:</label>
             <input type="email" id="email" name="email" required><br>
-
-            <label for="roles">Roles:</label>
+            <br><br><br><br>
+            <label for="roles">Roles <span style="color: var(--neon-pink);">(choose as many roles as you would like, by clicking them)</span>:</label>
             <div id="roles" class="roles">
                 {% for role in event.roles %}
                 <div class="role"  data-role="{{ role }}">
@@ -84,7 +75,7 @@ href="{{ url_for('static', filename='css/event-info.css') }}"
                 {% endfor %}
             </div>
             
-            <button type="submit" id="submit-button" class="cta-button submit-button">Sign Up</button>
+            <button type="submit" id="submit-button" class="cta-button">Sign Up</button>
         </form>
     </section>
 </div>

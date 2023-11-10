@@ -1,8 +1,9 @@
 /* ROLES */
 .roles {
   display: grid;
+  padding: 15px 0px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 25px;
   text-align: center; /* Added text-align to center content */
   align-items: center; /* Added align-items to center content vertically */
   align-content: center; /* Added align-content to center content */
@@ -12,7 +13,7 @@
   .roles {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-    gap: 20px;
+    gap: 25px;
   }
 }
 
