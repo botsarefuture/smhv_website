@@ -116,6 +116,12 @@
 
 .event .cta-button:hover {
   background-color: var(
+    --darker-green
+  ); /* Vaihda väri haluamaksesi hover-tilassa */
+}
+
+.event .cta-button:active {
+  background-color: var(
     --dark-green
   ); /* Vaihda väri haluamaksesi hover-tilassa */
 }
