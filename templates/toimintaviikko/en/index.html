@@ -1,0 +1,23 @@
+{% extends 'base_en.html' %} {% block content %}
+<h1 class="toimintaviikko-heading">THE ACTION WEEK 27.11.-3.12.</h1>
+
+<section class="toimintaviikko-info">
+  <h1 class="toimintaviikko-heading">Information of the Action Week</h1>
+  <p>
+    The Action Week is a campaign against the current far-right government led by Petteri Orpo. 
+  During the Action Week, we march together for mental health, 
+  against cuts, and bid farewell to the far-right government!</p>
+
+  <br />
+  <a class="cta-button" style="align-items: center" href="{{ url_for('tv_info',lang='en')  }}"
+    >More information</a
+  >
+</section>
+<section class="events">
+  <h2>Events</h2>
+  <div id="events-list" class="events-list">
+    <!-- Events will be fetched and displayed here -->
+  </div>
+</section>
+<script src="{{ url_for('static', filename='js/toimintaviikko-events-en.js') }}"></script>
+{% endblock %}
