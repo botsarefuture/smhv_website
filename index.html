@@ -1,35 +1,23 @@
 {% extends 'base_en.html' %} {% block content %}
-<h1 style="font-size: 0px">Against the Government, For Life!</h1>
+<h1 class="toimintaviikko-heading">THE ACTION WEEK 27.11.-3.12.</h1>
 
-<section class="hero">
-  <div class="hero-content">
-    <h2>Against the Government, For Life!</h2>
-    <p>Our goal is to overthrow the government by 2024.</p>
-    <a href="{{ url_for('about', lang='en') }}" class="cta-button"
-      >Read more about our activities</a
-    >
+<section class="toimintaviikko-info">
+  <h1 class="toimintaviikko-heading">Information of the Action Week</h1>
+  <p>
+    The Action Week is a campaign against the current far-right government led by Petteri Orpo. 
+  During the Action Week, we march together for mental health, 
+  against cuts, and bid farewell to the far-right government!</p>
 
-    <br /><br />
-
-    <a href="{{ url_for('tv', lang='en') }}" style="background-color: var(--neon-pink)"
-	class="cta-button">Join the Action Week!</a>
+  <br />
+  <a class="cta-button" style="align-items: center" href="{{ url_for('tv_info',lang='en')  }}"
+    >More information</a
+  >
+</section>
+<section class="events">
+  <h2>Events</h2>
+  <div id="events-list" class="events-list">
+    <!-- Events will be fetched and displayed here -->
   </div>
 </section>
-<section class="about-us">
-  <h2>About Us</h2>
-  <div class="about-content">
-    <p>
-      We are an activist group dedicated to overthrowing the blue-black
-      government.
-    </p>
-    <p>Our goal is to bring down the blue-black government.</p>
-    <p>Join our ranks to help overthrow the government.</p>
-  </div>
-  <a href="{{ url_for('about', lang='en') }}" class="cta-button">Read more</a>
-</section>
-<section class="join-us">
-  <h2>Join Us Today</h2>
-  <p>Are you ready to take action and create a better future? Join us!</p>
-  <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
-</section>
+<script src="{{ url_for('static', filename='js/toimintaviikko-events-fi.js') }}"></script>
 {% endblock %}
