@@ -10,13 +10,6 @@ Welcome to the repository for the website of SMHV! This website is built using H
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
-
-- **Home:** Learn about our movement's mission and goals, and discover upcoming events.
-- **Events:** Explore our event calendar and stay informed about upcoming events.
-- **About Us:** Learn more about our movement, its founders, and our values.
-- **Contact:** Get in touch with us through a user-friendly contact form.
-
 ## Getting Started
 
 To run this website locally, you'll need to have Python and Flask installed on your machine.
@@ -34,7 +27,15 @@ To run this website locally, you'll need to have Python and Flask installed on y
     pip install -r requirements.txt
     ```
 
-3. Run the Flask development server:
+3. Add configuration
+   
+     ```bash
+    cp config.example.json config.json && nano config.json
+    ```
+
+     and then add configuration to the file... For questions related the config, contact @botsarefuture
+     
+5. Run the Flask development server:
 
     ```bash
     python app.py
