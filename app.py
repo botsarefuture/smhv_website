@@ -585,15 +585,15 @@ def create_release(lang="fi"):
         return redirect('/press')
     return render_template(f'press/{lang}/create_release.html')
 
-
+@app.route("/<lang>/toimintaviikko/")
 @app.route("/toimintaviikko/")
-def tv():
-    return render_template("/toimintaviikko/index.html")
+def tv(lang="fi"):
+    return render_template(f"/toimintaviikko/{lang}/index.html")
 
-
+@app.route("/<lang>/toimintaviikko/info")
 @app.route("/toimintaviikko/info")
-def tv_info():
-    return render_template("/toimintaviikko/info.html")
+def tv_info(lang="fi"):
+    return render_template(f"/toimintaviikko/{lang}/info.html")
 
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
 def reasons():
