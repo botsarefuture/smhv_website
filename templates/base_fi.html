@@ -1,5 +1,55 @@
 <!DOCTYPE html>
 <html lang="fi">
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function start() {
+      if (getCookie("language") == "") {
+
+        var language = window.navigator.userLanguage || window.navigator.language;
+
+        if (language == 'fi-FI') {
+          setCookie("language", "fi", 100);
+          location.href = $`/{location.pathname}`;
+        }
+
+        else {
+          setCookie("language", "en", 100);
+          location.href = $`/en/{location.pathname}`;
+        }}
+
+      else {
+        let language = getCookie("language");
+        location.href = $`/{language}/{location.pathname}`;
+      }}
+
+      function setLanguage(language) {
+        setCookie("language", language, 100);
+        location.href = $`/{language}/{location.pathname}`;
+    }
+    start();
+  </script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,11 +111,12 @@
           />
         </a>
         <div class="language-dropdown not-mobile">
-          <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-          <a href="{{ url_for('change_language', lang='fi')}}" class="active"
-            >FI</a
-          >
-        </div>
+            <a href="{{ url_for('change_language', lang='en')}}">EN</a>
+            <a class="active" 
+              href="{{ url_for('change_language', lang='fi')}}"
+              >FI</a
+            >
+          </div>
       </div>
       <div class="right">
         <!-- Computer menu -->
@@ -152,4 +203,5 @@
       </div>
     </footer>
   </body>
+  
 </html>

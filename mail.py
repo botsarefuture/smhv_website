@@ -19,20 +19,65 @@ def signup_email(event: dict, recipient: dict, language: str):
         recipient (dict): the dict of the recipient
         language (str): the language
     """
+    introductions = event.get("introductions")
 
-    if language == 'en':  # TODO #49 Make English version of signup message
-        language = 'fi'  # Make sure something is sent
+    if language == 'en':
+        subject = f'Thank you for signing up for event "{event.get("title_en")}"'
 
-        subject = f'Thanks for signing up for "{event.get("name_en")}"'
-        content = f"""Hi {recipient.get('firstname')}. 
-        Thank you very much for signing up for "{event.get('name_en')} on our website.
+        content = f"""<h2>Thank you for signing up!</h2>
         
-        <h2>Event Details</h2>
+        Hi {recipient.get('name')},
         
-        You have signed up for event called "{event.get('name_en')}" on our website sinimustaahallitustavastaan.org. Below are the details of your registration and event.
+        <br><br>
+        
+        You have signed up for the following event: <br>
+
+        <strong>{event.get('title_en')}</strong>
+        
+        <br><br>
+        
+        When you signed up, you gave us the following informatiedot:
+        
+        <br><br>
+        
+        Roles:
+        
+        <ul>
+        """
+        for role in recipient.get('roles'):
+            content += f"<li>{role}</li>"  # Every role is part of list
+
+        content += f"""
+        </ul>
+                        
+        <h2>Info of event:/h2>
+        
+        
+        Date: {event.get('date')}
+        Location: {event.get('location_en')}
+        Telengram group (please join): {event.get('telegram_group')}       
         """
 
-    introductions = event.get("introductions")
+        if not len(introductions) == 0:
+            content += f"""<br><br>There is introductions for the roles that you have selcted, information below: <br><br>"""
+
+        for introduction in introductions:
+            text = f"""
+        Date and time: {introduction.get('date')} {introduction.get('time')} <br>
+        Address: {introduction.get('location')}<br>
+        <br>
+        """
+
+            # HACK to make sure that we don't send same brief multiple times...
+            if not text in content:
+                content += text
+
+            else:
+                continue
+
+        if not len(introductions) == 0:
+            content += "If you're unable to come into the introduction, please let us know, so we can send you instructions."
+
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
 
