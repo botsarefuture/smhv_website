@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sinimustaa hallitusta vastaan | {{ title }}</title>
+    <meta
+      name="description"
+      content="Join us to actively participate in fight against far-right government."
+    />
+    <meta
+      name="keywords"
+      content="activism, resistance, far-right government, blue-black government, joining to activism"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5254175970151613"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{ url_for('static', filename='js/mobilemenu.js') }}"></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="//cdn.cookie-script.com/s/d96cd1d2e5521e86d7dcc139b3a14bcc.js"
+    ></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-C4L1ME98KL"
+  ></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-C4L1ME98KL");
+  </script>
+  <body>
+    <header>
+      <div class="left">
+        <a href="{{ url_for('index', lang='en') }}">
+          <img
+            src="{{ url_for('static', filename='logo_Läpinäkyvä_Valkoinen.png') }}"
+            alt="Logo"
+          />
+        </a>
+        <div class="language-dropdown">
+          <a href="{{ url_for('change_language', lang='en')}}" class="active"
+            >EN</a
+          >
+          <a href="{{ url_for('change_language', lang='fi')}}">FI</a>
+        </div>
+      </div>
+      <div class="right">
+        <!-- Computer menu -->
+        <nav class="computer-menu">
+          <ul>
+            <li><a href="{{ url_for('index', lang='en') }}">Home</a></li>
+			<li><a href="{{ url_for('tv', lang='en') }}">Action week</a></li>
+            <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
+            <li><a href="{{ url_for('blog', lang='en') }}">Blog</a></li>
+            <li>
+              <a href="{{ url_for('contact', lang='en') }}">Contact us</a>
+            </li>
+            <li><a href="{{ url_for('about', lang='en') }}">About us</a></li>
+            <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
+          </ul>
+        </nav>
+        <!-- Mobile menu -->
+        <nav id="mobile-menu">
+          <ul>
+            <li><a href="{{ url_for('index', lang='en') }}">Home</a></li>
+			<li><a href="{{ url_for('tv', lang='en') }}">Action week</a></li>
+            <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
+            <li><a href="{{ url_for('blog', lang='en') }}">Blog</a></li>
+            <li>
+              <a href="{{ url_for('contact', lang='en') }}">Contact us</a>
+            </li>
+            <li><a href="{{ url_for('about', lang='en') }}">About us</a></li>
+            <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
+            <li>
+              <div class="language">
+                <a class="active" href="{{ url_for('change_language', lang='en')}}">EN</a>
+                <a 
+                  href="{{ url_for('change_language', lang='fi')}}"
+                  >FI</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="menu-toggle" onclick="toggleMobileMenu()">✕</div>
+            </li>
+          </ul>
+        </nav>
+        <div id="menu1" class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <div class="footer-content">
+        <p>&copy; {{ current_year }} sinimustaa hallitusta vastaan</p>
+
+        <br /><br />
+
+        <div class="social-media">
+          <a
+            href="https://www.instagram.com/sinimustaa_hallitusta_vastaan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="{{ url_for('static', filename='ig.png') }}"
+              alt="Instagram"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/sinimustaa_hallitusta_vastaan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="{{ url_for('static', filename='fb.png') }}"
+              alt="Facebook"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
