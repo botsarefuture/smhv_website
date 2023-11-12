@@ -1,3 +1,5 @@
+
+
 import subprocess
 from datetime import datetime
 
@@ -14,6 +16,7 @@ import sys
 from datetime import datetime
 from dateutil import tz
 from flask_cors import CORS
+from translations import translations
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -187,6 +190,8 @@ def mongodb_servers():
 @app.route("/<lang>/")
 @app.route('/')
 def index(lang="fi"):
+    translation = translations(lang)
+        
     if lang == "favicon.ico":
         lang = "fi"
 
@@ -194,7 +199,7 @@ def index(lang="fi"):
         return render_template('well_being.html')
 
 
-    return render_template(f'{lang}/index.html', title="", current_year=2023)
+    return render_template(f'{lang}/index.html', title="", current_year=2023, translations=translation)
 
 # EVERYTHING REGARDING EVENTS
 
@@ -636,6 +641,7 @@ print(release)
 @app.route("/contacts")
 def contacts():
     return render_template("fi/contacts.html")
+
 
 
 if __name__ == '__main__':

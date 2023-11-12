@@ -1,0 +1,30 @@
+{
+    "languages": ["FI", "EN"],
+    "FI": {
+        "base.html": {
+            "title": "Sinimustaa hallitusta vastaan",
+            "homepage": "Kotisivu",
+            "actionweek": "Toimintaviikko",
+            "events": "Tapahtumat",
+            "blog": "Blogi",
+            "contact": "Ota yhteyttä",
+            "about_us": "Meistä",
+            "join_us": "Liity",
+            "contacts": "Yhteystiedot"
+        }
+    },
+
+    "EN": {
+            "base.html": {
+                "title": "Against far-right government",
+                "homepage": "Home",
+                "actionweek": "Action week",
+                "events": "Events",
+                "blog": "Blog",
+                "contact": "Contact",
+                "about_us": "About Us",
+                "join_us": "Join Us",
+                "contacts": "Contacts"
+            }
+    }
+}
