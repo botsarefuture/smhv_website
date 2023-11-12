@@ -33,7 +33,7 @@ To run this website locally, you'll need to have Python and Flask installed on y
     cp config.example.json config.json && nano config.json
     ```
 
-     and then add configuration to the file... For questions related the config, contact @botsarefuture
+     and then add configuration to the file... For questions related the config, contact [@botsarefuture](https://github.com/botsarefuture)
      
 5. Run the Flask development server:
 
