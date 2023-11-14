@@ -31,12 +31,12 @@
 
         if (language == 'fi-FI') {
           setCookie("language", "fi", 100);
-          location.href = $`/{location.pathname}`;
+          location.href = `/change_language/fi`;
         }
 
         else {
           setCookie("language", "en", 100);
-          location.href = $`/en/{location.pathname}`;
+          location.href = `/change_language/en`;
         }}
 
       else {
