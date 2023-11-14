@@ -26,7 +26,7 @@ fetch("/api/events/")
         eventDescription.textContent = event.description_en;
 
         const signupButton = document.createElement("a");
-        signupButton.href = `/en/signup/${event._id}`;
+        signupButton.href = `/signup/${event._id}`;
         signupButton.textContent = "Signup";
         signupButton.className = "cta-button";
 

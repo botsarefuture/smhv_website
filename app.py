@@ -1,11 +1,10 @@
 import subprocess
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify
+from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify, session
 from flask_ckeditor import CKEditor
-
 from pymongo import MongoClient
-from bson import ObjectId  # Import ObjectId class
+from bson import ObjectId
 from flask_sitemap import Sitemap
 import json
 from mail import signup_email, join_email
@@ -18,25 +17,34 @@ from flask_cors import CORS
 with open("config.json", "r") as f:
     config = json.load(f)
 
+
+client = MongoClient(config["mongodb"].get("url"))
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
-sitemap = Sitemap(app=app)
 ckeditor = CKEditor(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-# Set up MongoDB connection
-url = "mongodb://"
-url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
-url += "@"
-for server in config["mongodb"]["servers"]:
-    url += f"{server},"
 
-url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
+# ... (rest of your code)
 
-url = url.replace(",/", "/")
+# Example of using sessions
+@app.before_request
+def set_template_folder():
+    if 'user' not in session:
+        session['user'] = {'lang': 'en', 'ip': request.headers.get('X-Forwarded-For', request.remote_addr), 'time': datetime.now()}
+    
 
-client = MongoClient(url)
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+app.secret_key = 'your_secret_key_here'
+app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
+sitemap = Sitemap(app=app)
+
+
+
 db = client['website']
 events_collection = db['events']
 visits_collection = db['visits']
@@ -62,10 +70,7 @@ def restart():
         print(f"An error occurred: {e}")
 
 
-@app.before_request
-def set_template_folder():
-    visits_collection.insert_one({"ip": request.headers.get(
-        'X-Forwarded-For', request.remote_addr), "lang": "unknown", "time": datetime.now()})
+
 
 # Serve robots.txt
 
@@ -184,14 +189,16 @@ def mongodb_servers():
     return ""
 
 
-@app.route("/<lang>/")
+#@app.route("/<lang>/")
 @app.route('/')
-def index(lang="fi"):
+def index():
     if lang == "favicon.ico":
         lang = "fi"
 
     if lang == "mental":
         return render_template('well_being.html')
+
+    lang = session["user"]["lang"]
 
 
     return render_template(f'{lang}/index.html', title="", current_year=2023)
@@ -208,9 +215,9 @@ def sort_events_by_date(events):
     return sorted(events, key=get_event_date)
 
 
-@app.route("/<lang>/events")
 @app.route('/events')
-def events(lang="fi"):
+def events():
+    lang = session["user"]["lang"]
     # Fetch events from MongoDB
     events_data = events_collection.find()
 
@@ -222,9 +229,9 @@ def events(lang="fi"):
     return render_template(f'{lang}/events.html', title='Events', events=sorted_events, current_year=2023)
 
 
-@app.route('/<lang>/events/<event_id>')
 @app.route('/events/<event_id>')
-def event_details(lang="fi", event_id=None):
+def event_details(event_id=None):
+    lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Handle event not found error
@@ -233,9 +240,9 @@ def event_details(lang="fi", event_id=None):
     return render_template(f'{lang}/event_details.html', event=event, current_year=2023)
 
 
-@app.route('/<lang>/signup/<event_id>', methods=["GET", "POST"])
 @app.route('/signup/<event_id>', methods=["GET", "POST"])
-def event_signup(lang="fi", event_id=None):
+def event_signup(event_id=None):
+    lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         # Käsittele tapahtuman puuttumista
@@ -306,7 +313,9 @@ def event_signup(lang="fi", event_id=None):
 
 
 @app.route('/signup1/<event_id>', methods=["GET"])
-def event_signup_1(lang="fi", event_id=None):
+def event_signup_1(event_id=None):
+    lang = session["user"]["lang"]
+
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
         return "not"
@@ -352,15 +361,16 @@ def event_watch():
 # EVENTS END
 
 
-@app.route('/<lang>/about')
+#@app.route('/<lang>/about')
 @app.route('/about')
-def about(lang="fi"):
+def about():
+    lang = session["user"]["lang"]
     return render_template(f'{lang}/about.html', title='About Us', current_year=2023)
 
 
-@app.route("/<lang>/contact", methods=["GET", "POST"])
 @app.route('/contact', methods=["GET", "POST"])
-def contact(lang="fi"):
+def contact():
+    lang = session["user"]["lang"]
     if request.method == "GET":
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
@@ -376,9 +386,9 @@ def contact(lang="fi"):
         return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
 
 
-@app.route("/<lang>/join", methods=["GET", "POST"])
 @app.route('/join', methods=["GET", "POST"])
-def join(lang="fi"):
+def join():
+    lang = session["user"]["lang"]
     if request.method == "GET":
         return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
 
@@ -401,6 +411,7 @@ def join(lang="fi"):
 
 # DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
 def lang_thing(lang, path, request):
+    session["user"]["lang"] = lang
     if lang == "fi":
         path = path.replace("en/", "")
 
@@ -442,8 +453,19 @@ def lang_thing(lang, path, request):
 
 @app.route('/change_language/<lang>')
 def change_language(lang):
-    path = lang_thing(lang, request.referrer, request)
+    session["user"]["lang"] = lang
+    session.modified = True
+    
+    if request.referrer and request.referrer.startswith("/change_language/"):
+        return redirect('/')
+    
+    if request.referrer == None:
+        return redirect('/')
+        
+    return redirect(request.referrer)
 
+    path = lang_thing(lang, request.referrer, request)
+    
     return redirect(path)
 
 
@@ -451,23 +473,25 @@ def change_language(lang):
 blog_collection = db['blog_posts']
 
 
-@app.route('/<lang>/blog/')
 @app.route('/blog/')
-def blog(lang="fi"):
+def blog():
+    lang = session["user"]["lang"]
+
     posts = list(blog_collection.find({"lang": lang}))
     return render_template(f'blog/{lang}/blog.html', posts=posts)
 
 
-@app.route('/<lang>/blog/<post_id>')
 @app.route('/blog/<post_id>')
-def blog_post(lang="fi", post_id=None):
+def blog_post(post_id=None):
+    lang = session["user"]["lang"]
     post = blog_collection.find_one({"_id": ObjectId(post_id)})
     return render_template(f'blog/{lang}/blog_post.html', post=post)
 
 
-@app.route('/<lang>/create_post', methods=['GET', 'POST'])
 @app.route('/create_post', methods=['GET', 'POST'])
-def create_post(lang="fi"):
+def create_post():
+    lang = session["user"]["lang"]
+
     if request.method == 'POST':
         title = request.form['title']
         author = request.form['author']
@@ -548,26 +572,29 @@ def rss_feed():
 press_collection = db['press_releases']
 
 
-@app.route('/<lang>/press/')
 @app.route('/press')
-def press(lang="fi"):
+def press():
+    lang = session["user"]["lang"]
+
     releases = list(press_collection.find())
     print(releases)
 
     return render_template(f'press/{lang}/press.html', releases=releases)
 
 
-@app.route('/<lang>/press/<slug>/')
 @app.route('/press/<slug>/')
-def press_release(lang="fi", slug=0):
+def press_release(slug=0):
+    lang = session["user"]["lang"]
+
     release = press_collection.find_one({'slug': int(slug)})
     print(release)
     return render_template(f'press/{lang}/press_release.html', release=release)
 
 
-@app.route('/<lang>/create_release', methods=['GET', 'POST'])
 @app.route('/create_release', methods=['GET', 'POST'])
-def create_release(lang="fi"):
+def create_release():
+    lang = session["user"]["lang"]
+
     if request.method == 'POST':
         title = request.form['title']
         author = request.form['author']
@@ -585,18 +612,21 @@ def create_release(lang="fi"):
         return redirect('/press')
     return render_template(f'press/{lang}/create_release.html')
 
-@app.route("/<lang>/toimintaviikko/")
 @app.route("/toimintaviikko/")
-def tv(lang="fi"):
+def tv():
+    lang = session["user"]["lang"]
+
     return render_template(f"/toimintaviikko/{lang}/index.html")
 
-@app.route("/<lang>/toimintaviikko/info")
 @app.route("/toimintaviikko/info")
-def tv_info(lang="fi"):
+def tv_info():
+    lang = session["user"]["lang"]
+
     return render_template(f"/toimintaviikko/{lang}/info.html")
 
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
 def reasons():
+    
     reasons_db = db["reasons"]
     if request.method == "POST":
         content = request.json

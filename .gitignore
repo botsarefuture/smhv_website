@@ -1,3 +1,9 @@
 config.json
 *.pickle
 *pycache*/*
+daddy.py
+k.html
+models.py
+tester.py
+thing.py
+trol.py
