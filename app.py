@@ -1,118 +1,67 @@
-import subprocess
-from datetime import datetime
 
+# Internal imports
+from mail import signup_email, join_email
+from well_being import calculate_well_being 
+from db_utils import db
+from events_blueprint import events_blueprint
+
+# Flask related imports
 from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify, session
 from flask_ckeditor import CKEditor
-from pymongo import MongoClient
-from bson import ObjectId
+import werkzeug
+from flask_cors import CORS
 from flask_sitemap import Sitemap
+import subprocess
+
+# MongoDB related imports
+from bson import ObjectId
+
+# System imports
 import json
-from mail import signup_email, join_email
 import os
 import sys
+
+
+# Date and time related imports
 from datetime import datetime
+import time
 from dateutil import tz
-from flask_cors import CORS
+from datetime import datetime
+
+
 
 with open("config.json", "r") as f:
     config = json.load(f)
 
 
-client = MongoClient(config["mongodb"].get("url"))
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 ckeditor = CKEditor(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-
-# ... (rest of your code)
-
-# Example of using sessions
-@app.before_request
-def set_template_folder():
-    if 'user' not in session:
-        session['user'] = {'lang': 'en', 'ip': request.headers.get('X-Forwarded-For', request.remote_addr), 'time': datetime.now()}
-    
-
-with open("config.json", "r") as f:
-    config = json.load(f)
-
-app.secret_key = 'your_secret_key_here'
-app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 sitemap = Sitemap(app=app)
 
-
-
-db = client['website']
-events_collection = db['events']
-visits_collection = db['visits']
-contactions_collection = db['contactions']
-joins_collection = db["joins"]
-signups_collection = db["signups"]
-
-
-def restart():
-
-    # Define the command you want to run
-    command = "systemctl restart website"
-
-    # Run the command using subprocess
-    try:
-        subprocess.run(command, shell=True, check=True)
-        print("Command executed successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"Command execution failed with error: {e}")
-        python = sys.executable
-        os.execl(python, python, *sys.argv)
-    except Exception as e:
-        print(f"An error occurred: {e}")
+# Register the events blueprint
+app.register_blueprint(events_blueprint)
 
 
 
 
-# Serve robots.txt
-
-def muunna_tulos(luku):
-    if luku <= -60:
-        return 0
-    elif luku <= 0:
-        return (luku + 60) / 12
-    elif luku <= 60:
-        return (luku / 12) + 5
-    else:
-        return 10
-
-def calculate_well_being(answers):
-    ans1 = []
-    for item in answers:
-        item = int(item)
-        print(item, type(item))
-        ans1.append(item)
-
-    anger, anxiety, self_harming, suicidality, tiredness, sadness, happiness, joy, love, crush = ans1
-
-    total_negative = int(anger + suicidality + self_harming + anxiety + sadness + tiredness)
-    total_positive = int(happiness + joy + love + crush)*1.5
-
-    if int(suicidality) > 5:
-        total_negative = 60
-
-    print(total_positive)
-    print(total_negative)
+@app.before_request
+def set_language():
+    supported_languages = ["fi", "en", "sv"]
+    print(werkzeug.datastructures.LanguageAccept([(al[0][0:2], al[1]) for al in request.accept_languages]).best_match(supported_languages))
+    lang = request.accept_languages.best_match(supported_languages, "en")
     
-    if total_negative >= total_positive:
-        well_being = 10 - total_negative
-    else:
-        well_being = total_positive 
-
-    well_being = total_positive - total_negative
-    well_being = muunna_tulos(well_being)
     
-    print(well_being)
+    if 'user' not in session:
+        session['user'] = {'lang': lang, 'ip': request.headers.get('X-Forwarded-For', request.remote_addr), 'time': datetime.now()}
+    
+    if session["user"].get("ip") == "127.0.0.1":
+        print(session)
+        time.sleep(1)
 
-    return well_being
 
 # Function to save answers and well-being score to MongoDB
 def save_data(answers, well_being):
@@ -174,20 +123,6 @@ def robots_txt():
     return response
 
 
-@app.route("/mongodb/", methods=["POST"])
-def mongodb_servers():
-    data = request.json
-    url = data["url"]
-    config["mongodb"]["servers"].append(url)
-
-    with open("config.json", "w") as f:
-        json.dump(config, f)
-
-    restart()
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
-    return ""
-
 
 @app.route('/')
 def index():
@@ -197,8 +132,6 @@ def index():
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
 # EVERYTHING REGARDING EVENTS
-
-
 def get_event_date(event):
     date_str = event['date']
     return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
