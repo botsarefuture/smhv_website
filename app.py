@@ -122,6 +122,7 @@ def robots_txt():
 
 
 
+
 @app.route('/')
 def index():
     lang = session["user"]["lang"]
