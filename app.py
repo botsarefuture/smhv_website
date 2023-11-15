@@ -41,6 +41,8 @@ ckeditor = CKEditor(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 sitemap = Sitemap(app=app)
 
+# Register the events blueprint
+app.register_blueprint(events_blueprint)
 
 
 
@@ -130,8 +132,6 @@ def index():
 
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
-# EVERYTHING REGARDING EVENTS
-# You can also have a separate file for utility functions like get_event_date, sort_events_by_date, etc.
 def get_event_date(event):
     date_str = event['date']
     return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
