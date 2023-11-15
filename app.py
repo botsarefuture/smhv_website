@@ -2,8 +2,7 @@
 # Internal imports
 from mail import signup_email, join_email
 from well_being import calculate_well_being 
-from db_utils import db
-from events_blueprint import events_blueprint
+from db_utils import *
 
 # Flask related imports
 from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify, session
@@ -42,8 +41,7 @@ ckeditor = CKEditor(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 sitemap = Sitemap(app=app)
 
-# Register the events blueprint
-app.register_blueprint(events_blueprint)
+
 
 
 
@@ -132,6 +130,7 @@ def index():
     return render_template(f'{lang}/index.html', title="", current_year=2023)
 
 # EVERYTHING REGARDING EVENTS
+# You can also have a separate file for utility functions like get_event_date, sort_events_by_date, etc.
 def get_event_date(event):
     date_str = event['date']
     return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
@@ -236,19 +235,6 @@ def event_signup(event_id=None):
         return redirect(f'/{lang}/events')
 
     return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
-
-
-@app.route('/signup1/<event_id>', methods=["GET"])
-def event_signup_1(event_id=None):
-    lang = session["user"]["lang"]
-
-    event = events_collection.find_one({"_id": ObjectId(event_id)})
-    if not event:
-        return "not"
-        pass
-
-    return render_template(f'{lang}/signup1.html', event_id=event_id, event=event)
-
 
 @app.route("/api/events/")
 @app.route("/api/events/<event_id>")
