@@ -1,11 +1,20 @@
-
 # Internal imports
 from mail import signup_email, join_email
-from well_being import calculate_well_being 
+from well_being import calculate_well_being
 from db_utils import *
 
 # Flask related imports
-from flask import Flask, redirect, render_template, request, Response, flash, make_response, jsonify, session
+from flask import (
+    Flask,
+    redirect,
+    render_template,
+    request,
+    Response,
+    flash,
+    make_response,
+    jsonify,
+    session,
+)
 from flask_ckeditor import CKEditor
 import werkzeug
 from flask_cors import CORS
@@ -28,36 +37,35 @@ from dateutil import tz
 from datetime import datetime
 
 
-
 with open("config.json", "r") as f:
     config = json.load(f)
 
 
-
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
-app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
+app.secret_key = "your_secret_key_here"
+app.config["SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS"] = True
 ckeditor = CKEditor(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 sitemap = Sitemap(app=app)
-
-# Register the events blueprint
-app.register_blueprint(events_blueprint)
-
-
-
 
 
 @app.before_request
 def set_language():
     supported_languages = ["fi", "en", "sv"]
-    print(werkzeug.datastructures.LanguageAccept([(al[0][0:2], al[1]) for al in request.accept_languages]).best_match(supported_languages))
+    print(
+        werkzeug.datastructures.LanguageAccept(
+            [(al[0][0:2], al[1]) for al in request.accept_languages]
+        ).best_match(supported_languages)
+    )
     lang = request.accept_languages.best_match(supported_languages, "en")
-    
-    
-    if 'user' not in session:
-        session['user'] = {'lang': lang, 'ip': request.headers.get('X-Forwarded-For', request.remote_addr), 'time': datetime.now()}
-    
+
+    if "user" not in session:
+        session["user"] = {
+            "lang": lang,
+            "ip": request.headers.get("X-Forwarded-For", request.remote_addr),
+            "time": datetime.now(),
+        }
+
     if session["user"].get("ip") == "127.0.0.1":
         print(session)
         time.sleep(1)
@@ -66,27 +74,25 @@ def set_language():
 # Function to save answers and well-being score to MongoDB
 def save_data(answers, well_being):
     collection = db["well_being_data"]
-    data = {
-        'answers': answers,
-        'well_being_score': well_being
-    }
+    data = {"answers": answers, "well_being_score": well_being}
     result = collection.insert_one(data)
     return result.inserted_id
 
-@app.route('/calculate_well_being', methods=['POST'])
+
+@app.route("/calculate_well_being", methods=["POST"])
 def calculate_well_being_api():
     data = request.get_json()
     answers = {
-        'anger': data['anger'],
-        'anxiety': data['anxiety'],
-        'self_harming': data['self_harming'],
-        'suicidality': data['suicidality'],
-        'tiredness': data['tiredness'],
-        'sadness': data['sadness'],
-        'happiness': data['happiness'],
-        'joy': data['joy'],
-        'love': data['love'],
-        'crush': data['crush']
+        "anger": data["anger"],
+        "anxiety": data["anxiety"],
+        "self_harming": data["self_harming"],
+        "suicidality": data["suicidality"],
+        "tiredness": data["tiredness"],
+        "sadness": data["sadness"],
+        "happiness": data["happiness"],
+        "joy": data["joy"],
+        "love": data["love"],
+        "crush": data["crush"],
     }
 
     # Calculate well-being score
@@ -96,13 +102,14 @@ def calculate_well_being_api():
     inserted_id = save_data(answers, well_being)
 
     response = {
-        'well_being_score': well_being,
-        'shareable_link': f'/share/{inserted_id}'  # Generate a link with the inserted MongoDB document ID
+        "well_being_score": well_being,
+        "shareable_link": f"/share/{inserted_id}",  # Generate a link with the inserted MongoDB document ID
     }
     return jsonify(response)
 
+
 # Define a route to share the well-being data
-@app.route('/share/<string:document_id>')
+@app.route("/share/<string:document_id>")
 def share_well_being(document_id):
     # Retrieve data from MongoDB using the document ID
     collection = db["well_being_data"]
@@ -112,36 +119,36 @@ def share_well_being(document_id):
     print(data)
     return render_template("show.html", data=data)
 
-@app.route('/mental')
-def mental():
-    return render_template('well_being.html')
 
-@app.route('/robots.txt', methods=['GET'])
+@app.route("/mental")
+def mental():
+    return render_template("well_being.html")
+
+
+@app.route("/robots.txt", methods=["GET"])
 def robots_txt():
     content = "User-agent: *\nDisallow:"
-    response = Response(content, content_type='text/plain')
+    response = Response(content, content_type="text/plain")
     return response
 
 
-
-
-@app.route('/')
+@app.route("/")
 def index():
     lang = session["user"]["lang"]
 
+    return render_template(f"{lang}/index.html", title="", current_year=2023)
 
-    return render_template(f'{lang}/index.html', title="", current_year=2023)
 
 def get_event_date(event):
-    date_str = event['date']
-    return datetime.strptime(date_str, '%d.%m.%Y %H.%M')
+    date_str = event["date"]
+    return datetime.strptime(date_str, "%d.%m.%Y %H.%M")
 
 
 def sort_events_by_date(events):
     return sorted(events, key=get_event_date)
 
 
-@app.route('/events')
+@app.route("/events")
 def events():
     lang = session["user"]["lang"]
     # Fetch events from MongoDB
@@ -149,13 +156,16 @@ def events():
 
     # Filter out events with past dates
     current_datetime = datetime.now()
-    future_events = [event for event in events_data if get_event_date(
-        event) >= current_datetime]
+    future_events = [
+        event for event in events_data if get_event_date(event) >= current_datetime
+    ]
     sorted_events = sort_events_by_date(future_events)
-    return render_template(f'{lang}/events.html', title='Events', events=sorted_events, current_year=2023)
+    return render_template(
+        f"{lang}/events.html", title="Events", events=sorted_events, current_year=2023
+    )
 
 
-@app.route('/events/<event_id>')
+@app.route("/events/<event_id>")
 def event_details(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
@@ -163,10 +173,10 @@ def event_details(event_id=None):
         # Handle event not found error
         pass
 
-    return render_template(f'{lang}/event_details.html', event=event, current_year=2023)
+    return render_template(f"{lang}/event_details.html", event=event, current_year=2023)
 
 
-@app.route('/signup/<event_id>', methods=["GET", "POST"])
+@app.route("/signup/<event_id>", methods=["GET", "POST"])
 def event_signup(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
@@ -185,7 +195,9 @@ def event_signup(event_id=None):
         if name == "" or email == "":
             # Friendly reminder of the fact yu have to provide thights to see
             flash("KYS!", "error")
-            return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
+            return render_template(
+                f"{lang}/signup.html", event_id=event_id, event=event
+            )
 
         roles1 = roles
         # Tallenna ilmoittautumistiedot MongoDB:hen (event_signups-kokoelmaan).
@@ -194,35 +206,33 @@ def event_signup(event_id=None):
             "language": lang,
             "name": name,
             "email": email,
-            "roles": roles
+            "roles": roles,
         }
 
-        roles = event.get('roles', [])  # Haetaan roolit
+        roles = event.get("roles", [])  # Haetaan roolit
 
         for role in roles:  # ÄLÄ KOSKE
             if role.get("show_name") in roles1:  # ÄLÄ KOSKE!
                 # Alusta 'count' rooliin, jos sitä ei ole
-                role.setdefault('count', 0)
+                role.setdefault("count", 0)
                 # Kasvata roolin 'count' kunkin ilmoittautumisen yhteydessä
-                role['count'] += 1
+                role["count"] += 1
 
                 # Päivitä roolin tiedot tietokantaan käyttäen $inc operaattoria
                 events_collection.update_one(
-                    {"_id": ObjectId(event_id),
-                     "roles.show_name": role["show_name"]},
-                    {"$inc": {"roles.$.count": 1}}
+                    {"_id": ObjectId(event_id), "roles.show_name": role["show_name"]},
+                    {"$inc": {"roles.$.count": 1}},
                 )
 
         introductions = list()
 
         for role in roles:
             if role.get("show_name") in roles1:
-                if not role.get('introductions') in introductions:
-                    introductions += role.get('introductions')
+                if not role.get("introductions") in introductions:
+                    introductions += role.get("introductions")
 
         event["introductions"] = introductions
-        signup_email(
-            event, {"name": name, "email": email, "roles": roles1}, lang)
+        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang)
 
         # Lisää signup_data MongoDB-kokoelmaan ilmoittautumisia varten.
         signups_collection.insert_one(signup_data)
@@ -233,9 +243,10 @@ def event_signup(event_id=None):
         if lang == "en":
             flash("Successfully registered!", "info")
         # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
-        return redirect(f'/{lang}/events')
+        return redirect(f"/{lang}/events")
 
-    return render_template(f'{lang}/signup.html', event_id=event_id, event=event)
+    return render_template(f"{lang}/signup.html", event_id=event_id, event=event)
+
 
 @app.route("/api/events/")
 @app.route("/api/events/<event_id>")
@@ -255,8 +266,9 @@ def api_event(event_id=None):
 
         # Filter out events with past dates
         current_datetime = datetime.now()
-        future_events = [event for event in events_data if get_event_date(
-            event) >= current_datetime]
+        future_events = [
+            event for event in events_data if get_event_date(event) >= current_datetime
+        ]
         sorted_events = sort_events_by_date(future_events)
         events = []
 
@@ -271,21 +283,24 @@ def api_event(event_id=None):
 def event_watch():
     return render_template("thig.html")
 
+
 # EVENTS END
 
 
-#@app.route('/<lang>/about')
-@app.route('/about')
+# @app.route('/<lang>/about')
+@app.route("/about")
 def about():
     lang = session["user"]["lang"]
-    return render_template(f'{lang}/about.html', title='About Us', current_year=2023)
+    return render_template(f"{lang}/about.html", title="About Us", current_year=2023)
 
 
-@app.route('/contact', methods=["GET", "POST"])
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     lang = session["user"]["lang"]
     if request.method == "GET":
-        return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
+        return render_template(
+            f"{lang}/contact.html", title="Contact Us", current_year=2023
+        )
 
     if request.method == "POST":
         name = request.form.get("name")
@@ -294,30 +309,50 @@ def contact():
         phonenumber = request.form.get("phonenumber")
 
         contactions_collection.insert_one(
-            {"name": name, "email": email, "message": message, "phonenumber": phonenumber})
+            {
+                "name": name,
+                "email": email,
+                "message": message,
+                "phonenumber": phonenumber,
+            }
+        )
         # TODO: #51 Flash information about successfully sent form
-        return render_template(f'{lang}/contact.html', title="Contact Us", current_year=2023)
+        return render_template(
+            f"{lang}/contact.html", title="Contact Us", current_year=2023
+        )
 
 
-@app.route('/join', methods=["GET", "POST"])
+@app.route("/join", methods=["GET", "POST"])
 def join():
     lang = session["user"]["lang"]
     if request.method == "GET":
-        return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
+        return render_template(
+            f"{lang}/join_us.html", title="Join Us", current_year=2023
+        )
 
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
         phonenumber = request.form.get("phonenumber")
-        roles = request.form.getlist('roles')
+        roles = request.form.getlist("roles")
         join_email({"name": name, "email": email, "roles": roles}, lang)
 
         joins_collection.insert_one(
-            {"name": name, "email": email, "message": message, "phonenumber": phonenumber, "roles": roles})
+            {
+                "name": name,
+                "email": email,
+                "message": message,
+                "phonenumber": phonenumber,
+                "roles": roles,
+            }
+        )
 
         # TODO: #50 Flash information about successfully sent form
-        return render_template(f'{lang}/join_us.html', title="Join Us", current_year=2023)
+        return render_template(
+            f"{lang}/join_us.html", title="Join Us", current_year=2023
+        )
+
 
 # TODO: #8 Clean this function
 
@@ -364,61 +399,61 @@ def lang_thing(lang, path, request):
     return path
 
 
-@app.route('/change_language/<lang>')
+@app.route("/change_language/<lang>")
 def change_language(lang):
     session["user"]["lang"] = lang
     session.modified = True
-    
+
     if request.referrer and request.referrer.startswith("/change_language/"):
-        return redirect('/')
-    
+        return redirect("/")
+
     if request.referrer == None:
-        return redirect('/')
-        
+        return redirect("/")
+
     return redirect(request.referrer)
 
     path = lang_thing(lang, request.referrer, request)
-    
+
     return redirect(path)
 
 
 # BLOG
-blog_collection = db['blog_posts']
+blog_collection = db["blog_posts"]
 
 
-@app.route('/blog/')
+@app.route("/blog/")
 def blog():
     lang = session["user"]["lang"]
 
     posts = list(blog_collection.find({"lang": lang}))
-    return render_template(f'blog/{lang}/blog.html', posts=posts)
+    return render_template(f"blog/{lang}/blog.html", posts=posts)
 
 
-@app.route('/blog/<post_id>')
+@app.route("/blog/<post_id>")
 def blog_post(post_id=None):
     lang = session["user"]["lang"]
     post = blog_collection.find_one({"_id": ObjectId(post_id)})
-    return render_template(f'blog/{lang}/blog_post.html', post=post)
+    return render_template(f"blog/{lang}/blog_post.html", post=post)
 
 
-@app.route('/create_post', methods=['GET', 'POST'])
+@app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     lang = session["user"]["lang"]
 
-    if request.method == 'POST':
-        title = request.form['title']
-        author = request.form['author']
-        content = request.form['content']
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        content = request.form["content"]
         post_data = {
-            'title': title,
-            'author': author,
-            'content': content,
-            'lang': lang,
-            'date_posted': datetime.now()
+            "title": title,
+            "author": author,
+            "content": content,
+            "lang": lang,
+            "date_posted": datetime.now(),
         }
         blog_collection.insert_one(post_data)
-        return redirect('/blog')
-    return render_template(f'blog/{lang}/create_post.html')
+        return redirect("/blog")
+    return render_template(f"blog/{lang}/create_post.html")
 
 
 def convert(mongo_db_date):
@@ -431,8 +466,9 @@ def convert(mongo_db_date):
         mongo_date_utc = mongo_date.replace(tzinfo=tz.tzutc())
 
         # Format it as RFC822 date-time
-        rfc822_date = mongo_date_utc.astimezone(
-            tz.tzlocal()).strftime('%a, %d %b %Y %H:%M:%S %z')
+        rfc822_date = mongo_date_utc.astimezone(tz.tzlocal()).strftime(
+            "%a, %d %b %Y %H:%M:%S %z"
+        )
 
         return rfc822_date
 
@@ -442,7 +478,7 @@ def convert(mongo_db_date):
     return rfc822_date
 
 
-@app.route('/rss', methods=['GET'])
+@app.route("/rss", methods=["GET"])
 def rss_feed():
     # Replace this with your actual blog posts data
 
@@ -478,52 +514,54 @@ def rss_feed():
     response.headers["Content-Type"] = "application/rss+xml"
     return response
 
+
 # END BLOG
 
 
 # press releases
-press_collection = db['press_releases']
+press_collection = db["press_releases"]
 
 
-@app.route('/press')
+@app.route("/press")
 def press():
     lang = session["user"]["lang"]
 
     releases = list(press_collection.find())
     print(releases)
 
-    return render_template(f'press/{lang}/press.html', releases=releases)
+    return render_template(f"press/{lang}/press.html", releases=releases)
 
 
-@app.route('/press/<slug>/')
+@app.route("/press/<slug>/")
 def press_release(slug=0):
     lang = session["user"]["lang"]
 
-    release = press_collection.find_one({'slug': int(slug)})
+    release = press_collection.find_one({"slug": int(slug)})
     print(release)
-    return render_template(f'press/{lang}/press_release.html', release=release)
+    return render_template(f"press/{lang}/press_release.html", release=release)
 
 
-@app.route('/create_release', methods=['GET', 'POST'])
+@app.route("/create_release", methods=["GET", "POST"])
 def create_release():
     lang = session["user"]["lang"]
 
-    if request.method == 'POST':
-        title = request.form['title']
-        author = request.form['author']
-        content = request.form['content']
+    if request.method == "POST":
+        title = request.form["title"]
+        author = request.form["author"]
+        content = request.form["content"]
         post_data = {
-            'title': title,
-            'slug': config["mongodb"]["latest_release"],
-            'author': author,
-            'content': content,
-            'lang': lang,
-            'date_released': datetime.now()
+            "title": title,
+            "slug": config["mongodb"]["latest_release"],
+            "author": author,
+            "content": content,
+            "lang": lang,
+            "date_released": datetime.now(),
         }
         config["mongodb"]["latest_release"] += 1
         press_collection.insert_one(post_data)
-        return redirect('/press')
-    return render_template(f'press/{lang}/create_release.html')
+        return redirect("/press")
+    return render_template(f"press/{lang}/create_release.html")
+
 
 @app.route("/toimintaviikko/")
 def tv():
@@ -531,35 +569,38 @@ def tv():
 
     return render_template(f"/toimintaviikko/{lang}/index.html")
 
+
 @app.route("/toimintaviikko/info")
 def tv_info():
     lang = session["user"]["lang"]
 
     return render_template(f"/toimintaviikko/{lang}/info.html")
 
+
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
 def reasons():
-    
     reasons_db = db["reasons"]
     if request.method == "POST":
         content = request.json
         data = {}
         if content.get("name") != None:
             data["name"] = content.get("name")
-        
+
         else:
             data["name"] = "Unknown"
-        
+
         data["reason"] = content.get("reason")
-        
+
         if len(data["reason"].split(",")) > 1:
             for reason in data["reason"].split(","):
-                reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
-        
+                reasons_db.insert_one(
+                    {"name": reason["name"], "reason": reason["reason"]}
+                )
+
         else:
             reason = data
             reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
-            
+
         return reasons_db.find()
 
     else:
@@ -568,18 +609,18 @@ def reasons():
         for reason in reason_s:
             reason["_id"] = ""
             reasons_1.append(reason)
-        
-        return reasons_1
-            
 
-    
-release = press_collection.find_one({'slug': 0})
+        return reasons_1
+
+
+release = press_collection.find_one({"slug": 0})
 print(release)
+
 
 @app.route("/contacts")
 def contacts():
     return render_template("fi/contacts.html")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(port=8000, debug=True)
