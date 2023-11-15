@@ -189,15 +189,8 @@ def mongodb_servers():
     return ""
 
 
-#@app.route("/<lang>/")
 @app.route('/')
 def index():
-    if lang == "favicon.ico":
-        lang = "fi"
-
-    if lang == "mental":
-        return render_template('well_being.html')
-
     lang = session["user"]["lang"]
 
 
