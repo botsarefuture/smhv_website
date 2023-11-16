@@ -20,6 +20,7 @@
 @import url("css/event-details.css");
 @import url("css/event-shower.css");
 
+@import url("css/email_list.css");
 /* Reset default margin and padding */
 * {
   margin: 0;
