@@ -52,11 +52,7 @@ sitemap = Sitemap(app=app)
 @app.before_request
 def set_language():
     supported_languages = ["fi", "en", "sv"]
-    print(
-        werkzeug.datastructures.LanguageAccept(
-            [(al[0][0:2], al[1]) for al in request.accept_languages]
-        ).best_match(supported_languages)
-    )
+    werkzeug.datastructures.LanguageAccept([(al[0][0:2], al[1]) for al in request.accept_languages]).best_match(supported_languages)
     lang = request.accept_languages.best_match(supported_languages, "en")
 
     if "user" not in session:
@@ -147,8 +143,7 @@ def get_event_date(event):
 def sort_events_by_date(events):
     return sorted(events, key=get_event_date)
 
-
-@app.route("/events")
+@app.route("/events/")
 def events():
     lang = session["user"]["lang"]
     # Fetch events from MongoDB
@@ -243,7 +238,7 @@ def event_signup(event_id=None):
         if lang == "en":
             flash("Successfully registered!", "info")
         # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
-        return redirect(f"/{lang}/events")
+        return redirect(f"/events")
 
     return render_template(f"{lang}/signup.html", event_id=event_id, event=event)
 
@@ -621,6 +616,27 @@ print(release)
 def contacts():
     return render_template("fi/contacts.html")
 
+from email_list import add_email, confirm_email
+@app.route("/email_list/", methods=["GET", "POST"])
+def email_list():
+    lang = session["user"]["lang"]
+
+    if request.method == "POST":
+        data = request.form
+        email_address = data.get('email')
+        add_email(email_address, lang) # Add email to database, and also send confirmation email
+ 
+        return render_template(f"{lang}/thank_you_for_joining.html")
+    
+    return render_template(f"{lang}/join_email_list.html")
+    
+    
+        
+@app.route("/confirm_email/<email_id>")
+def confir_email(email_id):
+    confirm_email(email_id)
+    lang = session["user"]["lang"]
+    return render_template(f"{lang}/thank_you_for_confirming.html")
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)

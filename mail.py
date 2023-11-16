@@ -21,7 +21,7 @@ def signup_email(event: dict, recipient: dict, language: str):
     """
     introductions = event.get("introductions")
 
-    if language == 'en':
+    if language == "en":
         subject = f'Thank you for signing up for event "{event.get("title_en")}"'
 
         content = f"""<h2>Thank you for signing up!</h2>
@@ -44,7 +44,7 @@ def signup_email(event: dict, recipient: dict, language: str):
         
         <ul>
         """
-        for role in recipient.get('roles'):
+        for role in recipient.get("roles"):
             content += f"<li>{role}</li>"  # Every role is part of list
 
         content += f"""
@@ -101,7 +101,7 @@ def signup_email(event: dict, recipient: dict, language: str):
         
         <ul>
         """
-        for role in recipient.get('roles'):
+        for role in recipient.get("roles"):
             content += f"<li>{role}</li>"  # Every role is part of list
 
         content += f"""
@@ -136,19 +136,21 @@ def signup_email(event: dict, recipient: dict, language: str):
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
 
     msg = MIMEMultipart()
-    msg['From'] = config.get('email').get('address')
-    msg['To'] = recipient.get("email")
-    msg['Subject'] = subject
-    msg.attach(MIMEText(content, 'html', 'utf-8'))  # Käytetään HTML-muotoilua
+    msg["From"] = config.get("email").get("address")
+    msg["To"] = recipient.get("email")
+    msg["Subject"] = subject
+    msg.attach(MIMEText(content, "html", "utf-8"))  # Käytetään HTML-muotoilua
 
     try:
-        mail = smtplib.SMTP(config.get('email').get(
-            'server'), config.get('email').get('port'))
+        mail = smtplib.SMTP(
+            config.get("email").get("server"), config.get("email").get("port")
+        )
         mail.ehlo()
         mail.starttls()
-        mail.login(config.get('email').get('address'),
-                   config.get('email').get('password'))
-        mail.sendmail(msg['From'], msg['To'], msg.as_string())
+        mail.login(
+            config.get("email").get("address"), config.get("email").get("password")
+        )
+        mail.sendmail(msg["From"], msg["To"], msg.as_string())
         mail.close()
         print("Sähköposti lähetetty onnistuneesti.")
     except Exception as e:
@@ -156,8 +158,8 @@ def signup_email(event: dict, recipient: dict, language: str):
 
 
 def join_email(recipient, language):
-    if language == 'en':
-        subject = f'Thanks for joinings us!'
+    if language == "en":
+        subject = f"Thanks for joinings us!"
         content = f"""Hi {recipient.get('name')},
         
         Thank you very much for joining us!
@@ -179,7 +181,7 @@ def join_email(recipient, language):
         """
 
     if language == "fi":
-        subject = f'Kiitos kun liityit meihin!'
+        subject = f"Kiitos kun liityit meihin!"
 
         content = f"""Hei {recipient.get('name')},
         
@@ -191,7 +193,9 @@ def join_email(recipient, language):
         https://t.me/+OpSHLCqznS5hMThk
 
         Ilmoittautuessasi mukaan, ilmoitit että taitojasi ovat:
-        """.replace("\n", "<br>")
+        """.replace(
+            "\n", "<br>"
+        )
 
         for role in recipient.get("roles"):
             content += role + "," + "\n"
@@ -204,22 +208,128 @@ def join_email(recipient, language):
         """
 
     msg = MIMEMultipart()
-    msg['From'] = config.get('email').get('address')
-    msg['To'] = recipient.get("email")
-    msg['Subject'] = subject
+    msg["From"] = config.get("email").get("address")
+    msg["To"] = recipient.get("email")
+    msg["Subject"] = subject
     # We use utf-8 formatting
-    msg.attach(MIMEText(content.replace("\n", "<br>"), 'html', 'utf-8'))
+    msg.attach(MIMEText(content.replace("\n", "<br>"), "html", "utf-8"))
 
     try:
-        mail = smtplib.SMTP(config.get('email').get(
-            'server'), config.get('email').get('port'))
+        mail = smtplib.SMTP(
+            config.get("email").get("server"), config.get("email").get("port")
+        )
         mail.ehlo()
         mail.starttls()
-        mail.login(config.get('email').get('address'),
-                   config.get('email').get('password'))
-        mail.sendmail(msg['From'], msg['To'], msg.as_string())
+        mail.login(
+            config.get("email").get("address"), config.get("email").get("password")
+        )
+        mail.sendmail(msg["From"], msg["To"], msg.as_string())
         mail.close()
         print("Sähköposti lähetetty onnistuneesti.")
 
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
+
+
+def list_join_email(language, email, confirmation_link):
+    if language == "fi":
+        subject = "Vahvista liittymisesi sähköpostilistalle."
+        email_content = """
+            <!DOCTYPE html>
+            <html lang="fi">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Vahvista sähköpostiosoitteesi</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+
+                    p {
+                        margin-bottom: 15px;
+                    }
+
+                    a {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #4CAF50;
+                        color: #fff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                </style>
+            </head>
+            <body>
+                <p>Hei,</p>
+                <p>Kiitos, että rekisteröidyit palveluumme! Voit vahvistaa sähköpostiosoitteesi klikkaamalla alla olevaa linkkiä:</p>
+                <a href="%s" target="_blank">Vahvista sähköpostiosoite</a>
+                <p>Mikäli et ole rekisteröitynyt palveluumme, voit jättää tämän viestin huomiotta.</p>
+                <p>Kiitos!</p>
+            </body>
+            </html>
+        """ % confirmation_link
+
+    if language == 'en':
+        subject = "Confirm joining to our email list."
+
+        email_content = """
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Confirm Your Email</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+
+                    p {
+                        margin-bottom: 15px;
+                    }
+
+                    a {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #4CAF50;
+                        color: #fff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                </style>
+            </head>
+            <body>
+                <p>Hello,</p>
+                <p>Thank you for registering with our service! You can confirm your email address by clicking the link below:</p>
+                <a href="%s" target="_blank">Confirm Email Address</a>
+                <p>If you did not register with our service, you can ignore this message.</p>
+                <p>Thank you!</p>
+            </body>
+            </html>
+        """ % confirmation_link
+
+    
+    msg = MIMEMultipart()
+    msg["From"] = config.get("email").get("address")
+    msg["To"] = email
+    msg["Subject"] = subject
+    # We use utf-8 formatting
+    msg.attach(MIMEText(email_content.replace("\n", "<br>"), "html", "utf-8"))
+
+    try:
+        mail = smtplib.SMTP(
+            config.get("email").get("server"), config.get("email").get("port")
+        )
+        mail.ehlo()
+        mail.starttls()
+        mail.login(
+            config.get("email").get("address"), config.get("email").get("password")
+        )
+        mail.sendmail(msg["From"], msg["To"], msg.as_string())
+        mail.close()
+        print("Sähköposti lähetetty onnistuneesti.")
+
+    except Exception as e:
+        print(f"Virhe sähköpostia lähettäessä: {str(e)}")
+        
