@@ -35,4 +35,13 @@
   <p>Are you ready to take action and create a better future? Join us!</p>
   <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
 </section>
+<section class="join-email-list-container">
+  <div class="join-email-list-content">
+      <h1>Join Email List</h1>
+      <p>Be a part of our community and stay updated on upcoming updates and events!</p>
+
+      {% include 'en/join_email_list_widget.html' %}
+  </div>
+</section>
+
 {% endblock %}

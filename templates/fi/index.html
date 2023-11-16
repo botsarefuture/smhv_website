@@ -38,4 +38,16 @@
   </p>
   <a href="{{ url_for('join') }}" class="cta-button">Tule mukaan!</a>
 </section>
+<!-- join_email_list.html -->
+
+<section class="join-email-list-container">
+  <div class="join-email-list-content">
+      <h1>Liity Sähköpostilistalle</h1>
+      <p>Ole osa yhteisöämme ja pysy ajan tasalla tulevista päivityksistä ja tapahtumista!</p>
+
+      {% include 'fi/join_email_list_widget.html' %}  </div>
+</section>
+
+
+
 {% endblock %}

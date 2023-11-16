@@ -10,15 +10,7 @@ global test
 test = False
 
 if not test:
-    url = "mongodb://"
-    url += f'{config["mongodb"]["username"]}:{config["mongodb"]["password"]}'
-    url += "@"
-    for server in config["mongodb"]["servers"]:
-        url += f"{server},"
-
-    url += "/?replicaSet=rs0&readPreference=nearest&authMechanism=DEFAULT"
-
-    url = url.replace(",/", "/")
+    url = config["mongodb"]["url"]
 
     client = MongoClient(url)
     db = client['website']
