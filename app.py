@@ -49,6 +49,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 sitemap = Sitemap(app=app)
 
 
+
 @app.before_request
 def set_language():
     supported_languages = ["fi", "en", "sv"]
@@ -148,7 +149,7 @@ def sort_events_by_date(events):
     return sorted(events, key=get_event_date)
 
 
-@app.route("/events")
+@app.route("/events/")
 def events():
     lang = session["user"]["lang"]
     # Fetch events from MongoDB
@@ -243,7 +244,7 @@ def event_signup(event_id=None):
         if lang == "en":
             flash("Successfully registered!", "info")
         # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
-        return redirect(f"/{lang}/events")
+        return redirect(f"/{lang}/events/")
 
     return render_template(f"{lang}/signup.html", event_id=event_id, event=event)
 
