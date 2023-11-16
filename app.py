@@ -143,6 +143,7 @@ def get_event_date(event):
 def sort_events_by_date(events):
     return sorted(events, key=get_event_date)
 
+
 @app.route("/events/")
 def events():
     lang = session["user"]["lang"]
@@ -239,7 +240,6 @@ def event_signup(event_id=None):
             flash("Successfully registered!", "info")
         # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
         return redirect(f"/events")
-
     return render_template(f"{lang}/signup.html", event_id=event_id, event=event)
 
 
