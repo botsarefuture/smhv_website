@@ -34,7 +34,7 @@ def add_email(email, lang):
             return
         
         finally:
-            list_join_email(lang, email, f"http://127.0.0.1:8000/confirm_email/{result.inserted_id}")
+            list_join_email(lang, email, f"https://sinimustaahallitustavastaan.org/confirm_email/{result.inserted_id}")
         
 def confirm_email(email_id):
     # Define the filter (condition to find the document to update)
