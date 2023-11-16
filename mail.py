@@ -234,80 +234,19 @@ def join_email(recipient, language):
 def list_join_email(language, email, confirmation_link):
     if language == "fi":
         subject = "Vahvista liittymisesi sähköpostilistalle."
-        email_content = """
-            <!DOCTYPE html>
-            <html lang="fi">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Vahvista sähköpostiosoitteesi</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                    }
-
-                    p {
-                        margin-bottom: 15px;
-                    }
-
-                    a {
-                        display: inline-block;
-                        padding: 10px 20px;
-                        background-color: #4CAF50;
-                        color: #fff;
-                        text-decoration: none;
-                        border-radius: 5px;
-                    }
-                </style>
-            </head>
-            <body>
-                <p>Hei,</p>
-                <p>Kiitos, että rekisteröidyit palveluumme! Voit vahvistaa sähköpostiosoitteesi klikkaamalla alla olevaa linkkiä:</p>
-                <a href="%s" target="_blank">Vahvista sähköpostiosoite</a>
-                <p>Mikäli et ole rekisteröitynyt palveluumme, voit jättää tämän viestin huomiotta.</p>
-                <p>Kiitos!</p>
-            </body>
-            </html>
-        """ % confirmation_link
+        email_content = "<p>Hei,</p>"
+        email_content += "<p>Kiitos, että liityit sähköpostilistallemme! Voit vahvistaa sähköpostiosoitteesi klikkaamalla alla olevaa linkkiä:</p>"
+        email_content += """<a href="%s" target="_blank">Vahvista sähköpostiosoite</a>""" % confirmation_link
+        email_content += "<p>Mikäli et ole liittynyt sähköpostilistallemme, voit jättää tämän viestin huomiotta.</p>"
+        email_content += "<p>Kiitos!</p>"
 
     if language == 'en':
         subject = "Confirm joining to our email list."
-
-        email_content = """
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Confirm Your Email</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                    }
-
-                    p {
-                        margin-bottom: 15px;
-                    }
-
-                    a {
-                        display: inline-block;
-                        padding: 10px 20px;
-                        background-color: #4CAF50;
-                        color: #fff;
-                        text-decoration: none;
-                        border-radius: 5px;
-                    }
-                </style>
-            </head>
-            <body>
-                <p>Hello,</p>
-                <p>Thank you for registering with our service! You can confirm your email address by clicking the link below:</p>
-                <a href="%s" target="_blank">Confirm Email Address</a>
-                <p>If you did not register with our service, you can ignore this message.</p>
-                <p>Thank you!</p>
-            </body>
-            </html>
-        """ % confirmation_link
+        email_content = "<p>Hello,</p>"
+        email_content += "<p>Thank you for joining our email list! You can confirm your email address by clicking the link below:</p>"
+        email_content += """<a href="%s" target="_blank">Confirm Email Address</a>""" % confirmation_link
+        email_content += "<p>If you haven't joined our email list, you can ignore this message.</p>"
+        email_content += "<p>Thank you!</p>"
 
     
     msg = MIMEMultipart()
@@ -332,4 +271,3 @@ def list_join_email(language, email, confirmation_link):
 
     except Exception as e:
         print(f"Virhe sähköpostia lähettäessä: {str(e)}")
-        
