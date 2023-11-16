@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fi">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,12 +61,11 @@
           />
         </a>
         <div class="language-dropdown not-mobile">
-            <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-            <a class="active" 
-              href="{{ url_for('change_language', lang='fi')}}"
-              >FI</a
-            >
-          </div>
+          <a href="{{ url_for('change_language', lang='en')}}">EN</a>
+          <a class="active" href="{{ url_for('change_language', lang='fi')}}"
+            >FI</a
+          >
+        </div>
       </div>
       <div class="right">
         <!-- Computer menu -->
@@ -80,7 +78,6 @@
             <li><a href="{{ url_for('about') }}">Meistä</a></li>
             <li><a href="{{ url_for('join') }}">Liity</a></li>
             <li><a href="{{ url_for('contacts') }}">Yhteystiedot</a></li>
-
           </ul>
         </nav>
         <!-- Mobile menu -->
@@ -97,7 +94,8 @@
             <li>
               <div class="language">
                 <a href="{{ url_for('change_language', lang='en')}}">EN</a>
-                <a class="active" 
+                <a
+                  class="active"
                   href="{{ url_for('change_language', lang='fi')}}"
                   >FI</a
                 >
@@ -152,5 +150,4 @@
       </div>
     </footer>
   </body>
-  
 </html>
