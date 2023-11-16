@@ -59,4 +59,12 @@ def check_email(email):
     print(result)
     return result is not None
 
-add_email("vuoreol@gmail.com", "fi")
+def get_emails():
+    filter_condition = {"confirmed": True}
+    
+    result = email_collection.find(filter_condition)
+    result_list = list(result)
+    
+    print(result_list)
+    
+    return result_list
