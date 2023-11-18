@@ -5,14 +5,14 @@
   <div class="hero-content">
     <h2>Against the Government, For Life!</h2>
     <p>Our goal is to overthrow the government by 2024.</p>
-    <a href="{{ url_for('about', lang='en') }}" class="cta-button"
+    <a href="{{ url_for('about') }}" class="cta-button"
       >Read more about our activities</a
     >
 
     <br /><br />
 
     <a
-    href="{{ url_for('tv', lang='en') }}"
+    href="{{ url_for('tv') }}"
     style="background-color: var(--neon-pink)"
     class="cta-button"
     >Come to action week!</a
@@ -28,19 +28,19 @@
     <p>Our goal is to bring down the blue-black government.</p>
     <p>Join our ranks to help overthrow the government.</p>
   </div>
-  <a href="{{ url_for('about', lang='en') }}" class="cta-button">Read more</a>
+  <a href="{{ url_for('about') }}" class="cta-button">Read more</a>
 </section>
 <section class="join-us">
   <h2>Join Us Today</h2>
   <p>Are you ready to take action and create a better future? Join us!</p>
-  <a href="{{ url_for('join', lang='en') }}" class="cta-button">Join us!</a>
+  <a href="{{ url_for('join') }}" class="cta-button">Join us!</a>
 </section>
 <section class="join-email-list-container">
   <div class="join-email-list-content">
       <h1>Join Email List</h1>
       <p>Be a part of our community and stay updated on upcoming updates and events!</p>
 
-      {% include 'en/join_email_list_widget.html' %}
+      {% include 'en/email/join_email_list_widget.html' %}
   </div>
 </section>
 

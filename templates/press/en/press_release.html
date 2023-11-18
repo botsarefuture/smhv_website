@@ -5,6 +5,6 @@
   <p>From {{ release.author }}</p>
   <p>{{ release.date_released.strftime('%d.%m.%y %H:%M') }}</p>
   <p>{{ release.content | safe }}</p>
-  <a href="{{ url_for('press', lang='en') }}">Back to press releases</a>
+  <a href="{{ url_for('press') }}">Back to press releases</a>
 </body>
 {% endblock %}

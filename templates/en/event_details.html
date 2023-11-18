@@ -9,7 +9,7 @@
   <!-- Add any other event details you want to display -->
   {% if event.role_signup %}
   <a
-    href="{{ url_for('event_signup', event_id=event._id, lang='en') }}"
+    href="{{ url_for('event_signup', event_id=event._id) }}"
     class="cta-button"
     >Signup for support role!</a
   >

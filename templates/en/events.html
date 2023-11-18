@@ -18,19 +18,19 @@
     <!-- Add a link to the signup page for this event -->
     {% if event.role_signup %}
     <a
-      href="{{ url_for('event_signup', event_id=event._id, lang='en') }}"
+      href="{{ url_for('event_signup', event_id=event._id) }}"
       class="cta-button"
       >Sign Up for Support Role</a
     >
     {% endif %}
     <a
-      href="{{ url_for('event_details', event_id=event._id, lang='en') }}"
+      href="{{ url_for('event_details', event_id=event._id) }}"
       class="cta-button"
       >View Details</a
     >
   </div>
   {% if empty %}
-  <a href="{{ url_for('join', lang='en') }}" class="cta-button"
+  <a href="{{ url_for('join') }}" class="cta-button"
     >Join Us in Organizing!</a
   >
   {% endif %} {% endfor %}

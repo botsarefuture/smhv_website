@@ -54,14 +54,14 @@
   <body>
     <header>
       <div class="left">
-        <a href="{{ url_for('index', lang='en') }}">
+        <a href="{{ url_for('index') }}">
           <img
             src="{{ url_for('static', filename='logo_Läpinäkyvä_Valkoinen.png') }}"
             alt="Logo"
           />
         </a>
         <div class="language-dropdown">
-            <a class="active" href="{{ url_for('change_language', lang='en')}}">EN</a>
+            <a class="active" href="{{ url_for('change_language')}}">EN</a>
             <a 
               href="{{ url_for('change_language', lang='fi')}}"
               >FI</a
@@ -73,30 +73,30 @@
         <!-- Computer menu -->
         <nav class="computer-menu">
           <ul>
-            <li><a href="{{ url_for('tv', lang='en') }}">Action week</a></li>
-            <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
-            <li><a href="{{ url_for('blog', lang='en') }}">Blog</a></li>
+            <li><a href="{{ url_for('tv') }}">Action week</a></li>
+            <li><a href="{{ url_for('events') }}">Events</a></li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
             <li>
-              <a href="{{ url_for('contact', lang='en') }}">Contact us</a>
+              <a href="{{ url_for('contact') }}">Contact us</a>
             </li>
-            <li><a href="{{ url_for('about', lang='en') }}">About us</a></li>
-            <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
+            <li><a href="{{ url_for('about') }}">About us</a></li>
+            <li><a href="{{ url_for('join') }}">Join us</a></li>
           </ul>
         </nav>
         <!-- Mobile menu -->
         <nav id="mobile-menu">
           <ul>
-            <li><a href="{{ url_for('tv', lang='en') }}">Action week</a></li>
-            <li><a href="{{ url_for('events', lang='en') }}">Events</a></li>
-            <li><a href="{{ url_for('blog', lang='en') }}">Blog</a></li>
+            <li><a href="{{ url_for('tv') }}">Action week</a></li>
+            <li><a href="{{ url_for('events') }}">Events</a></li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
             <li>
-              <a href="{{ url_for('contact', lang='en') }}">Contact us</a>
+              <a href="{{ url_for('contact') }}">Contact us</a>
             </li>
-            <li><a href="{{ url_for('about', lang='en') }}">About us</a></li>
-            <li><a href="{{ url_for('join', lang='en') }}">Join us</a></li>
+            <li><a href="{{ url_for('about') }}">About us</a></li>
+            <li><a href="{{ url_for('join') }}">Join us</a></li>
             <li>
               <div class="language">
-                <a class="active" href="{{ url_for('change_language', lang='en')}}">EN</a>
+                <a class="active" href="{{ url_for('change_language')}}">EN</a>
                 <a 
                   href="{{ url_for('change_language', lang='fi')}}"
                   >FI</a
