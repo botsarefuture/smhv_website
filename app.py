@@ -51,7 +51,7 @@ sitemap = Sitemap(app=app)
 
 @app.before_request
 def set_language():
-    supported_languages = ["fi", "en", "sv"]
+    supported_languages = ["fi", "en"]
     werkzeug.datastructures.LanguageAccept([(al[0][0:2], al[1]) for al in request.accept_languages]).best_match(supported_languages)
     lang = request.accept_languages.best_match(supported_languages, "en")
 
@@ -113,12 +113,12 @@ def share_well_being(document_id):
     data = collection.find_one({"_id": ObjectId(document_id)})
     data["_id"] = ""
     print(data)
-    return render_template("show.html", data=data)
+    return render_template("mental/show.html", data=data)
 
 
 @app.route("/mental")
 def mental():
-    return render_template("well_being.html")
+    return render_template("mental/index.html")
 
 
 @app.route("/robots.txt", methods=["GET"])
