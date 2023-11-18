@@ -1,0 +1,46 @@
+<style>
+  /* styles.css */
+
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .email-form label {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  .email-form input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .email-form .cta-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .email-form .cta-button:hover {
+    background-color: #45a049;
+  }
+</style>
+<form action="/email_list/" method="post" class="email-form">
+  <label for="email">Sähköpostiosoite:</label>
+  <input type="email" id="email" name="email" required />
+
+  <input type="hidden" name="lang" value="fi" />
+
+  <button type="submit" class="cta-button">Liity</button>
+</form>
