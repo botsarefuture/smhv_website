@@ -626,9 +626,9 @@ def email_list():
         email_address = data.get('email')
         add_email(email_address, lang) # Add email to database, and also send confirmation email
  
-        return render_template(f"{lang}/thank_you_for_joining.html")
+        return render_template(f"{lang}/email/thank_you_join.html")
     
-    return render_template(f"{lang}/join_email_list.html")
+    return render_template(f"{lang}/email/join_email_list.html")
     
     
         
@@ -636,7 +636,7 @@ def email_list():
 def confir_email(email_id):
     confirm_email(email_id)
     lang = session["user"]["lang"]
-    return render_template(f"{lang}/thank_you_for_confirming.html")
+    return render_template(f"{lang}/email/thank_you_confirm.html")
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)

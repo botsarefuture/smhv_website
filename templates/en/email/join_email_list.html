@@ -1,0 +1,17 @@
+{% extends 'base_en.html' %}
+
+{% block title %}Join the Email List{% endblock %}
+
+{% block content %}
+    <h1>Join the Email List</h1>
+    <p>Be part of our community and stay updated on upcoming updates and events!</p>
+    
+    <form action="/email_list/" method="post" class="signup-form">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="hidden" name="lang" value="en">
+
+        <button type="submit" class="cta-button">Join</button>
+    </form>
+{% endblock %}

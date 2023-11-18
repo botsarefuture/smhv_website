@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container">
         <h1>Create press release</h1>
-        <form class="blog-form" method="POST" action="{{ url_for('create_release', lang='en') }}">
+        <form class="blog-form" method="POST" action="{{ url_for('create_release') }}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" required>
