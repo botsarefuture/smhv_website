@@ -61,7 +61,7 @@
           />
         </a>
         <div class="language-dropdown">
-            <a class="active" href="{{ url_for('change_language')}}">EN</a>
+            <a class="active" href="{{ url_for('change_language', lang='en')}}">EN</a>
             <a 
               href="{{ url_for('change_language', lang='fi')}}"
               >FI</a
@@ -96,7 +96,7 @@
             <li><a href="{{ url_for('join') }}">Join us</a></li>
             <li>
               <div class="language">
-                <a class="active" href="{{ url_for('change_language')}}">EN</a>
+                <a class="active" href="{{ url_for('change_language', lang='en')}}">EN</a>
                 <a 
                   href="{{ url_for('change_language', lang='fi')}}"
                   >FI</a
