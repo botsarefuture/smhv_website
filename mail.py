@@ -36,7 +36,7 @@ def signup_email(event: dict, recipient: dict, language: str):
         
         <br><br>
         
-        When you signed up, you gave us the following informatiedot:
+        When you signed up, you gave us the following information:
         
         <br><br>
         
@@ -50,12 +50,12 @@ def signup_email(event: dict, recipient: dict, language: str):
         content += f"""
         </ul>
                         
-        <h2>Info of event:/h2>
+        <h2>Info of event:</h2>
         
         
         Date: {event.get('date')}
         Location: {event.get('location_en')}
-        Telengram group (please join): {event.get('telegram_group')}       
+        Telegram group (please join): {event.get('telegram_group')}       
         """
 
         if not len(introductions) == 0:

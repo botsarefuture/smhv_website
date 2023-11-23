@@ -20,7 +20,7 @@ def log_alert(message):
 with open("../config.json", "r") as f:
     config = json.load(f)
 
-url = config["mongodb"]["url"]
+url = "mongodb://SMHV:SMHVisBEST2023!IsITreally%3F@10.0.0.4:27017/?directConnection=true&authMechanism=DEFAULT"
 
 client = MongoClient(url)
 db = client["website"]

@@ -7,7 +7,7 @@ with open("config.json", "r") as f:
     config = json.load(f)
 
 global test
-test = False
+test = True
 
 if not test:
     url = config["mongodb"]["url"]
