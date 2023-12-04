@@ -29,12 +29,12 @@
       >Näytä tiedot</a
     >
   </div>
-
-  {% if empty %}
+  {% endfor %}
+  {% if len(events) == 0 %}
   <a href="{{ url_for('join') }}" class="cta-button"
     >Tule mukaan järjestämään!</a
   >
-  {% endif %} {% endfor %}
+  {% endif %} 
 </div>
 </section>
 {% endblock %}

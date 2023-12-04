@@ -29,11 +29,12 @@
       >View Details</a
     >
   </div>
-  {% if empty %}
+  {% endfor %}
+  {% if len(events) == 0 %}
   <a href="{{ url_for('join') }}" class="cta-button"
     >Join Us in Organizing!</a
   >
-  {% endif %} {% endfor %}
+  {% endif %}
   <div>
 </section>
 {% endblock %}
