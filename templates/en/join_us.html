@@ -1,116 +1,119 @@
-{% extends 'base_en.html' %} {% block content %}
+{% extends 'base_en.html' %}
 
-<section class="contact-form">
-  <h2>Join Us</h2>
-  <p>
-    Would you like to participate in our activities? Join using the form below.
-  </p>
-  <form method="post" class="closed-form">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" required />
+{% block content %}
+  <style>
+    /* Form styling */
+    .join-us {
+      background-color: #f5f5f5;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <label for="email">Your Email Address</label>
-    <input type="email" id="email" name="email" required />
+    .join-us h2 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
 
-    <label for="phonenumber">Your Phone Number</label>
-    <input type="tel" id="phonenumber" name="phonenumber" />
+    .join-us p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
 
-    <label for="roles">My Skills / Occupation</label>
-    <div class="checkbox-group">
-      <input
-        type="checkbox"
-        name="roles"
-        id="content-production"
-        value="Content Production"
-        class="custom-checkbox"
-      />
-      <label for="content-production" class="checkbox-label"
-        >Content Production</label
-      >
+    /* Cool input styling */
+    .cool-input,
+    .cool-select {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      padding: 12px;
+      border: 2px solid #3498db;
+      background-color: #ecf0f1;
+      color: #333; /* Updated text color */
+      border-radius: 5px;
+      transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="photo-management"
-        value="Photo and Video Skills"
-        class="custom-checkbox"
-      />
-      <label for="photo-management" class="checkbox-label"
-        >Photo and Video Skills</label
-      >
+    .cool-input:hover,
+    .cool-select:hover {
+      border-color: #2980b9;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="fundraising"
-        value="Fundraising and Equipment Procurement"
-        class="custom-checkbox"
-      />
-      <label for="fundraising" class="checkbox-label"
-        >Fundraising and Equipment Procurement</label
-      >
+    .cool-input:focus,
+    .cool-select:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="social-media"
-        value="Social Media Skills (Publishing and Moderation)"
-        class="custom-checkbox"
-      />
-      <label for="social-media" class="checkbox-label"
-        >Social Media Skills (Publishing and Moderation)</label
-      >
+    /* Red asterisk styling */
+    .required {
+      color: red;
+      margin-left: 5px;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="software-design"
-        value="Software Design"
-        class="custom-checkbox"
-      />
-      <label for="software-design" class="checkbox-label"
-        >Software Design</label
-      >
+    /* Explanation styling */
+    .explanation {
+      color: #666;
+      font-size: 14px;
+      margin-top: 5px;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="talent-recruitment"
-        value="Recruitment of Artists and Speakers"
-        class="custom-checkbox"
-      />
-      <label for="talent-recruitment" class="checkbox-label"
-        >Recruitment of Artists and Speakers</label
-      >
+    /* Button styling */
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: var(--pink);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="safety-first-aid"
-        value="Safety and First Aid"
-        class="custom-checkbox"
-      />
-      <label for="safety-first-aid" class="checkbox-label"
-        >Safety and First Aid</label
-      >
+    .cta-button:hover {
+      background-color: #2980b9;
+    }
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="jack-of-all-trades"
-        value="None of the above (Jack of All Trades - Please provide more details in the additional information field)"
-        class="custom-checkbox"
-      />
-      <label for="jack-of-all-trades" class="checkbox-label"
-        >None of the above (Please provide more details in the additional
-        information field)</label
-      >
-    </div>
+    /* Center the button */
+    .closed-form {
+      text-align: center;
+    }
+  </style>
 
-    <label for="message">Additional Information</label>
-    <textarea id="message" name="message" rows="6"></textarea>
+  <section class="join-us">
+    <h2>Join</h2>
+    <p>Do you want to participate in our activities? Join using the form below.</p>
+    <form method="post" class="closed-form">
+      <!-- Explanation -->
+      <p class="explanation">Required fields are marked with <span class="required">*</span></p>
 
-    <button type="submit" class="cta-button">Submit</button>
-  </form>
-</section>
+      <!-- Personal Information -->
+      <div class="form-group">
+        <label for="name">Your Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required class="cool-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required class="cool-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="phonenumber">Your Phone Number</label>
+        <input type="tel" id="phonenumber" name="phonenumber" class="cool-input" />
+      </div>
+
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="message">Additional Information</label>
+        <textarea id="message" name="message" rows="6" class="cool-input"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="cta-button">Submit</button>
+    </form>
+  </section>
 {% endblock %}
