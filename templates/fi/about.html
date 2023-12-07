@@ -1,15 +1,15 @@
 {% extends 'base_fi.html' %} {% block content %}
+
 <section class="about-us">
   <h2 class="section-title">Tietoa Meistä</h2>
   <div class="about-content">
     <p>
-      Olemme aktivistiryhmä, joka on omistautunut sinimustan hallituksen
-      kaatamiseen.
+      Olemme kansalaisliike, joka pyrkii Petteri Orpon sinimustan hallituksen tuhoisen kurjistuspolitiikan lopettamiseen tai sen kaatumiseen.
     </p>
-    <p>Tehtävämme on saada äärioikeistohallitus kaatumaan.</p>
+    <p>Tehtävänämme on edistää äärioikeistolaisen hallituksen kaatumista.</p>
     <p>
-      Liity joukkoomme luomaan positiivista muutosta yhteisöllemme ja
-      yhteiskunnalle kokonaisuutena.
+      Liity mukaan luomaan myönteisiä muutoksia yhteisöllemme ja koko
+      yhteiskunnalle.
     </p>
   </div>
   <div class="principles-container">
@@ -29,15 +29,6 @@
     </ul>
   </div>
   <a href="{{ url_for('contact') }}" class="cta-button">Ota Yhteyttä</a>
-  <div class="contact-info">
-    <h3 class="subsection-title">Yhteystiedot</h3>
-    <p>
-      Sähköposti:
-      <a
-        href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org"
-        >sinimustaahallitustavastaan@sinimustaahallitustavastaan.org</a
-      >
-    </p>
-  </div>
+  <a href="{{ url_for('contacts') }}" class="cta-button">Yhteystiedot</a>
 </section>
 {% endblock %}

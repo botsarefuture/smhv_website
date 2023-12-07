@@ -1,4 +1,18 @@
 {% extends 'base_fi.html' %} {% block content %}
+<style>
+  .no-events {
+    background-color: #ffcccc; /* Light red background color */
+    border: 2px solid #ff6666; /* Darker red border */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #ff3333; /* Dark red text color */
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
 <section class="event-calendar">
   <h2>Tulevat tapahtumat</h2>
   <p>
@@ -8,33 +22,34 @@
   <br />
   <br />
   <div class="events-list">
-  {% for event in events %}
-  <div class="event">
-    <h3>{{ event.title_fi }}</h3>
-    <p>Päivämäärä: {{ event.date }}</p>
-    <p>Paikka: {{ event.location_fi }}</p>
-    <p>{{ (event.description_fi|replace('\n', '<br />')|safe)[:100] }}</p>
+  {% if events %}
+    {% for event in events %}
+    <div class="event">
+      <h3>{{ event.title_fi }}</h3>
+      <p>Päivämäärä: {{ event.date }}</p>
+      <p>Paikka: {{ event.location_fi }}</p>
+      <p>{{ (event.description_fi|replace('\n', '<br />')|safe)[:100] }}</p>
 
-    <!-- Add a link to the signup page for this event -->
-    {% if event.role_signup %}
-    <a
-      href="{{ url_for('event_signup', event_id=event._id) }}"
-      class="cta-button"
-      >Ilmoittaudu</a
-    >
-    {% endif %}
-    <a
-      href="{{ url_for('event_details', event_id=event._id) }}"
-      class="cta-button"
-      >Näytä tiedot</a
-    >
+      <!-- Add a link to the signup page for this event -->
+      {% if event.role_signup %}
+      <a
+        href="{{ url_for('event_signup', event_id=event._id) }}"
+        class="cta-button"
+        >Ilmoittaudu</a
+      >
+      {% endif %}
+      <a
+        href="{{ url_for('event_details', event_id=event._id) }}"
+        class="cta-button"
+        >Näytä tiedot</a
+      >
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="no-events">
+      <p>Ei tulevia tapahtumia tällä hetkellä.</p>
+    </div>
+  {% endif %}
   </div>
-  {% endfor %}
-  {% if len(events) == 0 %}
-  <a href="{{ url_for('join') }}" class="cta-button"
-    >Tule mukaan järjestämään!</a
-  >
-  {% endif %} 
-</div>
 </section>
 {% endblock %}

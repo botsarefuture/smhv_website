@@ -1,116 +1,40 @@
-{% extends 'base_en.html' %} {% block content %}
+{% extends 'base_en.html' %}
 
-<section class="contact-form">
-  <h2>Join Us</h2>
-  <p>
-    Would you like to participate in our activities? Join using the form below.
-  </p>
-  <form method="post" class="closed-form">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" required />
+{% block content %}
+  <link rel="stylesheet" href="static\css\join.css">
 
-    <label for="email">Your Email Address</label>
-    <input type="email" id="email" name="email" required />
 
-    <label for="phonenumber">Your Phone Number</label>
-    <input type="tel" id="phonenumber" name="phonenumber" />
+  <section class="join-us">
+    <h2>Join</h2>
+    <p>Do you want to participate in our activities? Join using the form below.</p>
+    <form method="post" class="closed-form">
+      <!-- Explanation -->
+      <p class="explanation">Required fields are marked with <span class="required">*</span></p>
 
-    <label for="roles">My Skills / Occupation</label>
-    <div class="checkbox-group">
-      <input
-        type="checkbox"
-        name="roles"
-        id="content-production"
-        value="Content Production"
-        class="custom-checkbox"
-      />
-      <label for="content-production" class="checkbox-label"
-        >Content Production</label
-      >
+      <!-- Personal Information -->
+      <div class="form-group">
+        <label for="name">Your Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" required class="cool-input" />
+      </div>
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="photo-management"
-        value="Photo and Video Skills"
-        class="custom-checkbox"
-      />
-      <label for="photo-management" class="checkbox-label"
-        >Photo and Video Skills</label
-      >
+      <div class="form-group">
+        <label for="email">Your Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required class="cool-input" />
+      </div>
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="fundraising"
-        value="Fundraising and Equipment Procurement"
-        class="custom-checkbox"
-      />
-      <label for="fundraising" class="checkbox-label"
-        >Fundraising and Equipment Procurement</label
-      >
+      <div class="form-group">
+        <label for="phonenumber">Your Phone Number</label>
+        <input type="tel" id="phonenumber" name="phonenumber" class="cool-input" />
+      </div>
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="social-media"
-        value="Social Media Skills (Publishing and Moderation)"
-        class="custom-checkbox"
-      />
-      <label for="social-media" class="checkbox-label"
-        >Social Media Skills (Publishing and Moderation)</label
-      >
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="message">Additional Information</label>
+        <textarea id="message" name="message" rows="6" class="cool-input"></textarea>
+      </div>
 
-      <input
-        type="checkbox"
-        name="roles"
-        id="software-design"
-        value="Software Design"
-        class="custom-checkbox"
-      />
-      <label for="software-design" class="checkbox-label"
-        >Software Design</label
-      >
-
-      <input
-        type="checkbox"
-        name="roles"
-        id="talent-recruitment"
-        value="Recruitment of Artists and Speakers"
-        class="custom-checkbox"
-      />
-      <label for="talent-recruitment" class="checkbox-label"
-        >Recruitment of Artists and Speakers</label
-      >
-
-      <input
-        type="checkbox"
-        name="roles"
-        id="safety-first-aid"
-        value="Safety and First Aid"
-        class="custom-checkbox"
-      />
-      <label for="safety-first-aid" class="checkbox-label"
-        >Safety and First Aid</label
-      >
-
-      <input
-        type="checkbox"
-        name="roles"
-        id="jack-of-all-trades"
-        value="None of the above (Jack of All Trades - Please provide more details in the additional information field)"
-        class="custom-checkbox"
-      />
-      <label for="jack-of-all-trades" class="checkbox-label"
-        >None of the above (Please provide more details in the additional
-        information field)</label
-      >
-    </div>
-
-    <label for="message">Additional Information</label>
-    <textarea id="message" name="message" rows="6"></textarea>
-
-    <button type="submit" class="cta-button">Submit</button>
-  </form>
-</section>
+      <!-- Submit Button -->
+      <button type="submit" class="cta-button">Submit</button>
+    </form>
+  </section>
 {% endblock %}
