@@ -1,87 +1,8 @@
 {% extends 'base_en.html' %}
 
 {% block content %}
-  <style>
-    /* Form styling */
-    .join-us {
-      background-color: #f5f5f5;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+  <link rel="stylesheet" href="static\css\join.css">
 
-    .join-us h2 {
-      color: #333;
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    .join-us p {
-      color: #666;
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-
-    /* Cool input styling */
-    .cool-input,
-    .cool-select {
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 15px;
-      padding: 12px;
-      border: 2px solid #3498db;
-      background-color: #ecf0f1;
-      color: #333; /* Updated text color */
-      border-radius: 5px;
-      transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-    }
-
-    .cool-input:hover,
-    .cool-select:hover {
-      border-color: #2980b9;
-    }
-
-    .cool-input:focus,
-    .cool-select:focus {
-      outline: none;
-      border-color: #2980b9;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-    }
-
-    /* Red asterisk styling */
-    .required {
-      color: red;
-      margin-left: 5px;
-    }
-
-    /* Explanation styling */
-    .explanation {
-      color: #666;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-
-    /* Button styling */
-    .cta-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: var(--pink);
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
-
-    .cta-button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Center the button */
-    .closed-form {
-      text-align: center;
-    }
-  </style>
 
   <section class="join-us">
     <h2>Join</h2>
