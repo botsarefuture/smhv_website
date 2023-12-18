@@ -132,7 +132,7 @@ def robots_txt():
 def index():
     lang = session["user"]["lang"]
 
-    return render_template(f"{lang}/index.html", title="", current_year=2023)
+    return render_template(f"{lang}/index.html", title="")
 
 
 def get_event_date(event):
@@ -157,7 +157,7 @@ def events():
     ]
     sorted_events = sort_events_by_date(future_events)
     return render_template(
-        f"{lang}/events.html", title="Events", events=sorted_events, current_year=2023
+        f"{lang}/events.html", title="Events", events=sorted_events
     )
 
 
@@ -169,7 +169,7 @@ def event_details(event_id=None):
         # Handle event not found error
         pass
 
-    return render_template(f"{lang}/event_details.html", event=event, current_year=2023)
+    return render_template(f"{lang}/event_details.html", event=event)
 
 
 @app.route("/signup/<event_id>", methods=["GET", "POST"])
@@ -286,7 +286,7 @@ def event_watch():
 @app.route("/about")
 def about():
     lang = session["user"]["lang"]
-    return render_template(f"{lang}/about.html", title="About Us", current_year=2023)
+    return render_template(f"{lang}/about.html", title="About Us")
 
 
 @app.route("/contact", methods=["GET", "POST"])
@@ -294,7 +294,7 @@ def contact():
     lang = session["user"]["lang"]
     if request.method == "GET":
         return render_template(
-            f"{lang}/contact.html", title="Contact Us", current_year=2023
+            f"{lang}/contact.html", title="Contact Us"
         )
 
     if request.method == "POST":
@@ -313,7 +313,7 @@ def contact():
         )
         # TODO: #51 Flash information about successfully sent form
         return render_template(
-            f"{lang}/contact.html", title="Contact Us", current_year=2023
+            f"{lang}/contact.html", title="Contact Us"
         )
 
 
@@ -322,7 +322,7 @@ def join():
     lang = session["user"]["lang"]
     if request.method == "GET":
         return render_template(
-            f"{lang}/join_us.html", title="Join Us", current_year=2023
+            f"{lang}/join_us.html", title="Join Us"
         )
 
     if request.method == "POST":
@@ -345,7 +345,7 @@ def join():
 
         # TODO: #50 Flash information about successfully sent form
         return render_template(
-            f"{lang}/join_us.html", title="Join Us", current_year=2023
+            f"{lang}/join_us.html", title="Join Us"
         )
 
 
@@ -560,6 +560,9 @@ def create_release():
 
 @app.route("/toimintaviikko/")
 def tv():
+    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
+    
+    # TODO: #118 Remove this function, and everything related to toimintaviikko
     lang = session["user"]["lang"]
 
     return render_template(f"/toimintaviikko/{lang}/index.html")
@@ -567,6 +570,10 @@ def tv():
 
 @app.route("/toimintaviikko/info")
 def tv_info():
+    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
+
+    # TODO: #118 Remove this function, and everything related to toimintaviikko
+
     lang = session["user"]["lang"]
 
     return render_template(f"/toimintaviikko/{lang}/info.html")
@@ -574,6 +581,10 @@ def tv_info():
 
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
 def reasons():
+    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
+
+    # TODO: #118 Remove this function, and everything related to toimintaviikko
+    
     reasons_db = db["reasons"]
     if request.method == "POST":
         content = request.json
