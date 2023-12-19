@@ -347,51 +347,6 @@ def join():
         )
 
 
-# TODO: #8 Clean this function
-
-
-# DO NOT TOUCH THIS! IT'S VERY UNCLEAR WHY THIS WORKS, SO PLS DONT TOUCH THIS!
-def lang_thing(lang, path, request):
-    session["user"]["lang"] = lang
-    if lang == "fi":
-        path = path.replace("en/", "")
-
-    if lang == "en":
-        path = path.split("/")
-
-        cont = False
-
-        print(request.host_url)
-
-        def pop_unne(path, cont):
-            for i in range(0, len(path)):
-                if cont:
-                    continue
-
-                # Our domain is sinimustaahallitustavastaan.ORG
-                if request.host in path[i]:
-                    cont = True
-
-                path.pop(i)
-
-        pop_unne(path, cont)
-
-        def list_to_str(listi):
-            text = ""
-            for item in listi:
-                text += f"/{item}"
-
-            text = text.replace("//", "/")
-
-            return text
-
-        path = ("/en/" + list_to_str(path)).replace("//", "/")
-
-        path = path.replace("/en/en/", "/en/")
-
-    return path
-
-
 @app.route("/change_language/<lang>")
 def change_language(lang):
     session["user"]["lang"] = lang
@@ -404,10 +359,6 @@ def change_language(lang):
         return redirect("/")
 
     return redirect(request.referrer)
-
-    path = lang_thing(lang, request.referrer, request)
-
-    return redirect(path)
 
 
 # BLOG

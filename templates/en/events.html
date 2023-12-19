@@ -16,14 +16,13 @@
 <section class="event-calendar">
   <h2>Upcoming Events</h2>
   <p>
-    Explore our upcoming events where we gather to learn, network,
-    and create positive impact.
+    Explore our upcoming events where we gather to learn, network, and create
+    positive impact.
   </p>
   <br />
   <br />
   <div class="events-list">
-  {% if events %}
-    {% for event in events %}
+    {% if events %} {% for event in events %}
     <div class="event">
       <h3>{{ event.title_en }}</h3>
       <p>Date: {{ event.date }}</p>
@@ -44,12 +43,11 @@
         >View Details</a
       >
     </div>
-    {% endfor %}
-  {% else %}
+    {% endfor %} {% else %}
     <div class="no-events">
       <p>No upcoming events at the moment.</p>
     </div>
-  {% endif %}
+    {% endif %}
   </div>
 </section>
 {% endblock %}

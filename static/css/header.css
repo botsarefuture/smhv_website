@@ -105,8 +105,9 @@ nav ul li a:hover {
 
 @media (max-width: 767px) {
   a {
-  text-decoration: none;
-  color: #ffffff;}
+    text-decoration: none;
+    color: #ffffff;
+  }
 }
 
 #mobile-menu ul {
@@ -117,7 +118,6 @@ nav ul li a:hover {
   margin: 5px 0;
 }
 #mobile-menu a {
-  
   font-size: 18px;
   font-weight: 600;
   transition: color 0.3s;
@@ -161,7 +161,7 @@ nav ul li a:hover {
     align-items: center;
     margin-left: 3px;
   }
-  
+
   .language a {
     text-decoration: none;
     display: flex;
@@ -170,13 +170,13 @@ nav ul li a:hover {
     font-weight: 600;
     transition: color 0.3s;
   }
-  
+
   /* Add a class "active" to the active language option and apply neon green color */
   .language a.active {
     color: var(--neon-green);
     text-decoration: underline;
   }
-  
+
   .language a:hover {
     color: #c2c2c2;
   }

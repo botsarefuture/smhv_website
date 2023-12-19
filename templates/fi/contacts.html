@@ -1,5 +1,4 @@
-{% extends 'base_fi.html' %}
-{% block content %}
+{% extends 'base_fi.html' %} {% block content %}
 <style>
   /* Custom CSS */
   .custom-name {
@@ -18,8 +17,6 @@
     text-overflow: break-word;
     overflow-wrap: anywhere;
   }
-
-
 
   .custom-email:hover {
     text-decoration: underline;
@@ -77,25 +74,23 @@
   }
 
   /* Custom role styles */
-.custom-role {
-  font-weight: bold;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: #333;
-  margin-top: 5px;
-}
+  .custom-role {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+    margin-top: 5px;
+  }
 
-.custom-role-details {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
+  .custom-role-details {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
 </style>
 <section class="contact-us">
   <h2>Yhteystiedot</h2>
   <div class="custom-contact-group">
-
     <h3 class="custom-heading">Yleiset yhteystiedot</h3>
 
     <div class="events-list">
@@ -103,110 +98,154 @@
         <div class="custom-name">Yleinen sähköposti</div>
 
         <div class="custom-email">
-          <a href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Sinimustaa Hallitusta Vastaan</a>
+          <a
+            href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org"
+            >Sinimustaa Hallitusta Vastaan</a
+          >
         </div>
 
         <div class="custom-title">Luemme sähköpostisi yleensä päivässä</div>
-        <a class="custom-send-email-button"
-          href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:sinimustaahallitustavastaan@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
         <div class="custom-name">Johtoryhmä</div>
 
-
-        <div class="custom-email"><a href="mailto:johtoryhma@sinimustaahallitustavastaan.org">Johtoryhmä</a></div>
-
+        <div class="custom-email">
+          <a href="mailto:johtoryhma@sinimustaahallitustavastaan.org"
+            >Johtoryhmä</a
+          >
+        </div>
 
         <div class="custom-title">Ota yhteyttä johtoryhmään</div>
-        <a class="custom-send-email-button" href="mailto:johtoryhma@sinimustaahallitustavastaan.org">Lähetä
-          sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:johtoryhma@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
         <div class="custom-name">Media-työryhmä</div>
 
+        <div class="custom-email">
+          <a href="mailto:media@sinimustaahallitustavastaan.org">Media</a>
+        </div>
 
-        <div class="custom-email"><a href="mailto:media@sinimustaahallitustavastaan.org">Media</a></div>
-
-
-        <div class="custom-title">Haastattelupyynnöt, kuvapyynnöt, ja muut media-asiat!</div>
-        <a class="custom-send-email-button" href="mailto:media@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+        <div class="custom-title">
+          Haastattelupyynnöt, kuvapyynnöt, ja muut media-asiat!
+        </div>
+        <a
+          class="custom-send-email-button"
+          href="mailto:media@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
     </div>
   </div>
 
   <div class="custom-contact-group">
-
     <h3 class="custom-heading">Johtoryhmä</h3>
 
     <div class="events-list">
-
-
       <div class="custom-contact">
         <div class="custom-name">Verso Vuorenmaa</div>
         <div class="custom-email">
-            <a href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">verso.vuorenmaa</a>
+          <a href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org"
+            >verso.vuorenmaa</a
+          >
         </div>
         <!-- Custom role field -->
         <div class="custom-role">Rooli: IT-päällikkö</div>
         <!-- Lisää roolin tarkemmat tiedot -->
-        <div class="custom-role-details">Vastuualueet: Nettisivut, Palvelimet, Kyberturvallisuus, DevOps</div>
-        <a class="custom-send-email-button" href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
-    </div>
+        <div class="custom-role-details">
+          Vastuualueet: Nettisivut, Palvelimet, Kyberturvallisuus, DevOps
+        </div>
+        <a
+          class="custom-send-email-button"
+          href="mailto:verso.vuorenmaa@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
+      </div>
 
       <div class="custom-contact">
         <div class="custom-name">Taru Maukonen</div>
 
         <div class="custom-email">
-          <a href="mailto:taru.maukonen@sinimustaahallitustavastaan.org">taru.maukonen</a>
+          <a href="mailto:taru.maukonen@sinimustaahallitustavastaan.org"
+            >taru.maukonen</a
+          >
         </div>
 
         <div class="custom-title">Coordinator</div>
-        <a class="custom-send-email-button" href="mailto:taru.maukonen@sinimustaahallitustavastaan.org">Lähetä
-          sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:taru.maukonen@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
         <div class="custom-name">Severi Suominen</div>
         <div class="custom-email">
-            <a href="mailto:severi.suominen@sinimustaahallitustavastaan.org">severi.suominen</a>
+          <a href="mailto:severi.suominen@sinimustaahallitustavastaan.org"
+            >severi.suominen</a
+          >
         </div>
         <!-- Custom role field -->
         <div class="custom-role">Rooli: koordinaattori</div>
         <!-- Lisää roolin tarkemmat tiedot -->
-        <div class="custom-role-details">Vastuualueet: Jyväskylän paikallisryhmä, blogitiimi</div>
-        <a class="custom-send-email-button" href="mailto:severi.suominen@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
-    </div>
+        <div class="custom-role-details">
+          Vastuualueet: Jyväskylän paikallisryhmä, blogitiimi
+        </div>
+        <a
+          class="custom-send-email-button"
+          href="mailto:severi.suominen@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
+      </div>
 
       <div class="custom-contact">
         <div class="custom-name">Eljas Almusa</div>
 
         <div class="custom-email">
-          <a href="mailto:eljas.almusa@sinimustaahallitustavastaan.org">eljas.almusa</a>
+          <a href="mailto:eljas.almusa@sinimustaahallitustavastaan.org"
+            >eljas.almusa</a
+          >
         </div>
 
         <div class="custom-title">Coordinator</div>
-        <a class="custom-send-email-button" href="mailto:eljas.almusa@sinimustaahallitustavastaan.org">Lähetä
-          sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:eljas.almusa@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
         <div class="custom-name">Julia L</div>
 
         <div class="custom-email">
-          <a href="mailto:julia.lindstorm@sinimustaahallitustavastaan.org">julia.lindstorm</a>
+          <a href="mailto:julia.lindstorm@sinimustaahallitustavastaan.org"
+            >julia.lindstorm</a
+          >
         </div>
 
         <div class="custom-title">Coordinator</div>
-        <a class="custom-send-email-button" href="mailto:julia.lindstorm@sinimustaahallitustavastaan.org">Lähetä
-          sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:julia.lindstorm@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
     </div>
   </div>
 
   <div class="custom-contact-group">
-
     <h3 class="custom-heading">Paikallisryhmät</h3>
 
     <div class="events-list">
@@ -214,12 +253,19 @@
         <div class="custom-name">Jyväskylän paikallisryhmä</div>
 
         <div class="custom-email">
-          <a href="mailto:jyvaskyla@sinimustaahallitustavastaan.org">Jyvaskyla</a>
+          <a href="mailto:jyvaskyla@sinimustaahallitustavastaan.org"
+            >Jyvaskyla</a
+          >
         </div>
 
-        <div class="custom-title">Luemme sähköpostisi yleensä muutamassa päivässä</div>
-        <a class="custom-send-email-button" href="mailto:jyvaskyla@sinimustaahallitustavastaan.org">Lähetä
-          sähköposti</a>
+        <div class="custom-title">
+          Luemme sähköpostisi yleensä muutamassa päivässä
+        </div>
+        <a
+          class="custom-send-email-button"
+          href="mailto:jyvaskyla@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
@@ -229,8 +275,14 @@
           <a href="mailto:tampere@sinimustaahallitustavastaan.org">Tampere</a>
         </div>
 
-        <div class="custom-title">Luemme sähköpostisi yleensä muutamassa päivässä</div>
-        <a class="custom-send-email-button" href="mailto:tampere@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+        <div class="custom-title">
+          Luemme sähköpostisi yleensä muutamassa päivässä
+        </div>
+        <a
+          class="custom-send-email-button"
+          href="mailto:tampere@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
 
       <div class="custom-contact">
@@ -241,12 +293,13 @@
         </div>
 
         <div class="custom-title">Luemme sähköpostisi yleensä päivässä</div>
-        <a class="custom-send-email-button" href="mailto:helsinki@sinimustaahallitustavastaan.org">Lähetä sähköposti</a>
+        <a
+          class="custom-send-email-button"
+          href="mailto:helsinki@sinimustaahallitustavastaan.org"
+          >Lähetä sähköposti</a
+        >
       </div>
-
-
     </div>
   </div>
-
 </section>
 {% endblock %}

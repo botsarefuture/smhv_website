@@ -1,26 +1,24 @@
-{% extends 'base_fi.html' %}
+{% extends 'base_fi.html' %} {% block title %} Kiitos vahvistuksesta {% endblock
+%} {% block content %}
+<h1>Kiitos vahvistuksesta!</h1>
+<p>Sähköpostiosoitteesi on vahvistettu onnistuneesti.</p>
+<p>
+  Olet nyt osa yhteisöämme. Pysy kuulolla päivityksiä ja mielenkiintoisia
+  uutisia varten!
+</p>
+<!-- Add any Finnish-specific content here -->
+<p id="countdown">Redirecting in 10 seconds...</p>
+<script>
+  setTimeout(function () {
+    window.location.href = "https://sinimustaahallitustavastaan.org";
+  }, 10000);
 
-{% block title %}
-    Kiitos vahvistuksesta
-{% endblock %}
-
-{% block content %}
-    <h1>Kiitos vahvistuksesta!</h1>
-    <p>Sähköpostiosoitteesi on vahvistettu onnistuneesti.</p>
-    <p>Olet nyt osa yhteisöämme. Pysy kuulolla päivityksiä ja mielenkiintoisia uutisia varten!</p>
-    <!-- Add any Finnish-specific content here -->
-    <p id="countdown">Redirecting in 10 seconds...</p>
-    <script>
-        setTimeout(function () {
-            window.location.href = "https://sinimustaahallitustavastaan.org";
-        }, 10000);
-
-        // Countdown timer
-        var seconds = 10;
-        var countdownElement = document.getElementById('countdown');
-        setInterval(function () {
-            seconds--;
-            countdownElement.textContent = "Redirecting in " + seconds + " seconds...";
-        }, 1000);
-    </script>
+  // Countdown timer
+  var seconds = 10;
+  var countdownElement = document.getElementById("countdown");
+  setInterval(function () {
+    seconds--;
+    countdownElement.textContent = "Redirecting in " + seconds + " seconds...";
+  }, 1000);
+</script>
 {% endblock %}

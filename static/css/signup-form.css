@@ -44,7 +44,7 @@
   resize: vertical;
 }
 
-.signup-form input{
+.signup-form input {
   width: min(700px, 100%);
 }
 
@@ -53,7 +53,7 @@
 }
 
 @media (max-width: 480px) {
-  .signup-form{
-    padding:5px;
+  .signup-form {
+    padding: 5px;
   }
 }

@@ -2,14 +2,13 @@
 @import url("signup-role.css");
 @import url("signup-roles.css");
 
-
 /* SIGNUP-HEADING */
 .signup-heading {
   padding-bottom: 1em;
 }
 
 @media (max-width: 768px) {
-  .signup-heading h2{
+  .signup-heading h2 {
     text-overflow: break-word;
   }
 }

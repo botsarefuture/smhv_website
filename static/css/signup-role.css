@@ -25,7 +25,9 @@
 
 /* Style for selected role boxes */
 .role.selected {
-  background-color: var(--darker-green); /* Change the background color when selected */
+  background-color: var(
+    --darker-green
+  ); /* Change the background color when selected */
   color: #ffffff; /* Change the text color when selected */
 }
 
@@ -56,7 +58,7 @@
   background-color: #63146d;
 }
 
-.view-more-button{
+.view-more-button {
   color: var(--neon-pink);
 }
 

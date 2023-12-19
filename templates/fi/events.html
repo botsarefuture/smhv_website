@@ -10,7 +10,7 @@
     color: #ff3333; /* Dark red text color */
     font-size: 18px;
     font-weight: bold;
-  } 
+  }
 </style>
 
 <!-- TODO MOVE THIS TO CSS FILE -->
@@ -24,8 +24,7 @@
   <br />
   <br />
   <div class="events-list">
-  {% if events %}
-    {% for event in events %}
+    {% if events %} {% for event in events %}
     <div class="event">
       <h3>{{ event.title_fi }}</h3>
       <p>Päivämäärä: {{ event.date }}</p>
@@ -46,12 +45,11 @@
         >Näytä tiedot</a
       >
     </div>
-    {% endfor %}
-  {% else %}
+    {% endfor %} {% else %}
     <div class="no-events">
       <p>Ei tulevia tapahtumia tällä hetkellä.</p>
     </div>
-  {% endif %}
+    {% endif %}
   </div>
 </section>
 {% endblock %}

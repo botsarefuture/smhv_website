@@ -39,7 +39,7 @@ header .left .language-dropdown a:hover {
     width: 70px;
     max-height: 60px;
   }
-  
+
   header .left ul {
     display: flex; /* Change back to flex layout on mobile */
     justify-content: center;
