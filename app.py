@@ -623,7 +623,9 @@ print(release)
 
 @app.route("/contacts")
 def contacts():
-    return render_template("fi/contacts.html")
+    lang = session["user"]["lang"]
+
+    return render_template(f"{lang}/contacts.html")
 
 from email_list import add_email, confirm_email
 @app.route("/email_list/", methods=["GET", "POST"])
