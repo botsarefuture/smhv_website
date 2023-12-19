@@ -4,8 +4,8 @@
 <section class="hero">
   <div class="hero-content">
     <h2>Hallitusta vastaan, elämän puolesta!</h2>
-    <p>Tavoitteemme on kaataa hallitus vuoteen 2024 mennessä.</p>
-    <a href="{{ url_for('about') }}" class="cta-button"
+    <p>Tavoitteemme on inhimillistää hallituksen ajama politiikka, tai kaataa heidät.</p>
+        <a href="{{ url_for('about') }}" class="cta-button"
       >Lue lisää toiminnastamme</a
     >
 
@@ -20,8 +20,8 @@
   </div>
 </section>
 <section class="about-us">
-  <h2>Tietoa Meistä</h2>
   <div class="about-content">
+    <h2>Tietoa Meistä</h2>
     <p>
       Olemme aktivistiryhmä, joka on omistautunut sinimustan hallituksen
       kaatamiseen.
@@ -47,12 +47,13 @@ TEMPORARY FIX ENDS-->
 
 <section class="join-email-list-container">
   <div class="join-email-list-content">
-      <h1 style="text-align: center;">Liity Sähköpostilistalle</h1>
-      <p>Ole osa yhteisöämme ja pysy ajan tasalla tulevista päivityksistä ja tapahtumista!</p>
+    <h1 style="text-align: center">Liity Sähköpostilistalle</h1>
+    <p>
+      Ole osa yhteisöämme ja pysy ajan tasalla tulevista päivityksistä ja tapahtumista!
+    </p>
 
-      {% include 'fi/email/join_email_list_widget.html' %}  </div>
+    {% include 'fi/email/join_email_list_widget.html' %}
+  </div>
 </section>
-
-
 
 {% endblock %}

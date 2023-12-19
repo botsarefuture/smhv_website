@@ -1,12 +1,10 @@
 {% extends 'base_en.html' %} {% block content %}
-<h1 style="font-size: 0px">Against the Government, For Life!</h1>
-
 <section class="hero">
   <div class="hero-content">
-    <h2>Against the Government, For Life!</h2>
-    <p>Our goal is to overthrow the government by 2024.</p>
-    <a href="{{ url_for('about') }}" class="cta-button"
-      >Read more about our activities</a
+    <h2>Against the government, for the life</h2>
+    <p>Our goal is to humanize the government's policies or overthrow them.</p>
+        <a href="{{ url_for('about') }}" class="cta-button"
+      >Read more about our actions</a
     >
 
     <br /><br />
@@ -20,34 +18,38 @@
   </div>
 </section>
 <section class="about-us">
-  <h2>About Us</h2>
   <div class="about-content">
+    <h2>About Us</h2>
     <p>
-      We are an activist group dedicated to overthrowing the blue-black
-      government.
+      We are an activist group dedicated to overthrowing the blue-black government.
     </p>
     <p>Our goal is to bring down the blue-black government.</p>
-    <p>Join our ranks to help overthrow the government.</p>
+    <p>Join us in toppling the government.</p>
   </div>
   <a href="{{ url_for('about') }}" class="cta-button">Read more</a>
 </section>
-<!-- THIS JOIN US SECTION SHOULD BE DELETED -->
 
+<!-- this join us section should be removed -->
 <!-- TEMPORARY FIX
-  <section class="join-us">
-  <h2>Join Us Today</h2>
-  <p>Are you ready to take action and create a better future? Join us!</p>
+<section class="join-us">
+  <h2>Join us today!</h2>
+  <p>
+    Are you ready to take action and create a better future? Join us!
+  </p>
   <a href="{{ url_for('join') }}" class="cta-button">Join us!</a>
 </section>
-TEMPORARY FIX ENDS
--->
+TEMPORARY FIX ENDS-->
+
+<!-- join_email_list.html -->
 
 <section class="join-email-list-container">
   <div class="join-email-list-content">
-      <h1 style="text-align:center;">Join Email List</h1>
-      <p>Be a part of our community and stay updated on upcoming updates and events!</p>
+    <h1 style="text-align: center">Join the Email List</h1>
+    <p>
+      Be part of our community and stay updated on upcoming updates and events!
+    </p>
 
-      {% include 'en/email/join_email_list_widget.html' %}
+    {% include 'en/email/join_email_list_widget.html' %}
   </div>
 </section>
 
