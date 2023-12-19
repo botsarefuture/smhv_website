@@ -557,64 +557,10 @@ def create_release():
 
 
 @app.route("/toimintaviikko/")
-def tv():
-    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
-    
-    # TODO: #118 Remove this function, and everything related to toimintaviikko
-    lang = session["user"]["lang"]
-
-    return render_template(f"/toimintaviikko/{lang}/index.html")
-
-
 @app.route("/toimintaviikko/info")
-def tv_info():
-    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
-
-    # TODO: #118 Remove this function, and everything related to toimintaviikko
-
-    lang = session["user"]["lang"]
-
-    return render_template(f"/toimintaviikko/{lang}/info.html")
-
-
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
-def reasons():
+def to_main_page(): # THE ACTION WEEK IS OVER, LETS MAKE USER UNABLE TO VISIT IT!
     return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
-
-    # TODO: #118 Remove this function, and everything related to toimintaviikko
-    
-    reasons_db = db["reasons"]
-    if request.method == "POST":
-        content = request.json
-        data = {}
-        if content.get("name") != None:
-            data["name"] = content.get("name")
-
-        else:
-            data["name"] = "Unknown"
-
-        data["reason"] = content.get("reason")
-
-        if len(data["reason"].split(",")) > 1:
-            for reason in data["reason"].split(","):
-                reasons_db.insert_one(
-                    {"name": reason["name"], "reason": reason["reason"]}
-                )
-
-        else:
-            reason = data
-            reasons_db.insert_one({"name": reason["name"], "reason": reason["reason"]})
-
-        return reasons_db.find()
-
-    else:
-        reason_s = reasons_db.find()
-        reasons_1 = list()
-        for reason in reason_s:
-            reason["_id"] = ""
-            reasons_1.append(reason)
-
-        return reasons_1
 
 
 release = press_collection.find_one({"slug": 0})
