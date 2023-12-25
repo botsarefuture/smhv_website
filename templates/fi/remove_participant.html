@@ -1,0 +1,16 @@
+<!-- templates/participant_delete.html -->
+
+{% extends 'base_fi.html' %}
+
+{% block content %}
+  <div style="max-width: 600px; margin: auto; text-align: center;">
+    <h2 style="color: #333; font-size: 24px; margin-bottom: 20px;">Peru osallistumisesi?</h2>
+    <p style="color: #555; font-size: 16px; margin-bottom: 30px;">Oletko varma että haluat ilmoittautumisesi tapahtumaan:<br> "{{event.title_fi}}" {{event.date}}</p>
+
+    <form action="{{ url_for('remove_participant', _id=_id) }}" method="post">
+      <button type="submit" style="background-color: #d9534f; color: white; border: 2px solid #d43f3a; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer;">Peru osallistumiseni</button>
+    </form>
+
+    <p style="color: #777; font-size: 14px; margin-top: 30px;">Huom: Tätä ei voi perua.</p>
+  </div>
+{% endblock %}

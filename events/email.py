@@ -1,6 +1,6 @@
 from mail import send_email
 
-def signup_email(event: dict, recipient: dict, language: str):
+def signup_email(event: dict, recipient: dict, language: str, participant_id):
     """true
 
     Args:
@@ -68,6 +68,8 @@ def signup_email(event: dict, recipient: dict, language: str):
         if not len(introductions) == 0: # type: ignore
             content += "If you're unable to come into the introduction, please let us know, so we can send you instructions."
 
+        content += "<br><br><a href=%s>You can cancel your signup by clicking here</a>" % f"https://sinimustaahallitustavastaan.org/participant_remove/{participant_id}"
+
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
 
@@ -81,6 +83,7 @@ def signup_email(event: dict, recipient: dict, language: str):
 
         <strong>{event.get('title_fi')}</strong>
         
+
         <br><br>
         
         Ilmoittautuessasi annoit seuraavat tiedot:
@@ -124,5 +127,7 @@ def signup_email(event: dict, recipient: dict, language: str):
 
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
+
+        content += "<br><br><a href=%s>Peru ilmoittautumisesi napauttamalla tästä</a>" % f"https://sinimustaahallitustavastaan.org/participant_remove/{participant_id}"
 
     send_email(recipient.get("email"), subject, content)

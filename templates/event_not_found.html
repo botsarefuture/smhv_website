@@ -1,0 +1,22 @@
+<!-- templates/not_found.html -->
+
+{% if lang == 'en' %}
+  {% extends 'base_en.html' %}
+{% else %}
+  {% extends 'base_fi.html' %}
+{% endif %}
+
+{% block content %}
+  <div style="max-width: 600px; margin: auto; text-align: center;">
+    <h2 style="color: #333; font-size: 24px; margin-bottom: 20px;">{{ "No Event Found" if lang == 'en' else "Tapahtumaa ei löytynyt" }}</h2>
+    <p style="color: #555; font-size: 16px; margin-bottom: 30px;">
+      {% if lang == 'en' %}
+        We couldn't find any event matching your search.
+      {% else %}
+        Emme löytäneet tapahtumaa hakukriteereilläsi.
+      {% endif %}
+    </p>
+
+    <a href="{{ url_for('events') }}" style="text-decoration: underline; color: #428bca; font-size: 14px;">{{ "Go back to Events" if lang == 'en' else "Palaa takaisin tapahtumiin" }}</a>
+  </div>
+{% endblock %}
