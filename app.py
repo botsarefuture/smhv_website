@@ -1,5 +1,5 @@
 # Internal imports
-from mail import signup_email, join_email
+from mail import join_email
 from well_being import calculate_well_being
 from db_utils import *
 
@@ -27,6 +27,7 @@ from bson import ObjectId
 # System imports
 import json
 
+from events.email import signup_email
 
 # Date and time related imports
 from datetime import datetime
@@ -163,9 +164,16 @@ def events():
 def event_details(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
+
     if not event:
-        # Handle event not found error
-        pass
+        if lang == "fi":
+            flash("Tapahtumaa ei löytynyt.", "warning")
+
+        if lang == "en":
+            flash("The event was not found", "warning")
+
+
+        return redirect("/")
 
     return render_template(f"{lang}/event_details.html", event=event)
 
@@ -175,8 +183,14 @@ def event_signup(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
-        # Käsittele tapahtuman puuttumista
-        pass
+        if lang == "fi":
+            flash("Tapahtumaa ei löytynyt.", "warning")
+
+        if lang == "en":
+            flash("The event was not found", "warning")
+
+
+        return redirect("/")
 
     if not event.get("role_signup", False):
         pass
@@ -187,8 +201,6 @@ def event_signup(event_id=None):
         roles = request.form.getlist("roles[]")  # Haetaan valitut roolit
 
         if name == "" or email == "":
-            # Friendly reminder of the fact yu have to provide thights to see
-            flash("KYS!", "error")
             return render_template(
                 f"{lang}/signup.html", event_id=event_id, event=event
             )
@@ -236,6 +248,7 @@ def event_signup(event_id=None):
 
         if lang == "en":
             flash("Successfully registered!", "info")
+
         # Uudelleenohjaa takaisin tapahtumasivulle ilmoittautumisen jälkeen.
         return redirect(f"/events")
     return render_template(f"{lang}/signup.html", event_id=event_id, event=event)
