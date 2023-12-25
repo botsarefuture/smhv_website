@@ -63,7 +63,6 @@ def set_language():
 
     if session["user"].get("ip") == "127.0.0.1":
         print(session)
-        time.sleep(1)
 
 
 # Function to save answers and well-being score to MongoDB
@@ -108,10 +107,8 @@ def calculate_well_being_api():
 def share_well_being(document_id):
     # Retrieve data from MongoDB using the document ID
     collection = db["well_being_data"]
-    print(document_id)
     data = collection.find_one({"_id": ObjectId(document_id)})
-    data["_id"] = ""
-    print(data)
+    data["_id"] = str(data["_id"])
     return render_template("mental/show.html", data=data)
 
 
@@ -255,7 +252,7 @@ def event_signup(event_id=None):
 
 
 @app.route("/api/events/")
-@app.route("/api/events/<event_id>")
+@app.route("/api/events/<event_id>") # type: ignore
 def api_event(event_id=None):
     if event_id != None:
         search = {"_id": ObjectId(event_id)}
