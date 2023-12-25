@@ -1,5 +1,8 @@
 # Internal imports
+<<<<<<< HEAD
 from pymongo import DeleteOne
+=======
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 from mail import join_email
 from well_being import calculate_well_being
 from db_utils import *
@@ -163,8 +166,19 @@ def event_details(event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
 
     if not event:
+<<<<<<< HEAD
         return render_template("event_not_found.html", lang=lang)
 
+=======
+        if lang == "fi":
+            flash("Tapahtumaa ei löytynyt.", "warning")
+
+        if lang == "en":
+            flash("The event was not found", "warning")
+
+
+        return redirect("/")
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 
     return render_template(f"{lang}/event_details.html", event=event)
 
@@ -174,8 +188,19 @@ def event_signup(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
+<<<<<<< HEAD
         return render_template("event_not_found.html", lang=lang)
 
+=======
+        if lang == "fi":
+            flash("Tapahtumaa ei löytynyt.", "warning")
+
+        if lang == "en":
+            flash("The event was not found", "warning")
+
+
+        return redirect("/")
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 
     if not event.get("role_signup", False):
         pass
