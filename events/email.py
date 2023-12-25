@@ -1,6 +1,10 @@
 from mail import send_email
 
+<<<<<<< HEAD
+def signup_email(event: dict, recipient: dict, language: str, participant_id):
+=======
 def signup_email(event: dict, recipient: dict, language: str):
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
     """true
 
     Args:
@@ -68,6 +72,11 @@ def signup_email(event: dict, recipient: dict, language: str):
         if not len(introductions) == 0: # type: ignore
             content += "If you're unable to come into the introduction, please let us know, so we can send you instructions."
 
+<<<<<<< HEAD
+        content += "<br><br><a href=%s>You can cancel your signup by clicking here</a>" % f"https://sinimustaahallitustavastaan.org/participant_remove/{participant_id}"
+
+=======
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
     if language == "fi":
         subject = f'Kiitos ilmoittautumisestasi tapahtumaan "{event.get("title_fi")}"'
 
@@ -81,6 +90,10 @@ def signup_email(event: dict, recipient: dict, language: str):
 
         <strong>{event.get('title_fi')}</strong>
         
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
         <br><br>
         
         Ilmoittautuessasi annoit seuraavat tiedot:
@@ -125,4 +138,9 @@ def signup_email(event: dict, recipient: dict, language: str):
         if not len(introductions) == 0:
             content += "Mikäli et pääse briiffiin, ilmoitathan siitä niin voimme toimittaa kirjallisen briiffimateriaalin."
 
+<<<<<<< HEAD
+        content += "<br><br><a href=%s>Peru ilmoittautumisesi napauttamalla tästä</a>" % f"https://sinimustaahallitustavastaan.org/participant_remove/{participant_id}"
+
+=======
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
     send_email(recipient.get("email"), subject, content)

@@ -1,4 +1,8 @@
 # Internal imports
+<<<<<<< HEAD
+from pymongo import DeleteOne
+=======
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 from mail import join_email
 from well_being import calculate_well_being
 from db_utils import *
@@ -19,7 +23,6 @@ from flask_ckeditor import CKEditor
 import werkzeug
 from flask_cors import CORS
 from flask_sitemap import Sitemap
-import subprocess
 
 # MongoDB related imports
 from bson import ObjectId
@@ -63,7 +66,6 @@ def set_language():
 
     if session["user"].get("ip") == "127.0.0.1":
         print(session)
-        time.sleep(1)
 
 
 # Function to save answers and well-being score to MongoDB
@@ -108,10 +110,8 @@ def calculate_well_being_api():
 def share_well_being(document_id):
     # Retrieve data from MongoDB using the document ID
     collection = db["well_being_data"]
-    print(document_id)
     data = collection.find_one({"_id": ObjectId(document_id)})
-    data["_id"] = ""
-    print(data)
+    data["_id"] = str(data["_id"])
     return render_template("mental/show.html", data=data)
 
 
@@ -166,6 +166,10 @@ def event_details(event_id=None):
     event = events_collection.find_one({"_id": ObjectId(event_id)})
 
     if not event:
+<<<<<<< HEAD
+        return render_template("event_not_found.html", lang=lang)
+
+=======
         if lang == "fi":
             flash("Tapahtumaa ei löytynyt.", "warning")
 
@@ -174,6 +178,7 @@ def event_details(event_id=None):
 
 
         return redirect("/")
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 
     return render_template(f"{lang}/event_details.html", event=event)
 
@@ -183,6 +188,10 @@ def event_signup(event_id=None):
     lang = session["user"]["lang"]
     event = events_collection.find_one({"_id": ObjectId(event_id)})
     if not event:
+<<<<<<< HEAD
+        return render_template("event_not_found.html", lang=lang)
+
+=======
         if lang == "fi":
             flash("Tapahtumaa ei löytynyt.", "warning")
 
@@ -191,6 +200,7 @@ def event_signup(event_id=None):
 
 
         return redirect("/")
+>>>>>>> 4462b321dd4f6ddf900e0b2323c66329b34054b2
 
     if not event.get("role_signup", False):
         pass
@@ -238,10 +248,12 @@ def event_signup(event_id=None):
                     introductions += role.get("introductions")
 
         event["introductions"] = introductions
-        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang)
-
         # Lisää signup_data MongoDB-kokoelmaan ilmoittautumisia varten.
-        signups_collection.insert_one(signup_data)
+        result = signups_collection.insert_one(signup_data)
+        print(result.inserted_id)
+        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang, str(result.inserted_id))
+
+        
 
         if lang == "fi":
             flash("Ilmoittautuminen onnistui!", "info")
@@ -255,7 +267,7 @@ def event_signup(event_id=None):
 
 
 @app.route("/api/events/")
-@app.route("/api/events/<event_id>")
+@app.route("/api/events/<event_id>") # type: ignore
 def api_event(event_id=None):
     if event_id != None:
         search = {"_id": ObjectId(event_id)}
@@ -288,6 +300,36 @@ def api_event(event_id=None):
 @app.route("/event_watch/")
 def event_watch():
     return render_template("thig.html")
+
+
+@app.route("/participant_remove/<_id>", methods=["GET", "POST"])
+def remove_participant(_id):
+    lang = session["user"]["lang"]
+
+    if request.method == "GET":
+        try:
+            event_id = signups_collection.find_one({"_id": ObjectId(_id)}).get("event_id")
+            event = events_collection.find_one({"_id": ObjectId(event_id)})
+
+        except:
+            return render_template("event_not_found.html", lang=lang)
+
+            
+
+        if event == None:
+            return render_template("not_found.html", lang=lang)
+
+        return render_template(f"{lang}/remove_participant.html", _id=_id, event=event)
+    
+    if request.method == "POST":
+        signups_collection.delete_one({"_id": ObjectId(_id)})
+        if lang == "en":
+            flash("Successfully removed the participation", "info")
+
+        if lang == "fi":
+            flash("Ilmoittautuminen poistettu onnistuneesta", "info")
+        return redirect("/")
+    
 
 
 # EVENTS END

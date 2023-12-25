@@ -1,0 +1,16 @@
+<!-- templates/participant_delete.html -->
+
+{% extends 'base_en.html' %}
+
+{% block content %}
+  <div style="max-width: 600px; margin: auto; text-align: center;">
+    <h2 style="color: #333; font-size: 24px; margin-bottom: 20px;">Cancel Your Participation?</h2>
+    <p style="color: #555; font-size: 16px; margin-bottom: 30px;">Are you sure you want to cancel your registration for the event:<br> "{{event.title_en}}" {{event.date}}</p>
+
+    <form action="{{ url_for('remove_participant', _id=_id) }}" method="post">
+      <button type="submit" style="background-color: #d9534f; color: white; border: 2px solid #d43f3a; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer;">Cancel My Participation</button>
+    </form>
+
+    <p style="color: #777; font-size: 14px; margin-top: 30px;">Note: This action cannot be undone.</p>
+  </div>
+{% endblock %}
