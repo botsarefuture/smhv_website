@@ -10,7 +10,7 @@
 
 /* ABOUT-CONTENT */
 .about-content {
-  background-color: #f9f9f9; /* Light gray background */
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -27,13 +27,13 @@
 .section-title {
   font-size: 36px;
   margin-bottom: 20px;
-  color: var(--darker-violet); /* Purple color for section titles */
+  color: black;
 }
 
 /* DEMANDS-LIST */
 .demands-list {
   font-size: 20px;
-  color: var(--violet); /* Violet color for demands */
+  color: var(--neon-pink);
   list-style-type: disc;
   padding-left: 20px;
   margin-bottom: 55px;
@@ -41,7 +41,7 @@
 
 /* CONTACT-INFO */
 .contact-info {
-  background-color: #f9f9f9; /* Light gray background */
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -52,22 +52,34 @@
 .subsection-title {
   font-size: 24px;
   margin-bottom: 20px;
-  color: var(--violet); /* Purple color for subsection titles */
+  color: black;
 }
 
-.values-list {
-  font-size: 20px;
-  color: var(--neon-green); /* Green color for values */
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 55px;
-}
-
-/* Font styles for Periaatteet (Principles) section */
+.values-list,
 .principles-list {
   font-size: 20px;
-  color: var(--neon-pink); /* Pink color for principles */
   list-style-type: disc;
   padding-left: 20px;
   margin-bottom: 55px;
+}
+
+/* Annamme Suomen hallitukselle 2 vaihtoehtoa: */
+.anna,
+.vaatimus {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.anna {
+  color: #FF0D72; /* SMHV/neon-pink */
+  padding-bottom: 15px;
+}
+
+.vaatimus {
+  color: var(--neon-pink);
+  mix-blend-mode: normal;
+  padding-bottom: 10px;
 }

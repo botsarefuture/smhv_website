@@ -1,4 +1,6 @@
 {% extends 'base_fi.html' %} {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about-home.css') }}">
+
 <h1 style="font-size: 0px">Hallitusta vastaan, elämän puolesta!</h1>
 
 <section class="hero">
@@ -8,18 +10,11 @@
       Tavoitteemme on inhimillistää hallituksen ajama politiikka, tai kaataa
       heidät.
     </p>
-    <a href="{{ url_for('about') }}" class="cta-button"
-      >Lue lisää toiminnastamme</a
-    >
+    <a href="{{ url_for('about') }}" class="cta-button">Lue lisää toiminnastamme</a>
 
     <br /><br />
 
-    <a
-      href="{{ url_for('join') }}"
-      style="background-color: var(--neon-pink)"
-      class="cta-button"
-      >Liity meihin!</a
-    >
+    <a href="{{ url_for('join') }}" style="background-color: var(--neon-pink)" class="cta-button">Liity meihin!</a>
   </div>
 </section>
 <section class="about-us">
@@ -31,8 +26,14 @@
     </p>
     <p>Tavoitteemme on saada sinimusta hallitus kaatumaan.</p>
     <p>Liity joukkoomme kaatamaan hallitusta.</p>
+
+    <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
+
   </div>
-  <a href="{{ url_for('about') }}" class="cta-button">Lue lisää</a>
+  <div class="about-photo-group">
+    <div class="about-photo"></div><span class="about-photo-credits">kuva: Satu Söderholm 5.9.2023</span>
+</div>
+
 </section>
 
 <!-- this join us section should be removed -->

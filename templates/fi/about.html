@@ -1,5 +1,5 @@
-{% extends 'base_fi.html' %} {% block content %}
-
+{% extends 'base_fi.html' %} 
+{% block content %}
 <section class="about-us">
   <h2 class="section-title">Tietoa Meistä</h2>
   <div class="about-content">
@@ -7,7 +7,7 @@
       Olemme kansalaisliike, joka pyrkii Petteri Orpon sinimustan hallituksen
       tuhoisen kurjistuspolitiikan lopettamiseen tai sen kaatumiseen.
     </p>
-    <p>Tehtävänämme on edistää äärioikeistolaisen hallituksen kaatumista.</p>
+    <p>Tehtävämme on edistää äärioikeistolaisen hallituksen kaatumista.</p>
     <p>
       Liity mukaan luomaan myönteisiä muutoksia yhteisöllemme ja koko
       yhteiskunnalle.
@@ -24,10 +24,11 @@
   </div>
   <div class="demands-container">
     <h3 class="subsection-title">Vaatimuksemme</h3>
-    <ul class="demands-list">
-      <li>Sinimustan hallituksen ero</li>
-      <li>Ihmisoikeuksien kunnioittaminen</li>
-    </ul>
+    <div class="anna">Annamme Suomen hallitukselle 2 vaihtoehtoa:</div>
+    <div class="vaatimus">
+      1. Toteuttakaa politiikkaa köyhiä ja ihmisoikeuksia kunnioittaen.<br>
+      2. Astukaa syrjään tehtävistänne.
+    </div>
   </div>
   <a href="{{ url_for('contact') }}" class="cta-button">Ota Yhteyttä</a>
   <a href="{{ url_for('contacts') }}" class="cta-button">Yhteystiedot</a>

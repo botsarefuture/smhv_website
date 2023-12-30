@@ -1,21 +1,20 @@
-{% extends 'base_en.html' %} {% block content %}
+{% extends 'base_en.html' %} 
+{% block content %}
 <section class="about-us">
   <h2 class="section-title">About Us</h2>
   <div class="about-content">
     <p>
-      We are an activist group dedicated to overthrowing the blue-black
-      government.
+      We are a grassroots movement working towards ending the destructive austerity policies of Petteri Orpo's blue-black government or its downfall.
     </p>
-    <p>Our mission is to bring down the far-right government.</p>
+    <p>Our mission is to promote the downfall of the far-right government.</p>
     <p>
-      Join us in creating positive change for our community and society as a
-      whole.
+      Join us in creating positive changes for our community and the entire society.
     </p>
   </div>
   <div class="principles-container">
     <h3 class="subsection-title">Our Principles</h3>
     <ul class="principles-list">
-      <li>Nonviolence</li>
+      <li>Non-violence</li>
       <li>Open and honest communication</li>
       <li>Peaceful activism</li>
       <li>Community and equality</li>
@@ -23,20 +22,13 @@
   </div>
   <div class="demands-container">
     <h3 class="subsection-title">Our Demands</h3>
-    <ul class="demands-list">
-      <li>Resignation of the blue-black government</li>
-      <li>Respect for human rights</li>
-    </ul>
+    <div class="anna">We give the Finnish government 2 options:</div>
+    <div class="vaatimus">
+      1. Implement policies respecting the poor and human rights.<br>
+      2. Step down from your positions.
+    </div>
   </div>
   <a href="{{ url_for('contact') }}" class="cta-button">Contact Us</a>
-  <div class="contact-info">
-    <h3 class="subsection-title">Contact Information</h3>
-    <p>
-      Email:
-      <a href="sinimustaahallitustavastaan@sinimustaahallitustavastaan.org"
-        >sinimustaahallitustavastaan@sinimustaahallitustavastaan.org</a
-      >
-    </p>
-  </div>
+  <a href="{{ url_for('contacts') }}" class="cta-button">Contact Information</a>
 </section>
 {% endblock %}
