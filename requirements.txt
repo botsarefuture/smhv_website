@@ -2,6 +2,6 @@ Flask==3.0.0
 flask_ckeditor==0.5.1
 flask_cors==4.0.0
 flask_sitemap==0.4.0
-pymongo==4.6.1
+pymongo==4.7.1
 python_dateutil==2.8.2
 Werkzeug==3.0.1
