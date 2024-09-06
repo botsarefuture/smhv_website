@@ -13,13 +13,12 @@ if not test:
     url = config["mongodb"]["url"]
 
     client = MongoClient(url)
-    db = client['website']
-    events_collection = db['events']
+    db = client["website"]
+    events_collection = db["events"]
 
 
 def cont_input(doing) -> bool:
-    cont = input(
-        f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
+    cont = input(f"Do you want to continue {doing}? (y/n): ").lower().strip() == "y"
     return cont
 
 
@@ -37,18 +36,33 @@ def fetch_support_role_data(demo_type):
         return None
 
 
-dates = ["27.11.2023 16.00", "28.11.2023 18.00", "29.11.2023 18.00",
-         "30.11.2023 18.00", "1.12.2023 16.00", "2.12.2023 12.00", "3.12.2023 13.30"]
+dates = [
+    "27.11.2023 16.00",
+    "28.11.2023 18.00",
+    "29.11.2023 18.00",
+    "30.11.2023 18.00",
+    "1.12.2023 16.00",
+    "2.12.2023 12.00",
+    "3.12.2023 13.30",
+]
 
 for date in dates:
     data = {}
     data["title_fi"] = "Hidas marssi sinimustaa hallitusta vastaan"
     data["title_en"] = "Slow march against the far-right government"
     data["date"] = date
-    data["location_fi"] = "Helsingin keskustan läheisyydessä. Tarkempi sijainti lähetetään osallistujille."
-    data["location_en"] = "Near the centre of Helsinki. The exact location will be sent to the participants."
-    data["description_fi"] = "Marssitaan yhdessä hallitus alas. Marssi tulee kulkemaan todella hitaasti."
-    data["description_en"] = "Let's march together to bring down the government. The march will be moving very slow."
+    data["location_fi"] = (
+        "Helsingin keskustan läheisyydessä. Tarkempi sijainti lähetetään osallistujille."
+    )
+    data["location_en"] = (
+        "Near the centre of Helsinki. The exact location will be sent to the participants."
+    )
+    data["description_fi"] = (
+        "Marssitaan yhdessä hallitus alas. Marssi tulee kulkemaan todella hitaasti."
+    )
+    data["description_en"] = (
+        "Let's march together to bring down the government. The march will be moving very slow."
+    )
     data["telegram_group"] = "https://t.me/+jU_h00_v1Z1lODU0"
     data["role_signup"] = "Y"
 

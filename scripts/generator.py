@@ -9,15 +9,16 @@ global test
 test = True
 
 if not test:
-  # Set up MongoDB connection
-  client = MongoClient(config["mongodb"]["uri"])
-  db = client['website']
-  events_collection = db['events']
+    # Set up MongoDB connection
+    client = MongoClient(config["mongodb"]["uri"])
+    db = client["website"]
+    events_collection = db["events"]
 
 
 def cont_input(doing) -> bool:
-    cont = input(f'Do you want to continue {doing}? (y/n): ').lower().strip() == 'y'
+    cont = input(f"Do you want to continue {doing}? (y/n): ").lower().strip() == "y"
     return cont
+
 
 while True:  # This loop runs indefinitely until manually stopped
     data = {}
@@ -40,7 +41,7 @@ while True:  # This loop runs indefinitely until manually stopped
         role["en_name"] = input("The name of the role in English: ")
         role["fi_description"] = input("The description of the role in Finnish: ")
         role["en_description"] = input("The description of the role in English: ")
-        
+
         introductions = []
         intro_continue = True
 
@@ -48,21 +49,21 @@ while True:  # This loop runs indefinitely until manually stopped
             introduction = {
                 "date": input("The date of introduction (DD.MM.YYYY): "),
                 "time": input("Time of introduction (hh.mm): "),
-                "location": input("The location of introduction: ")
+                "location": input("The location of introduction: "),
             }
             introductions.append(introduction)
             intro_continue = cont_input("creating introductions")
-        
+
         role["introductions"] = introductions
         data["roles"].append(role)
         to_continue = cont_input("creating roles")
 
     if not test:
-      # Insert the event data into the MongoDB collection
-      events_collection.insert_one(data)
-    
+        # Insert the event data into the MongoDB collection
+        events_collection.insert_one(data)
+
     if test:
-      print(json.dumps(data))
+        print(json.dumps(data))
 
     if not cont_input("adding another event"):
         break  # Exit the loop if the user does not want to add another event
