@@ -1,6 +1,6 @@
 Flask==3.0.0
 flask_ckeditor==0.5.1
-flask_cors==4.0.0
+flask_cors==4.0.2
 flask_sitemap==0.4.0
 pymongo==4.8.0
 python_dateutil==2.8.2
