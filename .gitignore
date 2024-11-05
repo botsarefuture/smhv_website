@@ -10,3 +10,4 @@ trol.py
 auto_create.py
 *stress_test.py
 email_rep.py
+.venv/

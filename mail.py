@@ -12,6 +12,7 @@ with open("config.json", "r") as f:
 
 sender_email = config.get("email").get("address")
 
+
 def send_email(recipient_email, subject, content, from_email=sender_email):
     msg = MIMEMultipart()
     msg["From"] = from_email
@@ -114,19 +115,26 @@ def list_join_email(language, email, confirmation_link):
         subject = "Vahvista liittymisesi sähköpostilistalle."
         email_content = "<p>Hei,</p>"
         email_content += "<p>Kiitos, että liityit sähköpostilistallemme! Voit vahvistaa sähköpostiosoitteesi klikkaamalla alla olevaa linkkiä:</p>"
-        email_content += """<a href="%s" target="_blank">Vahvista sähköpostiosoite</a>""" % confirmation_link
+        email_content += (
+            """<a href="%s" target="_blank">Vahvista sähköpostiosoite</a>"""
+            % confirmation_link
+        )
         email_content += "<p>Mikäli et ole liittynyt sähköpostilistallemme, voit jättää tämän viestin huomiotta.</p>"
         email_content += "<p>Kiitos!</p>"
 
-    if language == 'en':
+    if language == "en":
         subject = "Confirm joining to our email list."
         email_content = "<p>Hello,</p>"
         email_content += "<p>Thank you for joining our email list! You can confirm your email address by clicking the link below:</p>"
-        email_content += """<a href="%s" target="_blank">Confirm Email Address</a>""" % confirmation_link
-        email_content += "<p>If you haven't joined our email list, you can ignore this message.</p>"
+        email_content += (
+            """<a href="%s" target="_blank">Confirm Email Address</a>"""
+            % confirmation_link
+        )
+        email_content += (
+            "<p>If you haven't joined our email list, you can ignore this message.</p>"
+        )
         email_content += "<p>Thank you!</p>"
 
-    
     msg = MIMEMultipart()
     msg["From"] = config.get("email").get("address")
     msg["To"] = email

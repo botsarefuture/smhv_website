@@ -51,7 +51,9 @@ sitemap = Sitemap(app=app)
 @app.before_request
 def set_language():
     supported_languages = ["fi", "en"]
-    werkzeug.datastructures.LanguageAccept([(al[0][0:2], al[1]) for al in request.accept_languages]).best_match(supported_languages)
+    werkzeug.datastructures.LanguageAccept(
+        [(al[0][0:2], al[1]) for al in request.accept_languages]
+    ).best_match(supported_languages)
     lang = request.accept_languages.best_match(supported_languages, "en")
 
     if "user" not in session:
@@ -152,9 +154,7 @@ def events():
         event for event in events_data if get_event_date(event) >= current_datetime
     ]
     sorted_events = sort_events_by_date(future_events)
-    return render_template(
-        f"{lang}/events.html", title="Events", events=sorted_events
-    )
+    return render_template(f"{lang}/events.html", title="Events", events=sorted_events)
 
 
 @app.route("/events/<event_id>")
@@ -224,9 +224,12 @@ def event_signup(event_id=None):
         # Lisää signup_data MongoDB-kokoelmaan ilmoittautumisia varten.
         result = signups_collection.insert_one(signup_data)
         print(result.inserted_id)
-        signup_email(event, {"name": name, "email": email, "roles": roles1}, lang, str(result.inserted_id))
-
-        
+        signup_email(
+            event,
+            {"name": name, "email": email, "roles": roles1},
+            lang,
+            str(result.inserted_id),
+        )
 
         if lang == "fi":
             flash("Ilmoittautuminen onnistui!", "info")
@@ -240,7 +243,7 @@ def event_signup(event_id=None):
 
 
 @app.route("/api/events/")
-@app.route("/api/events/<event_id>") # type: ignore
+@app.route("/api/events/<event_id>")  # type: ignore
 def api_event(event_id=None):
     if event_id != None:
         search = {"_id": ObjectId(event_id)}
@@ -281,19 +284,19 @@ def remove_participant(_id):
 
     if request.method == "GET":
         try:
-            event_id = signups_collection.find_one({"_id": ObjectId(_id)}).get("event_id")
+            event_id = signups_collection.find_one({"_id": ObjectId(_id)}).get(
+                "event_id"
+            )
             event = events_collection.find_one({"_id": ObjectId(event_id)})
 
         except:
             return render_template("event_not_found.html", lang=lang)
 
-            
-
         if event == None:
             return render_template("not_found.html", lang=lang)
 
         return render_template(f"{lang}/remove_participant.html", _id=_id, event=event)
-    
+
     if request.method == "POST":
         signups_collection.delete_one({"_id": ObjectId(_id)})
         if lang == "en":
@@ -302,7 +305,6 @@ def remove_participant(_id):
         if lang == "fi":
             flash("Ilmoittautuminen poistettu onnistuneesta", "info")
         return redirect("/")
-    
 
 
 # EVENTS END
@@ -319,9 +321,7 @@ def about():
 def contact():
     lang = session["user"]["lang"]
     if request.method == "GET":
-        return render_template(
-            f"{lang}/contact.html", title="Contact Us"
-        )
+        return render_template(f"{lang}/contact.html", title="Contact Us")
 
     if request.method == "POST":
         name = request.form.get("name")
@@ -338,18 +338,14 @@ def contact():
             }
         )
         # TODO: #51 Flash information about successfully sent form
-        return render_template(
-            f"{lang}/contact.html", title="Contact Us"
-        )
+        return render_template(f"{lang}/contact.html", title="Contact Us")
 
 
 @app.route("/join", methods=["GET", "POST"])
 def join():
     lang = session["user"]["lang"]
     if request.method == "GET":
-        return render_template(
-            f"{lang}/join_us.html", title="Join Us"
-        )
+        return render_template(f"{lang}/join_us.html", title="Join Us")
 
     if request.method == "POST":
         name = request.form.get("name")
@@ -370,9 +366,7 @@ def join():
         )
 
         # TODO: #50 Flash information about successfully sent form
-        return render_template(
-            f"{lang}/join_us.html", title="Join Us"
-        )
+        return render_template(f"{lang}/join_us.html", title="Join Us")
 
 
 @app.route("/change_language/<lang>")
@@ -538,8 +532,10 @@ def create_release():
 @app.route("/toimintaviikko/")
 @app.route("/toimintaviikko/info")
 @app.route("/api/toimintaviikko/reasons", methods=["GET", "POST"])
-def to_main_page(): # THE ACTION WEEK IS OVER, LETS MAKE USER UNABLE TO VISIT IT!
-    return redirect("/") # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
+def to_main_page():  # THE ACTION WEEK IS OVER, LETS MAKE USER UNABLE TO VISIT IT!
+    return redirect(
+        "/"
+    )  # Toimintaviikko is over, so lets just make users unable to visit any page related to it.
 
 
 release = press_collection.find_one({"slug": 0})
@@ -552,27 +548,32 @@ def contacts():
 
     return render_template(f"{lang}/contacts.html")
 
+
 from email_list import add_email, confirm_email
+
+
 @app.route("/email_list/", methods=["GET", "POST"])
 def email_list():
     lang = session["user"]["lang"]
 
     if request.method == "POST":
         data = request.form
-        email_address = data.get('email')
-        add_email(email_address, lang) # Add email to database, and also send confirmation email
- 
+        email_address = data.get("email")
+        add_email(
+            email_address, lang
+        )  # Add email to database, and also send confirmation email
+
         return render_template(f"{lang}/email/thank_you_join.html")
-    
+
     return render_template(f"{lang}/email/join_email_list.html")
-    
-    
-        
+
+
 @app.route("/confirm_email/<email_id>")
 def confir_email(email_id):
     confirm_email(email_id)
     lang = session["user"]["lang"]
     return render_template(f"{lang}/email/thank_you_confirm.html")
+
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
